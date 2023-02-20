@@ -2,24 +2,20 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerBaseState
 {
-    public override void EnterState(PlayerHorizontalStateManager manager)
+    public override void FixedUpdateState(HorizontalStateController controller)
     {
-    }
-
-    public override void FixedUpdateState(PlayerHorizontalStateManager manager)
-    {
-        RotateMesh(manager);
+        RotateMesh(controller);
         
         // State change
-        if (manager.inputHandler.moveDirection != Vector2.zero) manager.SwitchState(manager.moveState);
+        if (controller.playerData.moveDirection != Vector2.zero) controller.SwitchState(controller.moveState);
     }
 
-    private void RotateMesh(PlayerHorizontalStateManager manager)
+    private void RotateMesh(HorizontalStateController controller)
     {
-        if (manager.inputHandler.isAiming)
+        if (controller.playerData.isAiming)
         {
-            Vector3 lookDirection = manager.orientation.forward;
-            manager.meshes.forward = Vector3.Slerp(manager.meshes.forward, lookDirection.normalized, Time.deltaTime * manager.rotationSpeed);
+            Vector3 lookDirection = controller.playerData.orientation.forward;
+            controller.playerData.meshes.forward = Vector3.Slerp(controller.playerData.meshes.forward, lookDirection.normalized, Time.deltaTime * controller.rotationSpeed);
         }
     }
 }

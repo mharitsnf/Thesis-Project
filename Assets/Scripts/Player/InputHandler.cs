@@ -4,29 +4,17 @@ using UnityEngine.InputSystem;
 
 public class InputHandler : MonoBehaviour
 {
-    public Vector2 cameraLookDelta;
-    public Vector2 moveDirection;
-    public bool isAiming;
-
-    private PlayerHorizontalStateManager _horizontalManager;
-    private PlayerVerticalStateManager _verticalManager;
+    public PlayerData playerData;
     
     private PlayerInput _playerInput;
     private CameraInput _cameraInput;
-    private CinemachineFollowController _cinemachineFollowController;
     
     // Start is called before the first frame update
     void Awake()
     {
+        playerData = GetComponent<PlayerData>();
         SetupPlayerInput();
         SetupCameraInput();
-    }
-
-    private void Start()
-    {
-        _horizontalManager = GetComponent<PlayerHorizontalStateManager>();
-        _verticalManager = GetComponent<PlayerVerticalStateManager>();
-        _cinemachineFollowController = GetComponent<CinemachineFollowController>();
     }
 
     private void SetupPlayerInput()
@@ -52,28 +40,27 @@ public class InputHandler : MonoBehaviour
 
     private void HandleAimInput(InputAction.CallbackContext context)
     {
-        isAiming = context.ReadValueAsButton();
-        
-        if (isAiming) _cinemachineFollowController.SwitchCamera(1);
-        else _cinemachineFollowController.SwitchCamera(0);
+        playerData.isAiming = context.ReadValueAsButton();
+
+        playerData.cameraController.SwitchVirtualCamera(playerData.isAiming ? 1 : 0);
     }
 
     private void HandleJumpInput(InputAction.CallbackContext context)
     {
-        if (_verticalManager.currentState == _verticalManager.groundedState && context.ReadValueAsButton())
+        if (playerData.verticalStateController.currentState == playerData.verticalStateController.groundedState && context.ReadValueAsButton())
         {
-            _verticalManager.Jump();
+            playerData.verticalStateController.Jump();
         }
     }
 
     private void HandleMovementInput(InputAction.CallbackContext context)
     {
-        moveDirection = context.ReadValue<Vector2>();
+        playerData.moveDirection = context.ReadValue<Vector2>();
     }
 
     private void HandleCameraInput(InputAction.CallbackContext context)
     {
-        cameraLookDelta = context.ReadValue<Vector2>();
+        playerData.cameraLookDelta = context.ReadValue<Vector2>();
     }
 
     private void OnEnable()

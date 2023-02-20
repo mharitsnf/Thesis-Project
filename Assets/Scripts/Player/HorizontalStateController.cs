@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-public class PlayerHorizontalStateManager : PlayerBaseManager
+public class HorizontalStateController : BaseStateController
 {
     [Header("Movement And Rotation")] 
     public float rotationSpeed = 10; 

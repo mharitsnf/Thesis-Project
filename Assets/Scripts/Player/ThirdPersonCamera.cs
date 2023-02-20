@@ -9,12 +9,6 @@ public class ThirdPersonCamera : MonoBehaviour
     public Transform player;
     public Transform orientation;
 
-    private void Start()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
-
     private void Update()
     {
         Vector3 viewDir = player.position - transform.position;

@@ -9,6 +9,18 @@ public class GlobalSettings : MonoBehaviour
     
     private void Awake()
     {
+        SetGravity();
+        SetCursor();
+    }
+
+    private void SetGravity()
+    {
         Physics.gravity *= gravityMultiplier;
+    }
+
+    private void SetCursor()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 }

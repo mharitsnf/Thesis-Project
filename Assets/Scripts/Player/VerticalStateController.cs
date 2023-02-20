@@ -1,13 +1,8 @@
 using System;
 using UnityEngine;
 
-public class PlayerVerticalStateManager : PlayerBaseManager
+public class VerticalStateController : BaseStateController
 {
-    private float _playerYCenter;
-
-    private RaycastHit _groundInfo;
-    [HideInInspector] public bool isGrounded;
-
     [Header("Jumping")]
     public float initialJumpForce;
     public float floatTime;
@@ -29,14 +24,14 @@ public class PlayerVerticalStateManager : PlayerBaseManager
     private new void Awake()
     {
         base.Awake();
-        _playerYCenter = GetComponentInChildren<CapsuleCollider>().height * 0.5f;
+        playerData.playerYCenter = GetComponentInChildren<CapsuleCollider>().height * 0.5f;
     }
 
     private void Start()
     {
         GroundCheck();
         
-        if (isGrounded) currentState = groundedState;
+        if (playerData.isGrounded) currentState = groundedState;
         else currentState = fallState;
         
         currentState.EnterState(this);
@@ -51,12 +46,12 @@ public class PlayerVerticalStateManager : PlayerBaseManager
 
     private void GroundCheck()
     {
-        isGrounded = Physics.SphereCast(new Ray(transform.position, Vector3.down), 0.5f, out _groundInfo, _playerYCenter + .05f);
+        playerData.isGrounded = Physics.SphereCast(new Ray(transform.position, Vector3.down), 0.5f, out playerData.groundInfo, playerData.playerYCenter + .05f);
     }
 
     public void Jump()
     {
-        rigidBody.AddForce(Vector3.up * initialJumpForce, ForceMode.Impulse);
+        playerData.rigidBody.AddForce(Vector3.up * initialJumpForce, ForceMode.Impulse);
     }
 
     public override void SwitchState(PlayerBaseState state)

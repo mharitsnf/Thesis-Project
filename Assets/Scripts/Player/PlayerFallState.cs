@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class PlayerFallState : PlayerBaseState
 {
-    public override void EnterState(PlayerVerticalStateManager manager)
+    public override void EnterState(VerticalStateController controller)
     {
-        manager.rigidBody.drag = manager.airDrag;
+        controller.playerData.rigidBody.drag = controller.airDrag;
     }
     
-    public override void FixedUpdateState(PlayerVerticalStateManager manager)
+    public override void FixedUpdateState(VerticalStateController controller)
     {
-        manager.rigidBody.AddForce(Physics.gravity * manager.fallGravityMultiplier);
+        controller.playerData.rigidBody.AddForce(Physics.gravity * controller.fallGravityMultiplier);
         
-        if (manager.isGrounded) manager.SwitchState(manager.groundedState);
+        if (controller.playerData.isGrounded) controller.SwitchState(controller.groundedState);
     }
 }

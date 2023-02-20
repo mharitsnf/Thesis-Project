@@ -1,17 +1,17 @@
 
 public class PlayerGroundedState : PlayerBaseState
 {
-    public override void EnterState(PlayerVerticalStateManager manager)
+    public override void EnterState(VerticalStateController controller)
     {
-        manager.rigidBody.drag = manager.groundDrag;
+        controller.playerData.rigidBody.drag = controller.groundDrag;
     }
 
-    public override void FixedUpdateState(PlayerVerticalStateManager manager)
+    public override void FixedUpdateState(VerticalStateController controller)
     {
-        if (!manager.isGrounded)
+        if (!controller.playerData.isGrounded)
         { 
-            if (manager.rigidBody.velocity.y > 0) manager.SwitchState(manager.jumpState);
-            else manager.SwitchState(manager.fallState);
+            if (controller.playerData.rigidBody.velocity.y > 0) controller.SwitchState(controller.jumpState);
+            else controller.SwitchState(controller.fallState);
         }
     }
 }

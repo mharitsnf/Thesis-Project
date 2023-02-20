@@ -2,50 +2,46 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerBaseState
 {
-    public override void EnterState(PlayerHorizontalStateManager manager)
-    {
-    }
-
-    public override void FixedUpdateState(PlayerHorizontalStateManager manager)
+    public override void FixedUpdateState(HorizontalStateController controller)
     {
         // Input and movement handling
-        MoveAndRotateMesh(manager);
-        LimitSpeed(manager);
+        MoveAndRotateMesh(controller);
+        LimitSpeed(controller);
             
         // State change
-        if (manager.inputHandler.moveDirection == Vector2.zero) manager.SwitchState(manager.idleState);
+        if (controller.playerData.moveDirection == Vector2.zero) controller.SwitchState(controller.idleState);
     }
-        
-    private void RotateMesh(PlayerHorizontalStateManager manager, Vector3 direction)
+
+    private void RotateMesh(HorizontalStateController controller, Vector3 direction)
     {
-        manager.meshes.forward = Vector3.Slerp(manager.meshes.forward, direction.normalized, Time.deltaTime * manager.rotationSpeed);
+        controller.playerData.meshes.forward = Vector3.Slerp(controller.playerData.meshes.forward, direction.normalized, Time.deltaTime * controller.rotationSpeed);
     }
     
-    private void MoveMesh(PlayerHorizontalStateManager manager, Vector3 direction)
+    private void MoveMesh(HorizontalStateController controller, Vector3 direction)
     {
-        manager.rigidBody.AddForce(direction.normalized * manager.acceleration, ForceMode.Acceleration);
+        controller.playerData.rigidBody.AddForce(direction.normalized * controller.acceleration, ForceMode.Acceleration);
     }
 
-    private void MoveAndRotateMesh(PlayerHorizontalStateManager manager)
+    private void MoveAndRotateMesh(HorizontalStateController controller)
     {
-        Vector3 direction = manager.orientation.forward * manager.inputHandler.moveDirection.y + 
-                            manager.orientation.right * manager.inputHandler.moveDirection.x;
+        Vector3 direction = controller.playerData.orientation.forward * controller.playerData.moveDirection.y + 
+                            controller.playerData.orientation.right * controller.playerData.moveDirection.x;
 
-        MoveMesh(manager, direction);
+        MoveMesh(controller, direction);
 
-        if (manager.inputHandler.isAiming) direction = manager.orientation.forward;
-        RotateMesh(manager, direction);
+        if (controller.playerData.isAiming) direction = controller.playerData.orientation.forward;
+        RotateMesh(controller, direction);
     }
 
-    private void LimitSpeed(PlayerHorizontalStateManager manager)
+    private void LimitSpeed(HorizontalStateController controller)
     {
-        Vector3 currentVelocity = manager.rigidBody.velocity;
+        Vector3 currentVelocity = controller.playerData.rigidBody.velocity;
         Vector3 xzVelocity = new Vector3(currentVelocity.x, 0, currentVelocity.z);
     
-        if (xzVelocity.magnitude > manager.maxSpeed)
+        if (xzVelocity.magnitude > controller.maxSpeed)
         {
-            currentVelocity = xzVelocity.normalized * manager.maxSpeed;
-            manager.rigidBody.velocity = new Vector3(currentVelocity.x, manager.rigidBody.velocity.y, currentVelocity.z);
+            currentVelocity = xzVelocity.normalized * controller.maxSpeed;
+            controller.playerData.rigidBody.velocity = new Vector3(currentVelocity.x, controller.playerData.rigidBody.velocity.y, currentVelocity.z);
         }
     }
 }

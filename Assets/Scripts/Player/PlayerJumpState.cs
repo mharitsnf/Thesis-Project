@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class PlayerJumpState : PlayerBaseState
 {
-    public override void EnterState(PlayerVerticalStateManager manager)
+    public override void EnterState(VerticalStateController controller)
     {
-        manager.rigidBody.drag = manager.airDrag;
+        controller.playerData.rigidBody.drag = controller.airDrag;
     }
     
-    public override void FixedUpdateState(PlayerVerticalStateManager manager)
+    public override void FixedUpdateState(VerticalStateController controller)
     {
-        manager.rigidBody.AddForce(Physics.gravity * manager.jumpGravityMultiplier);
+        controller.playerData.rigidBody.AddForce(Physics.gravity * controller.jumpGravityMultiplier);
 
-        if (manager.rigidBody.velocity.y < 0) manager.SwitchState(manager.floatState);
+        if (controller.playerData.rigidBody.velocity.y < 0) controller.SwitchState(controller.floatState);
     }
 }

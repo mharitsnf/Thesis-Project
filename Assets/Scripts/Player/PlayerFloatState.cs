@@ -5,20 +5,20 @@ public class PlayerFloatState : PlayerBaseState
 {
     private float _timeElapsed;
     
-    public override void EnterState(PlayerVerticalStateManager manager)
+    public override void EnterState(VerticalStateController controller)
     {
-        manager.rigidBody.useGravity = false;
+        controller.playerData.rigidBody.useGravity = false;
     }
 
-    public override void FixedUpdateState(PlayerVerticalStateManager manager)
+    public override void FixedUpdateState(VerticalStateController controller)
     {
         _timeElapsed += Time.deltaTime;
         
-        if (_timeElapsed > manager.floatTime)
+        if (_timeElapsed > controller.floatTime)
         {
-            manager.rigidBody.useGravity = true;
+            controller.playerData.rigidBody.useGravity = true;
             _timeElapsed = 0f;
-            manager.SwitchState(manager.fallState);
+            controller.SwitchState(controller.fallState);
         }
     }
 }
