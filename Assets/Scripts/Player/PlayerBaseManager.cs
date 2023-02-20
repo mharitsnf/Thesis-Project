@@ -13,7 +13,7 @@ public abstract class PlayerBaseManager : MonoBehaviour
     public PlayerBaseState currentState;
     public PlayerBaseState previousState;
 
-    private void Awake()
+    protected void Awake()
     {
         SetPlayerData();
     }

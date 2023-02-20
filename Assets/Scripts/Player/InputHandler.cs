@@ -25,6 +25,7 @@ public class InputHandler : MonoBehaviour
     private void Start()
     {
         _horizontalManager = GetComponent<PlayerHorizontalStateManager>();
+        _verticalManager = GetComponent<PlayerVerticalStateManager>();
         _cinemachineFollowController = GetComponent<CinemachineFollowController>();
     }
 
@@ -37,6 +38,8 @@ public class InputHandler : MonoBehaviour
 
         _playerInput.CharacterControls.Aim.started += HandleAimInput;
         _playerInput.CharacterControls.Aim.canceled += HandleAimInput;
+
+        _playerInput.CharacterControls.Jump.started += HandleJumpInput;
     }
 
     private void SetupCameraInput()
@@ -57,7 +60,10 @@ public class InputHandler : MonoBehaviour
 
     private void HandleJumpInput(InputAction.CallbackContext context)
     {
-        _verticalManager.isJumping = context.ReadValueAsButton();
+        if (_verticalManager.currentState == _verticalManager.groundedState && context.ReadValueAsButton())
+        {
+            _verticalManager.Jump();
+        }
     }
 
     private void HandleMovementInput(InputAction.CallbackContext context)

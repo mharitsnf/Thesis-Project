@@ -1,7 +1,7 @@
-﻿
+
 using UnityEngine;
 
-public class PlayerJumpState : PlayerBaseState
+public class PlayerFallState : PlayerBaseState
 {
     public override void EnterState(PlayerVerticalStateManager manager)
     {
@@ -10,8 +10,8 @@ public class PlayerJumpState : PlayerBaseState
     
     public override void FixedUpdateState(PlayerVerticalStateManager manager)
     {
-        manager.rigidBody.AddForce(Physics.gravity * manager.jumpGravityMultiplier);
-
-        if (manager.rigidBody.velocity.y < 0) manager.SwitchState(manager.floatState);
+        manager.rigidBody.AddForce(Physics.gravity * manager.fallGravityMultiplier);
+        
+        if (manager.isGrounded) manager.SwitchState(manager.groundedState);
     }
 }
