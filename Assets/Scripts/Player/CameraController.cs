@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Cinemachine;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class CameraController : MonoBehaviour
 {
@@ -45,7 +40,7 @@ public class CameraController : MonoBehaviour
         playerData.cinemachineFollowPitch += cameraDelta.y * playerData.cameraRotationSpeed * Time.deltaTime * (playerData.invertY ? -1 : 1);
 
         playerData.cinemachineFollowYaw = ClampAngle(playerData.cinemachineFollowYaw, float.MinValue, float.MaxValue);
-        playerData.cinemachineFollowPitch = ClampAngle(playerData.cinemachineFollowPitch, -30f, 70f);
+        playerData.cinemachineFollowPitch = ClampAngle(playerData.cinemachineFollowPitch, playerData.minClamp, playerData.maxClamp);
 
         playerData.cinemachineFollow.transform.rotation = Quaternion.Euler(playerData.cinemachineFollowPitch, playerData.cinemachineFollowYaw, 0f);
     }
@@ -57,17 +52,17 @@ public class CameraController : MonoBehaviour
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
 
-    public void SwitchVirtualCamera(int index)
-    {
-        CinemachineVirtualCameraBase newVirtualCamera = playerData.virtualCameras[index];
-
-        newVirtualCamera.gameObject.SetActive(true);
-
-        foreach (CinemachineVirtualCameraBase virtualCamera in playerData.virtualCameras)
-        {
-            if (virtualCamera != newVirtualCamera) virtualCamera.gameObject.SetActive(false);
-        }
-
-        playerData.currentVirtualCamera = newVirtualCamera;
-    }
+    // public void SwitchVirtualCamera(int index)
+    // {
+    //     CinemachineVirtualCameraBase newVirtualCamera = playerData.virtualCameras[index];
+    //
+    //     newVirtualCamera.gameObject.SetActive(true);
+    //
+    //     foreach (CinemachineVirtualCameraBase virtualCamera in playerData.virtualCameras)
+    //     {
+    //         if (virtualCamera != newVirtualCamera) virtualCamera.gameObject.SetActive(false);
+    //     }
+    //
+    //     playerData.currentVirtualCamera = newVirtualCamera;
+    // }
 }

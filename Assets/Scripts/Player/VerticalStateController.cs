@@ -58,25 +58,36 @@ public class VerticalStateController : BaseStateController
 
     public void StartGrapple()
     {
-        if (Physics.Raycast(playerData.realCamera.position, playerData.realCamera.forward, out var hit, playerData.maxRopeDistance))
+        if (Physics.Raycast(playerData.realCamera.position, playerData.realCamera.forward, out var hit, playerData.rayCastDistance))
         {
+            if (hit.collider.gameObject.CompareTag("Player")) return;
+            
             playerData.firstEnd = hit.point;
             playerData.joint = playerData.gameObject.AddComponent<SpringJoint>();
             playerData.joint.autoConfigureConnectedAnchor = false;
             playerData.joint.connectedAnchor = playerData.firstEnd;
 
-            float distanceFromPoint = Vector3.Distance(playerData.transform.position, playerData.firstEnd);
-            playerData.joint.maxDistance = distanceFromPoint * .8f;
-            playerData.joint.minDistance = distanceFromPoint * .25f;
+            playerData.joint.maxDistance = playerData.maxRopeDistance;
+            playerData.joint.minDistance = playerData.minRopeDistance;
 
-            playerData.joint.spring = 4.5f;
-            playerData.joint.damper = 7f;
-            playerData.joint.massScale = 4.5f;
+            playerData.joint.spring = playerData.springSpringiness;
+            playerData.joint.damper = playerData.springDamper;
+            playerData.joint.massScale = playerData.springMassScale;
+
+            playerData.lineRenderer.positionCount = 2;
         }
+    }
+
+    public void StopGrapple()
+    {
+        playerData.lineRenderer.positionCount = 0;
+        Destroy(playerData.joint);
     }
 
     public void DrawRope()
     {
+        if (!playerData.joint) return;
+        
         playerData.lineRenderer.SetPosition(0, playerData.grapplePoint.position);
         playerData.lineRenderer.SetPosition(1, playerData.firstEnd);
     }

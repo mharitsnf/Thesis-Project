@@ -70,7 +70,7 @@ public class InputHandler : MonoBehaviour
 
         if (context.canceled)
         {
-            // remove grapple
+            playerData.verticalStateController.StopGrapple();
         }
     }
 

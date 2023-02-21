@@ -25,13 +25,20 @@ public class PlayerMoveState : PlayerBaseState
     private void MoveAndRotateMesh(HorizontalStateController controller)
     {
         Vector3 moveDirection, lookDirection;
-        moveDirection = lookDirection = controller.playerData.orientation.forward * controller.playerData.moveDirection.y + controller.playerData.orientation.right * controller.playerData.moveDirection.x;
+        moveDirection = lookDirection = controller.playerData.orientation.forward * controller.playerData.moveDirection.y +
+                                        controller.playerData.orientation.right * controller.playerData.moveDirection.x;
 
         if (controller.playerData.isOnSlope)
             moveDirection = Vector3.ProjectOnPlane(moveDirection, controller.playerData.groundInfo.normal).normalized;
+        
+        // else if (controller.playerData.joint)
+        // {
+        //     Vector3 dirToFirstEnd =
+        //         (controller.playerData.firstEnd - controller.playerData.grapplePoint.transform.position).normalized;
+        //     moveDirection = Vector3.ProjectOnPlane(moveDirection, dirToFirstEnd).normalized;
+        // }
+        
         MoveMesh(controller, moveDirection);
-
-        if (controller.playerData.isAiming) lookDirection = controller.playerData.orientation.forward;
         RotateMesh(controller, lookDirection);
     }
 

@@ -17,7 +17,6 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public GameObject cinemachineFollow;
     [ReadOnly] public VerticalStateController verticalStateController;
     [ReadOnly] public HorizontalStateController horizontalStateController;
-    [ReadOnly] public CameraController cameraController;
     [ReadOnly] public LineRenderer lineRenderer;
     
     [Header("Movement And Rotation")] 
@@ -40,6 +39,8 @@ public class PlayerData : MonoBehaviour
     
     [Header("Camera")]
     public float cameraRotationSpeed;
+    public float minClamp;
+    public float maxClamp;
     public bool invertY;
     public bool invertX;
     
@@ -48,7 +49,6 @@ public class PlayerData : MonoBehaviour
 
     [Header("Cinemachine")]
     public CinemachineVirtualCameraBase[] virtualCameras;
-    [ReadOnly] public CinemachineVirtualCameraBase currentVirtualCamera;
     
     [Header("Input Data")]
     [ReadOnly] public Vector2 moveDirection;
@@ -62,7 +62,12 @@ public class PlayerData : MonoBehaviour
     [Header("Rope Data")]
     public Vector3 firstEnd;
     [ReadOnly] public SpringJoint joint;
+    public float rayCastDistance;
     public float maxRopeDistance;
+    public float minRopeDistance;
+    public float springSpringiness;
+    public float springDamper;
+    public float springMassScale;
 
     [Header("Ground Check Data")]
     public float maxSlopeAngle;
