@@ -1,7 +1,5 @@
-﻿
-using UnityEngine;
 
-public class PlayerJumpState : PlayerBaseState
+public class PlayerFallState : PlayerBaseState
 {
     public override void EnterState(VerticalStateController controller)
     {
@@ -10,6 +8,7 @@ public class PlayerJumpState : PlayerBaseState
     
     public override void FixedUpdateState(VerticalStateController controller)
     {
-        if (controller.playerData.rigidBody.velocity.y < 0) controller.SwitchState(controller.floatState);
+        if (controller.playerData.isGrounded)
+            controller.SwitchState(controller.groundedState);
     }
 }

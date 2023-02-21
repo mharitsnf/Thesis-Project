@@ -28,7 +28,6 @@ public class VerticalStateController : BaseStateController
     private void FixedUpdate()
     {
         GroundAndSlopeCheck();
-        AddForceOnSlope();
         currentState.FixedUpdateState(this);
     }
 
@@ -39,23 +38,17 @@ public class VerticalStateController : BaseStateController
         if (!playerData.isGrounded)
         {
             playerData.isOnSlope = false;
-            playerData.rigidBody.useGravity = true;
             return;
         }
 
         float groundAngle = Vector3.Angle(Vector3.up, playerData.groundInfo.normal);
         playerData.isOnSlope = groundAngle < playerData.maxSlopeAngle && groundAngle != 0;
-
-        if (playerData.isOnSlope) playerData.rigidBody.useGravity = false;
     }
 
-    private void AddForceOnSlope()
+    public void Jump(float percentage = 1f)
     {
-    }
-
-    public void Jump()
-    {
-        playerData.rigidBody.AddForce(Vector3.up * playerData.initialJumpForce, ForceMode.Impulse);
+        playerData.rigidBody.AddForce(Vector3.up * playerData.maxJumpForce * percentage, ForceMode.Impulse);
+        SwitchState(jumpState);
     }
 
     public override void SwitchState(PlayerBaseState state)

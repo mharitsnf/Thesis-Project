@@ -26,7 +26,8 @@ public class PlayerData : MonoBehaviour
     public float maxSpeed = 10;
     
     [Header("Jumping")]
-    public float initialJumpForce;
+    public float maxJumpForce;
+    public float buttonHoldTime;
     public float floatTime;
 
     [Header("Drag")]

@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Interactions;
 
 public class InputHandler : MonoBehaviour
 {
@@ -8,6 +9,16 @@ public class InputHandler : MonoBehaviour
     
     private PlayerInput _playerInput;
     private CameraInput _cameraInput;
+
+    private float _timeElapsedPressed;
+    
+    // Left click to shoot first rope end
+        // Hold to keep attaching it to the player
+        // Release to destroy the rope
+        // E to shoot second rope end
+    // Right click to pick up mechanics
+        // Hold to keep holding on mechanics
+        // Release to release mechanics
     
     // Start is called before the first frame update
     void Awake()
@@ -24,10 +35,8 @@ public class InputHandler : MonoBehaviour
         _playerInput.CharacterControls.Move.performed += HandleMovementInput;
         _playerInput.CharacterControls.Move.canceled += HandleMovementInput;
 
-        _playerInput.CharacterControls.Aim.started += HandleAimInput;
-        _playerInput.CharacterControls.Aim.canceled += HandleAimInput;
-
-        _playerInput.CharacterControls.Jump.started += HandleJumpInput;
+        _playerInput.CharacterControls.Jump.canceled += HandleJumpInput;
+        _playerInput.CharacterControls.Jump.performed += HandleJumpInput;
 
         _playerInput.CharacterControls.Grapple.started += HandleGrappleInput;
         _playerInput.CharacterControls.Grapple.canceled += HandleGrappleInput;
@@ -41,19 +50,15 @@ public class InputHandler : MonoBehaviour
         _cameraInput.CameraLook.Rotate.canceled += HandleCameraInput;
     }
 
-    private void HandleAimInput(InputAction.CallbackContext context)
-    {
-        playerData.isAiming = context.ReadValueAsButton();
-
-        playerData.cameraController.SwitchVirtualCamera(playerData.isAiming ? 1 : 0);
-    }
-
     private void HandleJumpInput(InputAction.CallbackContext context)
     {
-        if (playerData.verticalStateController.currentState == playerData.verticalStateController.groundedState && context.ReadValueAsButton())
-        {
-            playerData.verticalStateController.Jump();
-        }
+        // Don't jump conditions
+        if (context.duration > 0.1f) return;
+        if (context is { canceled: false, interaction: not HoldInteraction }) return;
+        if (playerData.verticalStateController.currentState != playerData.verticalStateController.groundedState) return;
+
+        float percentage = Mathf.Min((float)context.duration, playerData.buttonHoldTime) / playerData.buttonHoldTime;
+        playerData.verticalStateController.Jump(percentage);
     }
 
     private void HandleGrappleInput(InputAction.CallbackContext context)
