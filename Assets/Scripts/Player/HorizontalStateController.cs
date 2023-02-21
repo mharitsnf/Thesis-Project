@@ -6,11 +6,6 @@ using UnityEngine.Serialization;
 
 public class HorizontalStateController : BaseStateController
 {
-    [Header("Movement And Rotation")] 
-    public float rotationSpeed = 10; 
-    public float acceleration = 100;
-    public float maxSpeed = 10;
-
     // State
     public readonly PlayerIdleState idleState = new();
     public readonly PlayerMoveState moveState = new();

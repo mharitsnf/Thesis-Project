@@ -3,18 +3,6 @@ using UnityEngine;
 
 public class VerticalStateController : BaseStateController
 {
-    [Header("Jumping")]
-    public float initialJumpForce;
-    public float floatTime;
-
-    [Header("Drag")]
-    public float groundDrag;
-    public float airDrag;
-
-    [Header("Gravity")]
-    public float fallGravityMultiplier;
-    public float jumpGravityMultiplier;
-
     // States
     public readonly PlayerGroundedState groundedState = new();
     public readonly PlayerFallState fallState = new();
@@ -29,7 +17,7 @@ public class VerticalStateController : BaseStateController
 
     private void Start()
     {
-        GroundCheck();
+        GroundAndSlopeCheck();
         
         if (playerData.isGrounded) currentState = groundedState;
         else currentState = fallState;
@@ -39,19 +27,35 @@ public class VerticalStateController : BaseStateController
 
     private void FixedUpdate()
     {
-        GroundCheck();
-        
+        GroundAndSlopeCheck();
+        AddForceOnSlope();
         currentState.FixedUpdateState(this);
     }
 
-    private void GroundCheck()
+    private void GroundAndSlopeCheck()
     {
-        playerData.isGrounded = Physics.SphereCast(new Ray(transform.position, Vector3.down), 0.5f, out playerData.groundInfo, playerData.playerYCenter + .05f);
+        playerData.isGrounded = Physics.SphereCast(new Ray(transform.position, Vector3.down), 0.25f, out playerData.groundInfo, playerData.playerYCenter + .05f);
+        
+        if (!playerData.isGrounded)
+        {
+            playerData.isOnSlope = false;
+            playerData.rigidBody.useGravity = true;
+            return;
+        }
+
+        float groundAngle = Vector3.Angle(Vector3.up, playerData.groundInfo.normal);
+        playerData.isOnSlope = groundAngle < playerData.maxSlopeAngle && groundAngle != 0;
+
+        if (playerData.isOnSlope) playerData.rigidBody.useGravity = false;
+    }
+
+    private void AddForceOnSlope()
+    {
     }
 
     public void Jump()
     {
-        playerData.rigidBody.AddForce(Vector3.up * initialJumpForce, ForceMode.Impulse);
+        playerData.rigidBody.AddForce(Vector3.up * playerData.initialJumpForce, ForceMode.Impulse);
     }
 
     public override void SwitchState(PlayerBaseState state)

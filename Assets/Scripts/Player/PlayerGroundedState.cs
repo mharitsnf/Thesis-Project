@@ -3,7 +3,7 @@ public class PlayerGroundedState : PlayerBaseState
 {
     public override void EnterState(VerticalStateController controller)
     {
-        controller.playerData.rigidBody.drag = controller.groundDrag;
+        controller.playerData.rigidBody.drag = controller.playerData.groundDrag;
     }
 
     public override void FixedUpdateState(VerticalStateController controller)

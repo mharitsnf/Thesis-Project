@@ -28,6 +28,9 @@ public class InputHandler : MonoBehaviour
         _playerInput.CharacterControls.Aim.canceled += HandleAimInput;
 
         _playerInput.CharacterControls.Jump.started += HandleJumpInput;
+
+        _playerInput.CharacterControls.Grapple.started += HandleGrappleInput;
+        _playerInput.CharacterControls.Grapple.canceled += HandleGrappleInput;
     }
 
     private void SetupCameraInput()
@@ -51,6 +54,11 @@ public class InputHandler : MonoBehaviour
         {
             playerData.verticalStateController.Jump();
         }
+    }
+
+    private void HandleGrappleInput(InputAction.CallbackContext context)
+    {
+        // If 
     }
 
     private void HandleMovementInput(InputAction.CallbackContext context)

@@ -15,7 +15,7 @@ public class PlayerIdleState : PlayerBaseState
         if (controller.playerData.isAiming)
         {
             Vector3 lookDirection = controller.playerData.orientation.forward;
-            controller.playerData.meshes.forward = Vector3.Slerp(controller.playerData.meshes.forward, lookDirection.normalized, Time.deltaTime * controller.rotationSpeed);
+            controller.playerData.meshes.forward = Vector3.Slerp(controller.playerData.meshes.forward, lookDirection.normalized, Time.deltaTime * controller.playerData.movementRotationSpeed);
         }
     }
 }

@@ -3,14 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CameraController : MonoBehaviour
 {
     public PlayerData playerData;
-
-    public float rotationSpeed;
-    public bool invertY;
-    public bool invertX;
 
     private void Start()
     {
@@ -44,8 +41,8 @@ public class CameraController : MonoBehaviour
     private void RotateCinemachineFollow()
     {
         Vector2 cameraDelta = playerData.cameraLookDelta;
-        playerData.cinemachineFollowYaw += cameraDelta.x * rotationSpeed * Time.deltaTime * (invertX ? -1 : 1);
-        playerData.cinemachineFollowPitch += cameraDelta.y * rotationSpeed * Time.deltaTime * (invertY ? -1 : 1);
+        playerData.cinemachineFollowYaw += cameraDelta.x * playerData.cameraRotationSpeed * Time.deltaTime * (playerData.invertX ? -1 : 1);
+        playerData.cinemachineFollowPitch += cameraDelta.y * playerData.cameraRotationSpeed * Time.deltaTime * (playerData.invertY ? -1 : 1);
 
         playerData.cinemachineFollowYaw = ClampAngle(playerData.cinemachineFollowYaw, float.MinValue, float.MaxValue);
         playerData.cinemachineFollowPitch = ClampAngle(playerData.cinemachineFollowPitch, -30f, 70f);

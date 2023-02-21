@@ -14,7 +14,7 @@ public class PlayerFloatState : PlayerBaseState
     {
         _timeElapsed += Time.deltaTime;
         
-        if (_timeElapsed > controller.floatTime)
+        if (_timeElapsed > controller.playerData.floatTime)
         {
             controller.playerData.rigidBody.useGravity = true;
             _timeElapsed = 0f;
