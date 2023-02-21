@@ -63,7 +63,15 @@ public class InputHandler : MonoBehaviour
 
     private void HandleGrappleInput(InputAction.CallbackContext context)
     {
-        // If 
+        if (context.ReadValueAsButton())
+        {
+            playerData.verticalStateController.StartGrapple();
+        }
+
+        if (context.canceled)
+        {
+            // remove grapple
+        }
     }
 
     private void HandleMovementInput(InputAction.CallbackContext context)

@@ -31,6 +31,11 @@ public class VerticalStateController : BaseStateController
         currentState.FixedUpdateState(this);
     }
 
+    private void LateUpdate()
+    {
+        DrawRope();
+    }
+
     private void GroundAndSlopeCheck()
     {
         playerData.isGrounded = Physics.SphereCast(new Ray(transform.position, Vector3.down), 0.25f, out playerData.groundInfo, playerData.playerYCenter + .05f);
@@ -49,6 +54,31 @@ public class VerticalStateController : BaseStateController
     {
         playerData.rigidBody.AddForce(Vector3.up * playerData.maxJumpForce * percentage, ForceMode.Impulse);
         SwitchState(jumpState);
+    }
+
+    public void StartGrapple()
+    {
+        if (Physics.Raycast(playerData.realCamera.position, playerData.realCamera.forward, out var hit, playerData.maxRopeDistance))
+        {
+            playerData.firstEnd = hit.point;
+            playerData.joint = playerData.gameObject.AddComponent<SpringJoint>();
+            playerData.joint.autoConfigureConnectedAnchor = false;
+            playerData.joint.connectedAnchor = playerData.firstEnd;
+
+            float distanceFromPoint = Vector3.Distance(playerData.transform.position, playerData.firstEnd);
+            playerData.joint.maxDistance = distanceFromPoint * .8f;
+            playerData.joint.minDistance = distanceFromPoint * .25f;
+
+            playerData.joint.spring = 4.5f;
+            playerData.joint.damper = 7f;
+            playerData.joint.massScale = 4.5f;
+        }
+    }
+
+    public void DrawRope()
+    {
+        playerData.lineRenderer.SetPosition(0, playerData.grapplePoint.position);
+        playerData.lineRenderer.SetPosition(1, playerData.firstEnd);
     }
 
     public override void SwitchState(PlayerBaseState state)

@@ -59,7 +59,10 @@ public class PlayerData : MonoBehaviour
     [Header("Aiming Data")]
     [ReadOnly] public bool isAiming;
 
-    [Header("Rope Data")] public int maxRopeCount;
+    [Header("Rope Data")]
+    public Vector3 firstEnd;
+    [ReadOnly] public SpringJoint joint;
+    public float maxRopeDistance;
 
     [Header("Ground Check Data")]
     public float maxSlopeAngle;

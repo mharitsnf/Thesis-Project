@@ -734,7 +734,9 @@ MonoBehaviour:
   cinemachineFollowYaw: 0
   cinemachineFollowPitch: 0
   isAiming: 0
-  maxRopeCount: 0
+  firstEnd: {x: 0, y: 0, z: 0}
+  joint: {fileID: 0}
+  maxRopeDistance: 100
   maxSlopeAngle: 40
   isGrounded: 0
   isOnSlope: 0
