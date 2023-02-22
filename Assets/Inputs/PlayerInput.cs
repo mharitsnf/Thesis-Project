@@ -53,6 +53,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PutEnd"",
+                    ""type"": ""Button"",
+                    ""id"": ""cba365d2-fbf0-4d67-bfe2-40c70a707f22"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -165,6 +174,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Grapple"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5e74b974-2b95-4427-80fe-196422723827"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PutEnd"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -176,6 +196,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_CharacterControls_Move = m_CharacterControls.FindAction("Move", throwIfNotFound: true);
         m_CharacterControls_Jump = m_CharacterControls.FindAction("Jump", throwIfNotFound: true);
         m_CharacterControls_Grapple = m_CharacterControls.FindAction("Grapple", throwIfNotFound: true);
+        m_CharacterControls_PutEnd = m_CharacterControls.FindAction("PutEnd", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -238,6 +259,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControls_Move;
     private readonly InputAction m_CharacterControls_Jump;
     private readonly InputAction m_CharacterControls_Grapple;
+    private readonly InputAction m_CharacterControls_PutEnd;
     public struct CharacterControlsActions
     {
         private @PlayerInput m_Wrapper;
@@ -245,6 +267,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_CharacterControls_Move;
         public InputAction @Jump => m_Wrapper.m_CharacterControls_Jump;
         public InputAction @Grapple => m_Wrapper.m_CharacterControls_Grapple;
+        public InputAction @PutEnd => m_Wrapper.m_CharacterControls_PutEnd;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -263,6 +286,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Grapple.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnGrapple;
                 @Grapple.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnGrapple;
                 @Grapple.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnGrapple;
+                @PutEnd.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPutEnd;
+                @PutEnd.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPutEnd;
+                @PutEnd.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPutEnd;
             }
             m_Wrapper.m_CharacterControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -276,6 +302,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Grapple.started += instance.OnGrapple;
                 @Grapple.performed += instance.OnGrapple;
                 @Grapple.canceled += instance.OnGrapple;
+                @PutEnd.started += instance.OnPutEnd;
+                @PutEnd.performed += instance.OnPutEnd;
+                @PutEnd.canceled += instance.OnPutEnd;
             }
         }
     }
@@ -285,5 +314,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnGrapple(InputAction.CallbackContext context);
+        void OnPutEnd(InputAction.CallbackContext context);
     }
 }

@@ -7,15 +7,15 @@ public class PlayerIdleState : PlayerBaseState
         RotateMesh(controller);
         
         // State change
-        if (controller.playerData.moveDirection != Vector2.zero) controller.SwitchState(controller.moveState);
+        if (PlayerData.Instance.moveDirection != Vector2.zero) controller.SwitchState(controller.moveState);
     }
 
     private void RotateMesh(HorizontalStateController controller)
     {
-        if (controller.playerData.isAiming)
+        if (PlayerData.Instance.isAiming)
         {
-            Vector3 lookDirection = controller.playerData.orientation.forward;
-            controller.playerData.meshes.forward = Vector3.Slerp(controller.playerData.meshes.forward, lookDirection.normalized, Time.deltaTime * controller.playerData.movementRotationSpeed);
+            Vector3 lookDirection = PlayerData.Instance.orientation.forward;
+            PlayerData.Instance.meshes.forward = Vector3.Slerp(PlayerData.Instance.meshes.forward, lookDirection.normalized, Time.deltaTime * PlayerData.Instance.movementRotationSpeed);
         }
     }
 }

@@ -1,15 +1,22 @@
+
 public class PlayerGroundedState : PlayerBaseState
 {
     private int _frameElapsed;
 
     public override void EnterState(VerticalStateController controller)
     {
-        controller.playerData.rigidBody.drag = controller.playerData.groundDrag;
+        if (!PlayerData.Instance.isGrounded)
+        {
+            controller.SwitchState(controller.fallState);
+            return;
+        }
+        
+        PlayerData.Instance.rigidBody.drag = PlayerData.Instance.groundDrag;
     }
 
     public override void FixedUpdateState(VerticalStateController controller)
     {
-        if (!controller.playerData.isGrounded)
+        if (!PlayerData.Instance.isGrounded)
             controller.SwitchState(controller.fallState);
     }
 }

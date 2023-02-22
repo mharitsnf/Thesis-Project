@@ -21,7 +21,7 @@ public class HorizontalStateController : BaseStateController
         // State logic
         currentState.FixedUpdateState(this);
     }
-    
+
     public override void SwitchState(PlayerBaseState state)
     {
         base.SwitchState(state);

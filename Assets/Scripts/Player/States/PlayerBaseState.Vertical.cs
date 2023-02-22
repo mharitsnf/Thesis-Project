@@ -6,4 +6,5 @@ public abstract partial class PlayerBaseState
 {
     public virtual void EnterState(VerticalStateController controller) {}
     public virtual void FixedUpdateState(VerticalStateController controller) {}
+    public virtual void ExitState(VerticalStateController controller) {}
 }

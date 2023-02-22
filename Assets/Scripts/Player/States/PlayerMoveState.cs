@@ -4,61 +4,72 @@ public class PlayerMoveState : PlayerBaseState
 {
     public override void FixedUpdateState(HorizontalStateController controller)
     {
+        
         // Input and movement handling
-        MoveAndRotateMesh(controller);
+        if (!PlayerData.Instance.joint ||
+            PlayerData.Instance.verticalStateController.currentState == PlayerData.Instance.verticalStateController.groundedState)
+            Move(controller);
+        else AirMove(controller);
+        
+        RotateMesh(controller);
         LimitSpeed(controller);
             
         // State change
-        if (controller.playerData.moveDirection == Vector2.zero) controller.SwitchState(controller.idleState);
+        if (PlayerData.Instance.moveDirection == Vector2.zero) controller.SwitchState(controller.idleState);
     }
 
-    private void RotateMesh(HorizontalStateController controller, Vector3 direction)
+    private void RotateMesh(HorizontalStateController controller)
     {
-        controller.playerData.meshes.forward = Vector3.Slerp(controller.playerData.meshes.forward, direction.normalized, Time.deltaTime * controller.playerData.movementRotationSpeed);
+        Vector3 direction = PlayerData.Instance.orientation.forward * PlayerData.Instance.moveDirection.y +
+                            PlayerData.Instance.orientation.right * PlayerData.Instance.moveDirection.x;
+        
+        PlayerData.Instance.meshes.forward = Vector3.Slerp(PlayerData.Instance.meshes.forward, direction.normalized, Time.deltaTime * PlayerData.Instance.movementRotationSpeed);
     }
     
-    private void MoveMesh(HorizontalStateController controller, Vector3 direction)
+    private void Move(HorizontalStateController controller)
     {
-        controller.playerData.rigidBody.AddForce(direction.normalized * controller.playerData.acceleration, ForceMode.Acceleration);
+        Vector3 direction = PlayerData.Instance.orientation.forward * PlayerData.Instance.moveDirection.y +
+                            PlayerData.Instance.orientation.right * PlayerData.Instance.moveDirection.x;
+        
+        if (PlayerData.Instance.isOnSlope) direction = Vector3.ProjectOnPlane(direction, PlayerData.Instance.groundInfo.normal).normalized;
+        
+        PlayerData.Instance.rigidBody.AddForce(direction.normalized * (PlayerData.Instance.acceleration), ForceMode.Acceleration);
     }
 
-    private void MoveAndRotateMesh(HorizontalStateController controller)
+    private void AirMove(HorizontalStateController controller)
     {
-        Vector3 moveDirection, lookDirection;
-        moveDirection = lookDirection = controller.playerData.orientation.forward * controller.playerData.moveDirection.y +
-                                        controller.playerData.orientation.right * controller.playerData.moveDirection.x;
+        Vector3 direction = PlayerData.Instance.orientation.forward * Mathf.Max(PlayerData.Instance.moveDirection.y, 0) +
+                            PlayerData.Instance.orientation.right * PlayerData.Instance.moveDirection.x;
+        direction = direction.normalized;
+        direction.x *= PlayerData.Instance.horizontalAirThrust;
+        direction.z *= PlayerData.Instance.verticalAirThrust;
 
-        if (controller.playerData.isOnSlope)
-            moveDirection = Vector3.ProjectOnPlane(moveDirection, controller.playerData.groundInfo.normal).normalized;
-        
-        // else if (controller.playerData.joint)
-        // {
-        //     Vector3 dirToFirstEnd =
-        //         (controller.playerData.firstEnd - controller.playerData.grapplePoint.transform.position).normalized;
-        //     moveDirection = Vector3.ProjectOnPlane(moveDirection, dirToFirstEnd).normalized;
-        // }
-        
-        MoveMesh(controller, moveDirection);
-        RotateMesh(controller, lookDirection);
+        PlayerData.Instance.rigidBody.AddForce(direction);
     }
 
     private void LimitSpeed(HorizontalStateController controller)
     {
-        if (controller.playerData.isOnSlope &&
-            controller.playerData.rigidBody.velocity.magnitude > controller.playerData.maxSpeed)
+        if (PlayerData.Instance.joint && PlayerData.Instance.rigidBody.velocity.magnitude > PlayerData.Instance.maxSwingSpeed)
         {
-            controller.playerData.rigidBody.velocity = controller.playerData.rigidBody.velocity.normalized *
-                                                       controller.playerData.maxSpeed;
+            PlayerData.Instance.rigidBody.velocity = PlayerData.Instance.rigidBody.velocity.normalized *
+                                                       PlayerData.Instance.maxSwingSpeed;
+            return;
+        }
+        
+        if (PlayerData.Instance.isOnSlope && PlayerData.Instance.rigidBody.velocity.magnitude > PlayerData.Instance.maxSpeed)
+        {
+            PlayerData.Instance.rigidBody.velocity = PlayerData.Instance.rigidBody.velocity.normalized *
+                                                       PlayerData.Instance.maxSpeed;
             return;
         }
 
-        Vector3 currentVelocity = controller.playerData.rigidBody.velocity;
+        Vector3 currentVelocity = PlayerData.Instance.rigidBody.velocity;
         Vector3 xzVelocity = new Vector3(currentVelocity.x, 0, currentVelocity.z);
     
-        if (xzVelocity.magnitude > controller.playerData.maxSpeed)
+        if (xzVelocity.magnitude > PlayerData.Instance.maxSpeed)
         {
-            currentVelocity = xzVelocity.normalized * controller.playerData.maxSpeed;
-            controller.playerData.rigidBody.velocity = new Vector3(currentVelocity.x, controller.playerData.rigidBody.velocity.y, currentVelocity.z);
+            currentVelocity = xzVelocity.normalized * PlayerData.Instance.maxSpeed;
+            PlayerData.Instance.rigidBody.velocity = new Vector3(currentVelocity.x, PlayerData.Instance.rigidBody.velocity.y, currentVelocity.z);
         }
     }
 }

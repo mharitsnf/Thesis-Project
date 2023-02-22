@@ -5,8 +5,6 @@ using UnityEngine.InputSystem.Interactions;
 
 public class InputHandler : MonoBehaviour
 {
-    public PlayerData playerData;
-    
     private PlayerInput _playerInput;
     private CameraInput _cameraInput;
 
@@ -23,7 +21,6 @@ public class InputHandler : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        playerData = GetComponent<PlayerData>();
         SetupPlayerInput();
         SetupCameraInput();
     }
@@ -40,6 +37,8 @@ public class InputHandler : MonoBehaviour
 
         _playerInput.CharacterControls.Grapple.started += HandleGrappleInput;
         _playerInput.CharacterControls.Grapple.canceled += HandleGrappleInput;
+
+        _playerInput.CharacterControls.PutEnd.started += HandlePutEndInput;
     }
 
     private void SetupCameraInput()
@@ -55,33 +54,47 @@ public class InputHandler : MonoBehaviour
         // Don't jump conditions
         if (context.duration > 0.1f) return;
         if (context is { canceled: false, interaction: not HoldInteraction }) return;
-        if (playerData.verticalStateController.currentState != playerData.verticalStateController.groundedState) return;
+        if (PlayerData.Instance.verticalStateController.currentState != PlayerData.Instance.verticalStateController.groundedState) return;
 
-        float percentage = Mathf.Min((float)context.duration, playerData.buttonHoldTime) / playerData.buttonHoldTime;
-        playerData.verticalStateController.Jump(percentage);
+        float percentage = Mathf.Min((float)context.duration, PlayerData.Instance.buttonHoldTime) / PlayerData.Instance.buttonHoldTime;
+        PlayerData.Instance.verticalStateController.Jump(percentage);
     }
 
     private void HandleGrappleInput(InputAction.CallbackContext context)
     {
         if (context.ReadValueAsButton())
         {
-            playerData.verticalStateController.StartGrapple();
+            PlayerData.Instance.grappleController.StartGrapple();
         }
-
+        
         if (context.canceled)
         {
-            playerData.verticalStateController.StopGrapple();
+            PlayerData.Instance.grappleController.StopGrapple();
+        }
+    }
+
+    private void HandlePutEndInput(InputAction.CallbackContext context)
+    {
+        if (context.ReadValueAsButton())
+        {
+            if (!PlayerData.Instance.currentRope)
+                PlayerData.Instance.currentRope = Instantiate(PlayerData.Instance.ropePrefab);
+
+            Rope rope = PlayerData.Instance.currentRope.GetComponent<Rope>();
+            rope.PlaceEnd();
+
+            if (rope.ends.Count > 1) PlayerData.Instance.currentRope = null;
         }
     }
 
     private void HandleMovementInput(InputAction.CallbackContext context)
     {
-        playerData.moveDirection = context.ReadValue<Vector2>();
+        PlayerData.Instance.moveDirection = context.ReadValue<Vector2>();
     }
 
     private void HandleCameraInput(InputAction.CallbackContext context)
     {
-        playerData.cameraLookDelta = context.ReadValue<Vector2>();
+        PlayerData.Instance.cameraLookDelta = context.ReadValue<Vector2>();
     }
 
     private void OnEnable()

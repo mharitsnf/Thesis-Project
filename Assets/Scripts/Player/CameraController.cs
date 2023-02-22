@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public PlayerData playerData;
-
     private void Start()
     {
         InitialSetup();
@@ -21,28 +19,28 @@ public class CameraController : MonoBehaviour
 
     private void InitialSetup()
     {
-        Quaternion cinemachineFollowQuaternion = playerData.cinemachineFollow.transform.rotation;
-        playerData.cinemachineFollowYaw = cinemachineFollowQuaternion.eulerAngles.y;
-        playerData.cinemachineFollowPitch = cinemachineFollowQuaternion.eulerAngles.x;
+        Quaternion cinemachineFollowQuaternion = PlayerData.Instance.cinemachineFollow.transform.rotation;
+        PlayerData.Instance.cinemachineFollowYaw = cinemachineFollowQuaternion.eulerAngles.y;
+        PlayerData.Instance.cinemachineFollowPitch = cinemachineFollowQuaternion.eulerAngles.x;
     }
 
     private void UpdateOrientation()
     {
-        Vector3 viewDir = gameObject.transform.position - playerData.realCamera.position;
+        Vector3 viewDir = gameObject.transform.position - PlayerData.Instance.realCamera.position;
         viewDir.y = 0;
-        playerData.orientation.forward = viewDir.normalized;
+        PlayerData.Instance.orientation.forward = viewDir.normalized;
     }
 
     private void RotateCinemachineFollow()
     {
-        Vector2 cameraDelta = playerData.cameraLookDelta;
-        playerData.cinemachineFollowYaw += cameraDelta.x * playerData.cameraRotationSpeed * Time.deltaTime * (playerData.invertX ? -1 : 1);
-        playerData.cinemachineFollowPitch += cameraDelta.y * playerData.cameraRotationSpeed * Time.deltaTime * (playerData.invertY ? -1 : 1);
+        Vector2 cameraDelta = PlayerData.Instance.cameraLookDelta;
+        PlayerData.Instance.cinemachineFollowYaw += cameraDelta.x * PlayerData.Instance.cameraRotationSpeed * Time.deltaTime * (PlayerData.Instance.invertX ? -1 : 1);
+        PlayerData.Instance.cinemachineFollowPitch += cameraDelta.y * PlayerData.Instance.cameraRotationSpeed * Time.deltaTime * (PlayerData.Instance.invertY ? -1 : 1);
 
-        playerData.cinemachineFollowYaw = ClampAngle(playerData.cinemachineFollowYaw, float.MinValue, float.MaxValue);
-        playerData.cinemachineFollowPitch = ClampAngle(playerData.cinemachineFollowPitch, playerData.minClamp, playerData.maxClamp);
+        PlayerData.Instance.cinemachineFollowYaw = ClampAngle(PlayerData.Instance.cinemachineFollowYaw, float.MinValue, float.MaxValue);
+        PlayerData.Instance.cinemachineFollowPitch = ClampAngle(PlayerData.Instance.cinemachineFollowPitch, PlayerData.Instance.minClamp, PlayerData.Instance.maxClamp);
 
-        playerData.cinemachineFollow.transform.rotation = Quaternion.Euler(playerData.cinemachineFollowPitch, playerData.cinemachineFollowYaw, 0f);
+        PlayerData.Instance.cinemachineFollow.transform.rotation = Quaternion.Euler(PlayerData.Instance.cinemachineFollowPitch, PlayerData.Instance.cinemachineFollowYaw, 0f);
     }
     
     private float ClampAngle(float lfAngle, float lfMin, float lfMax)
@@ -54,15 +52,15 @@ public class CameraController : MonoBehaviour
 
     // public void SwitchVirtualCamera(int index)
     // {
-    //     CinemachineVirtualCameraBase newVirtualCamera = playerData.virtualCameras[index];
+    //     CinemachineVirtualCameraBase newVirtualCamera = PlayerData.Instance.virtualCameras[index];
     //
     //     newVirtualCamera.gameObject.SetActive(true);
     //
-    //     foreach (CinemachineVirtualCameraBase virtualCamera in playerData.virtualCameras)
+    //     foreach (CinemachineVirtualCameraBase virtualCamera in PlayerData.Instance.virtualCameras)
     //     {
     //         if (virtualCamera != newVirtualCamera) virtualCamera.gameObject.SetActive(false);
     //     }
     //
-    //     playerData.currentVirtualCamera = newVirtualCamera;
+    //     PlayerData.Instance.currentVirtualCamera = newVirtualCamera;
     // }
 }

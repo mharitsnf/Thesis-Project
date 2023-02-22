@@ -7,23 +7,23 @@ public class PlayerJumpState : PlayerBaseState
     
     public override void EnterState(VerticalStateController controller)
     {
-        controller.playerData.rigidBody.drag = controller.playerData.airDrag;
+        PlayerData.Instance.rigidBody.drag = PlayerData.Instance.airDrag;
     }
     
     public override void FixedUpdateState(VerticalStateController controller)
     {
         if (_frameElapsed > 0)
         {
-            if (controller.playerData.isGrounded)
+            if (PlayerData.Instance.isGrounded)
             {
-                ResetState(controller);
+                ExitState(controller);
                 controller.SwitchState(controller.groundedState);
                 return;
             }
             
-            if (controller.playerData.rigidBody.velocity.y < 0)
+            if (PlayerData.Instance.rigidBody.velocity.y < 0)
             {
-                ResetState(controller);
+                ExitState(controller);
                 controller.SwitchState(controller.floatState);
                 return;
             }
@@ -32,7 +32,7 @@ public class PlayerJumpState : PlayerBaseState
         _frameElapsed++;
     }
 
-    private void ResetState(VerticalStateController controller)
+    public override void ExitState(VerticalStateController controller)
     {
         _frameElapsed = 0;
     }

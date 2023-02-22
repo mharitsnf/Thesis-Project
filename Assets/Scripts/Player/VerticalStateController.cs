@@ -9,17 +9,12 @@ public class VerticalStateController : BaseStateController
     public readonly PlayerFloatState floatState = new();
     public readonly PlayerJumpState jumpState = new();
 
-    private new void Awake()
-    {
-        base.Awake();
-        playerData.playerYCenter = GetComponentInChildren<CapsuleCollider>().height * 0.5f;
-    }
-
     private void Start()
     {
+        PlayerData.Instance.playerYCenter = GetComponentInChildren<CapsuleCollider>().height * 0.5f;
         GroundAndSlopeCheck();
         
-        if (playerData.isGrounded) currentState = groundedState;
+        if (PlayerData.Instance.isGrounded) currentState = groundedState;
         else currentState = fallState;
         
         currentState.EnterState(this);
@@ -31,65 +26,24 @@ public class VerticalStateController : BaseStateController
         currentState.FixedUpdateState(this);
     }
 
-    private void LateUpdate()
-    {
-        DrawRope();
-    }
-
     private void GroundAndSlopeCheck()
     {
-        playerData.isGrounded = Physics.SphereCast(new Ray(transform.position, Vector3.down), 0.25f, out playerData.groundInfo, playerData.playerYCenter + .05f);
+        PlayerData.Instance.isGrounded = Physics.SphereCast(new Ray(transform.position, Vector3.down), 0.25f, out PlayerData.Instance.groundInfo, PlayerData.Instance.playerYCenter + .05f);
         
-        if (!playerData.isGrounded)
+        if (!PlayerData.Instance.isGrounded)
         {
-            playerData.isOnSlope = false;
+            PlayerData.Instance.isOnSlope = false;
             return;
         }
 
-        float groundAngle = Vector3.Angle(Vector3.up, playerData.groundInfo.normal);
-        playerData.isOnSlope = groundAngle < playerData.maxSlopeAngle && groundAngle != 0;
+        float groundAngle = Vector3.Angle(Vector3.up, PlayerData.Instance.groundInfo.normal);
+        PlayerData.Instance.isOnSlope = groundAngle < PlayerData.Instance.maxSlopeAngle && groundAngle != 0;
     }
 
     public void Jump(float percentage = 1f)
     {
-        playerData.rigidBody.AddForce(Vector3.up * playerData.maxJumpForce * percentage, ForceMode.Impulse);
+        PlayerData.Instance.rigidBody.AddForce(Vector3.up * PlayerData.Instance.maxJumpForce * percentage, ForceMode.Impulse);
         SwitchState(jumpState);
-    }
-
-    public void StartGrapple()
-    {
-        if (Physics.Raycast(playerData.realCamera.position, playerData.realCamera.forward, out var hit, playerData.rayCastDistance))
-        {
-            if (hit.collider.gameObject.CompareTag("Player")) return;
-            
-            playerData.firstEnd = hit.point;
-            playerData.joint = playerData.gameObject.AddComponent<SpringJoint>();
-            playerData.joint.autoConfigureConnectedAnchor = false;
-            playerData.joint.connectedAnchor = playerData.firstEnd;
-
-            playerData.joint.maxDistance = playerData.maxRopeDistance;
-            playerData.joint.minDistance = playerData.minRopeDistance;
-
-            playerData.joint.spring = playerData.springSpringiness;
-            playerData.joint.damper = playerData.springDamper;
-            playerData.joint.massScale = playerData.springMassScale;
-
-            playerData.lineRenderer.positionCount = 2;
-        }
-    }
-
-    public void StopGrapple()
-    {
-        playerData.lineRenderer.positionCount = 0;
-        Destroy(playerData.joint);
-    }
-
-    public void DrawRope()
-    {
-        if (!playerData.joint) return;
-        
-        playerData.lineRenderer.SetPosition(0, playerData.grapplePoint.position);
-        playerData.lineRenderer.SetPosition(1, playerData.firstEnd);
     }
 
     public override void SwitchState(PlayerBaseState state)

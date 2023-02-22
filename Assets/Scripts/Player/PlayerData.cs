@@ -9,6 +9,8 @@ using UnityEngine.Serialization;
 // Holds instances to the object's components and data
 public class PlayerData : MonoBehaviour
 {
+    public static PlayerData Instance { get; private set; }
+
     [Header("Player Objects and Components")]
     [ReadOnly] public Transform meshes;
     [ReadOnly] public Transform orientation;
@@ -18,11 +20,13 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public VerticalStateController verticalStateController;
     [ReadOnly] public HorizontalStateController horizontalStateController;
     [ReadOnly] public LineRenderer lineRenderer;
+    [ReadOnly] public GrappleController grappleController;
     
     [Header("Movement And Rotation")] 
     public float movementRotationSpeed = 10; 
     public float acceleration = 100;
     public float maxSpeed = 10;
+    public float maxSwingSpeed = 20;
     
     [Header("Jumping")]
     public float maxJumpForce;
@@ -59,7 +63,9 @@ public class PlayerData : MonoBehaviour
     [Header("Aiming Data")]
     [ReadOnly] public bool isAiming;
 
-    [Header("Rope Data")]
+    [Header("Grapple Data")]
+    public float horizontalAirThrust = 20;
+    public float verticalAirThrust = 20;
     public Vector3 firstEnd;
     [ReadOnly] public SpringJoint joint;
     public float rayCastDistance;
@@ -69,10 +75,20 @@ public class PlayerData : MonoBehaviour
     public float springDamper;
     public float springMassScale;
 
+    [Header("Rope Data")]
+    public GameObject ropePrefab;
+    public GameObject currentRope;
+
     [Header("Ground Check Data")]
     public float maxSlopeAngle;
     [ReadOnly] public bool isGrounded;
     [ReadOnly] public bool isOnSlope;
     [ReadOnly] public float playerYCenter;
     [ReadOnly] public RaycastHit groundInfo;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this) Destroy(this);
+        else Instance = this;
+    }
 }

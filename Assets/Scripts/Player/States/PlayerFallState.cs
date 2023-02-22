@@ -3,12 +3,18 @@ public class PlayerFallState : PlayerBaseState
 {
     public override void EnterState(VerticalStateController controller)
     {
-        controller.playerData.rigidBody.drag = controller.playerData.airDrag;
+        if (PlayerData.Instance.isGrounded)
+        {
+            controller.SwitchState(controller.groundedState);
+            return;
+        }
+        
+        PlayerData.Instance.rigidBody.drag = PlayerData.Instance.airDrag;
     }
     
     public override void FixedUpdateState(VerticalStateController controller)
     {
-        if (controller.playerData.isGrounded)
+        if (PlayerData.Instance.isGrounded)
             controller.SwitchState(controller.groundedState);
     }
 }

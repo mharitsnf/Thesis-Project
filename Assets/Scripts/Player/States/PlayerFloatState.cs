@@ -7,36 +7,37 @@ public class PlayerFloatState : PlayerBaseState
     
     public override void EnterState(VerticalStateController controller)
     {
-        controller.playerData.rigidBody.useGravity = false;
-        
-        if (controller.playerData.isGrounded)
+        if (PlayerData.Instance.isGrounded)
         {
-            ResetState(controller);
+            ExitState(controller);
             controller.SwitchState(controller.groundedState);
+            return;
         }
+        
+        PlayerData.Instance.rigidBody.useGravity = false;
     }
 
     public override void FixedUpdateState(VerticalStateController controller)
     {
         _timeElapsed += Time.deltaTime;
         
-        if (controller.playerData.isGrounded)
+        if (PlayerData.Instance.isGrounded)
         {
-            ResetState(controller);
+            ExitState(controller);
             controller.SwitchState(controller.groundedState);
             return;
         }
 
-        if (_timeElapsed > controller.playerData.floatTime)
+        if (_timeElapsed > PlayerData.Instance.floatTime)
         {
-            ResetState(controller);
+            ExitState(controller);
             controller.SwitchState(controller.fallState);
         }
     }
 
-    private void ResetState(VerticalStateController controller)
+    public override void ExitState(VerticalStateController controller)
     {
-        controller.playerData.rigidBody.useGravity = true;
+        PlayerData.Instance.rigidBody.useGravity = true;
         _timeElapsed = 0f;
     }
 }
