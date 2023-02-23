@@ -62,6 +62,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pickup"",
+                    ""type"": ""Button"",
+                    ""id"": ""16571e95-87dd-43df-9466-105846521f05"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -185,6 +194,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""PutEnd"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""923448bc-bcfb-4c51-b5d7-3d137570d579"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pickup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -197,6 +217,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_CharacterControls_Jump = m_CharacterControls.FindAction("Jump", throwIfNotFound: true);
         m_CharacterControls_Grapple = m_CharacterControls.FindAction("Grapple", throwIfNotFound: true);
         m_CharacterControls_PutEnd = m_CharacterControls.FindAction("PutEnd", throwIfNotFound: true);
+        m_CharacterControls_Pickup = m_CharacterControls.FindAction("Pickup", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -260,6 +281,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControls_Jump;
     private readonly InputAction m_CharacterControls_Grapple;
     private readonly InputAction m_CharacterControls_PutEnd;
+    private readonly InputAction m_CharacterControls_Pickup;
     public struct CharacterControlsActions
     {
         private @PlayerInput m_Wrapper;
@@ -268,6 +290,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_CharacterControls_Jump;
         public InputAction @Grapple => m_Wrapper.m_CharacterControls_Grapple;
         public InputAction @PutEnd => m_Wrapper.m_CharacterControls_PutEnd;
+        public InputAction @Pickup => m_Wrapper.m_CharacterControls_Pickup;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -289,6 +312,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @PutEnd.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPutEnd;
                 @PutEnd.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPutEnd;
                 @PutEnd.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPutEnd;
+                @Pickup.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPickup;
+                @Pickup.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPickup;
+                @Pickup.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPickup;
             }
             m_Wrapper.m_CharacterControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -305,6 +331,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @PutEnd.started += instance.OnPutEnd;
                 @PutEnd.performed += instance.OnPutEnd;
                 @PutEnd.canceled += instance.OnPutEnd;
+                @Pickup.started += instance.OnPickup;
+                @Pickup.performed += instance.OnPickup;
+                @Pickup.canceled += instance.OnPickup;
             }
         }
     }
@@ -315,5 +344,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnGrapple(InputAction.CallbackContext context);
         void OnPutEnd(InputAction.CallbackContext context);
+        void OnPickup(InputAction.CallbackContext context);
     }
 }

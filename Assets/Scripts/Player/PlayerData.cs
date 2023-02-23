@@ -15,12 +15,16 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public Transform meshes;
     [ReadOnly] public Transform orientation;
     [ReadOnly] public Transform grapplePoint;
-    [ReadOnly] public Rigidbody rigidBody;
     [ReadOnly] public GameObject cinemachineFollow;
+    [ReadOnly] public Rigidbody rigidBody;
+    [ReadOnly] public LineRenderer lineRenderer;
+    
+    [Header(("Controllers"))]
     [ReadOnly] public VerticalStateController verticalStateController;
     [ReadOnly] public HorizontalStateController horizontalStateController;
-    [ReadOnly] public LineRenderer lineRenderer;
     [ReadOnly] public GrappleController grappleController;
+
+    public bool isAffectedByMass;
     
     [Header("Movement And Rotation")] 
     public float movementRotationSpeed = 10; 
@@ -68,6 +72,7 @@ public class PlayerData : MonoBehaviour
     public float verticalAirThrust = 20;
     public Vector3 firstEnd;
     [ReadOnly] public SpringJoint joint;
+    [ReadOnly] public FixedJoint fixedJoint;
     public float rayCastDistance;
     public float maxRopeDistance;
     public float minRopeDistance;
@@ -77,6 +82,7 @@ public class PlayerData : MonoBehaviour
 
     [Header("Rope Data")]
     public GameObject ropePrefab;
+    public List<GameObject> ropes = new();
     public GameObject currentRope;
 
     [Header("Ground Check Data")]
@@ -90,5 +96,17 @@ public class PlayerData : MonoBehaviour
     {
         if (Instance != null && Instance != this) Destroy(this);
         else Instance = this;
+    }
+
+    private void Start()
+    {
+        if (isAffectedByMass)
+        {
+            float mass = rigidBody.mass;
+            acceleration *= mass;
+            maxJumpForce *= mass;
+            horizontalAirThrust *= mass;
+            verticalAirThrust *= mass;
+        }
     }
 }

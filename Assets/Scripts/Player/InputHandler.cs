@@ -39,6 +39,9 @@ public class InputHandler : MonoBehaviour
         _playerInput.CharacterControls.Grapple.canceled += HandleGrappleInput;
 
         _playerInput.CharacterControls.PutEnd.started += HandlePutEndInput;
+
+        _playerInput.CharacterControls.Pickup.started += HandlePickupInput;
+        _playerInput.CharacterControls.Pickup.canceled += HandlePickupInput;
     }
 
     private void SetupCameraInput()
@@ -75,16 +78,23 @@ public class InputHandler : MonoBehaviour
 
     private void HandlePutEndInput(InputAction.CallbackContext context)
     {
-        if (context.ReadValueAsButton())
-        {
-            if (!PlayerData.Instance.currentRope)
-                PlayerData.Instance.currentRope = Instantiate(PlayerData.Instance.ropePrefab);
+        if (!context.ReadValueAsButton()) return;
+        
+        if (!PlayerData.Instance.currentRope)
+            PlayerData.Instance.currentRope = Instantiate(PlayerData.Instance.ropePrefab);
 
-            Rope rope = PlayerData.Instance.currentRope.GetComponent<Rope>();
-            rope.PlaceEnd();
+        Rope rope = PlayerData.Instance.currentRope.GetComponent<Rope>();
+        rope.PlaceEnd();
 
-            if (rope.ends.Count > 1) PlayerData.Instance.currentRope = null;
-        }
+        if (rope.ends.Count <= 1) return;
+        
+        PlayerData.Instance.ropes.Add(PlayerData.Instance.currentRope);
+        PlayerData.Instance.currentRope = null;
+    }
+
+    private void HandlePickupInput(InputAction.CallbackContext context)
+    {
+        
     }
 
     private void HandleMovementInput(InputAction.CallbackContext context)

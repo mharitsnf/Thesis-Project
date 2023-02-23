@@ -4,13 +4,13 @@ public class PlayerIdleState : PlayerBaseState
 {
     public override void FixedUpdateState(HorizontalStateController controller)
     {
-        RotateMesh(controller);
+        RotateMesh();
         
         // State change
         if (PlayerData.Instance.moveDirection != Vector2.zero) controller.SwitchState(controller.moveState);
     }
 
-    private void RotateMesh(HorizontalStateController controller)
+    private void RotateMesh()
     {
         if (PlayerData.Instance.isAiming)
         {

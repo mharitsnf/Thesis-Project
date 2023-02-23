@@ -18,40 +18,55 @@ public class GrappleController : MonoBehaviour
 
     public void StartGrapple()
     {
-        if (Physics.Raycast(PlayerData.Instance.realCamera.position, PlayerData.Instance.realCamera.forward, out var hit, PlayerData.Instance.rayCastDistance))
-        {
-            if (hit.collider.gameObject.CompareTag("Player")) return;
+        if (!Physics.Raycast(PlayerData.Instance.realCamera.position, PlayerData.Instance.realCamera.forward,
+                out var hit, PlayerData.Instance.rayCastDistance)) return;
 
-            PlayerData.Instance.joint = PlayerData.Instance.gameObject.AddComponent<SpringJoint>();
-            
-            if (hit.rigidbody)
-            {
-                PlayerData.Instance.joint.connectedBody = hit.rigidbody;
-                PlayerData.Instance.joint.autoConfigureConnectedAnchor = true;
-            }
-            else
-            {
-                PlayerData.Instance.firstEnd = hit.point;
-                PlayerData.Instance.joint.autoConfigureConnectedAnchor = false;
-                PlayerData.Instance.joint.connectedAnchor = PlayerData.Instance.firstEnd;
-            }
-            
+        if (hit.collider.gameObject.CompareTag("Player") || !hit.rigidbody) return;
 
-            PlayerData.Instance.joint.maxDistance = PlayerData.Instance.maxRopeDistance;
-            PlayerData.Instance.joint.minDistance = PlayerData.Instance.minRopeDistance;
+        PlayerData.Instance.fixedJoint = PlayerData.Instance.gameObject.AddComponent<FixedJoint>();
+        PlayerData.Instance.fixedJoint.connectedBody = hit.rigidbody;
 
-            PlayerData.Instance.joint.spring = PlayerData.Instance.springSpringiness;
-            PlayerData.Instance.joint.damper = PlayerData.Instance.springDamper;
-            PlayerData.Instance.joint.massScale = PlayerData.Instance.springMassScale;
 
-            PlayerData.Instance.lineRenderer.positionCount = 2;
-        }
+        // if (hit.collider.gameObject.CompareTag("Player")) return;
+
+        // PlayerData.Instance.joint = PlayerData.Instance.gameObject.AddComponent<SpringJoint>();
+        //     
+        // if (hit.rigidbody)
+        // {
+        //     PlayerData.Instance.joint.connectedBody = hit.rigidbody;
+        //     PlayerData.Instance.joint.autoConfigureConnectedAnchor = true;
+        // }
+        // else
+        // {
+        //     PlayerData.Instance.firstEnd = hit.point;
+        //     PlayerData.Instance.joint.autoConfigureConnectedAnchor = false;
+        //     PlayerData.Instance.joint.connectedAnchor = PlayerData.Instance.firstEnd;
+        // }
+        //
+        // PlayerData.Instance.joint.maxDistance = PlayerData.Instance.maxRopeDistance;
+        // PlayerData.Instance.joint.minDistance = PlayerData.Instance.minRopeDistance;
+        //     
+        // PlayerData.Instance.joint.spring = PlayerData.Instance.springSpringiness;
+        // PlayerData.Instance.joint.damper = PlayerData.Instance.springDamper;
+        // PlayerData.Instance.joint.massScale = PlayerData.Instance.springMassScale;
+        //
+        // PlayerData.Instance.lineRenderer.positionCount = 2;
     }
 
     public void StopGrapple()
     {
         PlayerData.Instance.lineRenderer.positionCount = 0;
-        Destroy(PlayerData.Instance.joint);
+        if (PlayerData.Instance.joint)
+        {
+            Destroy(PlayerData.Instance.joint);
+            PlayerData.Instance.joint = null;
+        }
+        
+        if (PlayerData.Instance.fixedJoint)
+        {
+            Destroy(PlayerData.Instance.fixedJoint);
+            PlayerData.Instance.fixedJoint = null;
+        }
     }
 
     private void DrawRope()
