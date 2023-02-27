@@ -25,9 +25,11 @@ public class Rope : MonoBehaviour
         }
     }
 
-    [ReadOnly] public readonly List<EndData> ends = new();
+    private EndData _firstEnd;
+    private EndData _secondEnd;
+    public SpringJoint joint;
+    public bool isFinished;
     private LineRenderer _lineRenderer;
-    private bool _foundHit;
 
     private void Start()
     {
@@ -44,123 +46,88 @@ public class Rope : MonoBehaviour
         DrawLine();
     }
 
-    private void CheckPassingRigidbody()
-    {
-        if (ends.Count < 2) return;
-        if (ends[0].rigidbody || ends[1].rigidbody) return;
-        if (_foundHit) return;
-
-        bool rayCast1 = Physics.Raycast(ends[0].worldPosition, (ends[1].worldPosition - ends[0].worldPosition).normalized,
-            out var hit1,
-            (ends[1].worldPosition - ends[0].worldPosition).magnitude);
-        bool rayCast2 = Physics.Raycast(ends[1].worldPosition, (ends[0].worldPosition - ends[1].worldPosition).normalized,
-            out var hit2,
-            (ends[0].worldPosition - ends[1].worldPosition).magnitude);
-        if (!rayCast1 && !rayCast2) return;
-
-        if (!hit1.rigidbody) return;
-
-        if (hit1.collider.gameObject.CompareTag("Player")) return;
-
-        hit1.rigidbody.freezeRotation = true;
-        
-        EndData newEnd1 = new EndData(hit1.rigidbody, hit1.rigidbody.transform.InverseTransformPoint(hit1.point), hit1.point);
-        ends.Insert(1, newEnd1);
-        
-        SpringJoint newJoint1 = SetupJoint(newEnd1.rigidbody, (ends[0].worldPosition - ends[1].worldPosition).magnitude);
-        newJoint1.anchor = ends[1].localPosition;
-        newJoint1.connectedAnchor = ends[0].worldPosition;
-        
-        EndData newEnd2 = new EndData(hit2.rigidbody, hit2.rigidbody.transform.InverseTransformPoint(hit2.point), hit2.point);
-        ends.Insert(2, newEnd2);
-        
-        SpringJoint newJoint2 = SetupJoint(newEnd2.rigidbody, (ends[3].worldPosition - ends[2].worldPosition).magnitude);
-        newJoint2.anchor = ends[2].localPosition;
-        newJoint2.connectedAnchor = ends[3].worldPosition;
-
-
-        _foundHit = true;
-    }
-
     private void UpdateDynamicIndexes()
     {
-        foreach (EndData end in ends)
-        {
-            if (end.rigidbody) end.worldPosition = end.rigidbody.transform.TransformPoint(end.localPosition);
-        }
+        if (_firstEnd != null && _firstEnd.rigidbody) _firstEnd.worldPosition = _firstEnd.rigidbody.transform.TransformPoint(_firstEnd.localPosition);
+        if (_secondEnd != null && _secondEnd.rigidbody) _secondEnd.worldPosition = _secondEnd.rigidbody.transform.TransformPoint(_secondEnd.localPosition);
     }
 
     private void DrawLine()
     {
-        _lineRenderer.positionCount = ends.Count;
-        for (int i = 0; i < _lineRenderer.positionCount; i++)
+        if (_firstEnd != null)
         {
-            _lineRenderer.SetPosition(i, ends[i].worldPosition);
+            _lineRenderer.positionCount = 1;
+            _lineRenderer.SetPosition(0, _firstEnd.rigidbody ? _firstEnd.rigidbody.transform.position : _firstEnd.worldPosition);
+        }
+
+        if (_secondEnd != null)
+        {
+            _lineRenderer.positionCount = 2;
+            _lineRenderer.SetPosition(1, _secondEnd.rigidbody ? _secondEnd.rigidbody.transform.position : _secondEnd.worldPosition);
         }
     }
     
-    public void PlaceEnd()
+    public bool PlaceEnd(RaycastHit hit)
     {
-        if (!Physics.Raycast(PlayerData.Instance.realCamera.position, PlayerData.Instance.realCamera.forward,
-                out var hit, PlayerData.Instance.rayCastDistance)) return;
+        if (_firstEnd != null && !_firstEnd.rigidbody && !hit.rigidbody) return false;
+        if (_firstEnd != null && _firstEnd.rigidbody == hit.rigidbody) return false;
         
-        if (hit.collider.gameObject.CompareTag("Player")) return;
-
         EndData end = !hit.rigidbody ? new EndData(hit.point) : new EndData(hit.rigidbody, hit.rigidbody.transform.InverseTransformPoint(hit.point), hit.point);
 
-        ends.Add(end);
-
-        if (ends.Count < 2) return;
-
-        if (ends[0].rigidbody)
+        if (_firstEnd == null) _firstEnd = end;
+        else
         {
-            ends[0].rigidbody.freezeRotation = true;
-            
-            if (ends[1].rigidbody)
-            {
-                ends[1].rigidbody.freezeRotation = true;
-                
-                SpringJoint joint = SetupJoint(ends[1].rigidbody, (ends[0].worldPosition - ends[1].worldPosition).magnitude);
+            _secondEnd = end;
 
-                joint.anchor = ends[1].localPosition;
-                joint.connectedAnchor = ends[0].localPosition;
-                
-                joint.connectedBody = ends[0].rigidbody;
+            if (_firstEnd.rigidbody)
+            {
+                if (_secondEnd.rigidbody)
+                {
+                    _firstEnd.rigidbody.freezeRotation = true;
+                    _secondEnd.rigidbody.freezeRotation = true;
+                    joint = SetupJoint(_firstEnd.rigidbody, (_firstEnd.worldPosition - _secondEnd.worldPosition).magnitude);
+
+                    joint.anchor = _firstEnd.localPosition;
+                    joint.connectedAnchor = _secondEnd.localPosition;
+                }
+                else
+                {
+                    _firstEnd.rigidbody.freezeRotation = true;
+                    joint = SetupJoint(_firstEnd.rigidbody, (_firstEnd.worldPosition - _secondEnd.worldPosition).magnitude);
+
+                    joint.connectedAnchor = _secondEnd.worldPosition;
+                }
             }
             else
             {
-                SpringJoint joint = SetupJoint(ends[0].rigidbody, (ends[1].worldPosition - ends[0].worldPosition).magnitude);
-                
-                joint.anchor = ends[0].localPosition;
-                joint.connectedAnchor = ends[1].worldPosition;
+                if (!_secondEnd.rigidbody) return false;
+
+                _secondEnd.rigidbody.freezeRotation = true;
+                joint = SetupJoint(_secondEnd.rigidbody, (_firstEnd.worldPosition - _secondEnd.worldPosition).magnitude);
+
+                joint.anchor = _secondEnd.localPosition;
+                joint.connectedAnchor = _firstEnd.worldPosition;
             }
-        }
-        else
-        {
-            if (!ends[1].rigidbody) return;
-            
-            ends[1].rigidbody.freezeRotation = true;
 
-            SpringJoint joint = SetupJoint(ends[1].rigidbody, (ends[0].worldPosition - ends[1].worldPosition).magnitude);
-
-            joint.anchor = ends[1].localPosition;
-            joint.connectedAnchor = ends[0].worldPosition;
+            isFinished = true;
         }
+
+        return true;
     }
 
     private SpringJoint SetupJoint(Rigidbody rb, float distance)
     {
-        SpringJoint joint = rb.gameObject.AddComponent<SpringJoint>();
-        joint.autoConfigureConnectedAnchor = false;
-        joint.enableCollision = true;
+        SpringJoint j = rb.gameObject.AddComponent<SpringJoint>();
+        j.autoConfigureConnectedAnchor = false;
+        j.enableCollision = true;
 
-        joint.maxDistance = distance * PlayerData.Instance.maxRopeDistance;
-        joint.minDistance = distance * PlayerData.Instance.minRopeDistance;
+        j.maxDistance = distance * PlayerData.Instance.maxRopeDistance;
+        j.minDistance = distance * PlayerData.Instance.minRopeDistance;
         
-        joint.spring = PlayerData.Instance.springSpringiness;
-        joint.damper = PlayerData.Instance.springDamper;
-        joint.massScale = PlayerData.Instance.springMassScale;
+        j.spring = PlayerData.Instance.springSpringiness;
+        j.damper = PlayerData.Instance.springDamper;
+        j.massScale = PlayerData.Instance.springMassScale;
 
-        return joint;
+        return j;
     }
 }

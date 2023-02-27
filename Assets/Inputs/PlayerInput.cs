@@ -46,27 +46,36 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Grapple"",
+                    ""name"": ""Interact"",
                     ""type"": ""Button"",
-                    ""id"": ""a5dcb90e-740c-46e4-9e35-965c8b3fc034"",
+                    ""id"": ""18739fb6-25d0-4eae-8709-44c3cf994318"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""PutEnd"",
+                    ""name"": ""ToggleRopePlacement"",
                     ""type"": ""Button"",
-                    ""id"": ""cba365d2-fbf0-4d67-bfe2-40c70a707f22"",
+                    ""id"": ""ae0d69ac-f90a-45b3-9830-3ee1788f8153"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Pickup"",
+                    ""name"": ""ConfirmRopePlacement"",
                     ""type"": ""Button"",
-                    ""id"": ""16571e95-87dd-43df-9466-105846521f05"",
+                    ""id"": ""887b3b68-e2c9-4541-9c36-4c3a704a7157"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DetachRopePlacement"",
+                    ""type"": ""Button"",
+                    ""id"": ""756afd89-f100-4df4-884a-3626a5b41777"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -164,45 +173,45 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""db43ca3c-e99b-4991-89d2-5672b057210f"",
+                    ""id"": ""418096dc-a775-4a0e-9f5f-4a0889a8a579"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Grapple"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1cdd137c-be7e-4f84-a3e5-b6cde8916c2d"",
-                    ""path"": ""<Gamepad>/leftShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Grapple"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5e74b974-2b95-4427-80fe-196422723827"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""PutEnd"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""923448bc-bcfb-4c51-b5d7-3d137570d579"",
+                    ""id"": ""607aedff-b16d-488d-bed1-b1323e2c2e79"",
                     ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Pickup"",
+                    ""action"": ""ToggleRopePlacement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5d791c52-b72d-4f4e-90a8-25b2d335e2c7"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ConfirmRopePlacement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""253db201-1430-48d4-8edc-fc9a018ccaa9"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DetachRopePlacement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -215,9 +224,10 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_CharacterControls = asset.FindActionMap("CharacterControls", throwIfNotFound: true);
         m_CharacterControls_Move = m_CharacterControls.FindAction("Move", throwIfNotFound: true);
         m_CharacterControls_Jump = m_CharacterControls.FindAction("Jump", throwIfNotFound: true);
-        m_CharacterControls_Grapple = m_CharacterControls.FindAction("Grapple", throwIfNotFound: true);
-        m_CharacterControls_PutEnd = m_CharacterControls.FindAction("PutEnd", throwIfNotFound: true);
-        m_CharacterControls_Pickup = m_CharacterControls.FindAction("Pickup", throwIfNotFound: true);
+        m_CharacterControls_Interact = m_CharacterControls.FindAction("Interact", throwIfNotFound: true);
+        m_CharacterControls_ToggleRopePlacement = m_CharacterControls.FindAction("ToggleRopePlacement", throwIfNotFound: true);
+        m_CharacterControls_ConfirmRopePlacement = m_CharacterControls.FindAction("ConfirmRopePlacement", throwIfNotFound: true);
+        m_CharacterControls_DetachRopePlacement = m_CharacterControls.FindAction("DetachRopePlacement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -279,18 +289,20 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private ICharacterControlsActions m_CharacterControlsActionsCallbackInterface;
     private readonly InputAction m_CharacterControls_Move;
     private readonly InputAction m_CharacterControls_Jump;
-    private readonly InputAction m_CharacterControls_Grapple;
-    private readonly InputAction m_CharacterControls_PutEnd;
-    private readonly InputAction m_CharacterControls_Pickup;
+    private readonly InputAction m_CharacterControls_Interact;
+    private readonly InputAction m_CharacterControls_ToggleRopePlacement;
+    private readonly InputAction m_CharacterControls_ConfirmRopePlacement;
+    private readonly InputAction m_CharacterControls_DetachRopePlacement;
     public struct CharacterControlsActions
     {
         private @PlayerInput m_Wrapper;
         public CharacterControlsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_CharacterControls_Move;
         public InputAction @Jump => m_Wrapper.m_CharacterControls_Jump;
-        public InputAction @Grapple => m_Wrapper.m_CharacterControls_Grapple;
-        public InputAction @PutEnd => m_Wrapper.m_CharacterControls_PutEnd;
-        public InputAction @Pickup => m_Wrapper.m_CharacterControls_Pickup;
+        public InputAction @Interact => m_Wrapper.m_CharacterControls_Interact;
+        public InputAction @ToggleRopePlacement => m_Wrapper.m_CharacterControls_ToggleRopePlacement;
+        public InputAction @ConfirmRopePlacement => m_Wrapper.m_CharacterControls_ConfirmRopePlacement;
+        public InputAction @DetachRopePlacement => m_Wrapper.m_CharacterControls_DetachRopePlacement;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -306,15 +318,18 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnJump;
-                @Grapple.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnGrapple;
-                @Grapple.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnGrapple;
-                @Grapple.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnGrapple;
-                @PutEnd.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPutEnd;
-                @PutEnd.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPutEnd;
-                @PutEnd.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPutEnd;
-                @Pickup.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPickup;
-                @Pickup.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPickup;
-                @Pickup.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnPickup;
+                @Interact.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnInteract;
+                @ToggleRopePlacement.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnToggleRopePlacement;
+                @ToggleRopePlacement.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnToggleRopePlacement;
+                @ToggleRopePlacement.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnToggleRopePlacement;
+                @ConfirmRopePlacement.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnConfirmRopePlacement;
+                @ConfirmRopePlacement.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnConfirmRopePlacement;
+                @ConfirmRopePlacement.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnConfirmRopePlacement;
+                @DetachRopePlacement.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDetachRopePlacement;
+                @DetachRopePlacement.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDetachRopePlacement;
+                @DetachRopePlacement.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDetachRopePlacement;
             }
             m_Wrapper.m_CharacterControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -325,15 +340,18 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
-                @Grapple.started += instance.OnGrapple;
-                @Grapple.performed += instance.OnGrapple;
-                @Grapple.canceled += instance.OnGrapple;
-                @PutEnd.started += instance.OnPutEnd;
-                @PutEnd.performed += instance.OnPutEnd;
-                @PutEnd.canceled += instance.OnPutEnd;
-                @Pickup.started += instance.OnPickup;
-                @Pickup.performed += instance.OnPickup;
-                @Pickup.canceled += instance.OnPickup;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
+                @ToggleRopePlacement.started += instance.OnToggleRopePlacement;
+                @ToggleRopePlacement.performed += instance.OnToggleRopePlacement;
+                @ToggleRopePlacement.canceled += instance.OnToggleRopePlacement;
+                @ConfirmRopePlacement.started += instance.OnConfirmRopePlacement;
+                @ConfirmRopePlacement.performed += instance.OnConfirmRopePlacement;
+                @ConfirmRopePlacement.canceled += instance.OnConfirmRopePlacement;
+                @DetachRopePlacement.started += instance.OnDetachRopePlacement;
+                @DetachRopePlacement.performed += instance.OnDetachRopePlacement;
+                @DetachRopePlacement.canceled += instance.OnDetachRopePlacement;
             }
         }
     }
@@ -342,8 +360,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnGrapple(InputAction.CallbackContext context);
-        void OnPutEnd(InputAction.CallbackContext context);
-        void OnPickup(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnToggleRopePlacement(InputAction.CallbackContext context);
+        void OnConfirmRopePlacement(InputAction.CallbackContext context);
+        void OnDetachRopePlacement(InputAction.CallbackContext context);
     }
 }

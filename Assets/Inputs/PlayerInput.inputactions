@@ -24,27 +24,36 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Grapple",
+                    "name": "Interact",
                     "type": "Button",
-                    "id": "a5dcb90e-740c-46e4-9e35-965c8b3fc034",
+                    "id": "18739fb6-25d0-4eae-8709-44c3cf994318",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "PutEnd",
+                    "name": "ToggleRopePlacement",
                     "type": "Button",
-                    "id": "cba365d2-fbf0-4d67-bfe2-40c70a707f22",
+                    "id": "ae0d69ac-f90a-45b3-9830-3ee1788f8153",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Pickup",
+                    "name": "ConfirmRopePlacement",
                     "type": "Button",
-                    "id": "16571e95-87dd-43df-9466-105846521f05",
+                    "id": "887b3b68-e2c9-4541-9c36-4c3a704a7157",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DetachRopePlacement",
+                    "type": "Button",
+                    "id": "756afd89-f100-4df4-884a-3626a5b41777",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -142,45 +151,45 @@
                 },
                 {
                     "name": "",
-                    "id": "db43ca3c-e99b-4991-89d2-5672b057210f",
+                    "id": "418096dc-a775-4a0e-9f5f-4a0889a8a579",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Grapple",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "1cdd137c-be7e-4f84-a3e5-b6cde8916c2d",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Grapple",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5e74b974-2b95-4427-80fe-196422723827",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "PutEnd",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "923448bc-bcfb-4c51-b5d7-3d137570d579",
+                    "id": "607aedff-b16d-488d-bed1-b1323e2c2e79",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Pickup",
+                    "action": "ToggleRopePlacement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5d791c52-b72d-4f4e-90a8-25b2d335e2c7",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ConfirmRopePlacement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "253db201-1430-48d4-8edc-fc9a018ccaa9",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DetachRopePlacement",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

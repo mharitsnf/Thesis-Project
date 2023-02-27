@@ -14,10 +14,8 @@ public class PlayerData : MonoBehaviour
     [Header("Player Objects and Components")]
     [ReadOnly] public Transform meshes;
     [ReadOnly] public Transform orientation;
-    [ReadOnly] public Transform grapplePoint;
     [ReadOnly] public GameObject cinemachineFollow;
     [ReadOnly] public Rigidbody rigidBody;
-    [ReadOnly] public LineRenderer lineRenderer;
     
     [Header(("Controllers"))]
     [ReadOnly] public VerticalStateController verticalStateController;
@@ -34,10 +32,16 @@ public class PlayerData : MonoBehaviour
     public float maxSpeed = 10;
     public float maxSwingSpeed = 20;
 
+    [Header("Ground Check Data")]
+    public float maxSlopeAngle;
+    [ReadOnly] public bool isGrounded;
+    [ReadOnly] public bool isOnSlope;
+    [ReadOnly] public float playerYCenter;
+    [ReadOnly] public RaycastHit groundInfo;
+    
     [Header("Jumping")]
     [HideInInspector] public float currentJumpPercentage = 1;
     public float buttonHoldTime;
-    public float floatFrameLimit;
     public bool wasJumping;
 
     [Header("Drag")]
@@ -55,25 +59,16 @@ public class PlayerData : MonoBehaviour
     public bool invertY;
     public bool invertX;
     
-    [Header("External Objects and Components")]
+    [Header("External Objects")]
     [ReadOnly] public Transform realCamera;
 
-    [Header("Cinemachine")]
-    public CinemachineVirtualCameraBase[] virtualCameras;
-    
     [Header("Input Data")]
     [ReadOnly] public Vector2 moveDirection;
     [ReadOnly] public Vector2 cameraLookDelta;
     [ReadOnly] public float cinemachineFollowYaw;
     [ReadOnly] public float cinemachineFollowPitch;
-    
-    [Header("Aiming Data")]
-    [ReadOnly] public bool isAiming;
 
-    [Header("Grapple Data")]
-    public Vector3 firstEnd;
-    [ReadOnly] public SpringJoint joint;
-    [ReadOnly] public FixedJoint fixedJoint;
+    [Header("Spring Data")]
     public float rayCastDistance;
     public float maxRopeDistance;
     public float minRopeDistance;
@@ -83,15 +78,10 @@ public class PlayerData : MonoBehaviour
 
     [Header("Rope Data")]
     public GameObject ropePrefab;
-    public List<GameObject> ropes = new();
-    public GameObject currentRope;
-
-    [Header("Ground Check Data")]
-    public float maxSlopeAngle;
-    [ReadOnly] public bool isGrounded;
-    [ReadOnly] public bool isOnSlope;
-    [ReadOnly] public float playerYCenter;
-    [ReadOnly] public RaycastHit groundInfo;
+    public readonly Stack<Stack<GameObject>> placedRopes = new();
+    public readonly Stack<GameObject> activeRopes = new();
+    public bool isSelecting;
+    public RaycastHit selectedGameObject = new();
 
     private void Awake()
     {
@@ -107,6 +97,18 @@ public class PlayerData : MonoBehaviour
             acceleration *= mass;
             airAcceleration *= mass;
             maxJumpForce *= mass;
+        }
+    }
+
+    public GameObject TryPeekActiveRope()
+    {
+        try
+        {
+            return activeRopes.Peek();
+        }
+        catch (Exception)
+        {
+            return null;
         }
     }
 }

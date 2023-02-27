@@ -50,12 +50,12 @@ public class PlayerMoveState : PlayerBaseState
 
     private void LimitSpeed()
     {
-        if (PlayerData.Instance.joint && PlayerData.Instance.rigidBody.velocity.magnitude > PlayerData.Instance.maxSwingSpeed)
-        {
-            PlayerData.Instance.rigidBody.velocity = PlayerData.Instance.rigidBody.velocity.normalized *
-                                                       PlayerData.Instance.maxSwingSpeed;
-            return;
-        }
+        // if (PlayerData.Instance.joint && PlayerData.Instance.rigidBody.velocity.magnitude > PlayerData.Instance.maxSwingSpeed)
+        // {
+        //     PlayerData.Instance.rigidBody.velocity = PlayerData.Instance.rigidBody.velocity.normalized *
+        //                                                PlayerData.Instance.maxSwingSpeed;
+        //     return;
+        // }
         
         if (PlayerData.Instance.isOnSlope && PlayerData.Instance.rigidBody.velocity.magnitude > PlayerData.Instance.maxSpeed)
         {
