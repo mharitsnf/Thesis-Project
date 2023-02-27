@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e61bfe41a4b5f8740a6f478682eb9ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravityMultiplier: 4.5
+  gravityMultiplier: 3

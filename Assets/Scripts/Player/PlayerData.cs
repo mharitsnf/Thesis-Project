@@ -22,20 +22,23 @@ public class PlayerData : MonoBehaviour
     [Header(("Controllers"))]
     [ReadOnly] public VerticalStateController verticalStateController;
     [ReadOnly] public HorizontalStateController horizontalStateController;
-    [ReadOnly] public GrappleController grappleController;
 
+    [Header("Movement Forces")]
     public bool isAffectedByMass;
-    
-    [Header("Movement And Rotation")] 
-    public float movementRotationSpeed = 10; 
     public float acceleration = 100;
+    public float airAcceleration = 100;
+    public float maxJumpForce;
+    
+    [Header("Horizontal Movement Limitations")] 
+    public float movementRotationSpeed = 10; 
     public float maxSpeed = 10;
     public float maxSwingSpeed = 20;
-    
+
     [Header("Jumping")]
-    public float maxJumpForce;
+    [HideInInspector] public float currentJumpPercentage = 1;
     public float buttonHoldTime;
-    public float floatTime;
+    public float floatFrameLimit;
+    public bool wasJumping;
 
     [Header("Drag")]
     public float groundDrag;
@@ -68,8 +71,6 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public bool isAiming;
 
     [Header("Grapple Data")]
-    public float horizontalAirThrust = 20;
-    public float verticalAirThrust = 20;
     public Vector3 firstEnd;
     [ReadOnly] public SpringJoint joint;
     [ReadOnly] public FixedJoint fixedJoint;
@@ -104,9 +105,8 @@ public class PlayerData : MonoBehaviour
         {
             float mass = rigidBody.mass;
             acceleration *= mass;
+            airAcceleration *= mass;
             maxJumpForce *= mass;
-            horizontalAirThrust *= mass;
-            verticalAirThrust *= mass;
         }
     }
 }

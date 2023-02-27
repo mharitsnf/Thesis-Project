@@ -13,18 +13,12 @@ public class HorizontalStateController : BaseStateController
     private void Start()
     {
         currentState = idleState;
-        currentState.EnterState(this);
+        currentState.EnterState();
     }
 
     private void FixedUpdate()
     {
         // State logic
-        currentState.FixedUpdateState(this);
-    }
-
-    public override void SwitchState(PlayerBaseState state)
-    {
-        base.SwitchState(state);
-        currentState.EnterState(this);
+        currentState.FixedUpdateState();
     }
 }

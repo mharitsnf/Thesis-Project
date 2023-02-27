@@ -59,20 +59,18 @@ public class InputHandler : MonoBehaviour
         if (context is { canceled: false, interaction: not HoldInteraction }) return;
         if (PlayerData.Instance.verticalStateController.currentState != PlayerData.Instance.verticalStateController.groundedState) return;
 
-        float percentage = Mathf.Min((float)context.duration, PlayerData.Instance.buttonHoldTime) / PlayerData.Instance.buttonHoldTime;
-        PlayerData.Instance.verticalStateController.Jump(percentage);
+        PlayerData.Instance.currentJumpPercentage = Mathf.Min((float)context.duration, PlayerData.Instance.buttonHoldTime) / PlayerData.Instance.buttonHoldTime;
+        PlayerData.Instance.verticalStateController.Jump();
     }
 
     private void HandleGrappleInput(InputAction.CallbackContext context)
     {
         if (context.ReadValueAsButton())
         {
-            PlayerData.Instance.grappleController.StartGrapple();
         }
         
         if (context.canceled)
         {
-            PlayerData.Instance.grappleController.StopGrapple();
         }
     }
 

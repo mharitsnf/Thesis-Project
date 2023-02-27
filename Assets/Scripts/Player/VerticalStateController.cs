@@ -6,7 +6,6 @@ public class VerticalStateController : BaseStateController
     // States
     public readonly PlayerGroundedState groundedState = new();
     public readonly PlayerFallState fallState = new();
-    public readonly PlayerFloatState floatState = new();
     public readonly PlayerJumpState jumpState = new();
 
     private void Start()
@@ -17,13 +16,13 @@ public class VerticalStateController : BaseStateController
         if (PlayerData.Instance.isGrounded) currentState = groundedState;
         else currentState = fallState;
         
-        currentState.EnterState(this);
+        currentState.EnterState();
     }
 
     private void FixedUpdate()
     {
         GroundAndSlopeCheck();
-        currentState.FixedUpdateState(this);
+        currentState.FixedUpdateState();
     }
 
     private void GroundAndSlopeCheck()
@@ -40,15 +39,8 @@ public class VerticalStateController : BaseStateController
         PlayerData.Instance.isOnSlope = groundAngle < PlayerData.Instance.maxSlopeAngle && groundAngle != 0;
     }
 
-    public void Jump(float percentage = 1f)
+    public void Jump()
     {
-        PlayerData.Instance.rigidBody.AddForce(Vector3.up * PlayerData.Instance.maxJumpForce * percentage, ForceMode.Impulse);
         SwitchState(jumpState);
-    }
-
-    public override void SwitchState(PlayerBaseState state)
-    {
-        base.SwitchState(state);
-        currentState.EnterState(this);
     }
 }

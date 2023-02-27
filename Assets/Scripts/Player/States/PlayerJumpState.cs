@@ -5,26 +5,29 @@ public class PlayerJumpState : PlayerBaseState
 {
     private int _frameElapsed;
     
-    public override void EnterState(VerticalStateController controller)
+    public override void EnterState()
     {
+        PlayerData.Instance.wasJumping = true;
         PlayerData.Instance.rigidBody.drag = PlayerData.Instance.airDrag;
+        PlayerData.Instance.rigidBody.AddForce(Vector3.up * (PlayerData.Instance.maxJumpForce * PlayerData.Instance.currentJumpPercentage), ForceMode.Impulse);
     }
     
-    public override void FixedUpdateState(VerticalStateController controller)
+    public override void FixedUpdateState()
     {
-        if (_frameElapsed > 0)
+        PlayerData.Instance.rigidBody.AddForce(Physics.gravity * PlayerData.Instance.jumpGravityMultiplier,
+            ForceMode.Acceleration);
+        
+        if (_frameElapsed > 1)
         {
             if (PlayerData.Instance.isGrounded)
             {
-                ExitState(controller);
-                controller.SwitchState(controller.groundedState);
+                PlayerData.Instance.verticalStateController.SwitchState(PlayerData.Instance.verticalStateController.groundedState);
                 return;
             }
             
-            if (PlayerData.Instance.rigidBody.velocity.y < 0)
+            if (PlayerData.Instance.rigidBody.velocity.y < 2.5f)
             {
-                ExitState(controller);
-                controller.SwitchState(controller.floatState);
+                PlayerData.Instance.verticalStateController.SwitchState(PlayerData.Instance.verticalStateController.fallState);
                 return;
             }
         }
@@ -32,8 +35,9 @@ public class PlayerJumpState : PlayerBaseState
         _frameElapsed++;
     }
 
-    public override void ExitState(VerticalStateController controller)
+    public override void ExitState()
     {
         _frameElapsed = 0;
+        PlayerData.Instance.currentJumpPercentage = 1;
     }
 }

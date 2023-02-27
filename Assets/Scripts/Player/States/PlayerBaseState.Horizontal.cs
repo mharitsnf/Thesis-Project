@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract partial class PlayerBaseState
 {
-    public virtual void EnterState(HorizontalStateController controller) {}
-    public virtual void FixedUpdateState(HorizontalStateController controller) {}
-    public virtual void ExitState(HorizontalStateController controller) {}
+    public virtual void EnterState() {}
+    public virtual void FixedUpdateState() {}
+    public virtual void ExitState() {}
 }

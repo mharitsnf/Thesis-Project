@@ -2,20 +2,17 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerBaseState
 {
-    public override void FixedUpdateState(HorizontalStateController controller)
+    public override void FixedUpdateState()
     {
         
         // Input and movement handling
-        if (!PlayerData.Instance.joint ||
-            PlayerData.Instance.verticalStateController.currentState == PlayerData.Instance.verticalStateController.groundedState)
-            Move();
-        else AirMove();
+        Move();
         
         RotateMesh();
         LimitSpeed();
             
         // State change
-        if (PlayerData.Instance.moveDirection == Vector2.zero) controller.SwitchState(controller.idleState);
+        if (PlayerData.Instance.moveDirection == Vector2.zero) PlayerData.Instance.horizontalStateController.SwitchState(PlayerData.Instance.horizontalStateController.idleState);
     }
 
     private void RotateMesh()
@@ -31,21 +28,25 @@ public class PlayerMoveState : PlayerBaseState
         Vector3 direction = PlayerData.Instance.orientation.forward * PlayerData.Instance.moveDirection.y +
                             PlayerData.Instance.orientation.right * PlayerData.Instance.moveDirection.x;
         
+        float acceleration = PlayerData.Instance.isGrounded
+            ? PlayerData.Instance.acceleration
+            : PlayerData.Instance.airAcceleration;
+        
         if (PlayerData.Instance.isOnSlope) direction = Vector3.ProjectOnPlane(direction, PlayerData.Instance.groundInfo.normal).normalized;
         
-        PlayerData.Instance.rigidBody.AddForce(direction.normalized * (PlayerData.Instance.acceleration), ForceMode.Force);
+        PlayerData.Instance.rigidBody.AddForce(direction.normalized * acceleration, ForceMode.Force);
     }
 
-    private void AirMove()
-    {
-        Vector3 direction = PlayerData.Instance.orientation.forward * Mathf.Max(PlayerData.Instance.moveDirection.y, 0) +
-                            PlayerData.Instance.orientation.right * PlayerData.Instance.moveDirection.x;
-        direction = direction.normalized;
-        direction.x *= PlayerData.Instance.horizontalAirThrust;
-        direction.z *= PlayerData.Instance.verticalAirThrust;
-
-        PlayerData.Instance.rigidBody.AddForce(direction, ForceMode.Force);
-    }
+    // private void AirMove()
+    // {
+    //     Vector3 direction = PlayerData.Instance.orientation.forward * Mathf.Max(PlayerData.Instance.moveDirection.y, 0) +
+    //                         PlayerData.Instance.orientation.right * PlayerData.Instance.moveDirection.x;
+    //     direction = direction.normalized;
+    //     direction.x *= PlayerData.Instance.horizontalAirThrust;
+    //     direction.z *= PlayerData.Instance.verticalAirThrust;
+    //
+    //     PlayerData.Instance.rigidBody.AddForce(direction, ForceMode.Force);
+    // }
 
     private void LimitSpeed()
     {

@@ -1,22 +1,26 @@
 
+using UnityEngine;
+
 public class PlayerGroundedState : PlayerBaseState
 {
     private int _frameElapsed;
 
-    public override void EnterState(VerticalStateController controller)
+    public override void EnterState()
     {
         if (!PlayerData.Instance.isGrounded)
         {
-            controller.SwitchState(controller.fallState);
+            PlayerData.Instance.verticalStateController.SwitchState(PlayerData.Instance.verticalStateController.fallState);
             return;
         }
         
         PlayerData.Instance.rigidBody.drag = PlayerData.Instance.groundDrag;
     }
 
-    public override void FixedUpdateState(VerticalStateController controller)
+    public override void FixedUpdateState()
     {
+        PlayerData.Instance.rigidBody.AddForce(Physics.gravity, ForceMode.Acceleration);
+        
         if (!PlayerData.Instance.isGrounded)
-            controller.SwitchState(controller.fallState);
+            PlayerData.Instance.verticalStateController.SwitchState(PlayerData.Instance.verticalStateController.fallState);
     }
 }

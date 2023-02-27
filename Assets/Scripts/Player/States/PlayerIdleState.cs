@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerBaseState
 {
-    public override void FixedUpdateState(HorizontalStateController controller)
+    public override void FixedUpdateState()
     {
         RotateMesh();
         
         // State change
-        if (PlayerData.Instance.moveDirection != Vector2.zero) controller.SwitchState(controller.moveState);
+        if (PlayerData.Instance.moveDirection != Vector2.zero) PlayerData.Instance.horizontalStateController.SwitchState(PlayerData.Instance.horizontalStateController.moveState);
     }
 
     private void RotateMesh()
