@@ -99,12 +99,14 @@ public class InputHandler : MonoBehaviour
         {
             if (!hit.collider.gameObject.CompareTag("Object")) return;
             PlayerData.Instance.selectedGameObject = hit;
+            Debug.Log("object selected " + hit.collider.gameObject);
         }
         else
         {
             if (PlayerData.Instance.selectedGameObject.Equals(hit)) return;
             
             PlayerData.Instance.activeRopes.Push(Instantiate(PlayerData.Instance.ropePrefab));
+            
             GameObject lastRopeObject = PlayerData.Instance.TryPeekActiveRope();
             Rope lastRope = lastRopeObject.GetComponent<Rope>();
             lastRope.PlaceEnd(PlayerData.Instance.selectedGameObject);
@@ -165,6 +167,12 @@ public class InputHandler : MonoBehaviour
     {
         if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
         if (!context.ReadValueAsButton() || !PlayerData.Instance.isSelectingRopeEnds) return;
+
+        foreach (var gameObject in PlayerData.Instance.activeRopes)
+        {
+            Rope rope = gameObject.GetComponent<Rope>();
+            rope.CreateJoint();
+        }
 
         PlayerData.Instance.placedRopes.Push(new Stack<GameObject>(PlayerData.Instance.activeRopes));
         PlayerData.Instance.activeRopes.Clear();
@@ -233,7 +241,7 @@ public class InputHandler : MonoBehaviour
             GameObject ropeObject = stack.Pop();
             Rope rope = ropeObject.GetComponent<Rope>();
 
-            Destroy(rope.joint);
+            if (rope.joint) Destroy(rope.joint);
             Destroy(ropeObject);
         }
     }

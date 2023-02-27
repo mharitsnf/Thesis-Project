@@ -607,10 +607,10 @@ MonoBehaviour:
   cinemachineFollowYaw: 0
   cinemachineFollowPitch: 0
   rayCastDistance: 50
-  maxRopeDistance: 0
-  minRopeDistance: 0
-  springSpringiness: 15
-  springDamper: 5
+  maxDistanceMultiplier: 0.4
+  minDistanceMultiplier: 0.6
+  springinessMultiplier: 3.5
+  springDamper: 7
   springMassScale: 4.5
   currentInteractionState: 0
   ropePrefab: {fileID: 7035304684048593626, guid: 0768102d84015244fbd48c3d1dd42d64,

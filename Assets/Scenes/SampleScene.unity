@@ -5870,26 +5870,6 @@ PrefabInstance:
       propertyPath: realCamera
       value: 
       objectReference: {fileID: 330585546}
-    - target: {fileID: 8510583858112182161, guid: d57494ef04024a6448a754d52924eb5c,
-        type: 3}
-      propertyPath: springDamper
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8510583858112182161, guid: d57494ef04024a6448a754d52924eb5c,
-        type: 3}
-      propertyPath: maxDistanceMultiplier
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8510583858112182161, guid: d57494ef04024a6448a754d52924eb5c,
-        type: 3}
-      propertyPath: minDistanceMultiplier
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8510583858112182161, guid: d57494ef04024a6448a754d52924eb5c,
-        type: 3}
-      propertyPath: springinessMultiplier
-      value: 3.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d57494ef04024a6448a754d52924eb5c, type: 3}
 --- !u!43 &1514559468

@@ -28,8 +28,8 @@ public class Rope : MonoBehaviour
     private EndData _firstEnd;
     private EndData _secondEnd;
     public SpringJoint joint;
-    public bool isFinished;
     private LineRenderer _lineRenderer;
+    private bool _canDraw;
 
     private void Start()
     {
@@ -54,6 +54,8 @@ public class Rope : MonoBehaviour
 
     private void DrawLine()
     {
+        if (!_canDraw) return;
+        
         if (_firstEnd != null)
         {
             _lineRenderer.positionCount = 1;
@@ -75,44 +77,39 @@ public class Rope : MonoBehaviour
         EndData end = !hit.rigidbody ? new EndData(hit.point) : new EndData(hit.rigidbody, hit.rigidbody.transform.InverseTransformPoint(hit.point), hit.point);
 
         if (_firstEnd == null) _firstEnd = end;
-        else
-        {
-            _secondEnd = end;
-
-            if (_firstEnd.rigidbody)
-            {
-                if (_secondEnd.rigidbody)
-                {
-                    _firstEnd.rigidbody.freezeRotation = true;
-                    _secondEnd.rigidbody.freezeRotation = true;
-                    joint = SetupJoint(_firstEnd.rigidbody, (_firstEnd.worldPosition - _secondEnd.worldPosition).magnitude);
-
-                    joint.anchor = _firstEnd.localPosition;
-                    joint.connectedAnchor = _secondEnd.localPosition;
-                }
-                else
-                {
-                    _firstEnd.rigidbody.freezeRotation = true;
-                    joint = SetupJoint(_firstEnd.rigidbody, (_firstEnd.worldPosition - _secondEnd.worldPosition).magnitude);
-
-                    joint.connectedAnchor = _secondEnd.worldPosition;
-                }
-            }
-            else
-            {
-                if (!_secondEnd.rigidbody) return false;
-
-                _secondEnd.rigidbody.freezeRotation = true;
-                joint = SetupJoint(_secondEnd.rigidbody, (_firstEnd.worldPosition - _secondEnd.worldPosition).magnitude);
-
-                joint.anchor = _secondEnd.localPosition;
-                joint.connectedAnchor = _firstEnd.worldPosition;
-            }
-
-            isFinished = true;
-        }
-
+        else _secondEnd = end;
+        
         return true;
+    }
+
+    public void CreateJoint()
+    {
+        if (_firstEnd.rigidbody && _secondEnd.rigidbody)
+        {
+            _firstEnd.rigidbody.freezeRotation = true;
+            _secondEnd.rigidbody.freezeRotation = true;
+            joint = SetupJoint(_firstEnd.rigidbody, (_firstEnd.worldPosition - _secondEnd.worldPosition).magnitude);
+        
+            joint.anchor = _firstEnd.localPosition;
+            joint.connectedAnchor = _secondEnd.localPosition;
+        }
+        else if (_firstEnd.rigidbody && !_secondEnd.rigidbody)
+        {
+            _firstEnd.rigidbody.freezeRotation = true;
+            joint = SetupJoint(_firstEnd.rigidbody, (_firstEnd.worldPosition - _secondEnd.worldPosition).magnitude);
+        
+            joint.connectedAnchor = _secondEnd.worldPosition;
+        }
+        // else if (!_firstEnd.rigidbody && _secondEnd.rigidbody)
+        // {
+        //     _secondEnd.rigidbody.freezeRotation = true;
+        //     joint = SetupJoint(_secondEnd.rigidbody, (_firstEnd.worldPosition - _secondEnd.worldPosition).magnitude);
+        //
+        //     joint.anchor = _secondEnd.localPosition;
+        //     joint.connectedAnchor = _firstEnd.worldPosition;
+        // }
+
+        _canDraw = true;
     }
 
     private SpringJoint SetupJoint(Rigidbody rb, float distance)
