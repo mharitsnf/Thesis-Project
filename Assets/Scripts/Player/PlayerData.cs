@@ -71,9 +71,9 @@ public class PlayerData : MonoBehaviour
 
     [Header("Spring Data")]
     public float rayCastDistance;
-    public float maxRopeDistance;
-    public float minRopeDistance;
-    public float springSpringiness;
+    public float maxDistanceMultiplier;
+    public float minDistanceMultiplier;
+    public float springinessMultiplier;
     public float springDamper;
     public float springMassScale;
 

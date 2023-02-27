@@ -121,10 +121,10 @@ public class Rope : MonoBehaviour
         j.autoConfigureConnectedAnchor = false;
         j.enableCollision = true;
 
-        j.maxDistance = distance * PlayerData.Instance.maxRopeDistance;
-        j.minDistance = distance * PlayerData.Instance.minRopeDistance;
+        j.maxDistance = distance * PlayerData.Instance.maxDistanceMultiplier;
+        j.minDistance = distance * PlayerData.Instance.minDistanceMultiplier;
         
-        j.spring = PlayerData.Instance.springSpringiness;
+        j.spring = rb.mass * PlayerData.Instance.springinessMultiplier;
         j.damper = PlayerData.Instance.springDamper;
         j.massScale = PlayerData.Instance.springMassScale;
 
