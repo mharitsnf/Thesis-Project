@@ -24,7 +24,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Interact",
+                    "name": "SwitchInteractionState",
+                    "type": "Button",
+                    "id": "0770443a-b6fc-47f4-bc1f-4b35179db087",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InteractRopePlacement",
                     "type": "Button",
                     "id": "18739fb6-25d0-4eae-8709-44c3cf994318",
                     "expectedControlType": "Button",
@@ -54,6 +63,33 @@
                     "name": "DetachRopePlacement",
                     "type": "Button",
                     "id": "756afd89-f100-4df4-884a-3626a5b41777",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "InteractAttaching",
+                    "type": "Button",
+                    "id": "13e2249c-9300-4614-bff9-9287a62b49af",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleAttaching",
+                    "type": "Button",
+                    "id": "c2935abc-0030-476b-87cc-19e50fa16a46",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DetachAttaching",
+                    "type": "Button",
+                    "id": "6877abba-9200-42fa-9d3e-857f1f8e9c41",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -156,7 +192,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "InteractRopePlacement",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -190,6 +226,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "DetachRopePlacement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a0dcd8bb-3e92-4f5a-afc2-ba6db16ad984",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DetachAttaching",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d9f58cb6-3e44-42c8-9e38-ea27022debfa",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleAttaching",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9aa86c3c-f7f1-4a86-a21e-dc9d38117230",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwitchInteractionState",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "10b93ab2-2878-4a10-8da4-83a3d0b54297",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InteractAttaching",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

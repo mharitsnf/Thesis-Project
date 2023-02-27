@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
@@ -29,13 +30,16 @@ public class InputHandler : MonoBehaviour
         _playerInput.CharacterControls.Jump.canceled += HandleJumpInput;
         _playerInput.CharacterControls.Jump.performed += HandleJumpInput;
 
-        _playerInput.CharacterControls.Interact.started += HandleInteractInput;
+        _playerInput.CharacterControls.SwitchInteractionState.started += HandleSwitchInteractionStateInput;
 
+        _playerInput.CharacterControls.InteractRopePlacement.started += HandleInteractRopePlacementInput;
         _playerInput.CharacterControls.ToggleRopePlacement.started += HandleToggleRopePlacementInput;
-
         _playerInput.CharacterControls.ConfirmRopePlacement.started += HandleConfirmRopePlacementInput;
-
         _playerInput.CharacterControls.DetachRopePlacement.started += HandleDetachRopePlacementInput;
+
+        _playerInput.CharacterControls.InteractAttaching.started += HandleInteractAttachingInput;
+        _playerInput.CharacterControls.ToggleAttaching.started += HandleToggleAttachingInput;
+        _playerInput.CharacterControls.DetachAttaching.started += HandleDetachAttachingInput;
     }
 
     private void SetupCameraInput()
@@ -68,11 +72,24 @@ public class InputHandler : MonoBehaviour
         PlayerData.Instance.cameraLookDelta = context.ReadValue<Vector2>();
     }
 
-    private void HandleInteractInput(InputAction.CallbackContext context)
+    private void HandleSwitchInteractionStateInput(InputAction.CallbackContext context)
     {
         if (!context.ReadValueAsButton()) return;
-        if (!PlayerData.Instance.isSelecting) return;
+        if (PlayerData.Instance.isSelectingRopeEnds) return;
+        if (PlayerData.Instance.isSelectingAttachEnds) return;
 
+        PlayerData.Instance.currentInteractionState = PlayerData.Instance.currentInteractionState == PlayerData.InteractionState.Attaching ? PlayerData.InteractionState.RopePlacement : PlayerData.InteractionState.Attaching;
+
+        Debug.Log(PlayerData.Instance.currentInteractionState);
+    }
+
+    private void HandleInteractRopePlacementInput(InputAction.CallbackContext context)
+    {
+        if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
+        if (!PlayerData.Instance.isSelectingRopeEnds) return;
+
+        if (!context.ReadValueAsButton()) return;
+        
         if (!Physics.Raycast(PlayerData.Instance.realCamera.position, PlayerData.Instance.realCamera.forward,
                 out var hit, PlayerData.Instance.rayCastDistance)) return;
         
@@ -99,25 +116,19 @@ public class InputHandler : MonoBehaviour
 
     private void HandleToggleRopePlacementInput(InputAction.CallbackContext context)
     {
+        if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
         if (!context.ReadValueAsButton()) return;
         
-        if (!PlayerData.Instance.isSelecting)
+        if (!PlayerData.Instance.isSelectingRopeEnds)
         {
-            PlayerData.Instance.isSelecting = true;
+            PlayerData.Instance.isSelectingRopeEnds = true;
             Debug.Log("start selecting");
         }
         else
         {
-            while (PlayerData.Instance.activeRopes.Count > 0)
-            {
-                GameObject ropeObject = PlayerData.Instance.activeRopes.Pop();
-                Rope rope = ropeObject.GetComponent<Rope>();
-                
-                Destroy(rope.joint);
-                Destroy(ropeObject);
-            }
-
-            PlayerData.Instance.isSelecting = false;
+            EmptyRopeStack(PlayerData.Instance.activeRopes);
+            
+            PlayerData.Instance.isSelectingRopeEnds = false;
             PlayerData.Instance.selectedGameObject = new RaycastHit();
 
             Debug.Log("stop selecting");
@@ -126,20 +137,14 @@ public class InputHandler : MonoBehaviour
 
     private void HandleDetachRopePlacementInput(InputAction.CallbackContext context)
     {
+        if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
         if (!context.ReadValueAsButton()) return;
 
-        if (PlayerData.Instance.isSelecting)
+        if (PlayerData.Instance.isSelectingRopeEnds)
         {
-            while (PlayerData.Instance.activeRopes.Count > 0)
-            {
-                GameObject ropeObject = PlayerData.Instance.activeRopes.Pop();
-                Rope rope = ropeObject.GetComponent<Rope>();
-                
-                Destroy(rope.joint);
-                Destroy(ropeObject);
-            }
+            EmptyRopeStack(PlayerData.Instance.activeRopes);
 
-            PlayerData.Instance.isSelecting = false;
+            PlayerData.Instance.isSelectingRopeEnds = false;
             PlayerData.Instance.selectedGameObject = new RaycastHit();
 
             Debug.Log("stop selecting");
@@ -148,21 +153,9 @@ public class InputHandler : MonoBehaviour
         {
             if (PlayerData.Instance.placedRopes.Count == 0) return;
             
-            Stack<GameObject> previousRopes = PlayerData.Instance.placedRopes.Pop();
+            Stack<GameObject> previousRopeStack = PlayerData.Instance.placedRopes.Pop();
+            EmptyRopeStack(previousRopeStack);
 
-            Debug.Log(previousRopes.Count);
-            
-            while (previousRopes.Count > 0)
-            {
-                GameObject ropeObject = previousRopes.Pop();
-                Rope rope = ropeObject.GetComponent<Rope>();
-
-                Debug.Log(ropeObject);
-                
-                Destroy(rope.joint);
-                Destroy(ropeObject);
-            }
-            
             Debug.Log("remove previous batch");
         }
         
@@ -170,16 +163,79 @@ public class InputHandler : MonoBehaviour
 
     private void HandleConfirmRopePlacementInput(InputAction.CallbackContext context)
     {
-        if (!context.ReadValueAsButton() || !PlayerData.Instance.isSelecting) return;
+        if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
+        if (!context.ReadValueAsButton() || !PlayerData.Instance.isSelectingRopeEnds) return;
 
         PlayerData.Instance.placedRopes.Push(new Stack<GameObject>(PlayerData.Instance.activeRopes));
         PlayerData.Instance.activeRopes.Clear();
 
-        PlayerData.Instance.isSelecting = false;
+        PlayerData.Instance.isSelectingRopeEnds = false;
         PlayerData.Instance.selectedGameObject = new RaycastHit();
         
         Debug.Log("selection confirmed");
+    }
 
+    private void HandleInteractAttachingInput(InputAction.CallbackContext context)
+    {
+        if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.Attaching) return;
+        if (!PlayerData.Instance.isSelectingAttachEnds) return;
+        
+        if (!context.ReadValueAsButton()) return;
+        
+        if (!Physics.Raycast(PlayerData.Instance.realCamera.position, PlayerData.Instance.realCamera.forward,
+                out var hit, PlayerData.Instance.rayCastDistance)) return;
+        
+        if (hit.collider.CompareTag("Player")) return;
+        if (!hit.rigidbody) return;
+
+        FixedJoint joint = PlayerData.Instance.fixedJoint ? gameObject.GetComponent<FixedJoint>() : gameObject.AddComponent<FixedJoint>();
+        joint.connectedBody = hit.rigidbody;
+        if (!PlayerData.Instance.fixedJoint) PlayerData.Instance.fixedJoint = PlayerData.Instance.fixedJoint = joint;
+
+        PlayerData.Instance.rigidBody.mass = 0;
+
+        PlayerData.Instance.isSelectingAttachEnds = false;
+
+        Debug.Log("attached to " + hit.rigidbody);
+        Debug.Log("is selecting attach ends " + PlayerData.Instance.isSelectingAttachEnds);
+    }
+    
+    private void HandleToggleAttachingInput(InputAction.CallbackContext context)
+    {
+        if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.Attaching) return;
+        if (!context.ReadValueAsButton()) return;
+
+        PlayerData.Instance.isSelectingAttachEnds = !PlayerData.Instance.isSelectingAttachEnds;
+
+        Debug.Log("is selecting attach ends " + PlayerData.Instance.isSelectingAttachEnds);
+    }
+
+    private void HandleDetachAttachingInput(InputAction.CallbackContext context)
+    {
+        if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.Attaching) return;
+        if (!context.ReadValueAsButton()) return;
+        if (!PlayerData.Instance.fixedJoint) return;
+
+        PlayerData.Instance.isSelectingAttachEnds = false;
+
+        Destroy(PlayerData.Instance.fixedJoint);
+        PlayerData.Instance.fixedJoint = null;
+
+        PlayerData.Instance.rigidBody.mass = PlayerData.Instance.mass;
+
+        Debug.Log("detached");
+    }
+
+    private void EmptyRopeStack(Stack<GameObject> stack)
+    {
+        while (stack.Count > 0)
+        {
+            GameObject ropeObject = stack.Pop();
+            Rope rope = ropeObject.GetComponent<Rope>();
+
+            Destroy(rope.joint);
+            Destroy(ropeObject);
+        }
     }
 
     private void OnEnable()

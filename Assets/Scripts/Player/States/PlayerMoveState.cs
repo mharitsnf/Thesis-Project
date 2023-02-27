@@ -25,6 +25,8 @@ public class PlayerMoveState : PlayerBaseState
     
     private void Move()
     {
+        if (PlayerData.Instance.fixedJoint) return;
+        
         Vector3 direction = PlayerData.Instance.orientation.forward * PlayerData.Instance.moveDirection.y +
                             PlayerData.Instance.orientation.right * PlayerData.Instance.moveDirection.x;
         

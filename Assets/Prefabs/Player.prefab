@@ -578,12 +578,13 @@ MonoBehaviour:
   verticalStateController: {fileID: 2477766031548289279}
   horizontalStateController: {fileID: 2477766031548289275}
   isAffectedByMass: 1
-  acceleration: 50
-  airAcceleration: 15
-  maxJumpForce: 17.5
+  acceleration: 3000
+  airAcceleration: 1000
+  maxJumpForce: 1000
   movementRotationSpeed: 10
   maxSpeed: 10
   maxSwingSpeed: 20
+  mass: 50
   maxSlopeAngle: 40
   isGrounded: 0
   isOnSlope: 0
@@ -611,9 +612,12 @@ MonoBehaviour:
   springSpringiness: 15
   springDamper: 5
   springMassScale: 4.5
+  currentInteractionState: 0
   ropePrefab: {fileID: 7035304684048593626, guid: 0768102d84015244fbd48c3d1dd42d64,
     type: 3}
-  isSelecting: 0
+  isSelectingRopeEnds: 0
+  fixedJoint: {fileID: 0}
+  isSelectingAttachEnds: 0
 --- !u!114 &2477766031548289277
 MonoBehaviour:
   m_ObjectHideFlags: 0

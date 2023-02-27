@@ -33,6 +33,7 @@ public class PlayerData : MonoBehaviour
     public float maxSwingSpeed = 20;
 
     [Header("Ground Check Data")]
+    public float mass = 50;
     public float maxSlopeAngle;
     [ReadOnly] public bool isGrounded;
     [ReadOnly] public bool isOnSlope;
@@ -76,28 +77,34 @@ public class PlayerData : MonoBehaviour
     public float springDamper;
     public float springMassScale;
 
+    public enum InteractionState {RopePlacement, Attaching}
+
+    [Header("Interaction")]
+    public InteractionState currentInteractionState;
+    
     [Header("Rope Data")]
     public GameObject ropePrefab;
     public readonly Stack<Stack<GameObject>> placedRopes = new();
     public readonly Stack<GameObject> activeRopes = new();
-    public bool isSelecting;
+    public bool isSelectingRopeEnds;
     public RaycastHit selectedGameObject = new();
+
+    [Header("Joint Data")]
+    public FixedJoint fixedJoint;
+    public bool isSelectingAttachEnds;
+
 
     private void Awake()
     {
         if (Instance != null && Instance != this) Destroy(this);
         else Instance = this;
+
+        currentInteractionState = InteractionState.RopePlacement;
     }
 
     private void Start()
     {
-        if (isAffectedByMass)
-        {
-            float mass = rigidBody.mass;
-            acceleration *= mass;
-            airAcceleration *= mass;
-            maxJumpForce *= mass;
-        }
+        rigidBody.mass = mass;
     }
 
     public GameObject TryPeekActiveRope()
