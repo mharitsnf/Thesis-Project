@@ -14,10 +14,7 @@ public class PlayerJumpState : PlayerBaseState
     
     public override void FixedUpdateState()
     {
-        PlayerData.Instance.rigidBody.AddForce(Physics.gravity * PlayerData.Instance.jumpGravityMultiplier,
-            ForceMode.Acceleration);
-        
-        if (_frameElapsed > 1)
+        if (_frameElapsed > 2)
         {
             if (PlayerData.Instance.isGrounded)
             {

@@ -59,6 +59,8 @@ public class PlayerMoveState : PlayerBaseState
         //     return;
         // }
         
+        if (PlayerData.Instance.fixedJoint) return;
+        
         if (PlayerData.Instance.isOnSlope && PlayerData.Instance.rigidBody.velocity.magnitude > PlayerData.Instance.maxSpeed)
         {
             PlayerData.Instance.rigidBody.velocity = PlayerData.Instance.rigidBody.velocity.normalized *

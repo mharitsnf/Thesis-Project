@@ -48,10 +48,6 @@ public class PlayerData : MonoBehaviour
     public float groundDrag;
     public float airDrag;
 
-    [Header("Gravity")]
-    public float fallGravityMultiplier;
-    public float jumpGravityMultiplier;
-    
     [Header("Camera")]
     public float cameraRotationSpeed;
     public float minClamp;

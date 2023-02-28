@@ -18,7 +18,6 @@ public class PlayerGroundedState : PlayerBaseState
 
     public override void FixedUpdateState()
     {
-        PlayerData.Instance.rigidBody.AddForce(Physics.gravity, ForceMode.Acceleration);
         
         if (!PlayerData.Instance.isGrounded)
             PlayerData.Instance.verticalStateController.SwitchState(PlayerData.Instance.verticalStateController.fallState);
