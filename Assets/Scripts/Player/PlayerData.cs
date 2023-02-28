@@ -20,6 +20,7 @@ public class PlayerData : MonoBehaviour
     [Header(("Controllers"))]
     [ReadOnly] public VerticalStateController verticalStateController;
     [ReadOnly] public HorizontalStateController horizontalStateController;
+    [ReadOnly] public CameraController cameraController;
 
     [Header("Movement Forces")]
     public float acceleration = 100;
@@ -49,6 +50,7 @@ public class PlayerData : MonoBehaviour
     public float airDrag;
 
     [Header("Camera")]
+    public CinemachineVirtualCameraBase[] virtualCameras;
     public float cameraRotationSpeed;
     public float minClamp;
     public float maxClamp;

@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -50,17 +51,15 @@ public class CameraController : MonoBehaviour
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
 
-    // public void SwitchVirtualCamera(int index)
-    // {
-    //     CinemachineVirtualCameraBase newVirtualCamera = PlayerData.Instance.virtualCameras[index];
-    //
-    //     newVirtualCamera.gameObject.SetActive(true);
-    //
-    //     foreach (CinemachineVirtualCameraBase virtualCamera in PlayerData.Instance.virtualCameras)
-    //     {
-    //         if (virtualCamera != newVirtualCamera) virtualCamera.gameObject.SetActive(false);
-    //     }
-    //
-    //     PlayerData.Instance.currentVirtualCamera = newVirtualCamera;
-    // }
+    public void SwitchVirtualCamera(int index)
+    {
+        CinemachineVirtualCameraBase newVirtualCamera = PlayerData.Instance.virtualCameras[index];
+    
+        newVirtualCamera.gameObject.SetActive(true);
+    
+        foreach (CinemachineVirtualCameraBase virtualCamera in PlayerData.Instance.virtualCameras)
+        {
+            if (virtualCamera != newVirtualCamera) virtualCamera.gameObject.SetActive(false);
+        }
+    }
 }

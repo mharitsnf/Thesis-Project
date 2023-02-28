@@ -125,7 +125,7 @@ public class InteractionController : MonoBehaviour
         if (!PlayerData.Instance.isSelectingRopeEnds)
         {
             PlayerData.Instance.isSelectingRopeEnds = true;
-            ActivateSlowMotion(true);
+            SwitchToAiming(true);
             
             Debug.Log("start selecting");
         }
@@ -135,7 +135,7 @@ public class InteractionController : MonoBehaviour
             
             PlayerData.Instance.isSelectingRopeEnds = false;
             PlayerData.Instance.selectedGameObject = new RaycastHit();
-            ActivateSlowMotion(false);
+            SwitchToAiming(false);
 
             Debug.Log("stop selecting");
         }
@@ -152,7 +152,7 @@ public class InteractionController : MonoBehaviour
 
             PlayerData.Instance.isSelectingRopeEnds = false;
             PlayerData.Instance.selectedGameObject = new RaycastHit();
-            ActivateSlowMotion(false);
+            SwitchToAiming(false);
 
             Debug.Log("stop selecting");
         }
@@ -183,7 +183,7 @@ public class InteractionController : MonoBehaviour
 
         PlayerData.Instance.isSelectingRopeEnds = false;
         PlayerData.Instance.selectedGameObject = new RaycastHit();
-        ActivateSlowMotion(false);
+        SwitchToAiming(false);
 
         Debug.Log("selection confirmed");
     }
@@ -208,7 +208,7 @@ public class InteractionController : MonoBehaviour
         // PlayerData.Instance.rigidBody.mass = 0;
 
         PlayerData.Instance.isSelectingAttachEnds = false;
-        ActivateSlowMotion(false);
+        SwitchToAiming(false);
 
         Debug.Log("attached to " + hit.rigidbody);
         Debug.Log("is selecting attach ends " + PlayerData.Instance.isSelectingAttachEnds);
@@ -220,7 +220,7 @@ public class InteractionController : MonoBehaviour
         if (!context.ReadValueAsButton()) return;
 
         PlayerData.Instance.isSelectingAttachEnds = !PlayerData.Instance.isSelectingAttachEnds;
-        ActivateSlowMotion(PlayerData.Instance.isSelectingAttachEnds);
+        SwitchToAiming(PlayerData.Instance.isSelectingAttachEnds);
 
         Debug.Log("is selecting attach ends " + PlayerData.Instance.isSelectingAttachEnds);
     }
@@ -253,10 +253,18 @@ public class InteractionController : MonoBehaviour
         }
     }
 
-    private void ActivateSlowMotion(bool status)
+    private void SwitchToAiming(bool slowMotion)
     {
-        if (status)Time.timeScale = PlayerData.Instance.aimingTimeScale;
-        else Time.timeScale = 1;
+        if (slowMotion)
+        {
+            PlayerData.Instance.cameraController.SwitchVirtualCamera(1);
+            Time.timeScale = PlayerData.Instance.aimingTimeScale;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            PlayerData.Instance.cameraController.SwitchVirtualCamera(0);
+        }
         
         Time.fixedDeltaTime = Time.timeScale * .02f;
 
