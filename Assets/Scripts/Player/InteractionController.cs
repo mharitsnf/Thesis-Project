@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 
-public class InputHandler : MonoBehaviour
+public class InteractionController : MonoBehaviour
 {
     private PlayerInput _playerInput;
     private CameraInput _cameraInput;
@@ -69,7 +70,7 @@ public class InputHandler : MonoBehaviour
 
     private void HandleCameraInput(InputAction.CallbackContext context)
     {
-        PlayerData.Instance.cameraLookDelta = context.ReadValue<Vector2>();
+        PlayerData.Instance.cameraLookDelta = context.ReadValue<Vector2>() * (1 / Time.timeScale);
     }
 
     private void HandleSwitchInteractionStateInput(InputAction.CallbackContext context)
@@ -91,7 +92,7 @@ public class InputHandler : MonoBehaviour
         if (!context.ReadValueAsButton()) return;
         
         if (!Physics.Raycast(PlayerData.Instance.realCamera.position, PlayerData.Instance.realCamera.forward,
-                out var hit, PlayerData.Instance.rayCastDistance)) return;
+                out var hit, PlayerData.Instance.ropeRayCastDistance)) return;
         
         if (hit.collider.CompareTag("Player")) return;
 
@@ -124,6 +125,8 @@ public class InputHandler : MonoBehaviour
         if (!PlayerData.Instance.isSelectingRopeEnds)
         {
             PlayerData.Instance.isSelectingRopeEnds = true;
+            ActivateSlowMotion(true);
+            
             Debug.Log("start selecting");
         }
         else
@@ -132,6 +135,7 @@ public class InputHandler : MonoBehaviour
             
             PlayerData.Instance.isSelectingRopeEnds = false;
             PlayerData.Instance.selectedGameObject = new RaycastHit();
+            ActivateSlowMotion(false);
 
             Debug.Log("stop selecting");
         }
@@ -148,6 +152,7 @@ public class InputHandler : MonoBehaviour
 
             PlayerData.Instance.isSelectingRopeEnds = false;
             PlayerData.Instance.selectedGameObject = new RaycastHit();
+            ActivateSlowMotion(false);
 
             Debug.Log("stop selecting");
         }
@@ -168,9 +173,8 @@ public class InputHandler : MonoBehaviour
         if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
         if (!context.ReadValueAsButton() || !PlayerData.Instance.isSelectingRopeEnds) return;
 
-        foreach (var gameObject in PlayerData.Instance.activeRopes)
+        foreach (var rope in PlayerData.Instance.activeRopes.Select(ropeObject => ropeObject.GetComponent<Rope>()))
         {
-            Rope rope = gameObject.GetComponent<Rope>();
             rope.CreateJoint();
         }
 
@@ -179,7 +183,8 @@ public class InputHandler : MonoBehaviour
 
         PlayerData.Instance.isSelectingRopeEnds = false;
         PlayerData.Instance.selectedGameObject = new RaycastHit();
-        
+        ActivateSlowMotion(false);
+
         Debug.Log("selection confirmed");
     }
 
@@ -191,7 +196,7 @@ public class InputHandler : MonoBehaviour
         if (!context.ReadValueAsButton()) return;
         
         if (!Physics.Raycast(PlayerData.Instance.realCamera.position, PlayerData.Instance.realCamera.forward,
-                out var hit, PlayerData.Instance.rayCastDistance)) return;
+                out var hit, PlayerData.Instance.attachRaycastDistance)) return;
         
         if (hit.collider.CompareTag("Player")) return;
         if (!hit.rigidbody) return;
@@ -200,9 +205,10 @@ public class InputHandler : MonoBehaviour
         joint.connectedBody = hit.rigidbody;
         if (!PlayerData.Instance.fixedJoint) PlayerData.Instance.fixedJoint = PlayerData.Instance.fixedJoint = joint;
 
-        PlayerData.Instance.rigidBody.mass = 0;
+        // PlayerData.Instance.rigidBody.mass = 0;
 
         PlayerData.Instance.isSelectingAttachEnds = false;
+        ActivateSlowMotion(false);
 
         Debug.Log("attached to " + hit.rigidbody);
         Debug.Log("is selecting attach ends " + PlayerData.Instance.isSelectingAttachEnds);
@@ -214,6 +220,7 @@ public class InputHandler : MonoBehaviour
         if (!context.ReadValueAsButton()) return;
 
         PlayerData.Instance.isSelectingAttachEnds = !PlayerData.Instance.isSelectingAttachEnds;
+        ActivateSlowMotion(PlayerData.Instance.isSelectingAttachEnds);
 
         Debug.Log("is selecting attach ends " + PlayerData.Instance.isSelectingAttachEnds);
     }
@@ -229,7 +236,7 @@ public class InputHandler : MonoBehaviour
         Destroy(PlayerData.Instance.fixedJoint);
         PlayerData.Instance.fixedJoint = null;
 
-        PlayerData.Instance.rigidBody.mass = PlayerData.Instance.mass;
+        // PlayerData.Instance.rigidBody.mass = PlayerData.Instance.mass;
 
         Debug.Log("detached");
     }
@@ -244,6 +251,15 @@ public class InputHandler : MonoBehaviour
             if (rope.joint) Destroy(rope.joint);
             Destroy(ropeObject);
         }
+    }
+
+    private void ActivateSlowMotion(bool status)
+    {
+        if (status)Time.timeScale = PlayerData.Instance.aimingTimeScale;
+        else Time.timeScale = 1;
+        
+        Time.fixedDeltaTime = Time.timeScale * .02f;
+
     }
 
     private void OnEnable()

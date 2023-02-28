@@ -551,7 +551,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2477766031548289273}
   serializedVersion: 2
-  m_Mass: 50
+  m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
@@ -577,14 +577,13 @@ MonoBehaviour:
   rigidBody: {fileID: 2477766031548289276}
   verticalStateController: {fileID: 2477766031548289279}
   horizontalStateController: {fileID: 2477766031548289275}
-  isAffectedByMass: 1
-  acceleration: 3000
-  airAcceleration: 1000
-  maxJumpForce: 1000
+  acceleration: 600
+  airAcceleration: 400
+  maxJumpForce: 200
   movementRotationSpeed: 10
   maxSpeed: 10
   maxSwingSpeed: 20
-  mass: 50
+  mass: 10
   maxSlopeAngle: 40
   isGrounded: 0
   isOnSlope: 0
@@ -606,18 +605,20 @@ MonoBehaviour:
   cameraLookDelta: {x: 0, y: 0}
   cinemachineFollowYaw: 0
   cinemachineFollowPitch: 0
-  rayCastDistance: 50
+  ropeRayCastDistance: 50
   maxDistanceMultiplier: 0.4
   minDistanceMultiplier: 0.6
-  springinessMultiplier: 3.5
-  springDamper: 7
-  springMassScale: 4.5
+  springinessMultiplier: 5
+  springDamper: 10
+  springMassScale: 5
   currentInteractionState: 0
   ropePrefab: {fileID: 7035304684048593626, guid: 0768102d84015244fbd48c3d1dd42d64,
     type: 3}
   isSelectingRopeEnds: 0
+  attachRaycastDistance: 10
   fixedJoint: {fileID: 0}
   isSelectingAttachEnds: 0
+  aimingTimeScale: 0.1
 --- !u!114 &2477766031548289277
 MonoBehaviour:
   m_ObjectHideFlags: 0

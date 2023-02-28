@@ -22,7 +22,6 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public HorizontalStateController horizontalStateController;
 
     [Header("Movement Forces")]
-    public bool isAffectedByMass;
     public float acceleration = 100;
     public float airAcceleration = 100;
     public float maxJumpForce;
@@ -70,7 +69,7 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public float cinemachineFollowPitch;
 
     [Header("Spring Data")]
-    public float rayCastDistance;
+    public float ropeRayCastDistance;
     public float maxDistanceMultiplier;
     public float minDistanceMultiplier;
     public float springinessMultiplier;
@@ -90,8 +89,12 @@ public class PlayerData : MonoBehaviour
     public RaycastHit selectedGameObject = new();
 
     [Header("Joint Data")]
+    public float attachRaycastDistance;
     public FixedJoint fixedJoint;
     public bool isSelectingAttachEnds;
+
+    [Header("Time")]
+    public float aimingTimeScale = 0.25f;
 
 
     private void Awake()

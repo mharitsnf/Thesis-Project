@@ -89,9 +89,11 @@ public class Rope : MonoBehaviour
             _firstEnd.rigidbody.freezeRotation = true;
             _secondEnd.rigidbody.freezeRotation = true;
             joint = SetupJoint(_firstEnd.rigidbody, (_firstEnd.worldPosition - _secondEnd.worldPosition).magnitude);
-        
+
+            joint.connectedBody = _secondEnd.rigidbody;
             joint.anchor = _firstEnd.localPosition;
             joint.connectedAnchor = _secondEnd.localPosition;
+            Debug.Log("Here");
         }
         else if (_firstEnd.rigidbody && !_secondEnd.rigidbody)
         {
@@ -100,14 +102,6 @@ public class Rope : MonoBehaviour
         
             joint.connectedAnchor = _secondEnd.worldPosition;
         }
-        // else if (!_firstEnd.rigidbody && _secondEnd.rigidbody)
-        // {
-        //     _secondEnd.rigidbody.freezeRotation = true;
-        //     joint = SetupJoint(_secondEnd.rigidbody, (_firstEnd.worldPosition - _secondEnd.worldPosition).magnitude);
-        //
-        //     joint.anchor = _secondEnd.localPosition;
-        //     joint.connectedAnchor = _firstEnd.worldPosition;
-        // }
 
         _canDraw = true;
     }
