@@ -83,13 +83,12 @@ public class PlayerData : MonoBehaviour
     public GameObject ropePrefab;
     public readonly Stack<Stack<GameObject>> placedRopes = new();
     public readonly Stack<GameObject> activeRopes = new();
-    public bool isSelectingRopeEnds;
+    public bool isAiming;
     public RaycastHit selectedGameObject = new();
 
     [Header("Joint Data")]
     public float attachRaycastDistance;
     public FixedJoint fixedJoint;
-    public bool isSelectingAttachEnds;
 
     [Header("Time")]
     public float aimingTimeScale = 0.25f;
