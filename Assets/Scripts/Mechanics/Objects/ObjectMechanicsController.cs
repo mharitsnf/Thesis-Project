@@ -48,7 +48,11 @@ public class ObjectMechanicsController : MonoBehaviour
 
     private void ToggleAiming(bool isAiming)
     {
-        SetMaterial(isAiming ? 1 : 0);
+        if (isAiming) SetMaterial(1);
+        else
+        {
+            SetMaterial(_rb.freezeRotation ? 3 : 0);
+        }
     }
 
     public void SetSelected()
@@ -61,7 +65,7 @@ public class ObjectMechanicsController : MonoBehaviour
         _particleSystem.Play();
     }
 
-    private void SetMaterial(int index)
+    public void SetMaterial(int index)
     {
         _meshRenderer.material = materials[index];
         if (index == 2)
@@ -72,6 +76,10 @@ public class ObjectMechanicsController : MonoBehaviour
     
     private void LateUpdate()
     {
-        if (_parent.GetComponents<SpringJoint>().Length == 0) _rb.freezeRotation = false;
+        if (_parent.GetComponents<SpringJoint>().Length == 0 && _rb.freezeRotation)
+        {
+            _rb.freezeRotation = false;
+            SetMaterial(0);
+        }
     }
 }

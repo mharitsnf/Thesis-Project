@@ -90,12 +90,12 @@ public class InteractionController : MonoBehaviour
 
     private void HandleSwitchInteractionStateInput(InputAction.CallbackContext context)
     {
-        if (!context.ReadValueAsButton()) return;
-        if (PlayerData.Instance.isAiming) return;
-
-        PlayerData.Instance.currentInteractionState = PlayerData.Instance.currentInteractionState == PlayerData.InteractionState.Attaching ? PlayerData.InteractionState.RopePlacement : PlayerData.InteractionState.Attaching;
-
-        Debug.Log(PlayerData.Instance.currentInteractionState);
+        // if (!context.ReadValueAsButton()) return;
+        // if (PlayerData.Instance.isAiming) return;
+        //
+        // PlayerData.Instance.currentInteractionState = PlayerData.Instance.currentInteractionState == PlayerData.InteractionState.Attaching ? PlayerData.InteractionState.RopePlacement : PlayerData.InteractionState.Attaching;
+        //
+        // Debug.Log(PlayerData.Instance.currentInteractionState);
     }
 
     private void HandleInteractRopePlacementInput(InputAction.CallbackContext context)
@@ -258,8 +258,12 @@ public class InteractionController : MonoBehaviour
             if (PlayerData.Instance.currentInteractionState == PlayerData.InteractionState.RopePlacement)
             {
                 if (isJointPlaced)
+                {
+                    PlayerData.Instance.selectedGameObject.collider.gameObject
+                        .GetComponentInChildren<ObjectMechanicsController>().SetMaterial(3);
                     PlayerData.Instance.selectedGameObject.collider.gameObject
                         .GetComponentInChildren<ObjectMechanicsController>().PlayParticle();
+                }
                 
                 PlayerData.Instance.selectedGameObject = new RaycastHit();
             }
