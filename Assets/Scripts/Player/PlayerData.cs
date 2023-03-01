@@ -93,7 +93,6 @@ public class PlayerData : MonoBehaviour
     [Header("Time")]
     public float aimingTimeScale = 0.25f;
 
-
     private void Awake()
     {
         if (Instance != null && Instance != this) Destroy(this);

@@ -104,6 +104,8 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
+    - _Time_Scale: 0
+    - _Unscaled_Time: 0
     - _Wave_Time_Scale: 0.8
     - _WorkflowMode: 1
     - _ZWrite: 1

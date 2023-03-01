@@ -1,10 +1,11 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
+
+public class ToggleEvent : UnityEvent<bool> {}
 
 public class InteractionController : MonoBehaviour
 {
@@ -12,13 +13,27 @@ public class InteractionController : MonoBehaviour
     private CameraInput _cameraInput;
 
     private float _timeElapsedPressed;
-    
+
+    public static readonly ToggleEvent OnToggleAiming = new();
+
 
     // Start is called before the first frame update
     void Awake()
     {
         SetupPlayerInput();
         SetupCameraInput();
+    }
+    
+    private void OnEnable()
+    {
+        _playerInput.Enable();
+        _cameraInput.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _playerInput.Disable();
+        _cameraInput.Disable();
     }
 
     private void SetupPlayerInput()
@@ -97,6 +112,7 @@ public class InteractionController : MonoBehaviour
         {
             if (!hit.collider.gameObject.CompareTag("Object")) return;
             PlayerData.Instance.selectedGameObject = hit;
+            hit.collider.gameObject.GetComponentInChildren<ObjectMechanicsController>().SetSelected();
         }
         else
         {
@@ -216,6 +232,8 @@ public class InteractionController : MonoBehaviour
 
     private void ToggleAiming(bool isAiming)
     {
+        OnToggleAiming.Invoke(isAiming);
+        
         if (isAiming)
         {
             PlayerData.Instance.isAiming = true;
@@ -227,23 +245,20 @@ public class InteractionController : MonoBehaviour
             PlayerData.Instance.isAiming = false;
             Time.timeScale = 1;
             PlayerData.Instance.cameraController.SwitchVirtualCamera(0);
-
+    
             if (PlayerData.Instance.currentInteractionState == PlayerData.InteractionState.RopePlacement)
+            {
+                if (!PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit)) && PlayerData.Instance.selectedGameObject.collider.gameObject.GetComponent<SpringJoint>())
+                {
+                    
+                    PlayerData.Instance.selectedGameObject.collider.gameObject
+                        .GetComponentInChildren<ObjectMechanicsController>().PlayParticle();
+                }
+                
                 PlayerData.Instance.selectedGameObject = new RaycastHit();
+            }
         }
-
+    
         Time.fixedDeltaTime = Time.timeScale * .02f;
-    }
-
-    private void OnEnable()
-    {
-        _playerInput.Enable();
-        _cameraInput.Enable();
-    }
-
-    private void OnDisable()
-    {
-        _playerInput.Disable();
-        _cameraInput.Disable();
     }
 }
