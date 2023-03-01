@@ -169,15 +169,23 @@ public class InteractionController : MonoBehaviour
         if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
         if (!context.ReadValueAsButton() || !PlayerData.Instance.isAiming) return;
 
-        foreach (var rope in PlayerData.Instance.activeRopes.Select(ropeObject => ropeObject.GetComponent<Rope>()))
+        if (PlayerData.Instance.activeRopes.Count > 0)
         {
-            rope.CreateJoint();
+            foreach (var rope in PlayerData.Instance.activeRopes.Select(ropeObject => ropeObject.GetComponent<Rope>()))
+            {
+                rope.CreateJoint();
+            }
+
+            PlayerData.Instance.placedRopes.Push(new Stack<GameObject>(PlayerData.Instance.activeRopes));
+            PlayerData.Instance.activeRopes.Clear();
+
+            ToggleAiming(false, true);
         }
-
-        PlayerData.Instance.placedRopes.Push(new Stack<GameObject>(PlayerData.Instance.activeRopes));
-        PlayerData.Instance.activeRopes.Clear();
-
-        ToggleAiming(false);
+        else
+        {
+            EmptyRopeStack(PlayerData.Instance.activeRopes);
+            ToggleAiming(false);
+        }
     }
 
     private void HandleInteractAttachingInput(InputAction.CallbackContext context)
@@ -230,7 +238,7 @@ public class InteractionController : MonoBehaviour
         }
     }
 
-    private void ToggleAiming(bool isAiming)
+    private void ToggleAiming(bool isAiming, bool isJointPlaced = false)
     {
         OnToggleAiming.Invoke(isAiming);
         
@@ -248,12 +256,9 @@ public class InteractionController : MonoBehaviour
     
             if (PlayerData.Instance.currentInteractionState == PlayerData.InteractionState.RopePlacement)
             {
-                if (!PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit)) && PlayerData.Instance.selectedGameObject.collider.gameObject.GetComponent<SpringJoint>())
-                {
-                    
+                if (isJointPlaced)
                     PlayerData.Instance.selectedGameObject.collider.gameObject
                         .GetComponentInChildren<ObjectMechanicsController>().PlayParticle();
-                }
                 
                 PlayerData.Instance.selectedGameObject = new RaycastHit();
             }
