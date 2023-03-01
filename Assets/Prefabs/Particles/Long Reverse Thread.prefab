@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8914514862058232743}
   - component: {fileID: 8914514862058232740}
   m_Layer: 0
-  m_Name: Reverse Thread
+  m_Name: Long Reverse Thread
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
