@@ -116,7 +116,7 @@ public class InteractionController : MonoBehaviour
         }
         else
         {
-            if (PlayerData.Instance.selectedGameObject.Equals(hit)) return;
+            if (PlayerData.Instance.selectedGameObject.collider.gameObject.Equals(hit.collider.gameObject)) return;
             
             PlayerData.Instance.activeRopes.Push(Instantiate(PlayerData.Instance.ropePrefab));
             
@@ -124,7 +124,7 @@ public class InteractionController : MonoBehaviour
             Rope lastRope = lastRopeObject.GetComponent<Rope>();
             lastRope.PlaceEnd(PlayerData.Instance.selectedGameObject);
 
-            bool status = lastRope.PlaceEnd(hit);
+            lastRope.PlaceEnd(hit);
         }
     }
 
@@ -234,6 +234,7 @@ public class InteractionController : MonoBehaviour
             Rope rope = ropeObject.GetComponent<Rope>();
 
             if (rope.joint) Destroy(rope.joint);
+            if (rope.attachmentPoint) Destroy(rope.attachmentPoint);
             Destroy(ropeObject);
         }
     }

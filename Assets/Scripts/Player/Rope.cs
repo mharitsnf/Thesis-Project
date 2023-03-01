@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.Collections;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Rope : MonoBehaviour
 {
@@ -25,9 +27,12 @@ public class Rope : MonoBehaviour
         }
     }
 
+    public SpringJoint joint;
+    public GameObject attachmentPointPrefab;
+    public GameObject attachmentPoint;
+    
     private EndData _firstEnd;
     private EndData _secondEnd;
-    public SpringJoint joint;
     private LineRenderer _lineRenderer;
     private bool _canDraw;
 
@@ -77,7 +82,11 @@ public class Rope : MonoBehaviour
         EndData end = !hit.rigidbody ? new EndData(hit.point) : new EndData(hit.rigidbody, hit.rigidbody.transform.InverseTransformPoint(hit.point), hit.point);
 
         if (_firstEnd == null) _firstEnd = end;
-        else _secondEnd = end;
+        else
+        {
+            _secondEnd = end;
+            attachmentPoint = Instantiate(attachmentPointPrefab, end.worldPosition, quaternion.identity);
+        }
         
         return true;
     }
@@ -102,7 +111,8 @@ public class Rope : MonoBehaviour
         
             joint.connectedAnchor = _secondEnd.worldPosition;
         }
-
+        
+        Destroy(attachmentPoint);
         _canDraw = true;
     }
 

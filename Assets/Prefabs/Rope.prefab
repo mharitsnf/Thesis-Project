@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ddbbb5934476414da74c1e616c4fcf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joint: {fileID: 0}
+  attachmentPointPrefab: {fileID: 3088194348944488025, guid: e26f3c6f55a48a1488f5dd54df4a2987,
+    type: 3}
 --- !u!120 &7035304684048593625
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -65,7 +68,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 282f55f0111276d41a5283c7a2aed8ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
