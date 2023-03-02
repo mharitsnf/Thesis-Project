@@ -16,6 +16,7 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public Transform orientation;
     [ReadOnly] public GameObject cinemachineFollow;
     [ReadOnly] public Rigidbody rigidBody;
+    [ReadOnly] public Vector3 initialPosition;
     
     [Header(("Controllers"))]
     [ReadOnly] public VerticalStateController verticalStateController;
@@ -93,6 +94,9 @@ public class PlayerData : MonoBehaviour
     [Header("Time")]
     public float aimingTimeScale = 0.25f;
 
+    [Header("Objective Collected")]
+    public int objectiveCollectedAmount;
+
     private void Awake()
     {
         if (Instance != null && Instance != this) Destroy(this);
@@ -103,6 +107,7 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
+        initialPosition = transform.position;
         rigidBody.mass = mass;
     }
 

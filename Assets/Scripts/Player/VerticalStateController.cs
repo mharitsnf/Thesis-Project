@@ -21,6 +21,7 @@ public class VerticalStateController : BaseStateController
 
     private void FixedUpdate()
     {
+        ResetPosition();
         GroundAndSlopeCheck();
         currentState.FixedUpdateState();
     }
@@ -37,6 +38,11 @@ public class VerticalStateController : BaseStateController
 
         float groundAngle = Vector3.Angle(Vector3.up, PlayerData.Instance.groundInfo.normal);
         PlayerData.Instance.isOnSlope = groundAngle < PlayerData.Instance.maxSlopeAngle && groundAngle != 0;
+    }
+
+    private void ResetPosition()
+    {
+        if (transform.position.y < -50f) transform.position = PlayerData.Instance.initialPosition;
     }
 
     public void Jump()

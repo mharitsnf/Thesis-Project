@@ -113,6 +113,8 @@ public class InteractionController : MonoBehaviour
             if (!hit.collider.gameObject.CompareTag("Object")) return;
             PlayerData.Instance.selectedGameObject = hit;
             hit.collider.gameObject.GetComponentInChildren<ObjectMechanicsController>().SetSelected();
+
+            InstructionGroup.Instance.CurrentState = InstructionGroup.DisplayState.ObjectSelected;
         }
         else
         {
@@ -136,11 +138,15 @@ public class InteractionController : MonoBehaviour
         if (!PlayerData.Instance.isAiming)
         {
             ToggleAiming(true);
+
+            InstructionGroup.Instance.CurrentState = InstructionGroup.DisplayState.ObjectNotSelected;
         }
         else
         {
             EmptyRopeStack(PlayerData.Instance.activeRopes);
             ToggleAiming(false);
+            
+            InstructionGroup.Instance.CurrentState = InstructionGroup.DisplayState.NotAiming;
         }
     }
 
@@ -153,6 +159,8 @@ public class InteractionController : MonoBehaviour
         {
             EmptyRopeStack(PlayerData.Instance.activeRopes);
             ToggleAiming(false);
+            
+            InstructionGroup.Instance.CurrentState = InstructionGroup.DisplayState.NotAiming;
         }
         else
         {
@@ -160,6 +168,8 @@ public class InteractionController : MonoBehaviour
             
             Stack<GameObject> previousRopeStack = PlayerData.Instance.placedRopes.Pop();
             EmptyRopeStack(previousRopeStack);
+            
+            InstructionGroup.Instance.CurrentState = InstructionGroup.DisplayState.NotAiming;
         }
         
     }
@@ -180,11 +190,15 @@ public class InteractionController : MonoBehaviour
             PlayerData.Instance.activeRopes.Clear();
 
             ToggleAiming(false, true);
+            
+            InstructionGroup.Instance.CurrentState = InstructionGroup.DisplayState.NotAiming;
         }
         else
         {
             EmptyRopeStack(PlayerData.Instance.activeRopes);
             ToggleAiming(false);
+            
+            InstructionGroup.Instance.CurrentState = InstructionGroup.DisplayState.NotAiming;
         }
     }
 
