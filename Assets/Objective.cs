@@ -8,6 +8,7 @@ public class Objective : MonoBehaviour
 {
 
     public int ignoreLayerIndex;
+    public GameObject captureParticlesPrefab;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -16,6 +17,8 @@ public class Objective : MonoBehaviour
 
         PlayerData.Instance.objectiveCollectedAmount++;
         ObjectiveHUD.Instance.UpdateHUD();
+
+        Instantiate(captureParticlesPrefab, transform.position, Quaternion.identity);
         
         GetComponent<ParticleSystem>().Stop();
         Destroy(gameObject);

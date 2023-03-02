@@ -1,5 +1,51 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &81454088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 81454089}
+  - component: {fileID: 81454090}
+  m_Layer: 7
+  m_Name: Frictionless
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &81454089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81454088}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2477766031245606930}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &81454090
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81454088}
+  m_Material: {fileID: 13400000, guid: 08631a91a2cdba941b0ba2cba5d3e0ee, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.55
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2477766029841766299
 GameObject:
   m_ObjectHideFlags: 0
@@ -25,7 +71,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2477766029841766299}
   m_LocalRotation: {x: -0.45510495, y: -0.005891434, z: 0.0030176581, w: -0.8904132}
-  m_LocalPosition: {x: 1, y: 0.8000002, z: -8}
+  m_LocalPosition: {x: 1, y: 0.79999995, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -234,7 +280,7 @@ GameObject:
   - component: {fileID: 2477766030358730371}
   m_Layer: 0
   m_Name: Cinemachine Follow
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,6 +310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2477766030971549099}
   - component: {fileID: 2477766030971549100}
+  - component: {fileID: 1974810102}
   m_Layer: 0
   m_Name: ThirdPerson
   m_TagString: Untagged
@@ -279,7 +326,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2477766030971549098}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.7000003, y: 1, z: -5}
+  m_LocalPosition: {x: 0.70000076, y: 1, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -305,7 +352,7 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
+  m_LookAt: {fileID: 2477766030358730371}
   m_Follow: {fileID: 2477766030358730371}
   m_Lens:
     FieldOfView: 60
@@ -325,6 +372,36 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 2477766031647507384}
+--- !u!114 &1974810102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477766030971549098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e501d18bb52cf8c40b1853ca4904654f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CollideAgainst:
+    serializedVersion: 2
+    m_Bits: 183
+  m_IgnoreTag: 
+  m_TransparentLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_MinimumDistanceFromTarget: 0.1
+  m_AvoidObstacles: 1
+  m_DistanceLimit: 0
+  m_MinimumOcclusionTime: 0
+  m_CameraRadius: 0.1
+  m_Strategy: 1
+  m_MaximumEffort: 4
+  m_SmoothingTime: 0
+  m_Damping: 0
+  m_DampingWhenOccluded: 0
+  m_OptimalTargetDistance: 0
 --- !u!1 &2477766031245606929
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +432,7 @@ Transform:
   m_Children:
   - {fileID: 2477766031479587367}
   - {fileID: 2477766030309207698}
+  - {fileID: 81454089}
   m_Father: {fileID: 2477766031548289274}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -401,7 +479,6 @@ GameObject:
   - component: {fileID: 2477766031479587366}
   - component: {fileID: 2477766031479587365}
   - component: {fileID: 2477766031479587368}
-  - component: {fileID: 1709029886}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Player
@@ -488,20 +565,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &1709029886
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2477766031479587363}
-  m_Material: {fileID: 13400000, guid: 08631a91a2cdba941b0ba2cba5d3e0ee, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.55
-  m_Height: 1.8
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2477766031548289273
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +617,7 @@ Rigidbody:
   m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 112
@@ -575,6 +638,7 @@ MonoBehaviour:
   orientation: {fileID: 2477766031392224697}
   cinemachineFollow: {fileID: 2477766030358730370}
   rigidBody: {fileID: 2477766031548289276}
+  initialPosition: {x: 0, y: 0, z: 0}
   verticalStateController: {fileID: 2477766031548289279}
   horizontalStateController: {fileID: 2477766031548289275}
   cameraController: {fileID: 2477766031548289278}
@@ -598,7 +662,7 @@ MonoBehaviour:
   - {fileID: 2477766030971549100}
   - {fileID: 2477766029841766301}
   cameraRotationSpeed: 10
-  minClamp: -50
+  minClamp: -70
   maxClamp: 70
   invertY: 1
   invertX: 0
@@ -616,11 +680,11 @@ MonoBehaviour:
   currentInteractionState: 0
   ropePrefab: {fileID: 7035304684048593626, guid: 0768102d84015244fbd48c3d1dd42d64,
     type: 3}
-  isSelectingRopeEnds: 0
+  isAiming: 0
   attachRaycastDistance: 10
   fixedJoint: {fileID: 0}
-  isSelectingAttachEnds: 0
   aimingTimeScale: 0.1
+  objectiveCollectedAmount: 0
 --- !u!114 &2477766031548289277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,7 +744,7 @@ GameObject:
   - component: {fileID: 2477766031623442079}
   m_Layer: 0
   m_Name: Virtual Cameras
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
