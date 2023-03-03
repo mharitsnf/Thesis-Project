@@ -48,6 +48,11 @@ MonoBehaviour:
   joint: {fileID: 0}
   attachmentPointPrefab: {fileID: 3088194348944488025, guid: e26f3c6f55a48a1488f5dd54df4a2987,
     type: 3}
+  attachmentPoint: {fileID: 0}
+  materials:
+  - {fileID: 2100000, guid: 282f55f0111276d41a5283c7a2aed8ce, type: 2}
+  - {fileID: 2100000, guid: 7c58f1c20e89fa14db83c0fe67a69990, type: 2}
+  - {fileID: 2100000, guid: 141c26d9c3989a04d87ca2d283fcbe59, type: 2}
 --- !u!120 &7035304684048593625
 LineRenderer:
   m_ObjectHideFlags: 0

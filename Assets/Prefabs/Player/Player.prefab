@@ -652,6 +652,7 @@ MonoBehaviour:
   maxSlopeAngle: 40
   isGrounded: 0
   isOnSlope: 0
+  isOnExtremeSlope: 0
   playerYCenter: 0
   currentJumpPercentage: 1
   buttonHoldTime: 0.075
@@ -663,7 +664,7 @@ MonoBehaviour:
   - {fileID: 2477766029841766301}
   cameraRotationSpeed: 10
   minClamp: -70
-  maxClamp: 70
+  maxClamp: 80
   invertY: 1
   invertX: 0
   realCamera: {fileID: 0}

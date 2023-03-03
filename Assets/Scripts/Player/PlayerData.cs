@@ -38,6 +38,7 @@ public class PlayerData : MonoBehaviour
     public float maxSlopeAngle;
     [ReadOnly] public bool isGrounded;
     [ReadOnly] public bool isOnSlope;
+    [ReadOnly] public bool isOnExtremeSlope;
     [ReadOnly] public float playerYCenter;
     [ReadOnly] public RaycastHit groundInfo;
     
@@ -82,8 +83,8 @@ public class PlayerData : MonoBehaviour
     
     [Header("Rope Data")]
     public GameObject ropePrefab;
-    public readonly Stack<Stack<GameObject>> placedRopes = new();
-    public readonly Stack<GameObject> activeRopes = new();
+    public readonly LinkedList<LinkedList<GameObject>> placedRopes = new();
+    public readonly LinkedList<GameObject> activeRopes = new();
     public bool isAiming;
     public RaycastHit selectedGameObject = new();
 
@@ -115,7 +116,7 @@ public class PlayerData : MonoBehaviour
     {
         try
         {
-            return activeRopes.Peek();
+            return activeRopes.Last.Value;
         }
         catch (Exception)
         {

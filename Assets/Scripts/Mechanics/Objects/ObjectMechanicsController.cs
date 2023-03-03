@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 public class ObjectMechanicsController : MonoBehaviour
 {
     private GameObject _parent;
+    private Vector3 _initialPosition;
     
     private Rigidbody _rb;
     private MeshRenderer _meshRenderer;
@@ -32,8 +33,13 @@ public class ObjectMechanicsController : MonoBehaviour
         _rb = _parent.GetComponent<Rigidbody>();
         _meshRenderer = _parent.GetComponent<MeshRenderer>();
         _particleSystem = transform.GetChild(0).GetComponent<ParticleSystem>();
-        
+
         SetMaterial(0);
+    }
+
+    private void Start()
+    {
+        _initialPosition = _parent.transform.position;
     }
 
     private void OnEnable()
@@ -74,6 +80,21 @@ public class ObjectMechanicsController : MonoBehaviour
         }
     }
     
+    private void ResetPosition()
+    {
+        if (transform.position.y < -50f)
+        {
+
+            _rb.velocity = Vector3.zero;
+            _parent.transform.position = _initialPosition;
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        ResetPosition();
+    }
+
     private void LateUpdate()
     {
         if (_parent.GetComponents<SpringJoint>().Length == 0 && _rb.freezeRotation)

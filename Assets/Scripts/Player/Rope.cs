@@ -30,6 +30,7 @@ public class Rope : MonoBehaviour
     public SpringJoint joint;
     public GameObject attachmentPointPrefab;
     public GameObject attachmentPoint;
+    public Material[] materials;
     
     private EndData _firstEnd;
     private EndData _secondEnd;
@@ -111,9 +112,15 @@ public class Rope : MonoBehaviour
         
             joint.connectedAnchor = _secondEnd.worldPosition;
         }
-        
+
+        SetColor(2);
         Destroy(attachmentPoint);
         _canDraw = true;
+    }
+
+    public void SetColor(int index)
+    {
+        _lineRenderer.material = materials[index];
     }
 
     private SpringJoint SetupJoint(Rigidbody rb, float distance)

@@ -82,9 +82,18 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""DetachRopePlacement"",
+                    ""name"": ""DetachLastRopePlacement"",
                     ""type"": ""Button"",
                     ""id"": ""756afd89-f100-4df4-884a-3626a5b41777"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DetachFirstRopePlacement"",
+                    ""type"": ""Button"",
+                    ""id"": ""66cb60df-315a-4acb-bcf4-a07f92cd1efb"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -247,7 +256,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""DetachRopePlacement"",
+                    ""action"": ""DetachLastRopePlacement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -294,6 +303,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""InteractAttaching"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""77789578-8ab6-4fae-acd9-6429bca05e79"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DetachFirstRopePlacement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -308,7 +328,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_CharacterControls_InteractRopePlacement = m_CharacterControls.FindAction("InteractRopePlacement", throwIfNotFound: true);
         m_CharacterControls_ToggleRopePlacement = m_CharacterControls.FindAction("ToggleRopePlacement", throwIfNotFound: true);
         m_CharacterControls_ConfirmRopePlacement = m_CharacterControls.FindAction("ConfirmRopePlacement", throwIfNotFound: true);
-        m_CharacterControls_DetachRopePlacement = m_CharacterControls.FindAction("DetachRopePlacement", throwIfNotFound: true);
+        m_CharacterControls_DetachLastRopePlacement = m_CharacterControls.FindAction("DetachLastRopePlacement", throwIfNotFound: true);
+        m_CharacterControls_DetachFirstRopePlacement = m_CharacterControls.FindAction("DetachFirstRopePlacement", throwIfNotFound: true);
         m_CharacterControls_InteractAttaching = m_CharacterControls.FindAction("InteractAttaching", throwIfNotFound: true);
         m_CharacterControls_ToggleAttaching = m_CharacterControls.FindAction("ToggleAttaching", throwIfNotFound: true);
         m_CharacterControls_DetachAttaching = m_CharacterControls.FindAction("DetachAttaching", throwIfNotFound: true);
@@ -377,7 +398,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControls_InteractRopePlacement;
     private readonly InputAction m_CharacterControls_ToggleRopePlacement;
     private readonly InputAction m_CharacterControls_ConfirmRopePlacement;
-    private readonly InputAction m_CharacterControls_DetachRopePlacement;
+    private readonly InputAction m_CharacterControls_DetachLastRopePlacement;
+    private readonly InputAction m_CharacterControls_DetachFirstRopePlacement;
     private readonly InputAction m_CharacterControls_InteractAttaching;
     private readonly InputAction m_CharacterControls_ToggleAttaching;
     private readonly InputAction m_CharacterControls_DetachAttaching;
@@ -391,7 +413,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @InteractRopePlacement => m_Wrapper.m_CharacterControls_InteractRopePlacement;
         public InputAction @ToggleRopePlacement => m_Wrapper.m_CharacterControls_ToggleRopePlacement;
         public InputAction @ConfirmRopePlacement => m_Wrapper.m_CharacterControls_ConfirmRopePlacement;
-        public InputAction @DetachRopePlacement => m_Wrapper.m_CharacterControls_DetachRopePlacement;
+        public InputAction @DetachLastRopePlacement => m_Wrapper.m_CharacterControls_DetachLastRopePlacement;
+        public InputAction @DetachFirstRopePlacement => m_Wrapper.m_CharacterControls_DetachFirstRopePlacement;
         public InputAction @InteractAttaching => m_Wrapper.m_CharacterControls_InteractAttaching;
         public InputAction @ToggleAttaching => m_Wrapper.m_CharacterControls_ToggleAttaching;
         public InputAction @DetachAttaching => m_Wrapper.m_CharacterControls_DetachAttaching;
@@ -422,9 +445,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ConfirmRopePlacement.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnConfirmRopePlacement;
                 @ConfirmRopePlacement.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnConfirmRopePlacement;
                 @ConfirmRopePlacement.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnConfirmRopePlacement;
-                @DetachRopePlacement.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDetachRopePlacement;
-                @DetachRopePlacement.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDetachRopePlacement;
-                @DetachRopePlacement.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDetachRopePlacement;
+                @DetachLastRopePlacement.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDetachLastRopePlacement;
+                @DetachLastRopePlacement.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDetachLastRopePlacement;
+                @DetachLastRopePlacement.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDetachLastRopePlacement;
+                @DetachFirstRopePlacement.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDetachFirstRopePlacement;
+                @DetachFirstRopePlacement.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDetachFirstRopePlacement;
+                @DetachFirstRopePlacement.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDetachFirstRopePlacement;
                 @InteractAttaching.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnInteractAttaching;
                 @InteractAttaching.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnInteractAttaching;
                 @InteractAttaching.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnInteractAttaching;
@@ -456,9 +482,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @ConfirmRopePlacement.started += instance.OnConfirmRopePlacement;
                 @ConfirmRopePlacement.performed += instance.OnConfirmRopePlacement;
                 @ConfirmRopePlacement.canceled += instance.OnConfirmRopePlacement;
-                @DetachRopePlacement.started += instance.OnDetachRopePlacement;
-                @DetachRopePlacement.performed += instance.OnDetachRopePlacement;
-                @DetachRopePlacement.canceled += instance.OnDetachRopePlacement;
+                @DetachLastRopePlacement.started += instance.OnDetachLastRopePlacement;
+                @DetachLastRopePlacement.performed += instance.OnDetachLastRopePlacement;
+                @DetachLastRopePlacement.canceled += instance.OnDetachLastRopePlacement;
+                @DetachFirstRopePlacement.started += instance.OnDetachFirstRopePlacement;
+                @DetachFirstRopePlacement.performed += instance.OnDetachFirstRopePlacement;
+                @DetachFirstRopePlacement.canceled += instance.OnDetachFirstRopePlacement;
                 @InteractAttaching.started += instance.OnInteractAttaching;
                 @InteractAttaching.performed += instance.OnInteractAttaching;
                 @InteractAttaching.canceled += instance.OnInteractAttaching;
@@ -480,7 +509,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnInteractRopePlacement(InputAction.CallbackContext context);
         void OnToggleRopePlacement(InputAction.CallbackContext context);
         void OnConfirmRopePlacement(InputAction.CallbackContext context);
-        void OnDetachRopePlacement(InputAction.CallbackContext context);
+        void OnDetachLastRopePlacement(InputAction.CallbackContext context);
+        void OnDetachFirstRopePlacement(InputAction.CallbackContext context);
         void OnInteractAttaching(InputAction.CallbackContext context);
         void OnToggleAttaching(InputAction.CallbackContext context);
         void OnDetachAttaching(InputAction.CallbackContext context);

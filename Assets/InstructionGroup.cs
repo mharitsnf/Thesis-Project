@@ -30,6 +30,7 @@ public class InstructionGroup : MonoBehaviour
                 case DisplayState.NotAiming:
                     instructions.Add("Right Click to Aim");
                     if (PlayerData.Instance.placedRopes.Count > 0) instructions.Add("Q to Detach Latest Rope");
+                    if (PlayerData.Instance.placedRopes.Count > 0) instructions.Add("LShift to Detach Earliest Rope");
                     SetInstructions(instructions);
                     break;
                 case DisplayState.ObjectNotSelected:

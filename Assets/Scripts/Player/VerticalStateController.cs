@@ -38,6 +38,7 @@ public class VerticalStateController : BaseStateController
 
         float groundAngle = Vector3.Angle(Vector3.up, PlayerData.Instance.groundInfo.normal);
         PlayerData.Instance.isOnSlope = groundAngle < PlayerData.Instance.maxSlopeAngle && groundAngle != 0;
+        PlayerData.Instance.isOnExtremeSlope = groundAngle >= PlayerData.Instance.maxSlopeAngle && groundAngle != 0;
     }
 
     private void ResetPosition()
@@ -48,6 +49,7 @@ public class VerticalStateController : BaseStateController
     public void Jump()
     {
         if (PlayerData.Instance.fixedJoint) return;
+        if (PlayerData.Instance.isOnExtremeSlope) return;
         SwitchState(jumpState);
     }
 }

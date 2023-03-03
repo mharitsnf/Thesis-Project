@@ -60,9 +60,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "DetachRopePlacement",
+                    "name": "DetachLastRopePlacement",
                     "type": "Button",
                     "id": "756afd89-f100-4df4-884a-3626a5b41777",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DetachFirstRopePlacement",
+                    "type": "Button",
+                    "id": "66cb60df-315a-4acb-bcf4-a07f92cd1efb",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -225,7 +234,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "DetachRopePlacement",
+                    "action": "DetachLastRopePlacement",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -270,6 +279,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "InteractAttaching",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "77789578-8ab6-4fae-acd9-6429bca05e79",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DetachFirstRopePlacement",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
