@@ -113,7 +113,6 @@ public class Rope : MonoBehaviour
             joint.connectedAnchor = _secondEnd.worldPosition;
         }
 
-        SetColor(2);
         Destroy(attachmentPoint);
         _canDraw = true;
     }

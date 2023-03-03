@@ -171,7 +171,7 @@ public class InteractionController : MonoBehaviour
             PlayerData.Instance.placedRopes.RemoveLast();
             DestroyRopeBatch(previousRopeStack);
             
-            UpdateRopeColor(false);
+            UpdateRopeColor();
 
             InstructionGroup.Instance.CurrentState = InstructionGroup.DisplayState.NotAiming;
         }
@@ -188,7 +188,7 @@ public class InteractionController : MonoBehaviour
         PlayerData.Instance.placedRopes.RemoveFirst();
         DestroyRopeBatch(previousRopeStack);
         
-        UpdateRopeColor(false);
+        UpdateRopeColor();
             
         InstructionGroup.Instance.CurrentState = InstructionGroup.DisplayState.NotAiming;
         
@@ -201,8 +201,6 @@ public class InteractionController : MonoBehaviour
 
         if (PlayerData.Instance.activeRopes.Count > 0)
         {
-            UpdateRopeColor(true);
-                
             foreach (var rope in PlayerData.Instance.activeRopes.Select(ropeObject => ropeObject.GetComponent<Rope>()))
             {
                 rope.CreateJoint();
@@ -211,6 +209,8 @@ public class InteractionController : MonoBehaviour
             PlayerData.Instance.placedRopes.AddLast(new LinkedList<GameObject>(PlayerData.Instance.activeRopes));
             PlayerData.Instance.activeRopes.Clear();
 
+            UpdateRopeColor();
+            
             ToggleAiming(false, true);
             
             InstructionGroup.Instance.CurrentState = InstructionGroup.DisplayState.NotAiming;
@@ -276,8 +276,21 @@ public class InteractionController : MonoBehaviour
         }
     }
 
-    private void UpdateRopeColor(bool inserted)
+    private void UpdateRopeColor()
     {
+        int i = 0;
+        int lastIndex = PlayerData.Instance.placedRopes.Count - 1;
+        foreach (var batch in PlayerData.Instance.placedRopes)
+        {
+            foreach (var rope in batch.Select(ropeObject => ropeObject.GetComponent<Rope>()))
+            {
+                if (i == 0) rope.SetColor(1);
+                else if (i == lastIndex) rope.SetColor(2);
+                else rope.SetColor(0);
+            }
+            i++;
+        }
+        
         if (PlayerData.Instance.placedRopes.First != null)
         {
             foreach (var rope in PlayerData.Instance.placedRopes.First.Value.Select(ropeObject => ropeObject.GetComponent<Rope>()))
@@ -290,7 +303,7 @@ public class InteractionController : MonoBehaviour
         {
             foreach (var rope in PlayerData.Instance.placedRopes.Last.Value.Select(ropeObject => ropeObject.GetComponent<Rope>()))
             {
-                rope.SetColor(inserted ? 0 : 2);
+                rope.SetColor(2);
             }
         }
     }
