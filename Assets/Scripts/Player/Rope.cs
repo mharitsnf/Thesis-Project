@@ -80,7 +80,7 @@ public class Rope : MonoBehaviour
         if (_firstEnd != null && !_firstEnd.rigidbody && !hit.rigidbody) return false;
         if (_firstEnd != null && _firstEnd.rigidbody == hit.rigidbody) return false;
         
-        EndData end = !hit.rigidbody ? new EndData(hit.point) : new EndData(hit.rigidbody, hit.rigidbody.transform.InverseTransformPoint(hit.point), hit.point);
+        EndData end = (hit.rigidbody && !hit.rigidbody.isKinematic) ? new EndData(hit.rigidbody, hit.rigidbody.transform.InverseTransformPoint(hit.point), hit.point) :  new EndData(hit.point);
 
         if (_firstEnd == null) _firstEnd = end;
         else
