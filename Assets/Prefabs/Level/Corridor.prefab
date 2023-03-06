@@ -375,7 +375,7 @@ MonoBehaviour:
         a: -1
         b: 0
         c: 0
-        d: 11
+        d: 11.5
       Tangent: {x: 0, y: 0, z: 1}
       BiNormal: {x: 0, y: 1, z: -0}
       TexGenIndex: 3
@@ -438,12 +438,12 @@ MonoBehaviour:
     Vertices:
     - {x: 21, y: 8, z: 5}
     - {x: 21, y: 8, z: -7}
-    - {x: -11, y: 8, z: -7}
-    - {x: -11, y: 8, z: 5}
-    - {x: -11, y: 1, z: 5}
+    - {x: -11.5, y: 8, z: -7}
+    - {x: -11.5, y: 8, z: 5}
+    - {x: -11.5, y: 1, z: 5}
     - {x: 21, y: 1, z: 5}
     - {x: 21, y: 1, z: -7}
-    - {x: -11, y: 1, z: -7}
+    - {x: -11.5, y: 1, z: -7}
     Edges:
     - TwinIndex: 8
       PolygonIndex: 4
