@@ -17,6 +17,7 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public GameObject cinemachineFollow;
     [ReadOnly] public Rigidbody rigidBody;
     [ReadOnly] public Vector3 initialPosition;
+    [ReadOnly] public GameObject crosshairObject;
     
     [Header(("Controllers"))]
     [ReadOnly] public VerticalStateController verticalStateController;

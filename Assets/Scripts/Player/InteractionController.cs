@@ -317,13 +317,17 @@ public class InteractionController : MonoBehaviour
             PlayerData.Instance.isAiming = true;
             PlayerData.Instance.cameraController.SwitchVirtualCamera(1);
             Time.timeScale = PlayerData.Instance.aimingTimeScale;
+            
+            PlayerData.Instance.crosshairObject.SetActive(true);
         }
         else
         {
             PlayerData.Instance.isAiming = false;
             Time.timeScale = 1;
             PlayerData.Instance.cameraController.SwitchVirtualCamera(0);
-    
+            
+            PlayerData.Instance.crosshairObject.SetActive(false);
+
             if (PlayerData.Instance.currentInteractionState == PlayerData.InteractionState.RopePlacement)
             {
                 if (isJointPlaced)
