@@ -109,6 +109,13 @@ MonoBehaviour:
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -326,7 +333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2477766030971549098}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.70000076, y: 1, z: -5}
+  m_LocalPosition: {x: 0, y: 1.1500015, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -364,6 +371,13 @@ MonoBehaviour:
     LensShift: {x: 0, y: 0}
     GateFit: 2
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 1
@@ -639,6 +653,7 @@ MonoBehaviour:
   cinemachineFollow: {fileID: 2477766030358730370}
   rigidBody: {fileID: 2477766031548289276}
   initialPosition: {x: 0, y: 0, z: 0}
+  crosshairObject: {fileID: 0}
   verticalStateController: {fileID: 2477766031548289279}
   horizontalStateController: {fileID: 2477766031548289275}
   cameraController: {fileID: 2477766031548289278}
@@ -649,7 +664,7 @@ MonoBehaviour:
   maxSpeed: 10
   maxSwingSpeed: 20
   mass: 10
-  maxSlopeAngle: 40
+  maxSlopeAngle: 50
   isGrounded: 0
   isOnSlope: 0
   isOnExtremeSlope: 0
@@ -825,7 +840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0.2, y: 0.5, z: 0.3}
-  ShoulderOffset: {x: 0.7, y: 0.6, z: 0}
+  ShoulderOffset: {x: 0, y: 0.75, z: -3}
   VerticalArmLength: 0.4
   CameraSide: 1
   CameraDistance: 5
