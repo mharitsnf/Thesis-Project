@@ -7,6 +7,7 @@ public class ObjectMechanicsController : MonoBehaviour
 {
     private GameObject _parent;
     private Vector3 _initialPosition;
+    private Quaternion _initialRotation;
     
     private Rigidbody _rb;
     private MeshRenderer _meshRenderer;
@@ -40,6 +41,7 @@ public class ObjectMechanicsController : MonoBehaviour
     private void Start()
     {
         _initialPosition = _parent.transform.position;
+        _initialRotation = _parent.transform.rotation;
     }
 
     private void OnEnable()
@@ -86,7 +88,9 @@ public class ObjectMechanicsController : MonoBehaviour
         {
 
             _rb.velocity = Vector3.zero;
+            _rb.angularVelocity = Vector3.zero;
             _parent.transform.position = _initialPosition;
+            _parent.transform.rotation = _initialRotation;
         }
     }
 

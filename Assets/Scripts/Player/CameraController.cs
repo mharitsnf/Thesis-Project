@@ -35,8 +35,11 @@ public class CameraController : MonoBehaviour
     private void RotateCinemachineFollow()
     {
         Vector2 cameraDelta = PlayerData.Instance.cameraLookDelta;
-        PlayerData.Instance.cinemachineFollowYaw += cameraDelta.x * PlayerData.Instance.cameraRotationSpeed * Time.deltaTime * (PlayerData.Instance.invertX ? -1 : 1);
-        PlayerData.Instance.cinemachineFollowPitch += cameraDelta.y * PlayerData.Instance.cameraRotationSpeed * Time.deltaTime * (PlayerData.Instance.invertY ? -1 : 1);
+        float cameraSpeed = PlayerData.Instance.isAiming
+            ? PlayerData.Instance.aimCameraSpeed
+            : PlayerData.Instance.thirdPersonCameraSpeed;
+        PlayerData.Instance.cinemachineFollowYaw += cameraDelta.x * cameraSpeed * Time.deltaTime * (PlayerData.Instance.invertX ? -1 : 1);
+        PlayerData.Instance.cinemachineFollowPitch += cameraDelta.y * cameraSpeed * Time.deltaTime * (PlayerData.Instance.invertY ? -1 : 1);
 
         PlayerData.Instance.cinemachineFollowYaw = ClampAngle(PlayerData.Instance.cinemachineFollowYaw, float.MinValue, float.MaxValue);
         PlayerData.Instance.cinemachineFollowPitch = ClampAngle(PlayerData.Instance.cinemachineFollowPitch, PlayerData.Instance.minClamp, PlayerData.Instance.maxClamp);

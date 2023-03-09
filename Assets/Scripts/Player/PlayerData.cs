@@ -54,7 +54,8 @@ public class PlayerData : MonoBehaviour
 
     [Header("Camera")]
     public CinemachineVirtualCameraBase[] virtualCameras;
-    public float cameraRotationSpeed;
+    public float thirdPersonCameraSpeed;
+    public float aimCameraSpeed;
     public float minClamp;
     public float maxClamp;
     public bool invertY;
