@@ -78,7 +78,7 @@ public class PlayerData : MonoBehaviour
     public float springDamper;
     public float springMassScale;
 
-    public enum InteractionState {RopePlacement, Attaching}
+    public enum InteractionState {RopePlacement}
 
     [Header("Interaction")]
     public InteractionState currentInteractionState;
@@ -89,10 +89,6 @@ public class PlayerData : MonoBehaviour
     public readonly LinkedList<GameObject> activeRopes = new();
     public bool isAiming;
     public RaycastHit selectedGameObject = new();
-
-    [Header("Joint Data")]
-    public float attachRaycastDistance;
-    public FixedJoint fixedJoint;
 
     [Header("Time")]
     public float aimingTimeScale = 0.25f;

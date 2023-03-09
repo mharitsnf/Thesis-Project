@@ -46,25 +46,19 @@ public class InteractionController : MonoBehaviour
         _playerInput.CharacterControls.Jump.canceled += HandleJumpInput;
         _playerInput.CharacterControls.Jump.performed += HandleJumpInput;
 
-        _playerInput.CharacterControls.SwitchInteractionState.started += HandleSwitchInteractionStateInput;
-
         _playerInput.CharacterControls.InteractRopePlacement.started += HandleInteractRopePlacementInput;
         _playerInput.CharacterControls.ToggleRopePlacement.started += HandleToggleRopePlacementInput;
         _playerInput.CharacterControls.ConfirmRopePlacement.started += HandleConfirmRopePlacementInput;
         _playerInput.CharacterControls.DetachLastRopePlacement.started += HandleDetachLastRopePlacementInput;
         _playerInput.CharacterControls.DetachFirstRopePlacement.started += HandleDetachFirstRopePlacementInput;
-
-        _playerInput.CharacterControls.InteractAttaching.started += HandleInteractAttachingInput;
-        _playerInput.CharacterControls.ToggleAttaching.started += HandleToggleAttachingInput;
-        _playerInput.CharacterControls.DetachAttaching.started += HandleDetachAttachingInput;
     }
 
     private void SetupCameraInput()
     {
         _cameraInput = new CameraInput();
-        _cameraInput.CameraLook.Rotate.started += HandleCameraInput;
+        // _cameraInput.CameraLook.Rotate.started += HandleCameraInput;
         _cameraInput.CameraLook.Rotate.performed += HandleCameraInput;
-        _cameraInput.CameraLook.Rotate.canceled += HandleCameraInput;
+        // _cameraInput.CameraLook.Rotate.canceled += HandleCameraInput;
     }
 
     private void HandleJumpInput(InputAction.CallbackContext context)
@@ -87,16 +81,6 @@ public class InteractionController : MonoBehaviour
     private void HandleCameraInput(InputAction.CallbackContext context)
     {
         PlayerData.Instance.cameraLookDelta = context.ReadValue<Vector2>() * (1 / Time.timeScale);
-    }
-
-    private void HandleSwitchInteractionStateInput(InputAction.CallbackContext context)
-    {
-        // if (!context.ReadValueAsButton()) return;
-        // if (PlayerData.Instance.isAiming) return;
-        //
-        // PlayerData.Instance.currentInteractionState = PlayerData.Instance.currentInteractionState == PlayerData.InteractionState.Attaching ? PlayerData.InteractionState.RopePlacement : PlayerData.InteractionState.Attaching;
-        //
-        // Debug.Log(PlayerData.Instance.currentInteractionState);
     }
 
     private void HandleInteractRopePlacementInput(InputAction.CallbackContext context)
@@ -222,44 +206,6 @@ public class InteractionController : MonoBehaviour
             
             InstructionGroup.Instance.CurrentState = InstructionGroup.DisplayState.NotAiming;
         }
-    }
-
-    private void HandleInteractAttachingInput(InputAction.CallbackContext context)
-    {
-        if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.Attaching) return;
-        if (!PlayerData.Instance.isAiming) return;
-        if (!context.ReadValueAsButton()) return;
-        if (!Physics.Raycast(PlayerData.Instance.realCamera.position, PlayerData.Instance.realCamera.forward,
-                out var hit, PlayerData.Instance.attachRaycastDistance)) return;
-        if (hit.collider.CompareTag("Player")) return;
-        if (!hit.rigidbody) return;
-
-        
-        FixedJoint joint = PlayerData.Instance.fixedJoint ? gameObject.GetComponent<FixedJoint>() : gameObject.AddComponent<FixedJoint>();
-        joint.connectedBody = hit.rigidbody;
-        if (!PlayerData.Instance.fixedJoint) PlayerData.Instance.fixedJoint = PlayerData.Instance.fixedJoint = joint;
-
-        ToggleAiming(false);
-    }
-    
-    private void HandleToggleAttachingInput(InputAction.CallbackContext context)
-    {
-        if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.Attaching) return;
-        if (!context.ReadValueAsButton()) return;
-
-        ToggleAiming(!PlayerData.Instance.isAiming);
-    }
-
-    private void HandleDetachAttachingInput(InputAction.CallbackContext context)
-    {
-        if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.Attaching) return;
-        if (!context.ReadValueAsButton()) return;
-        if (!PlayerData.Instance.fixedJoint) return;
-
-        ToggleAiming(false);
-
-        Destroy(PlayerData.Instance.fixedJoint);
-        PlayerData.Instance.fixedJoint = null;
     }
 
     private void DestroyRopeBatch(LinkedList<GameObject> linkedList)

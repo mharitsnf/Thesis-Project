@@ -48,7 +48,6 @@ public class VerticalStateController : BaseStateController
 
     public void Jump()
     {
-        if (PlayerData.Instance.fixedJoint) return;
         if (PlayerData.Instance.isOnExtremeSlope) return;
         SwitchState(jumpState);
     }

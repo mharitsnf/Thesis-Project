@@ -25,8 +25,6 @@ public class PlayerMoveState : PlayerBaseState
     
     private void Move()
     {
-        if (PlayerData.Instance.fixedJoint) return;
-        
         Vector3 direction = PlayerData.Instance.orientation.forward * PlayerData.Instance.moveDirection.y +
                             PlayerData.Instance.orientation.right * PlayerData.Instance.moveDirection.x;
         
@@ -58,8 +56,6 @@ public class PlayerMoveState : PlayerBaseState
         //                                                PlayerData.Instance.maxSwingSpeed;
         //     return;
         // }
-        
-        if (PlayerData.Instance.fixedJoint) return;
         
         if (PlayerData.Instance.isOnSlope && PlayerData.Instance.rigidBody.velocity.magnitude > PlayerData.Instance.maxSpeed)
         {

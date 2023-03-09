@@ -20,7 +20,7 @@ public class PlayerDataLogger : MonoBehaviour
         filename = Application.dataPath + "/" + filename + ".csv";
         Debug.Log(filename);
         
-        _data.Add("timestamp;x;y;z;magnitude;hState;vState;isOnSlope;attachedJoint");
+        _data.Add("timestamp;x;y;z;magnitude;hState;vState;isOnSlope");
     }
 
     private void AddPlayerData()
@@ -35,7 +35,6 @@ public class PlayerDataLogger : MonoBehaviour
         row += PlayerData.Instance.horizontalStateController.currentState + ";";
         row += PlayerData.Instance.verticalStateController.currentState + ";";
         row += PlayerData.Instance.isOnSlope + ";";
-        row += !PlayerData.Instance.fixedJoint ? "none" : PlayerData.Instance.fixedJoint.connectedBody.gameObject.name;
         
         _data.Add(row);
     }
