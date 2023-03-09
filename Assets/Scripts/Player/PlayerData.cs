@@ -23,6 +23,7 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public VerticalStateController verticalStateController;
     [ReadOnly] public HorizontalStateController horizontalStateController;
     [ReadOnly] public CameraController cameraController;
+    [ReadOnly] public RopePlacementController RopePlacementController;
 
     [Header("Movement Forces")]
     public float acceleration = 100;
