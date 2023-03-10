@@ -691,11 +691,11 @@ MonoBehaviour:
   cinemachineFollowYaw: 0
   cinemachineFollowPitch: 0
   ropeRayCastDistance: 50
-  maxDistanceMultiplier: 0.4
-  minDistanceMultiplier: 0.6
+  maxDistanceMultiplier: 0.15
+  minDistanceMultiplier: 0
   springinessMultiplier: 5
-  springDamper: 10
-  springMassScale: 5
+  springDamper: 30
+  springMassScale: 3
   currentInteractionState: 0
   ropePrefab: {fileID: 7035304684048593626, guid: 0768102d84015244fbd48c3d1dd42d64,
     type: 3}
