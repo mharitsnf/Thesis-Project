@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -56,9 +57,7 @@ public class InteractionController : MonoBehaviour
     private void SetupCameraInput()
     {
         _cameraInput = new CameraInput();
-        // _cameraInput.CameraLook.Rotate.started += HandleCameraInput;
         _cameraInput.CameraLook.Rotate.performed += HandleCameraInput;
-        // _cameraInput.CameraLook.Rotate.canceled += HandleCameraInput;
     }
 
     private void HandleJumpInput(InputAction.CallbackContext context)
@@ -71,8 +70,7 @@ public class InteractionController : MonoBehaviour
         PlayerData.Instance.currentJumpPercentage = Mathf.Min((float)context.duration, PlayerData.Instance.buttonHoldTime) / PlayerData.Instance.buttonHoldTime;
         PlayerData.Instance.verticalStateController.Jump();
     }
-
-
+    
     private void HandleMovementInput(InputAction.CallbackContext context)
     {
         PlayerData.Instance.moveDirection = context.ReadValue<Vector2>();

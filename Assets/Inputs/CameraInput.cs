@@ -40,19 +40,8 @@ public partial class @CameraInput : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""2122514b-c5e2-49bc-b50f-b2f0b68f94d8"",
+                    ""id"": ""3692acbf-e9dc-4692-860f-08436326e639"",
                     ""path"": ""<Mouse>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Rotate"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""899d5273-92e6-4041-935a-c47631e4f42f"",
-                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
