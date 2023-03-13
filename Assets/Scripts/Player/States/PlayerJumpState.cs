@@ -10,6 +10,8 @@ public class PlayerJumpState : PlayerBaseState
         PlayerData.Instance.wasJumping = true;
         PlayerData.Instance.rigidBody.drag = PlayerData.Instance.airDrag;
         PlayerData.Instance.rigidBody.AddForce(Vector3.up * (PlayerData.Instance.maxJumpForce * PlayerData.Instance.currentJumpPercentage), ForceMode.Impulse);
+        
+        PlayerData.Instance.animator.SetBool("JustJumped", true);
     }
     
     public override void FixedUpdateState()
@@ -36,5 +38,6 @@ public class PlayerJumpState : PlayerBaseState
     {
         _frameElapsed = 0;
         PlayerData.Instance.currentJumpPercentage = 1;
+        PlayerData.Instance.animator.SetBool("JustJumped", false);
     }
 }

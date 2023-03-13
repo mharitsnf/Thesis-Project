@@ -14,6 +14,8 @@ public class PlayerGroundedState : PlayerBaseState
         }
         
         PlayerData.Instance.rigidBody.drag = PlayerData.Instance.groundDrag;
+        
+        PlayerData.Instance.animator.SetBool("JustLanded", true);
     }
 
     public override void FixedUpdateState()
@@ -21,5 +23,10 @@ public class PlayerGroundedState : PlayerBaseState
         
         if (!PlayerData.Instance.isGrounded)
             PlayerData.Instance.verticalStateController.SwitchState(PlayerData.Instance.verticalStateController.fallState);
+    }
+
+    public override void ExitState()
+    {
+        PlayerData.Instance.animator.SetBool("JustLanded", false);
     }
 }

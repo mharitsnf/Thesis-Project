@@ -18,6 +18,7 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public Rigidbody rigidBody;
     [ReadOnly] public Vector3 initialPosition;
     [ReadOnly] public GameObject crosshairObject;
+    [ReadOnly] public Animator animator;
     
     [Header(("Controllers"))]
     [ReadOnly] public VerticalStateController verticalStateController;
@@ -25,6 +26,10 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public CameraController cameraController;
     [ReadOnly] public RopePlacementController RopePlacementController;
 
+    [Header("Animation")]
+    [Range(0f, 1f)]
+    public float distanceToGround;
+    
     [Header("Movement Forces")]
     public float acceleration = 100;
     public float airAcceleration = 100;

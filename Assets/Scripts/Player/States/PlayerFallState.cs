@@ -12,6 +12,8 @@ public class PlayerFallState : PlayerBaseState
         }
         
         PlayerData.Instance.rigidBody.drag = PlayerData.Instance.airDrag;
+        
+        PlayerData.Instance.animator.SetBool("JustFell", true);
     }
     
     public override void FixedUpdateState()
@@ -24,5 +26,7 @@ public class PlayerFallState : PlayerBaseState
     public override void ExitState()
     {
         PlayerData.Instance.wasJumping = false;
+        
+        PlayerData.Instance.animator.SetBool("JustFell", false);
     }
 }
