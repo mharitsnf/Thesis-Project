@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class PlayerIdleState : PlayerBaseState
 {
+    
+    private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
+    
     public override void FixedUpdateState()
     {
         RotateMesh();
-        
+
+        PlayerData.Instance.animator.SetFloat(MoveSpeed, Mathf.Lerp(PlayerData.Instance.animator.GetFloat(MoveSpeed), 0, PlayerData.Instance.toIdleWeight));
+
         // State change
         if (PlayerData.Instance.moveDirection != Vector2.zero) PlayerData.Instance.horizontalStateController.SwitchState(PlayerData.Instance.horizontalStateController.moveState);
     }

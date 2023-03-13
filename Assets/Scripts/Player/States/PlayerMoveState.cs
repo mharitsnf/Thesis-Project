@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class PlayerMoveState : PlayerBaseState
 {
+    
+    private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
+
     public override void FixedUpdateState()
     {
-        
         // Input and movement handling
         Move();
         
         RotateMesh();
         LimitSpeed();
             
+        PlayerData.Instance.animator.SetFloat(MoveSpeed, PlayerData.Instance.rigidBody.velocity.magnitude);
+
         // State change
         if (PlayerData.Instance.moveDirection == Vector2.zero) PlayerData.Instance.horizontalStateController.SwitchState(PlayerData.Instance.horizontalStateController.idleState);
     }

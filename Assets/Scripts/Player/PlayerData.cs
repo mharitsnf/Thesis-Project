@@ -28,7 +28,9 @@ public class PlayerData : MonoBehaviour
 
     [Header("Animation")]
     [Range(0f, 1f)]
-    public float distanceToGround;
+    public float feetDistanceToGround;
+    [Range(0f, 1f)]
+    public float toIdleWeight;
     
     [Header("Movement Forces")]
     public float acceleration = 100;
