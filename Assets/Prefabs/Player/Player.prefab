@@ -662,7 +662,8 @@ MonoBehaviour:
   horizontalStateController: {fileID: 2477766031548289275}
   cameraController: {fileID: 2477766031548289278}
   RopePlacementController: {fileID: 1356804294}
-  distanceToGround: 0
+  feetDistanceToGround: 0
+  toIdleWeight: 0.306
   acceleration: 600
   airAcceleration: 400
   maxJumpForce: 200

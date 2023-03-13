@@ -17,9 +17,9 @@ public class IKScript : MonoBehaviour
     {
         if (!_animator) return;
 
-        float maxDistance = PlayerData.Instance.feetDistanceToGround;
+        float maxDistance = PlayerData.Instance.feetDistanceToGround + 1f;
 
-        if (!Physics.Raycast(new Ray(_animator.GetIKPosition(AvatarIKGoal.LeftFoot), Vector3.down), out var hit, maxDistance))
+        if (!Physics.Raycast(new Ray(_animator.GetIKPosition(AvatarIKGoal.LeftFoot) + Vector3.up, Vector3.down), out var hit, maxDistance))
         {
             _animator.SetIKPositionWeight(AvatarIKGoal.LeftFoot, 0);
             _animator.SetIKRotationWeight(AvatarIKGoal.LeftFoot, 0);
@@ -34,7 +34,7 @@ public class IKScript : MonoBehaviour
         _animator.SetIKPosition(AvatarIKGoal.LeftFoot, footPosition);
         _animator.SetIKRotation(AvatarIKGoal.LeftFoot, Quaternion.LookRotation(transform.forward, hit.normal));
         
-        if (!Physics.Raycast(new Ray(_animator.GetIKPosition(AvatarIKGoal.RightFoot), Vector3.down), out hit, maxDistance))
+        if (!Physics.Raycast(new Ray(_animator.GetIKPosition(AvatarIKGoal.RightFoot) + Vector3.up, Vector3.down), out hit, maxDistance))
         {
             _animator.SetIKPositionWeight(AvatarIKGoal.RightFoot, 0);
             _animator.SetIKRotationWeight(AvatarIKGoal.RightFoot, 0);
