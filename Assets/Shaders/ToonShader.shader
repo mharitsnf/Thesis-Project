@@ -18,12 +18,22 @@ Shader "Unlit/ToonShader"
     }
     SubShader
     {
+        Tags
+        {
+            "RenderType" = "Opaque"
+            "IgnoreProjector" = "True"
+            "RenderPipeline" = "UniversalPipeline"
+            "LightMode" = "UniversalForward"
+        }
+        LOD 200
         
         Pass
         {
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
+            #pragma fullforwardshadows
+            
             #pragma multi_compile_fwdbase
 
             #include "UnityCG.cginc"
@@ -39,11 +49,11 @@ Shader "Unlit/ToonShader"
 
             struct v2f
             {
+                SHADOW_COORDS(2)
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
                 float3 worldNormal : NORMAL;
                 float3 viewDir : TEXCOORD1;
-                SHADOW_COORDS(2)
             };
 
             sampler2D _MainTex;
@@ -52,11 +62,11 @@ Shader "Unlit/ToonShader"
             v2f vert (appdata v)
             {
                 v2f o;
+                TRANSFER_SHADOW(o)
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.worldNormal = UnityObjectToWorldNormal(v.normal);
                 o.viewDir = WorldSpaceViewDir(v.vertex);
-                TRANSFER_SHADOW(o)
                 return o;
             }
 
