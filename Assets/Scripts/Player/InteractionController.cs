@@ -14,6 +14,8 @@ public class InteractionController : MonoBehaviour
     private CameraInput _cameraInput;
 
     private float _timeElapsedPressed;
+    
+    private Vector2 _previousMouseDelta;
 
     public static readonly ToggleEvent OnToggleAiming = new();
 
@@ -24,7 +26,12 @@ public class InteractionController : MonoBehaviour
         SetupPlayerInput();
         SetupCameraInput();
     }
-    
+
+    private void Update()
+    {
+        PlayerData.Instance.cameraLookDelta = Vector2.Lerp(PlayerData.Instance.cameraLookDelta, Vector2.zero, PlayerData.Instance.cameraBrakeWeight * Time.deltaTime * (1 / Time.timeScale));
+    }
+
     private void OnEnable()
     {
         _playerInput.Enable();
@@ -79,7 +86,10 @@ public class InteractionController : MonoBehaviour
 
     private void HandleCameraInput(InputAction.CallbackContext context)
     {
-        PlayerData.Instance.cameraLookDelta = context.ReadValue<Vector2>() * (1 / Time.timeScale);
+        if (!context.performed) Debug.Log("yo");
+        
+        PlayerData.Instance.cameraLookDelta = Vector2.Lerp(_previousMouseDelta, context.ReadValue<Vector2>(), PlayerData.Instance.cameraLerpWeight) * (1 / Time.timeScale);
+        _previousMouseDelta = context.ReadValue<Vector2>();
     }
 
     private void HandleInteractRopePlacementInput(InputAction.CallbackContext context)

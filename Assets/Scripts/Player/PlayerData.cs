@@ -53,8 +53,6 @@ public class PlayerData : MonoBehaviour
     
     [Header("Jumping")]
     [HideInInspector] public float currentJumpPercentage = 1;
-
-    public AnimationCurve jumpCurve;
     public float buttonHoldTime;
     public bool wasJumping;
 
@@ -64,6 +62,9 @@ public class PlayerData : MonoBehaviour
 
     [Header("Camera")]
     public CinemachineVirtualCameraBase[] virtualCameras;
+    [Range(0,1)]
+    public float cameraLerpWeight;
+    public float cameraBrakeWeight;
     public float thirdPersonCameraSpeed;
     public float aimCameraSpeed;
     public float minClamp;
