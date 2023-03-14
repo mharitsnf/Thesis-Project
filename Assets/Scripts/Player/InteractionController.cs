@@ -67,7 +67,8 @@ public class InteractionController : MonoBehaviour
         if (context is { canceled: false, interaction: not HoldInteraction }) return;
         if (PlayerData.Instance.verticalStateController.currentState != PlayerData.Instance.verticalStateController.groundedState) return;
 
-        PlayerData.Instance.currentJumpPercentage = Mathf.Min((float)context.duration, PlayerData.Instance.buttonHoldTime) / PlayerData.Instance.buttonHoldTime;
+        float jumpPercentage = Mathf.Min((float)context.duration, PlayerData.Instance.buttonHoldTime) / PlayerData.Instance.buttonHoldTime;
+        PlayerData.Instance.currentJumpPercentage = jumpPercentage;
         PlayerData.Instance.verticalStateController.Jump();
     }
     

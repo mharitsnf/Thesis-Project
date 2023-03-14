@@ -53,6 +53,8 @@ public class PlayerData : MonoBehaviour
     
     [Header("Jumping")]
     [HideInInspector] public float currentJumpPercentage = 1;
+
+    public AnimationCurve jumpCurve;
     public float buttonHoldTime;
     public bool wasJumping;
 
