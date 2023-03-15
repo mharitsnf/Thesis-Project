@@ -236,6 +236,34 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""OtherInteraction"",
+            ""id"": ""2c298066-2be8-4843-b951-8c0843e0380e"",
+            ""actions"": [
+                {
+                    ""name"": ""SetRespawnPoint"",
+                    ""type"": ""Button"",
+                    ""id"": ""f3f8420b-972b-4219-b91b-afc18c513df1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""093e8ab0-9b11-402a-b9ea-0ffd5850d6a2"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SetRespawnPoint"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -249,6 +277,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_CharacterControls_ConfirmRopePlacement = m_CharacterControls.FindAction("ConfirmRopePlacement", throwIfNotFound: true);
         m_CharacterControls_DetachLastRopePlacement = m_CharacterControls.FindAction("DetachLastRopePlacement", throwIfNotFound: true);
         m_CharacterControls_DetachFirstRopePlacement = m_CharacterControls.FindAction("DetachFirstRopePlacement", throwIfNotFound: true);
+        // OtherInteraction
+        m_OtherInteraction = asset.FindActionMap("OtherInteraction", throwIfNotFound: true);
+        m_OtherInteraction_SetRespawnPoint = m_OtherInteraction.FindAction("SetRespawnPoint", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -385,6 +416,39 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         }
     }
     public CharacterControlsActions @CharacterControls => new CharacterControlsActions(this);
+
+    // OtherInteraction
+    private readonly InputActionMap m_OtherInteraction;
+    private IOtherInteractionActions m_OtherInteractionActionsCallbackInterface;
+    private readonly InputAction m_OtherInteraction_SetRespawnPoint;
+    public struct OtherInteractionActions
+    {
+        private @PlayerInput m_Wrapper;
+        public OtherInteractionActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @SetRespawnPoint => m_Wrapper.m_OtherInteraction_SetRespawnPoint;
+        public InputActionMap Get() { return m_Wrapper.m_OtherInteraction; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(OtherInteractionActions set) { return set.Get(); }
+        public void SetCallbacks(IOtherInteractionActions instance)
+        {
+            if (m_Wrapper.m_OtherInteractionActionsCallbackInterface != null)
+            {
+                @SetRespawnPoint.started -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnSetRespawnPoint;
+                @SetRespawnPoint.performed -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnSetRespawnPoint;
+                @SetRespawnPoint.canceled -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnSetRespawnPoint;
+            }
+            m_Wrapper.m_OtherInteractionActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @SetRespawnPoint.started += instance.OnSetRespawnPoint;
+                @SetRespawnPoint.performed += instance.OnSetRespawnPoint;
+                @SetRespawnPoint.canceled += instance.OnSetRespawnPoint;
+            }
+        }
+    }
+    public OtherInteractionActions @OtherInteraction => new OtherInteractionActions(this);
     public interface ICharacterControlsActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -394,5 +458,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnConfirmRopePlacement(InputAction.CallbackContext context);
         void OnDetachLastRopePlacement(InputAction.CallbackContext context);
         void OnDetachFirstRopePlacement(InputAction.CallbackContext context);
+    }
+    public interface IOtherInteractionActions
+    {
+        void OnSetRespawnPoint(InputAction.CallbackContext context);
     }
 }

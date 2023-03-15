@@ -214,6 +214,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "OtherInteraction",
+            "id": "2c298066-2be8-4843-b951-8c0843e0380e",
+            "actions": [
+                {
+                    "name": "SetRespawnPoint",
+                    "type": "Button",
+                    "id": "f3f8420b-972b-4219-b91b-afc18c513df1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "093e8ab0-9b11-402a-b9ea-0ffd5850d6a2",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SetRespawnPoint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
