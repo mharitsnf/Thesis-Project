@@ -101,7 +101,12 @@ public class FullInteractionController : MonoBehaviour
         if (hit.collider.CompareTag("Player")) return;
 
         
-        if (PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit))) PlayerData.Instance.RopePlacementController.SelectObject(hit);
+        if (PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit)))
+        {
+            PlayerData.Instance.RopePlacementController.SelectObject(hit);
+            
+            InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.ObjectSelected;
+        }
         
         
         // Add material check, which ones can be attached to which ones cannot
@@ -122,7 +127,7 @@ public class FullInteractionController : MonoBehaviour
         }
         else
         {
-            DestroyRopeBatch(PlayerData.Instance.activeRopes);
+            PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
             ToggleAiming(false);
             
             InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
@@ -136,7 +141,7 @@ public class FullInteractionController : MonoBehaviour
 
         if (PlayerData.Instance.isAiming)
         {
-            DestroyRopeBatch(PlayerData.Instance.activeRopes);
+            PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
             ToggleAiming(false);
             
             InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
@@ -145,6 +150,8 @@ public class FullInteractionController : MonoBehaviour
         {
             if (PlayerData.Instance.placedRopes.Count == 0) return;
             PlayerData.Instance.RopePlacementController.DestroyNewestBatch();
+            
+            InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
         }
     }
 
@@ -156,6 +163,8 @@ public class FullInteractionController : MonoBehaviour
         if (PlayerData.Instance.placedRopes.Count == 0) return;
             
         PlayerData.Instance.RopePlacementController.DestroyOldestBatch();
+        
+        InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
     }
 
     private void HandleConfirmRopePlacementInput(InputAction.CallbackContext context)
@@ -173,26 +182,26 @@ public class FullInteractionController : MonoBehaviour
         }
         else
         {
-            DestroyRopeBatch(PlayerData.Instance.activeRopes);
+            PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
             ToggleAiming(false);
             
             InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
         }
     }
 
-    private void DestroyRopeBatch(LinkedList<GameObject> linkedList)
-    {
-        while (linkedList.Count > 0)
-        {
-            GameObject ropeObject = linkedList.Last.Value;
-            Rope rope = ropeObject.GetComponent<Rope>();
-
-            if (rope.joint) Destroy(rope.joint);
-            if (rope.attachmentPoint) Destroy(rope.attachmentPoint);
-            Destroy(ropeObject);
-            linkedList.RemoveLast();
-        }
-    }
+    // private void DestroyRopeBatch(LinkedList<GameObject> linkedList)
+    // {
+    //     while (linkedList.Count > 0)
+    //     {
+    //         GameObject ropeObject = linkedList.Last.Value;
+    //         Rope rope = ropeObject.GetComponent<Rope>();
+    //
+    //         if (rope.joint) Destroy(rope.joint);
+    //         if (rope.attachmentPoint) Destroy(rope.attachmentPoint);
+    //         Destroy(ropeObject);
+    //         linkedList.RemoveLast();
+    //     }
+    // }
 
     private void ToggleAiming(bool isAiming, bool isJointPlaced = false)
     {

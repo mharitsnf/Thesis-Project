@@ -11,8 +11,6 @@ public class RopePlacementController : MonoBehaviour
         if (!hit.collider.gameObject.CompareTag("Object")) return;
         PlayerData.Instance.selectedGameObject = hit;
         hit.collider.gameObject.GetComponentInChildren<ObjectMechanicsController>().SetSelected();
-
-        InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.ObjectSelected;
     }
 
     public void SelectSurface(RaycastHit hit)
@@ -35,8 +33,6 @@ public class RopePlacementController : MonoBehaviour
         DestroyRopeBatch(previousRopeStack);
         
         UpdateRopeColor();
-            
-        InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
     }
 
     public void DestroyNewestBatch()
@@ -46,8 +42,6 @@ public class RopePlacementController : MonoBehaviour
         DestroyRopeBatch(previousRopeStack);
             
         UpdateRopeColor();
-
-        InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
     }
 
     public void ConfirmPlacement()
@@ -63,7 +57,7 @@ public class RopePlacementController : MonoBehaviour
         UpdateRopeColor();
     }
     
-    private void DestroyRopeBatch(LinkedList<GameObject> linkedList)
+    public void DestroyRopeBatch(LinkedList<GameObject> linkedList)
     {
         while (linkedList.Count > 0)
         {

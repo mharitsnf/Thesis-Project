@@ -38,7 +38,11 @@ public class TutorialInteractionController : MonoBehaviour
     public bool hasEnteredAimMode;
     public bool hasExitedAimMode;
 
-    public bool isSelectionEnabled;
+    public bool isObjectSelectionEnabled;
+    public bool hasSelectedObject;
+
+    public bool isSurfaceSelectionEnabled;
+    public bool hasSelectedSurface;
 
     void Awake()
     {
@@ -108,6 +112,13 @@ public class TutorialInteractionController : MonoBehaviour
         yield return new WaitForSecondsRealtime(3f);
         TutorialPanelController.Instance.ChangeText("Try to exit aim mode using Right Click or Q.");
         yield return new WaitUntil(() => hasExitedAimMode);
+        yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
+        
+        yield return new WaitForSecondsRealtime(1f);
+
+        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Let's try selecting objects. Enter aim mode with Right Click, and then Left Click on the object to select it."));
+        isObjectSelectionEnabled = true;
+        yield return new WaitUntil(() => hasSelectedObject);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
     }
 
@@ -194,8 +205,6 @@ public class TutorialInteractionController : MonoBehaviour
     
     private void HandleInteractRopePlacementInput(InputAction.CallbackContext context)
     {
-        if (!isSelectionEnabled) return;
-        
         if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
         if (!PlayerData.Instance.isAiming) return;
         if (!context.ReadValueAsButton()) return;
@@ -204,12 +213,24 @@ public class TutorialInteractionController : MonoBehaviour
         if (hit.collider.CompareTag("Player")) return;
 
         
-        if (PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit))) PlayerData.Instance.RopePlacementController.SelectObject(hit);
+        if (PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit)))
+        {
+            if (!isObjectSelectionEnabled) return;
+            
+            PlayerData.Instance.RopePlacementController.SelectObject(hit);
+            if (!hasSelectedObject) hasSelectedObject = true;
+        }
         
         
         // Add material check, which ones can be attached to which ones cannot
         // hit.collider.gameObject.GetComponent<MeshRenderer>().material.Equals();
-        else PlayerData.Instance.RopePlacementController.SelectSurface(hit);
+        else
+        {
+            if (!isSurfaceSelectionEnabled) return;
+            
+            PlayerData.Instance.RopePlacementController.SelectSurface(hit);
+            if (!hasSelectedSurface) hasSelectedSurface = true;
+        }
     }
 
     private void HandleToggleRopePlacementInput(InputAction.CallbackContext context)
@@ -227,7 +248,7 @@ public class TutorialInteractionController : MonoBehaviour
         }
         else
         {
-            DestroyRopeBatch(PlayerData.Instance.activeRopes);
+            PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
             ToggleAiming(false);
             
             if (!hasExitedAimMode) hasExitedAimMode = true;
@@ -241,7 +262,7 @@ public class TutorialInteractionController : MonoBehaviour
 
         if (PlayerData.Instance.isAiming)
         {
-            DestroyRopeBatch(PlayerData.Instance.activeRopes);
+            PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
             ToggleAiming(false);
             
             if (!hasExitedAimMode) hasExitedAimMode = true;
@@ -276,26 +297,26 @@ public class TutorialInteractionController : MonoBehaviour
         }
         else
         {
-            DestroyRopeBatch(PlayerData.Instance.activeRopes);
+            PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
             ToggleAiming(false);
             
             if (!hasExitedAimMode) hasExitedAimMode = true;
         }
     }
 
-    private void DestroyRopeBatch(LinkedList<GameObject> linkedList)
-    {
-        while (linkedList.Count > 0)
-        {
-            GameObject ropeObject = linkedList.Last.Value;
-            Rope rope = ropeObject.GetComponent<Rope>();
-
-            if (rope.joint) Destroy(rope.joint);
-            if (rope.attachmentPoint) Destroy(rope.attachmentPoint);
-            Destroy(ropeObject);
-            linkedList.RemoveLast();
-        }
-    }
+    // private void DestroyRopeBatch(LinkedList<GameObject> linkedList)
+    // {
+    //     while (linkedList.Count > 0)
+    //     {
+    //         GameObject ropeObject = linkedList.Last.Value;
+    //         Rope rope = ropeObject.GetComponent<Rope>();
+    //
+    //         if (rope.joint) Destroy(rope.joint);
+    //         if (rope.attachmentPoint) Destroy(rope.attachmentPoint);
+    //         Destroy(ropeObject);
+    //         linkedList.RemoveLast();
+    //     }
+    // }
 
     private void ToggleAiming(bool isAiming, bool isJointPlaced = false)
     {
