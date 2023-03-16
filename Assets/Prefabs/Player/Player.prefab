@@ -685,6 +685,7 @@ MonoBehaviour:
   virtualCameras:
   - {fileID: 2477766030971549100}
   - {fileID: 2477766029841766301}
+  - {fileID: 0}
   cameraLerpWeight: 0.5
   cameraBrakeWeight: 10
   thirdPersonCameraSpeed: 25
@@ -694,7 +695,6 @@ MonoBehaviour:
   invertY: 1
   invertX: 0
   realCamera: {fileID: 0}
-  isInteractionEnabled: 1
   moveDirection: {x: 0, y: 0}
   cameraLookDelta: {x: 0, y: 0}
   cinemachineFollowYaw: 0
@@ -709,8 +709,9 @@ MonoBehaviour:
   ropePrefab: {fileID: 7035304684048593626, guid: 0768102d84015244fbd48c3d1dd42d64,
     type: 3}
   isAiming: 0
-  aimingTimeScale: 0.1
+  aimingTimeScale: 0.25
   objectiveCollectedAmount: 0
+  timeElapsed: 0
 --- !u!114 &2477766031548289277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,6 +736,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f07052a157a149347a5b935345de62e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hasMoved: 0
+  hasLookedAround: 0
+  hasJumped: 0
+  jumpCount: 0
+  hasExitFirstStage: 0
+  hasEnteredThirdStage: 0
+  hasEnteredAimMode: 0
+  hasExitedAimMode: 0
+  hasSelectedObject: 0
+  hasSelectedSurface: 0
 --- !u!114 &2477766031548289275
 MonoBehaviour:
   m_ObjectHideFlags: 0

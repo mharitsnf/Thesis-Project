@@ -56,7 +56,8 @@ public class FullInteractionController : MonoBehaviour
         _playerInput.CharacterControls.Jump.performed += HandleJumpInput;
 
         _playerInput.CharacterControls.InteractRopePlacement.started += HandleInteractRopePlacementInput;
-        _playerInput.CharacterControls.ToggleRopePlacement.started += HandleToggleRopePlacementInput;
+        _playerInput.CharacterControls.EnterAim.started += HandleEnterAimInput;
+        _playerInput.CharacterControls.ExitAim.started += HandleExitAimInput;
         _playerInput.CharacterControls.ConfirmRopePlacement.started += HandleConfirmRopePlacementInput;
         _playerInput.CharacterControls.DetachLastRopePlacement.started += HandleDetachLastRopePlacementInput;
         _playerInput.CharacterControls.DetachFirstRopePlacement.started += HandleDetachFirstRopePlacementInput;
@@ -114,24 +115,27 @@ public class FullInteractionController : MonoBehaviour
         else PlayerData.Instance.RopePlacementController.SelectSurface(hit);
     }
 
-    private void HandleToggleRopePlacementInput(InputAction.CallbackContext context)
+    private void HandleEnterAimInput(InputAction.CallbackContext context)
     {
         if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
         if (!context.ReadValueAsButton()) return;
+        if (PlayerData.Instance.isAiming) return;
         
-        if (!PlayerData.Instance.isAiming)
-        {
-            ToggleAiming(true);
+        ToggleAiming(true);
 
-            InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.ObjectNotSelected;
-        }
-        else
-        {
-            PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
-            ToggleAiming(false);
+        InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.ObjectNotSelected;
+    }
+
+    private void HandleExitAimInput(InputAction.CallbackContext context)
+    {
+        if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
+        if (!context.ReadValueAsButton()) return;
+        if (!PlayerData.Instance.isAiming) return;
+        
+        PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
+        ToggleAiming(false);
             
-            InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
-        }
+        InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
     }
 
     private void HandleDetachLastRopePlacementInput(InputAction.CallbackContext context)
@@ -188,20 +192,6 @@ public class FullInteractionController : MonoBehaviour
             InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
         }
     }
-
-    // private void DestroyRopeBatch(LinkedList<GameObject> linkedList)
-    // {
-    //     while (linkedList.Count > 0)
-    //     {
-    //         GameObject ropeObject = linkedList.Last.Value;
-    //         Rope rope = ropeObject.GetComponent<Rope>();
-    //
-    //         if (rope.joint) Destroy(rope.joint);
-    //         if (rope.attachmentPoint) Destroy(rope.attachmentPoint);
-    //         Destroy(ropeObject);
-    //         linkedList.RemoveLast();
-    //     }
-    // }
 
     private void ToggleAiming(bool isAiming, bool isJointPlaced = false)
     {

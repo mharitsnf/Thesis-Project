@@ -13,10 +13,16 @@ public class TutorialCheckpoint : MonoBehaviour
         switch (name)
         {
             case "First Stage Exit":
-                TutorialInteractionController.Instance.hasExitFirstStage = true;
+                TutorialCore.Instance.hasExitFirstStage = true;
                 break;
             case "Third Stage Entrance":
-                TutorialInteractionController.Instance.hasEnteredThirdStage = true;
+                TutorialCore.Instance.hasEnteredThirdStage = true;
+                break;
+            case "Third Stage Exit":
+                TutorialCore.Instance.hasExitThirdStage = true;
+                break;
+            case  "Last Stage Entrance":
+                TutorialCore.Instance.hasEnteredLastStage = true;
                 break;
         }
     }

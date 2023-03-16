@@ -10,6 +10,17 @@ public class InstructionGroupController : MonoBehaviour
     public static InstructionGroupController Instance { get; private set; }
     
     public GameObject instructionPrefab;
+    private bool isShown;
+
+    public bool IsShown
+    {
+        get => isShown;
+        set
+        {
+            isShown = value;
+            if (!value) RemoveChildren();
+        }
+    }
 
     public enum DisplayState
     {
@@ -24,27 +35,28 @@ public class InstructionGroupController : MonoBehaviour
         set
         {
             _currentState = value;
+            
+            if (!isShown) return;
+            
             List<String> instructions = new();
             switch (value)
             {
                 case DisplayState.NotAiming:
-                    instructions.Add("Right Click to Aim");
-                    if (PlayerData.Instance.placedRopes.Count > 0) instructions.Add("Q to Detach Latest Rope");
-                    if (PlayerData.Instance.placedRopes.Count > 0) instructions.Add("LShift to Detach Earliest Rope");
+                    instructions.Add("[Right Click] Aim");
+                    if (PlayerData.Instance.placedRopes.Count > 0) instructions.Add("[Q] Detach Newest Rope");
+                    if (PlayerData.Instance.placedRopes.Count > 0) instructions.Add("[LShift] Detach Oldest Rope");
                     SetInstructions(instructions);
                     break;
                 case DisplayState.ObjectNotSelected:
-                    instructions.Add("Right Click/Q/E to Exit");
-                    instructions.Add("Left Click to Select Object");
+                    instructions.Add("[Right Click]/[Q] Exit");
+                    instructions.Add("[Left Click] Select Object");
                     SetInstructions(instructions);
                     break;
                 case DisplayState.ObjectSelected:
-                    instructions.Add("Right Click/Q to Exit");
-                    instructions.Add("Left Click to Select Point");
-                    instructions.Add("E to Confirm");
+                    instructions.Add("[Right Click]/[Q] Exit");
+                    instructions.Add("[Left Click] Select Point");
+                    instructions.Add("[E] Confirm");
                     SetInstructions(instructions);
-                    break;
-                default:
                     break;
             }
         }

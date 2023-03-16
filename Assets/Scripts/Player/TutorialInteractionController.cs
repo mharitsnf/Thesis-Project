@@ -11,38 +11,16 @@ public class TutorialInteractionController : MonoBehaviour
     public static TutorialInteractionController Instance { get; private set; }
     public static readonly ToggleEvent OnToggleAiming = new();
     
-    private PlayerInput _playerInput;
-    private CameraInput _cameraInput;
+    public PlayerInput playerInput;
+    public CameraInput cameraInput;
 
     private float _timeElapsedPressed;
     
     private Vector2 _previousMouseDelta;
-
-    public bool isMovementEnabled;
-    public bool hasMoved;
+    
     private float _moveDistance;
-
-    public bool isCameraEnabled;
-    public bool hasLookedAround;
     private float _lookAroundAmount;
-
-    public bool isJumpEnabled;
-    public bool hasJumped;
     public int jumpCount;
-
-    public bool hasExitFirstStage;
-
-    public bool hasEnteredThirdStage;
-
-    public bool isAimingEnabled;
-    public bool hasEnteredAimMode;
-    public bool hasExitedAimMode;
-
-    public bool isObjectSelectionEnabled;
-    public bool hasSelectedObject;
-
-    public bool isSurfaceSelectionEnabled;
-    public bool hasSelectedSurface;
 
     void Awake()
     {
@@ -53,119 +31,46 @@ public class TutorialInteractionController : MonoBehaviour
         SetupCameraInput();
     }
 
-    private void Start()
-    {
-        StartCoroutine(TutorialSequence());
-    }
-    
-    IEnumerator TutorialSequence()
-    {
-        yield return new WaitForSecondsRealtime(3f);
-
-        // Teach movement and camera
-        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Use WASD to move around and Mouse to move the camera."));
-        isMovementEnabled = true;
-        isCameraEnabled = true;
-        yield return new WaitUntil(() => hasMoved && hasLookedAround);
-        yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
-        
-        yield return new WaitForSecondsRealtime(3f);
-
-        isJumpEnabled = true;
-        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Use Space to jump. Try jumping a few times."));
-        yield return new WaitUntil(() => hasJumped);
-        yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
-        
-        yield return new WaitForSecondsRealtime(1f);
-
-        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Try to get out of the room."));
-        yield return new WaitUntil(() => hasExitFirstStage);
-        yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
-
-        yield return new WaitUntil(() => hasEnteredThirdStage);
-        
-        isMovementEnabled = false;
-        isCameraEnabled = false;
-        isJumpEnabled = false;
-        PlayerData.Instance.moveDirection = Vector2.zero;
-        PlayerData.Instance.cameraLookDelta = Vector2.zero;
-        PlayerData.Instance.cameraController.SwitchVirtualCamera(2);
-        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("You can create elastic ropes from these purple objects."));
-        yield return new WaitForSecondsRealtime(3f);
-        TutorialPanelController.Instance.ChangeText("You can select objects in aim mode.");
-        yield return new WaitForSecondsRealtime(3f);
-
-        PlayerData.Instance.cameraController.SwitchVirtualCamera(0);
-        yield return new WaitForSecondsRealtime(.5f);
-        isMovementEnabled = true;
-        isCameraEnabled = true;
-        isJumpEnabled = true;
-
-        TutorialPanelController.Instance.ChangeText("Use Right Click to enter aim mode.");
-        isAimingEnabled = true;
-        yield return new WaitUntil(() => hasEnteredAimMode);
-        yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
-        
-        yield return new WaitForSecondsRealtime(1f);
-        
-        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Time is slowed down when you are in aim mode."));
-        yield return new WaitForSecondsRealtime(3f);
-        TutorialPanelController.Instance.ChangeText("Try to exit aim mode using Right Click or Q.");
-        yield return new WaitUntil(() => hasExitedAimMode);
-        yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
-        
-        yield return new WaitForSecondsRealtime(1f);
-
-        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Let's try selecting objects. Enter aim mode with Right Click, and then Left Click on the object to select it."));
-        isObjectSelectionEnabled = true;
-        yield return new WaitUntil(() => hasSelectedObject);
-        yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
-    }
-
     private void Update()
     {
         PlayerData.Instance.cameraLookDelta = Vector2.Lerp(PlayerData.Instance.cameraLookDelta, Vector2.zero, PlayerData.Instance.cameraBrakeWeight * Time.deltaTime * (1 / Time.timeScale));
     }
-    
-    private void OnEnable()
-    {
-        _playerInput.Enable();
-        _cameraInput.Enable();
-    }
 
     private void OnDisable()
     {
-        _playerInput.Disable();
-        _cameraInput.Disable();
+        playerInput.Disable();
+        cameraInput.Disable();
     }
     
     private void SetupPlayerInput()
     {
-        _playerInput = new PlayerInput();
-        _playerInput.CharacterControls.Move.started += HandleMovementInput;
-        _playerInput.CharacterControls.Move.performed += HandleMovementInput;
-        _playerInput.CharacterControls.Move.canceled += HandleMovementInput;
+        playerInput = new PlayerInput();
+        playerInput.CharacterControls.Move.started += HandleMovementInput;
+        playerInput.CharacterControls.Move.performed += HandleMovementInput;
+        playerInput.CharacterControls.Move.canceled += HandleMovementInput;
 
-        _playerInput.CharacterControls.Jump.canceled += HandleJumpInput;
-        _playerInput.CharacterControls.Jump.performed += HandleJumpInput;
+        playerInput.CharacterControls.Jump.canceled += HandleJumpInput;
+        playerInput.CharacterControls.Jump.performed += HandleJumpInput;
         
-        _playerInput.CharacterControls.InteractRopePlacement.started += HandleInteractRopePlacementInput;
-        _playerInput.CharacterControls.ToggleRopePlacement.started += HandleToggleRopePlacementInput;
-        _playerInput.CharacterControls.ConfirmRopePlacement.started += HandleConfirmRopePlacementInput;
-        _playerInput.CharacterControls.DetachLastRopePlacement.started += HandleDetachLastRopePlacementInput;
-        _playerInput.CharacterControls.DetachFirstRopePlacement.started += HandleDetachFirstRopePlacementInput;
+        playerInput.CharacterControls.EnterAim.started += HandleEnterAimInput;
+        playerInput.CharacterControls.ExitAim.started += HandleExitAimInput;
+
+        playerInput.CharacterControls.SelectObject.started += HandleSelectObjectInput;
+        playerInput.CharacterControls.SelectSurface.started += HandleSelectSurfaceInput;
+        
+        playerInput.CharacterControls.ConfirmRopePlacement.started += HandleConfirmRopePlacementInput;
+        playerInput.CharacterControls.DetachLastRopePlacement.started += HandleDetachLastRopePlacementInput;
+        playerInput.CharacterControls.DetachFirstRopePlacement.started += HandleDetachFirstRopePlacementInput;
     }
 
     private void SetupCameraInput()
     {
-        _cameraInput = new CameraInput();
-        _cameraInput.CameraLook.Rotate.performed += HandleCameraInput;
+        cameraInput = new CameraInput();
+        cameraInput.CameraLook.Rotate.performed += HandleCameraInput;
     }
     
     private void HandleJumpInput(InputAction.CallbackContext context)
     {
-        if (!isJumpEnabled) return;
-        
         // Don't jump conditions
         if (context.duration > 0.1f) return;
         if (context is { canceled: false, interaction: not HoldInteraction }) return;
@@ -175,35 +80,58 @@ public class TutorialInteractionController : MonoBehaviour
         PlayerData.Instance.currentJumpPercentage = jumpPercentage;
         PlayerData.Instance.verticalStateController.Jump();
         
-        if (hasJumped) return;
+        if (TutorialCore.Instance.hasJumped) return;
         jumpCount++;
-        if (jumpCount > 3) hasJumped = true;
+        if (jumpCount > 3) TutorialCore.Instance.hasJumped = true;
     }
     
     private void HandleMovementInput(InputAction.CallbackContext context)
     {
-        if (!isMovementEnabled) return;
-        
         PlayerData.Instance.moveDirection = context.ReadValue<Vector2>();
 
-        if (hasMoved) return;
+        if (TutorialCore.Instance.hasMoved) return;
         _moveDistance += context.ReadValue<Vector2>().magnitude;
-        if (_moveDistance > 10) hasMoved = true;
+        if (_moveDistance > 10) TutorialCore.Instance.hasMoved = true;
     }
 
     private void HandleCameraInput(InputAction.CallbackContext context)
     {
-        if (!isCameraEnabled) return; 
-        
         PlayerData.Instance.cameraLookDelta = Vector2.Lerp(_previousMouseDelta, context.ReadValue<Vector2>(), PlayerData.Instance.cameraLerpWeight) * (1 / Time.timeScale);
         _previousMouseDelta = context.ReadValue<Vector2>();
         
-        if (hasLookedAround) return;
+        if (TutorialCore.Instance.hasLookedAround) return;
         _lookAroundAmount += context.ReadValue<Vector2>().magnitude;
-        if (_lookAroundAmount > 10) hasLookedAround = true;
+        if (_lookAroundAmount > 10) TutorialCore.Instance.hasLookedAround = true;
     }
-    
-    private void HandleInteractRopePlacementInput(InputAction.CallbackContext context)
+
+    private void HandleEnterAimInput(InputAction.CallbackContext context)
+    {
+        if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
+        if (!context.ReadValueAsButton()) return;
+        if (PlayerData.Instance.isAiming) return;
+
+        ToggleAiming(true);
+        
+        InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.ObjectNotSelected;
+
+        if (!TutorialCore.Instance.hasEnteredAimMode) TutorialCore.Instance.hasEnteredAimMode = true;
+    }
+
+    private void HandleExitAimInput(InputAction.CallbackContext context)
+    {
+        if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
+        if (!context.ReadValueAsButton()) return;
+        if (!PlayerData.Instance.isAiming) return;
+
+        PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
+        ToggleAiming(false);
+        
+        InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
+            
+        if (!TutorialCore.Instance.hasExitedAimMode) TutorialCore.Instance.hasExitedAimMode = true;
+    }
+
+    private void HandleSelectObjectInput(InputAction.CallbackContext context)
     {
         if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
         if (!PlayerData.Instance.isAiming) return;
@@ -211,67 +139,39 @@ public class TutorialInteractionController : MonoBehaviour
         if (!Physics.Raycast(PlayerData.Instance.realCamera.position, PlayerData.Instance.realCamera.forward,
                 out var hit, PlayerData.Instance.ropeRayCastDistance)) return;
         if (hit.collider.CompareTag("Player")) return;
-
+        if (!PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit))) return;
         
-        if (PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit)))
-        {
-            if (!isObjectSelectionEnabled) return;
-            
-            PlayerData.Instance.RopePlacementController.SelectObject(hit);
-            if (!hasSelectedObject) hasSelectedObject = true;
-        }
+        PlayerData.Instance.RopePlacementController.SelectObject(hit);
         
+        InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.ObjectSelected;
         
-        // Add material check, which ones can be attached to which ones cannot
-        // hit.collider.gameObject.GetComponent<MeshRenderer>().material.Equals();
-        else
-        {
-            if (!isSurfaceSelectionEnabled) return;
-            
-            PlayerData.Instance.RopePlacementController.SelectSurface(hit);
-            if (!hasSelectedSurface) hasSelectedSurface = true;
-        }
+        if (!TutorialCore.Instance.hasSelectedObject) TutorialCore.Instance.hasSelectedObject = true;
     }
-
-    private void HandleToggleRopePlacementInput(InputAction.CallbackContext context)
+    
+    private void HandleSelectSurfaceInput(InputAction.CallbackContext context)
     {
-        if (!isAimingEnabled) return;
-        
         if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
+        if (!PlayerData.Instance.isAiming) return;
         if (!context.ReadValueAsButton()) return;
-        
-        if (!PlayerData.Instance.isAiming)
-        {
-            ToggleAiming(true);
+        if (!Physics.Raycast(PlayerData.Instance.realCamera.position, PlayerData.Instance.realCamera.forward,
+                out var hit, PlayerData.Instance.ropeRayCastDistance)) return;
+        if (hit.collider.CompareTag("Player")) return;
+        if (PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit))) return;
 
-            if (!hasEnteredAimMode) hasEnteredAimMode = true;
-        }
-        else
-        {
-            PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
-            ToggleAiming(false);
-            
-            if (!hasExitedAimMode) hasExitedAimMode = true;
-        }
+        PlayerData.Instance.RopePlacementController.SelectSurface(hit);
+        if (!TutorialCore.Instance.hasSelectedSurface) TutorialCore.Instance.hasSelectedSurface = true;
     }
 
     private void HandleDetachLastRopePlacementInput(InputAction.CallbackContext context)
     {
         if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
         if (!context.ReadValueAsButton()) return;
+        if (PlayerData.Instance.isAiming) return;
+        if (PlayerData.Instance.placedRopes.Count == 0) return;
 
-        if (PlayerData.Instance.isAiming)
-        {
-            PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
-            ToggleAiming(false);
-            
-            if (!hasExitedAimMode) hasExitedAimMode = true;
-        }
-        else
-        {
-            if (PlayerData.Instance.placedRopes.Count == 0) return;
-            PlayerData.Instance.RopePlacementController.DestroyNewestBatch();
-        }
+        PlayerData.Instance.RopePlacementController.DestroyNewestBatch();
+    
+        if (!TutorialCore.Instance.hasDetachedLast) TutorialCore.Instance.hasDetachedLast = true;
     }
 
     private void HandleDetachFirstRopePlacementInput(InputAction.CallbackContext context)
@@ -282,41 +182,25 @@ public class TutorialInteractionController : MonoBehaviour
         if (PlayerData.Instance.placedRopes.Count == 0) return;
             
         PlayerData.Instance.RopePlacementController.DestroyOldestBatch();
+
+        if (!TutorialCore.Instance.hasDetachedFirst) TutorialCore.Instance.hasDetachedFirst = true;
     }
 
     private void HandleConfirmRopePlacementInput(InputAction.CallbackContext context)
     {
         if (PlayerData.Instance.currentInteractionState != PlayerData.InteractionState.RopePlacement) return;
         if (!context.ReadValueAsButton() || !PlayerData.Instance.isAiming) return;
+        if (PlayerData.Instance.activeRopes.Count <= 0) return;
 
-        if (PlayerData.Instance.activeRopes.Count > 0)
-        {
-            PlayerData.Instance.RopePlacementController.ConfirmPlacement();
+        PlayerData.Instance.RopePlacementController.ConfirmPlacement();
             
-            ToggleAiming(false, true);
-        }
-        else
-        {
-            PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
-            ToggleAiming(false);
-            
-            if (!hasExitedAimMode) hasExitedAimMode = true;
-        }
+        ToggleAiming(false, true);
+        
+        InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
+        
+        TutorialCore.Instance.ropeBatchCount++;
+        if (!TutorialCore.Instance.hasConfirmedSelection) TutorialCore.Instance.hasConfirmedSelection = true;
     }
-
-    // private void DestroyRopeBatch(LinkedList<GameObject> linkedList)
-    // {
-    //     while (linkedList.Count > 0)
-    //     {
-    //         GameObject ropeObject = linkedList.Last.Value;
-    //         Rope rope = ropeObject.GetComponent<Rope>();
-    //
-    //         if (rope.joint) Destroy(rope.joint);
-    //         if (rope.attachmentPoint) Destroy(rope.attachmentPoint);
-    //         Destroy(ropeObject);
-    //         linkedList.RemoveLast();
-    //     }
-    // }
 
     private void ToggleAiming(bool isAiming, bool isJointPlaced = false)
     {
@@ -329,6 +213,9 @@ public class TutorialInteractionController : MonoBehaviour
             Time.timeScale = PlayerData.Instance.aimingTimeScale;
             
             PlayerData.Instance.crosshairObject.SetActive(true);
+            
+            playerInput.CharacterControls.ExitAim.Enable();
+            playerInput.CharacterControls.EnterAim.Disable();
         }
         else
         {
@@ -337,6 +224,9 @@ public class TutorialInteractionController : MonoBehaviour
             PlayerData.Instance.cameraController.SwitchVirtualCamera(0);
             
             PlayerData.Instance.crosshairObject.SetActive(false);
+            
+            playerInput.CharacterControls.ExitAim.Disable();
+            playerInput.CharacterControls.EnterAim.Enable();
 
             if (PlayerData.Instance.currentInteractionState == PlayerData.InteractionState.RopePlacement)
             {

@@ -33,9 +33,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ToggleRopePlacement",
+                    "name": "EnterAim",
                     "type": "Button",
                     "id": "ae0d69ac-f90a-45b3-9830-3ee1788f8153",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ExitAim",
+                    "type": "Button",
+                    "id": "32d52196-dd77-45eb-8a59-59e0aad86eaf",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -63,6 +72,24 @@
                     "name": "DetachFirstRopePlacement",
                     "type": "Button",
                     "id": "66cb60df-315a-4acb-bcf4-a07f92cd1efb",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SelectObject",
+                    "type": "Button",
+                    "id": "571d5e3b-fda9-4cdd-a078-16c8f30cd928",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SelectSurface",
+                    "type": "Button",
+                    "id": "a763b14b-8b1e-43fa-9080-7b9a69b25041",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -176,7 +203,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToggleRopePlacement",
+                    "action": "EnterAim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -210,6 +237,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "DetachFirstRopePlacement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b015cac-1e65-40d9-b7fd-3ba8d707893c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitAim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cfb47b10-83bc-4599-a5c3-61397e9e36f6",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitAim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a43b7d77-bced-4db5-85f7-9b9b400805ed",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectObject",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a510a224-99e2-40ce-91eb-ac89487c2028",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectSurface",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
