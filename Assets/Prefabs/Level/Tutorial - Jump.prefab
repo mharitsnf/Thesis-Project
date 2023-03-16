@@ -1,0 +1,5293 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1901281526217266854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281526217266855}
+  - component: {fileID: 1901281526217266856}
+  m_Layer: 0
+  m_Name: Brush (45)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1901281526217266855
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526217266854}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 17, y: -0.49999994, z: 12.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281526217266856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526217266854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 0
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: 1
+        b: 0
+        c: 0
+        d: 17.5
+      Tangent: {x: 0, y: 0, z: -1}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 0
+    - Plane:
+        a: -0.000000049670444
+        b: 0
+        c: -1
+        d: 21.5
+      Tangent: {x: -1, y: 0, z: 0.000000049670444}
+      BiNormal: {x: 0, y: 1, z: 0}
+      TexGenIndex: 1
+    - Plane:
+        a: -1
+        b: 0.00000011920947
+        c: 1.5758776e-22
+        d: 0.5000001
+      Tangent: {x: 1.5758776e-22, y: 0, z: 1}
+      BiNormal: {x: 0.00000011920947, y: 1, z: -1.8785954e-29}
+      TexGenIndex: 2
+    - Plane:
+        a: 0
+        b: 0
+        c: 1
+        d: 21.5
+      Tangent: {x: 1, y: 0, z: -0}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: -0.000000056293274
+        b: 1
+        c: -5.390601e-10
+        d: 0.99999905
+      Tangent: {x: 1, y: 0.000000056293274, z: -0}
+      BiNormal: {x: 3.0345455e-17, y: -5.390601e-10, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: -0.000000029802315
+        b: -1
+        c: 1.05571606e-16
+        d: -0.0000005215405
+      Tangent: {x: -1, y: 0.000000029802315, z: 0}
+      BiNormal: {x: -3.1462782e-24, y: -1.05571606e-16, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: 17.5, y: 1, z: -21.5}
+    - {x: -0.5, y: 0.999999, z: -21.5}
+    - {x: -0.5, y: 0.999999, z: 21.5}
+    - {x: 17.5, y: 1, z: 21.5}
+    - {x: 17.5, y: 0, z: 21.5}
+    - {x: 17.5, y: 0, z: -21.5}
+    - {x: -0.5000001, y: 0.0000005364417, z: -21.5}
+    - {x: -0.5000001, y: 0.0000005364417, z: 21.5}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 144
+--- !u!1 &1901281526229975108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281526229975109}
+  - component: {fileID: 1901281526229975110}
+  m_Layer: 0
+  m_Name: Brush (68)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901281526229975109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526229975108}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 17, y: 11, z: 14.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281526229975110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526229975108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 1
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: -1
+        b: -0.00000023841761
+        c: -6.7762587e-21
+        d: 3.000002
+      Tangent: {x: -6.7762587e-21, y: 0, z: 1}
+      BiNormal: {x: -0.00000023841761, y: 1, z: -1.6155794e-27}
+      TexGenIndex: 0
+    - Plane:
+        a: -0.00000015894565
+        b: -3.7895583e-14
+        c: 1
+        d: 1.0000014
+      Tangent: {x: 1, y: 0, z: 0.00000015894565}
+      BiNormal: {x: -6.023338e-21, y: 1, z: 3.7895583e-14}
+      TexGenIndex: 1
+    - Plane:
+        a: 1
+        b: 0.0000002384199
+        c: -6.7762555e-21
+        d: 3.0000014
+      Tangent: {x: -6.7762555e-21, y: -0, z: -1}
+      BiNormal: {x: -0.0000002384199, y: 1, z: 1.615594e-27}
+      TexGenIndex: 2
+    - Plane:
+        a: -1.8947792e-14
+        b: 0
+        c: -1
+        d: 1
+      Tangent: {x: -1, y: 0, z: 1.8947792e-14}
+      BiNormal: {x: 0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: -3.1622524e-20
+        d: 0.000000119209176
+      Tangent: {x: 1, y: -0, z: 0}
+      BiNormal: {x: 0, y: -3.1622524e-20, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0.000000019868157
+        d: 1.0000001
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0.000000019868157, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -3.000002, y: 0.000000119209176, z: 1.000001}
+    - {x: 3.0000014, y: 0.000000119209176, z: 1.0000019}
+    - {x: 3.0000014, y: 0.000000119209176, z: -1}
+    - {x: -3.000002, y: 0.000000119209176, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: 1.000001}
+    - {x: 3.0000017, y: -1.0000001, z: 1.0000019}
+    - {x: 3.0000017, y: -1.0000001, z: -1}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 230
+--- !u!1 &1901281526346428724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281526346428725}
+  - component: {fileID: 1901281526346428726}
+  m_Layer: 0
+  m_Name: Brush (59)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901281526346428725
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526346428724}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -12, y: 11, z: -3.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281526346428726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526346428724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 1
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: -1
+        b: -0.00000023841761
+        c: -6.7762587e-21
+        d: 3.000002
+      Tangent: {x: -6.7762587e-21, y: 0, z: 1}
+      BiNormal: {x: -0.00000023841761, y: 1, z: -1.6155794e-27}
+      TexGenIndex: 0
+    - Plane:
+        a: -0.00000015894565
+        b: -3.7895583e-14
+        c: 1
+        d: 1.0000014
+      Tangent: {x: 1, y: 0, z: 0.00000015894565}
+      BiNormal: {x: -6.023338e-21, y: 1, z: 3.7895583e-14}
+      TexGenIndex: 1
+    - Plane:
+        a: 1
+        b: 0.0000002384199
+        c: -6.7762555e-21
+        d: 3.0000014
+      Tangent: {x: -6.7762555e-21, y: -0, z: -1}
+      BiNormal: {x: -0.0000002384199, y: 1, z: 1.615594e-27}
+      TexGenIndex: 2
+    - Plane:
+        a: -1.8947792e-14
+        b: 0
+        c: -1
+        d: 1
+      Tangent: {x: -1, y: 0, z: 1.8947792e-14}
+      BiNormal: {x: 0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: -3.1622524e-20
+        d: 0.000000119209176
+      Tangent: {x: 1, y: -0, z: 0}
+      BiNormal: {x: 0, y: -3.1622524e-20, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0.000000019868157
+        d: 1.0000001
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0.000000019868157, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -3.000002, y: 0.000000119209176, z: 1.000001}
+    - {x: 3.0000014, y: 0.000000119209176, z: 1.0000019}
+    - {x: 3.0000014, y: 0.000000119209176, z: -1}
+    - {x: -3.000002, y: 0.000000119209176, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: 1.000001}
+    - {x: 3.0000017, y: -1.0000001, z: 1.0000019}
+    - {x: 3.0000017, y: -1.0000001, z: -1}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 102
+--- !u!1 &1901281526354071488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281526354071489}
+  - component: {fileID: 1901281526354071490}
+  m_Layer: 0
+  m_Name: Brush (46)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1901281526354071489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526354071488}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 17, z: 11.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281526354071490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526354071488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 0
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: 0
+        b: 0
+        c: -1
+        d: 19
+      Tangent: {x: -1, y: -0, z: -0}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 0
+    - Plane:
+        a: -1
+        b: 0
+        c: 0
+        d: 12.5
+      Tangent: {x: 0, y: 0, z: 1}
+      BiNormal: {x: 0, y: 1, z: -0}
+      TexGenIndex: 1
+    - Plane:
+        a: 0
+        b: 0
+        c: 1
+        d: 22
+      Tangent: {x: 1, y: 0, z: -0}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 2
+    - Plane:
+        a: 1
+        b: 0
+        c: 0
+        d: 15.5
+      Tangent: {x: 0, y: 0, z: -1}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: 0
+        d: 0
+      Tangent: {x: 1, y: 0, z: 0}
+      BiNormal: {x: 0, y: 0, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0
+        d: 1
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -12.5, y: 0, z: -19}
+    - {x: -12.5, y: 0, z: 22}
+    - {x: 15.5, y: 0, z: 22}
+    - {x: 15.5, y: 0, z: -19}
+    - {x: 15.5, y: -1, z: -19}
+    - {x: -12.5, y: -1, z: -19}
+    - {x: -12.5, y: -1, z: 22}
+    - {x: 15.5, y: -1, z: 22}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 134
+--- !u!1 &1901281526590401211
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281526590401212}
+  - component: {fileID: 1901281526590401213}
+  m_Layer: 0
+  m_Name: Brush (43)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1901281526590401212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526590401211}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 1.500001, y: 6.5, z: -11.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281526590401213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526590401211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 0
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: 0
+        b: 0
+        c: -1
+        d: 10.5
+      Tangent: {x: -1, y: -0, z: -0}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 0
+    - Plane:
+        a: -1
+        b: 0
+        c: 0
+        d: 13.5
+      Tangent: {x: 0, y: 0, z: 1}
+      BiNormal: {x: 0, y: 1, z: -0}
+      TexGenIndex: 1
+    - Plane:
+        a: 0
+        b: 0
+        c: 1
+        d: 7.5
+      Tangent: {x: 1, y: 0, z: -0}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 2
+    - Plane:
+        a: 1
+        b: 0
+        c: 0
+        d: 14.5
+      Tangent: {x: 0, y: 0, z: -1}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: 0
+        d: 4
+      Tangent: {x: 1, y: 0, z: 0}
+      BiNormal: {x: 0, y: 0, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0
+        d: -3
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -13.5, y: 4, z: -10.5}
+    - {x: -13.5, y: 4, z: 7.5}
+    - {x: 14.5, y: 4, z: 7.5}
+    - {x: 14.5, y: 4, z: -10.5}
+    - {x: 14.5, y: 3, z: -10.5}
+    - {x: -13.5, y: 3, z: -10.5}
+    - {x: -13.5, y: 3, z: 7.5}
+    - {x: 14.5, y: 3, z: 7.5}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 354
+--- !u!1 &1901281526662049507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281526662049508}
+  - component: {fileID: 1901281526662049509}
+  m_Layer: 0
+  m_Name: Brush (44)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1901281526662049508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526662049507}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -12, y: -0.49999994, z: 12.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281526662049509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526662049507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 0
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: 1
+        b: 0
+        c: 0
+        d: 17.5
+      Tangent: {x: 0, y: 0, z: -1}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 0
+    - Plane:
+        a: -0.000000049670444
+        b: 0
+        c: -1
+        d: 21.5
+      Tangent: {x: -1, y: 0, z: 0.000000049670444}
+      BiNormal: {x: 0, y: 1, z: 0}
+      TexGenIndex: 1
+    - Plane:
+        a: -1
+        b: 0.00000011920947
+        c: 1.5758776e-22
+        d: 0.5000001
+      Tangent: {x: 1.5758776e-22, y: 0, z: 1}
+      BiNormal: {x: 0.00000011920947, y: 1, z: -1.8785954e-29}
+      TexGenIndex: 2
+    - Plane:
+        a: 0
+        b: 0
+        c: 1
+        d: 21.5
+      Tangent: {x: 1, y: 0, z: -0}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: -0.000000056293274
+        b: 1
+        c: -5.390601e-10
+        d: 0.99999905
+      Tangent: {x: 1, y: 0.000000056293274, z: -0}
+      BiNormal: {x: 3.0345455e-17, y: -5.390601e-10, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: -0.000000029802315
+        b: -1
+        c: 1.05571606e-16
+        d: -0.0000005215405
+      Tangent: {x: -1, y: 0.000000029802315, z: 0}
+      BiNormal: {x: -3.1462782e-24, y: -1.05571606e-16, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: 17.5, y: 1, z: -21.5}
+    - {x: -0.5, y: 0.999999, z: -21.5}
+    - {x: -0.5, y: 0.999999, z: 21.5}
+    - {x: 17.5, y: 1, z: 21.5}
+    - {x: 17.5, y: 0, z: 21.5}
+    - {x: 17.5, y: 0, z: -21.5}
+    - {x: -0.5000001, y: 0.0000005364417, z: -21.5}
+    - {x: -0.5000001, y: 0.0000005364417, z: 21.5}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 104
+--- !u!1 &1901281526779632987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281526779632988}
+  - component: {fileID: 1901281526779632989}
+  m_Layer: 0
+  m_Name: Brush (65)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901281526779632988
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526779632987}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -12, y: 11, z: 26.249998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 18
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281526779632989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526779632987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 1
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: -1
+        b: -0.00000023841761
+        c: -6.7762587e-21
+        d: 3.000002
+      Tangent: {x: -6.7762587e-21, y: 0, z: 1}
+      BiNormal: {x: -0.00000023841761, y: 1, z: -1.6155794e-27}
+      TexGenIndex: 0
+    - Plane:
+        a: -0.00000015894565
+        b: -3.7895583e-14
+        c: 1
+        d: 1.0000014
+      Tangent: {x: 1, y: 0, z: 0.00000015894565}
+      BiNormal: {x: -6.023338e-21, y: 1, z: 3.7895583e-14}
+      TexGenIndex: 1
+    - Plane:
+        a: 1
+        b: 0.0000002384199
+        c: -6.7762555e-21
+        d: 3.0000014
+      Tangent: {x: -6.7762555e-21, y: -0, z: -1}
+      BiNormal: {x: -0.0000002384199, y: 1, z: 1.615594e-27}
+      TexGenIndex: 2
+    - Plane:
+        a: -1.8947792e-14
+        b: 0
+        c: -1
+        d: 1
+      Tangent: {x: -1, y: 0, z: 1.8947792e-14}
+      BiNormal: {x: 0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: -3.1622524e-20
+        d: 0.000000119209176
+      Tangent: {x: 1, y: -0, z: 0}
+      BiNormal: {x: 0, y: -3.1622524e-20, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0.000000019868157
+        d: 1.0000001
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0.000000019868157, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -3.000002, y: 0.000000119209176, z: 1.000001}
+    - {x: 3.0000014, y: 0.000000119209176, z: 1.0000019}
+    - {x: 3.0000014, y: 0.000000119209176, z: -1}
+    - {x: -3.000002, y: 0.000000119209176, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: 1.000001}
+    - {x: 3.0000017, y: -1.0000001, z: 1.0000019}
+    - {x: 3.0000017, y: -1.0000001, z: -1}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 193
+--- !u!1 &1901281526806452780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281526806452781}
+  - component: {fileID: 1901281526806452782}
+  m_Layer: 0
+  m_Name: Brush (70)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901281526806452781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526806452780}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 17, y: 11, z: 26.249998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281526806452782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526806452780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 1
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: -1
+        b: -0.00000023841761
+        c: -6.7762587e-21
+        d: 3.000002
+      Tangent: {x: -6.7762587e-21, y: 0, z: 1}
+      BiNormal: {x: -0.00000023841761, y: 1, z: -1.6155794e-27}
+      TexGenIndex: 0
+    - Plane:
+        a: -0.00000015894565
+        b: -3.7895583e-14
+        c: 1
+        d: 1.0000014
+      Tangent: {x: 1, y: 0, z: 0.00000015894565}
+      BiNormal: {x: -6.023338e-21, y: 1, z: 3.7895583e-14}
+      TexGenIndex: 1
+    - Plane:
+        a: 1
+        b: 0.0000002384199
+        c: -6.7762555e-21
+        d: 3.0000014
+      Tangent: {x: -6.7762555e-21, y: -0, z: -1}
+      BiNormal: {x: -0.0000002384199, y: 1, z: 1.615594e-27}
+      TexGenIndex: 2
+    - Plane:
+        a: -1.8947792e-14
+        b: 0
+        c: -1
+        d: 1
+      Tangent: {x: -1, y: 0, z: 1.8947792e-14}
+      BiNormal: {x: 0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: -3.1622524e-20
+        d: 0.000000119209176
+      Tangent: {x: 1, y: -0, z: 0}
+      BiNormal: {x: 0, y: -3.1622524e-20, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0.000000019868157
+        d: 1.0000001
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0.000000019868157, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -3.000002, y: 0.000000119209176, z: 1.000001}
+    - {x: 3.0000014, y: 0.000000119209176, z: 1.0000019}
+    - {x: 3.0000014, y: 0.000000119209176, z: -1}
+    - {x: -3.000002, y: 0.000000119209176, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: 1.000001}
+    - {x: 3.0000017, y: -1.0000001, z: 1.0000019}
+    - {x: 3.0000017, y: -1.0000001, z: -1}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 252
+--- !u!1 &1901281526824336193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281526824336194}
+  - component: {fileID: 1901281526824336195}
+  m_Layer: 0
+  m_Name: Brush (69)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901281526824336194
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526824336193}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 17, y: 11, z: 20.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281526824336195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526824336193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 1
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: -1
+        b: -0.00000023841761
+        c: -6.7762587e-21
+        d: 3.000002
+      Tangent: {x: -6.7762587e-21, y: 0, z: 1}
+      BiNormal: {x: -0.00000023841761, y: 1, z: -1.6155794e-27}
+      TexGenIndex: 0
+    - Plane:
+        a: -0.00000015894565
+        b: -3.7895583e-14
+        c: 1
+        d: 1.0000014
+      Tangent: {x: 1, y: 0, z: 0.00000015894565}
+      BiNormal: {x: -6.023338e-21, y: 1, z: 3.7895583e-14}
+      TexGenIndex: 1
+    - Plane:
+        a: 1
+        b: 0.0000002384199
+        c: -6.7762555e-21
+        d: 3.0000014
+      Tangent: {x: -6.7762555e-21, y: -0, z: -1}
+      BiNormal: {x: -0.0000002384199, y: 1, z: 1.615594e-27}
+      TexGenIndex: 2
+    - Plane:
+        a: -1.8947792e-14
+        b: 0
+        c: -1
+        d: 1
+      Tangent: {x: -1, y: 0, z: 1.8947792e-14}
+      BiNormal: {x: 0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: -3.1622524e-20
+        d: 0.000000119209176
+      Tangent: {x: 1, y: -0, z: 0}
+      BiNormal: {x: 0, y: -3.1622524e-20, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0.000000019868157
+        d: 1.0000001
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0.000000019868157, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -3.000002, y: 0.000000119209176, z: 1.000001}
+    - {x: 3.0000014, y: 0.000000119209176, z: 1.0000019}
+    - {x: 3.0000014, y: 0.000000119209176, z: -1}
+    - {x: -3.000002, y: 0.000000119209176, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: 1.000001}
+    - {x: 3.0000017, y: -1.0000001, z: 1.0000019}
+    - {x: 3.0000017, y: -1.0000001, z: -1}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 240
+--- !u!1 &1901281526880735913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281526880735914}
+  - component: {fileID: 1901281526880735915}
+  m_Layer: 0
+  m_Name: Brush (62)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901281526880735914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526880735913}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -12, y: 11, z: 8.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281526880735915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526880735913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 1
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: -1
+        b: -0.00000023841761
+        c: -6.7762587e-21
+        d: 3.000002
+      Tangent: {x: -6.7762587e-21, y: 0, z: 1}
+      BiNormal: {x: -0.00000023841761, y: 1, z: -1.6155794e-27}
+      TexGenIndex: 0
+    - Plane:
+        a: -0.00000015894565
+        b: -3.7895583e-14
+        c: 1
+        d: 1.0000014
+      Tangent: {x: 1, y: 0, z: 0.00000015894565}
+      BiNormal: {x: -6.023338e-21, y: 1, z: 3.7895583e-14}
+      TexGenIndex: 1
+    - Plane:
+        a: 1
+        b: 0.0000002384199
+        c: -6.7762555e-21
+        d: 3.0000014
+      Tangent: {x: -6.7762555e-21, y: -0, z: -1}
+      BiNormal: {x: -0.0000002384199, y: 1, z: 1.615594e-27}
+      TexGenIndex: 2
+    - Plane:
+        a: -1.8947792e-14
+        b: 0
+        c: -1
+        d: 1
+      Tangent: {x: -1, y: 0, z: 1.8947792e-14}
+      BiNormal: {x: 0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: -3.1622524e-20
+        d: 0.000000119209176
+      Tangent: {x: 1, y: -0, z: 0}
+      BiNormal: {x: 0, y: -3.1622524e-20, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0.000000019868157
+        d: 1.0000001
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0.000000019868157, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -3.000002, y: 0.000000119209176, z: 1.000001}
+    - {x: 3.0000014, y: 0.000000119209176, z: 1.0000019}
+    - {x: 3.0000014, y: 0.000000119209176, z: -1}
+    - {x: -3.000002, y: 0.000000119209176, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: 1.000001}
+    - {x: 3.0000017, y: -1.0000001, z: 1.0000019}
+    - {x: 3.0000017, y: -1.0000001, z: -1}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 163
+--- !u!1 &1901281526908815196
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281526908815197}
+  - component: {fileID: 1901281526908815198}
+  m_Layer: 0
+  m_Name: Brush (61)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901281526908815197
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526908815196}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 17, y: 11, z: -3.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281526908815198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281526908815196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 1
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: -1
+        b: -0.00000023841761
+        c: -6.7762587e-21
+        d: 3.000002
+      Tangent: {x: -6.7762587e-21, y: 0, z: 1}
+      BiNormal: {x: -0.00000023841761, y: 1, z: -1.6155794e-27}
+      TexGenIndex: 0
+    - Plane:
+        a: -0.00000015894565
+        b: -3.7895583e-14
+        c: 1
+        d: 1.0000014
+      Tangent: {x: 1, y: 0, z: 0.00000015894565}
+      BiNormal: {x: -6.023338e-21, y: 1, z: 3.7895583e-14}
+      TexGenIndex: 1
+    - Plane:
+        a: 1
+        b: 0.0000002384199
+        c: -6.7762555e-21
+        d: 3.0000014
+      Tangent: {x: -6.7762555e-21, y: -0, z: -1}
+      BiNormal: {x: -0.0000002384199, y: 1, z: 1.615594e-27}
+      TexGenIndex: 2
+    - Plane:
+        a: -1.8947792e-14
+        b: 0
+        c: -1
+        d: 1
+      Tangent: {x: -1, y: 0, z: 1.8947792e-14}
+      BiNormal: {x: 0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: -3.1622524e-20
+        d: 0.000000119209176
+      Tangent: {x: 1, y: -0, z: 0}
+      BiNormal: {x: 0, y: -3.1622524e-20, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0.000000019868157
+        d: 1.0000001
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0.000000019868157, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -3.000002, y: 0.000000119209176, z: 1.000001}
+    - {x: 3.0000014, y: 0.000000119209176, z: 1.0000019}
+    - {x: 3.0000014, y: 0.000000119209176, z: -1}
+    - {x: -3.000002, y: 0.000000119209176, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: 1.000001}
+    - {x: 3.0000017, y: -1.0000001, z: 1.0000019}
+    - {x: 3.0000017, y: -1.0000001, z: -1}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 161
+--- !u!1 &1901281527086391467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281527086391468}
+  - component: {fileID: 1901281527086391469}
+  m_Layer: 0
+  m_Name: Brush (63)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901281527086391468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527086391467}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -12, y: 11, z: 14.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281527086391469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527086391467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 1
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: -1
+        b: -0.00000023841761
+        c: -6.7762587e-21
+        d: 3.000002
+      Tangent: {x: -6.7762587e-21, y: 0, z: 1}
+      BiNormal: {x: -0.00000023841761, y: 1, z: -1.6155794e-27}
+      TexGenIndex: 0
+    - Plane:
+        a: -0.00000015894565
+        b: -3.7895583e-14
+        c: 1
+        d: 1.0000014
+      Tangent: {x: 1, y: 0, z: 0.00000015894565}
+      BiNormal: {x: -6.023338e-21, y: 1, z: 3.7895583e-14}
+      TexGenIndex: 1
+    - Plane:
+        a: 1
+        b: 0.0000002384199
+        c: -6.7762555e-21
+        d: 3.0000014
+      Tangent: {x: -6.7762555e-21, y: -0, z: -1}
+      BiNormal: {x: -0.0000002384199, y: 1, z: 1.615594e-27}
+      TexGenIndex: 2
+    - Plane:
+        a: -1.8947792e-14
+        b: 0
+        c: -1
+        d: 1
+      Tangent: {x: -1, y: 0, z: 1.8947792e-14}
+      BiNormal: {x: 0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: -3.1622524e-20
+        d: 0.000000119209176
+      Tangent: {x: 1, y: -0, z: 0}
+      BiNormal: {x: 0, y: -3.1622524e-20, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0.000000019868157
+        d: 1.0000001
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0.000000019868157, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -3.000002, y: 0.000000119209176, z: 1.000001}
+    - {x: 3.0000014, y: 0.000000119209176, z: 1.0000019}
+    - {x: 3.0000014, y: 0.000000119209176, z: -1}
+    - {x: -3.000002, y: 0.000000119209176, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: 1.000001}
+    - {x: 3.0000017, y: -1.0000001, z: 1.0000019}
+    - {x: 3.0000017, y: -1.0000001, z: -1}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 171
+--- !u!1 &1901281527168790871
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281527168790872}
+  - component: {fileID: 1901281527168790873}
+  m_Layer: 0
+  m_Name: Tutorial - Jump
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901281527168790872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527168790871}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -56.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1901281527893957466}
+  - {fileID: 1901281526354071489}
+  - {fileID: 1901281527618519778}
+  - {fileID: 1901281527489201088}
+  - {fileID: 1901281526590401212}
+  - {fileID: 1901281526662049508}
+  - {fileID: 1901281526217266855}
+  - {fileID: 1901281527599035277}
+  - {fileID: 1901281526346428725}
+  - {fileID: 1901281526908815197}
+  - {fileID: 1901281527994313272}
+  - {fileID: 1901281527557415132}
+  - {fileID: 1901281526880735914}
+  - {fileID: 1901281527719607182}
+  - {fileID: 1901281527086391468}
+  - {fileID: 1901281526229975109}
+  - {fileID: 1901281528111454113}
+  - {fileID: 1901281526824336194}
+  - {fileID: 1901281526779632988}
+  - {fileID: 1901281526806452781}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281527168790873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527168790871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d37e3b4a998463140951027974f2a1a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 1.1
+  OperationType: 0
+  passThrough: 1
+  HandleAsOne: 0
+--- !u!1 &1901281527489201151
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281527489201088}
+  - component: {fileID: 1901281527489201089}
+  m_Layer: 0
+  m_Name: Brush (7)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1901281527489201088
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527489201151}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 2, y: 5, z: 33.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281527489201089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527489201151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 0
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: -0.000000003725294
+        b: 0.00000011920925
+        c: -1
+        d: 1.0000001
+      Tangent: {x: -1, y: 0, z: 0.000000003725294}
+      BiNormal: {x: 4.440895e-16, y: 1, z: 0.00000011920925}
+      TexGenIndex: 0
+    - Plane:
+        a: -1
+        b: 0.000000039736424
+        c: 0
+        d: 4
+      Tangent: {x: 0, y: 0, z: 1}
+      BiNormal: {x: 0.000000039736424, y: 1, z: -0}
+      TexGenIndex: 1
+    - Plane:
+        a: 0
+        b: 0
+        c: 1
+        d: 2
+      Tangent: {x: 1, y: 0, z: -0}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 2
+    - Plane:
+        a: 1
+        b: 0.000000039736424
+        c: 0
+        d: 4
+      Tangent: {x: 0, y: 0, z: -1}
+      BiNormal: {x: -0.000000039736424, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: 0
+        d: 4
+      Tangent: {x: 1, y: 0, z: 0}
+      BiNormal: {x: 0, y: 0, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: -8.881784e-16
+        b: -1
+        c: 0.00000043710074
+        d: 0.0000008742014
+      Tangent: {x: -1, y: 8.881784e-16, z: 0}
+      BiNormal: {x: -3.8822344e-22, y: -0.00000043710074, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -4, y: 4, z: -0.99999964}
+    - {x: -4, y: 4, z: 2}
+    - {x: 4, y: 4, z: 2}
+    - {x: 4, y: 4, z: -0.99999964}
+    - {x: 4, y: -0.0000013113022, z: -1.0000001}
+    - {x: -4, y: -0.0000013113022, z: -1.0000001}
+    - {x: -4, y: -0, z: 2}
+    - {x: 4, y: -0, z: 2}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 95
+--- !u!1 &1901281527557415131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281527557415132}
+  - component: {fileID: 1901281527557415133}
+  m_Layer: 0
+  m_Name: Brush (66)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901281527557415132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527557415131}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 17, y: 11, z: 2.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281527557415133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527557415131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 1
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: -1
+        b: -0.00000023841761
+        c: -6.7762587e-21
+        d: 3.000002
+      Tangent: {x: -6.7762587e-21, y: 0, z: 1}
+      BiNormal: {x: -0.00000023841761, y: 1, z: -1.6155794e-27}
+      TexGenIndex: 0
+    - Plane:
+        a: -0.00000015894565
+        b: -3.7895583e-14
+        c: 1
+        d: 1.0000014
+      Tangent: {x: 1, y: 0, z: 0.00000015894565}
+      BiNormal: {x: -6.023338e-21, y: 1, z: 3.7895583e-14}
+      TexGenIndex: 1
+    - Plane:
+        a: 1
+        b: 0.0000002384199
+        c: -6.7762555e-21
+        d: 3.0000014
+      Tangent: {x: -6.7762555e-21, y: -0, z: -1}
+      BiNormal: {x: -0.0000002384199, y: 1, z: 1.615594e-27}
+      TexGenIndex: 2
+    - Plane:
+        a: -1.8947792e-14
+        b: 0
+        c: -1
+        d: 1
+      Tangent: {x: -1, y: 0, z: 1.8947792e-14}
+      BiNormal: {x: 0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: -3.1622524e-20
+        d: 0.000000119209176
+      Tangent: {x: 1, y: -0, z: 0}
+      BiNormal: {x: 0, y: -3.1622524e-20, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0.000000019868157
+        d: 1.0000001
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0.000000019868157, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -3.000002, y: 0.000000119209176, z: 1.000001}
+    - {x: 3.0000014, y: 0.000000119209176, z: 1.0000019}
+    - {x: 3.0000014, y: 0.000000119209176, z: -1}
+    - {x: -3.000002, y: 0.000000119209176, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: 1.000001}
+    - {x: 3.0000017, y: -1.0000001, z: 1.0000019}
+    - {x: 3.0000017, y: -1.0000001, z: -1}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 203
+--- !u!1 &1901281527599035276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281527599035277}
+  - component: {fileID: 1901281527599035278}
+  m_Layer: 0
+  m_Name: Brush (42)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1901281527599035277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527599035276}
+  m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 1.500001, y: 6.5, z: 30.249998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281527599035278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527599035276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 0
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: 0
+        b: 0
+        c: -1
+        d: 10.5
+      Tangent: {x: -1, y: -0, z: -0}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 0
+    - Plane:
+        a: -1
+        b: 0
+        c: 0
+        d: 13.5
+      Tangent: {x: 0, y: 0, z: 1}
+      BiNormal: {x: 0, y: 1, z: -0}
+      TexGenIndex: 1
+    - Plane:
+        a: 0
+        b: 0
+        c: 1
+        d: 7.5
+      Tangent: {x: 1, y: 0, z: -0}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 2
+    - Plane:
+        a: 1
+        b: 0
+        c: 0
+        d: 14.5
+      Tangent: {x: 0, y: 0, z: -1}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: 0
+        d: 4
+      Tangent: {x: 1, y: 0, z: 0}
+      BiNormal: {x: 0, y: 0, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0
+        d: -3
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -13.5, y: 4, z: -10.5}
+    - {x: -13.5, y: 4, z: 7.5}
+    - {x: 14.5, y: 4, z: 7.5}
+    - {x: 14.5, y: 4, z: -10.5}
+    - {x: 14.5, y: 3, z: -10.5}
+    - {x: -13.5, y: 3, z: -10.5}
+    - {x: -13.5, y: 3, z: 7.5}
+    - {x: 14.5, y: 3, z: 7.5}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 294
+--- !u!1 &1901281527618519777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281527618519778}
+  - component: {fileID: 1901281527618519779}
+  m_Layer: 0
+  m_Name: Brush (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1901281527618519778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527618519777}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 29.749998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281527618519779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527618519777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 0
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: 0
+        b: 0
+        c: 1
+        d: 3.5
+      Tangent: {x: 1, y: 0, z: -0}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 0
+    - Plane:
+        a: 1
+        b: 0
+        c: 0
+        d: 9
+      Tangent: {x: 0, y: 0, z: -1}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 1
+    - Plane:
+        a: 0
+        b: 0
+        c: -1
+        d: 4.5
+      Tangent: {x: -1, y: -0, z: -0}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 2
+    - Plane:
+        a: -1
+        b: 0
+        c: 0
+        d: 5
+      Tangent: {x: 0, y: 0, z: 1}
+      BiNormal: {x: 0, y: 1, z: -0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: 0
+        d: 4
+      Tangent: {x: 1, y: 0, z: 0}
+      BiNormal: {x: 0, y: 0, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0
+        d: 0
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: 9, y: 4, z: 3.5}
+    - {x: 9, y: 4, z: -4.5}
+    - {x: -5, y: 4, z: -4.5}
+    - {x: -5, y: 4, z: 3.5}
+    - {x: -5, y: 0, z: 3.5}
+    - {x: 9, y: 0, z: 3.5}
+    - {x: 9, y: 0, z: -4.5}
+    - {x: -5, y: 0, z: -4.5}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 93
+--- !u!1 &1901281527719607181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281527719607182}
+  - component: {fileID: 1901281527719607183}
+  m_Layer: 0
+  m_Name: Brush (67)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901281527719607182
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527719607181}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 17, y: 11, z: 8.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281527719607183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527719607181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 1
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: -1
+        b: -0.00000023841761
+        c: -6.7762587e-21
+        d: 3.000002
+      Tangent: {x: -6.7762587e-21, y: 0, z: 1}
+      BiNormal: {x: -0.00000023841761, y: 1, z: -1.6155794e-27}
+      TexGenIndex: 0
+    - Plane:
+        a: -0.00000015894565
+        b: -3.7895583e-14
+        c: 1
+        d: 1.0000014
+      Tangent: {x: 1, y: 0, z: 0.00000015894565}
+      BiNormal: {x: -6.023338e-21, y: 1, z: 3.7895583e-14}
+      TexGenIndex: 1
+    - Plane:
+        a: 1
+        b: 0.0000002384199
+        c: -6.7762555e-21
+        d: 3.0000014
+      Tangent: {x: -6.7762555e-21, y: -0, z: -1}
+      BiNormal: {x: -0.0000002384199, y: 1, z: 1.615594e-27}
+      TexGenIndex: 2
+    - Plane:
+        a: -1.8947792e-14
+        b: 0
+        c: -1
+        d: 1
+      Tangent: {x: -1, y: 0, z: 1.8947792e-14}
+      BiNormal: {x: 0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: -3.1622524e-20
+        d: 0.000000119209176
+      Tangent: {x: 1, y: -0, z: 0}
+      BiNormal: {x: 0, y: -3.1622524e-20, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0.000000019868157
+        d: 1.0000001
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0.000000019868157, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -3.000002, y: 0.000000119209176, z: 1.000001}
+    - {x: 3.0000014, y: 0.000000119209176, z: 1.0000019}
+    - {x: 3.0000014, y: 0.000000119209176, z: -1}
+    - {x: -3.000002, y: 0.000000119209176, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: 1.000001}
+    - {x: 3.0000017, y: -1.0000001, z: 1.0000019}
+    - {x: 3.0000017, y: -1.0000001, z: -1}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 222
+--- !u!1 &1901281527893957465
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281527893957466}
+  - component: {fileID: 1901281527893957467}
+  m_Layer: 0
+  m_Name: Brush (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 2147483647
+  m_IsActive: 1
+--- !u!4 &1901281527893957466
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527893957465}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0, z: 11.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281527893957467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527893957465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 0
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: 0
+        b: 0
+        c: -1
+        d: 19
+      Tangent: {x: -1, y: -0, z: -0}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 0
+    - Plane:
+        a: -1
+        b: 0
+        c: 0
+        d: 12.5
+      Tangent: {x: 0, y: 0, z: 1}
+      BiNormal: {x: 0, y: 1, z: -0}
+      TexGenIndex: 1
+    - Plane:
+        a: 0
+        b: 0
+        c: 1
+        d: 22
+      Tangent: {x: 1, y: 0, z: -0}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 2
+    - Plane:
+        a: 1
+        b: 0
+        c: 0
+        d: 15.5
+      Tangent: {x: 0, y: 0, z: -1}
+      BiNormal: {x: -0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: 0
+        d: 0
+      Tangent: {x: 1, y: 0, z: 0}
+      BiNormal: {x: 0, y: 0, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0
+        d: 1
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: -0.25, y: 0.25}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -12.5, y: 0, z: -19}
+    - {x: -12.5, y: 0, z: 22}
+    - {x: 15.5, y: 0, z: 22}
+    - {x: 15.5, y: 0, z: -19}
+    - {x: 15.5, y: -1, z: -19}
+    - {x: -12.5, y: -1, z: -19}
+    - {x: -12.5, y: -1, z: 22}
+    - {x: 15.5, y: -1, z: 22}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 93
+--- !u!1 &1901281527994313271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281527994313272}
+  - component: {fileID: 1901281527994313273}
+  m_Layer: 0
+  m_Name: Brush (60)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901281527994313272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527994313271}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -12, y: 11, z: 2.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281527994313273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281527994313271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 1
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: -1
+        b: -0.00000023841761
+        c: -6.7762587e-21
+        d: 3.000002
+      Tangent: {x: -6.7762587e-21, y: 0, z: 1}
+      BiNormal: {x: -0.00000023841761, y: 1, z: -1.6155794e-27}
+      TexGenIndex: 0
+    - Plane:
+        a: -0.00000015894565
+        b: -3.7895583e-14
+        c: 1
+        d: 1.0000014
+      Tangent: {x: 1, y: 0, z: 0.00000015894565}
+      BiNormal: {x: -6.023338e-21, y: 1, z: 3.7895583e-14}
+      TexGenIndex: 1
+    - Plane:
+        a: 1
+        b: 0.0000002384199
+        c: -6.7762555e-21
+        d: 3.0000014
+      Tangent: {x: -6.7762555e-21, y: -0, z: -1}
+      BiNormal: {x: -0.0000002384199, y: 1, z: 1.615594e-27}
+      TexGenIndex: 2
+    - Plane:
+        a: -1.8947792e-14
+        b: 0
+        c: -1
+        d: 1
+      Tangent: {x: -1, y: 0, z: 1.8947792e-14}
+      BiNormal: {x: 0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: -3.1622524e-20
+        d: 0.000000119209176
+      Tangent: {x: 1, y: -0, z: 0}
+      BiNormal: {x: 0, y: -3.1622524e-20, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0.000000019868157
+        d: 1.0000001
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0.000000019868157, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -3.000002, y: 0.000000119209176, z: 1.000001}
+    - {x: 3.0000014, y: 0.000000119209176, z: 1.0000019}
+    - {x: 3.0000014, y: 0.000000119209176, z: -1}
+    - {x: -3.000002, y: 0.000000119209176, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: 1.000001}
+    - {x: 3.0000017, y: -1.0000001, z: 1.0000019}
+    - {x: 3.0000017, y: -1.0000001, z: -1}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 144
+--- !u!1 &1901281528111454112
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901281528111454113}
+  - component: {fileID: 1901281528111454114}
+  m_Layer: 0
+  m_Name: Brush (64)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901281528111454113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281528111454112}
+  m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -12, y: 11, z: 20.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901281527168790872}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1901281528111454114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901281528111454112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 218a3c5228e87b54f8102630bb1bfc1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PrefabBehaviour: 0
+  PrefabSourceAlignment: 4
+  PrefabDestinationAlignment: 0
+  Version: 2.1
+  OperationType: 1
+  Flags: 0
+  Shape:
+    Version: 1
+    Surfaces:
+    - Plane:
+        a: -1
+        b: -0.00000023841761
+        c: -6.7762587e-21
+        d: 3.000002
+      Tangent: {x: -6.7762587e-21, y: 0, z: 1}
+      BiNormal: {x: -0.00000023841761, y: 1, z: -1.6155794e-27}
+      TexGenIndex: 0
+    - Plane:
+        a: -0.00000015894565
+        b: -3.7895583e-14
+        c: 1
+        d: 1.0000014
+      Tangent: {x: 1, y: 0, z: 0.00000015894565}
+      BiNormal: {x: -6.023338e-21, y: 1, z: 3.7895583e-14}
+      TexGenIndex: 1
+    - Plane:
+        a: 1
+        b: 0.0000002384199
+        c: -6.7762555e-21
+        d: 3.0000014
+      Tangent: {x: -6.7762555e-21, y: -0, z: -1}
+      BiNormal: {x: -0.0000002384199, y: 1, z: 1.615594e-27}
+      TexGenIndex: 2
+    - Plane:
+        a: -1.8947792e-14
+        b: 0
+        c: -1
+        d: 1
+      Tangent: {x: -1, y: 0, z: 1.8947792e-14}
+      BiNormal: {x: 0, y: 1, z: 0}
+      TexGenIndex: 3
+    - Plane:
+        a: 0
+        b: 1
+        c: -3.1622524e-20
+        d: 0.000000119209176
+      Tangent: {x: 1, y: -0, z: 0}
+      BiNormal: {x: 0, y: -3.1622524e-20, z: -1}
+      TexGenIndex: 4
+    - Plane:
+        a: 0
+        b: -1
+        c: 0.000000019868157
+        d: 1.0000001
+      Tangent: {x: -1, y: 0, z: 0}
+      BiNormal: {x: -0, y: -0.000000019868157, z: -1}
+      TexGenIndex: 5
+    TexGens:
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    - Translation: {x: 0, y: 0}
+      Scale: {x: 1, y: 1}
+      RotationAngle: 0
+      RenderMaterial: {fileID: 2100000, guid: 314988d6e048475429f2ffd6f05a7879, type: 2}
+      PhysicsMaterial: {fileID: 0}
+      SmoothingGroup: 0
+    TexGenFlags: 010000000100000001000000010000000100000001000000
+    Materials: []
+  ControlMesh:
+    Vertices:
+    - {x: -3.000002, y: 0.000000119209176, z: 1.000001}
+    - {x: 3.0000014, y: 0.000000119209176, z: 1.0000019}
+    - {x: 3.0000014, y: 0.000000119209176, z: -1}
+    - {x: -3.000002, y: 0.000000119209176, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: -1}
+    - {x: -3.0000017, y: -1.0000001, z: 1.000001}
+    - {x: 3.0000017, y: -1.0000001, z: 1.0000019}
+    - {x: 3.0000017, y: -1.0000001, z: -1}
+    Edges:
+    - TwinIndex: 8
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 12
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 16
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 20
+      PolygonIndex: 4
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 10
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 14
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 18
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 22
+      PolygonIndex: 5
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 0
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 3
+    - TwinIndex: 23
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 4
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 13
+      PolygonIndex: 0
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 1
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 0
+    - TwinIndex: 11
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 5
+    - TwinIndex: 5
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 17
+      PolygonIndex: 1
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 2
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 1
+    - TwinIndex: 15
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 6
+    - TwinIndex: 6
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 21
+      PolygonIndex: 2
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 3
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 2
+    - TwinIndex: 19
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 7
+    - TwinIndex: 7
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 4
+    - TwinIndex: 9
+      PolygonIndex: 3
+      HardEdge: 1
+      VertexIndex: 3
+    Polygons:
+    - EdgeIndices: 08000000090000000a0000000b000000
+      TexGenIndex: 0
+    - EdgeIndices: 0c0000000d0000000e0000000f000000
+      TexGenIndex: 1
+    - EdgeIndices: 10000000110000001200000013000000
+      TexGenIndex: 2
+    - EdgeIndices: 14000000150000001600000017000000
+      TexGenIndex: 3
+    - EdgeIndices: 00000000010000000200000003000000
+      TexGenIndex: 4
+    - EdgeIndices: 07000000060000000500000004000000
+      TexGenIndex: 5
+    Generation: 181

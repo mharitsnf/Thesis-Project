@@ -264,7 +264,7 @@ GameObject:
   - component: {fileID: 6580254863256713020}
   - component: {fileID: 6580254863256713021}
   - component: {fileID: 6580254863256713022}
-  - component: {fileID: 6580254863256713017}
+  - component: {fileID: 3615695027671069812}
   m_Layer: 5
   m_Name: Instruction Group
   m_TagString: Untagged
@@ -377,7 +377,7 @@ MonoBehaviour:
   m_Spacing: {x: 20, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &6580254863256713017
+--- !u!114 &3615695027671069812
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -389,8 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 054ecffe5ee812240b7bdc38e12f5156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  instructionPrefab: {fileID: 8110700429278770910, guid: 912d2c04e0067554d8fa95dcaf74e153,
-    type: 3}
+  instructionPrefab: {fileID: 0}
 --- !u!1 &6580254864422297523
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +407,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6580254864422297522
 RectTransform:
   m_ObjectHideFlags: 0

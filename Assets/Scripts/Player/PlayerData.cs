@@ -107,6 +107,8 @@ public class PlayerData : MonoBehaviour
     [Header("Objective Collected")]
     public int objectiveCollectedAmount;
 
+    public float timeElapsed;
+
     private void Awake()
     {
         if (Instance != null && Instance != this) Destroy(this);
