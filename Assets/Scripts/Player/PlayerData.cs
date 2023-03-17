@@ -81,6 +81,19 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public float cinemachineFollowYaw;
     [ReadOnly] public float cinemachineFollowPitch;
 
+    [Header("Crouching")]
+    public float maxCrouchSpeed = 25f;
+    private bool _isCrouching;
+    public bool IsCrouching
+    {
+        get => _isCrouching;
+        set
+        {
+            _isCrouching = value;
+            animator.SetBool(Crouching, value);
+        }
+    }
+
     [Header("Spring Data")]
     public float ropeRayCastDistance;
     public float maxDistanceMultiplier;
@@ -112,6 +125,7 @@ public class PlayerData : MonoBehaviour
     public int objectiveCollectedAmount;
 
     public float timeElapsed;
+    private static readonly int Crouching = Animator.StringToHash("IsCrouching");
 
     private void Awake()
     {

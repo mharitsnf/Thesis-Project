@@ -70,10 +70,14 @@ public class PlayerMoveState : PlayerBaseState
 
         Vector3 currentVelocity = PlayerData.Instance.rigidBody.velocity;
         Vector3 xzVelocity = new Vector3(currentVelocity.x, 0, currentVelocity.z);
+
+        float maxSpeed = PlayerData.Instance.IsCrouching
+            ? PlayerData.Instance.maxCrouchSpeed
+            : PlayerData.Instance.maxSpeed;
     
-        if (xzVelocity.magnitude > PlayerData.Instance.maxSpeed)
+        if (xzVelocity.magnitude > maxSpeed)
         {
-            currentVelocity = xzVelocity.normalized * PlayerData.Instance.maxSpeed;
+            currentVelocity = xzVelocity.normalized * maxSpeed;
             PlayerData.Instance.rigidBody.velocity = new Vector3(currentVelocity.x, PlayerData.Instance.rigidBody.velocity.y, currentVelocity.z);
         }
     }

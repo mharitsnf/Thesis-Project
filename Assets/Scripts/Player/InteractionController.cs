@@ -62,6 +62,9 @@ public class InteractionController : MonoBehaviour
         playerInput.CharacterControls.Move.performed += HandleMovementInput;
         playerInput.CharacterControls.Move.canceled += HandleMovementInput;
 
+        playerInput.CharacterControls.Crouch.started += HandleCrouchInput;
+        playerInput.CharacterControls.Crouch.canceled += HandleCrouchInput;
+
         playerInput.CharacterControls.Jump.canceled += HandleJumpInput;
         playerInput.CharacterControls.Jump.performed += HandleJumpInput;
         
@@ -88,6 +91,7 @@ public class InteractionController : MonoBehaviour
         if (context.duration > 0.1f) return;
         if (context is { canceled: false, interaction: not HoldInteraction }) return;
         if (PlayerData.Instance.verticalStateController.currentState != PlayerData.Instance.verticalStateController.groundedState) return;
+        if (PlayerData.Instance.IsCrouching) return;
 
         float jumpPercentage = Mathf.Min((float)context.duration, PlayerData.Instance.buttonHoldTime) / PlayerData.Instance.buttonHoldTime;
         PlayerData.Instance.currentJumpPercentage = jumpPercentage;
@@ -107,6 +111,11 @@ public class InteractionController : MonoBehaviour
         if (TutorialCore.Instance.hasMoved) return;
         _moveDistance += context.ReadValue<Vector2>().magnitude;
         if (_moveDistance > 10) TutorialCore.Instance.hasMoved = true;
+    }
+
+    private void HandleCrouchInput(InputAction.CallbackContext context)
+    {
+        PlayerData.Instance.IsCrouching = context.ReadValueAsButton();
     }
 
     private void HandleCameraInput(InputAction.CallbackContext context)

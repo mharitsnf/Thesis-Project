@@ -116,6 +116,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Crouch"",
+                    ""type"": ""Button"",
+                    ""id"": ""5f03c9c4-3890-4e88-9ec6-2bf07df62938"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -232,7 +241,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""5d791c52-b72d-4f4e-90a8-25b2d335e2c7"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/r"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -254,7 +263,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""77789578-8ab6-4fae-acd9-6429bca05e79"",
-                    ""path"": ""<Keyboard>/shift"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -305,6 +314,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""SelectSurface"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""15a35f93-e904-4c0f-8f1a-09cb9c442ceb"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Crouch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -351,6 +371,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_CharacterControls_DetachFirstRopePlacement = m_CharacterControls.FindAction("DetachFirstRopePlacement", throwIfNotFound: true);
         m_CharacterControls_SelectObject = m_CharacterControls.FindAction("SelectObject", throwIfNotFound: true);
         m_CharacterControls_SelectSurface = m_CharacterControls.FindAction("SelectSurface", throwIfNotFound: true);
+        m_CharacterControls_Crouch = m_CharacterControls.FindAction("Crouch", throwIfNotFound: true);
         // OtherInteraction
         m_OtherInteraction = asset.FindActionMap("OtherInteraction", throwIfNotFound: true);
         m_OtherInteraction_SetRespawnPoint = m_OtherInteraction.FindAction("SetRespawnPoint", throwIfNotFound: true);
@@ -423,6 +444,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_CharacterControls_DetachFirstRopePlacement;
     private readonly InputAction m_CharacterControls_SelectObject;
     private readonly InputAction m_CharacterControls_SelectSurface;
+    private readonly InputAction m_CharacterControls_Crouch;
     public struct CharacterControlsActions
     {
         private @PlayerInput m_Wrapper;
@@ -437,6 +459,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @DetachFirstRopePlacement => m_Wrapper.m_CharacterControls_DetachFirstRopePlacement;
         public InputAction @SelectObject => m_Wrapper.m_CharacterControls_SelectObject;
         public InputAction @SelectSurface => m_Wrapper.m_CharacterControls_SelectSurface;
+        public InputAction @Crouch => m_Wrapper.m_CharacterControls_Crouch;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -476,6 +499,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @SelectSurface.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnSelectSurface;
                 @SelectSurface.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnSelectSurface;
                 @SelectSurface.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnSelectSurface;
+                @Crouch.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnCrouch;
+                @Crouch.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnCrouch;
+                @Crouch.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnCrouch;
             }
             m_Wrapper.m_CharacterControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -510,6 +536,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @SelectSurface.started += instance.OnSelectSurface;
                 @SelectSurface.performed += instance.OnSelectSurface;
                 @SelectSurface.canceled += instance.OnSelectSurface;
+                @Crouch.started += instance.OnCrouch;
+                @Crouch.performed += instance.OnCrouch;
+                @Crouch.canceled += instance.OnCrouch;
             }
         }
     }
@@ -559,6 +588,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnDetachFirstRopePlacement(InputAction.CallbackContext context);
         void OnSelectObject(InputAction.CallbackContext context);
         void OnSelectSurface(InputAction.CallbackContext context);
+        void OnCrouch(InputAction.CallbackContext context);
     }
     public interface IOtherInteractionActions
     {

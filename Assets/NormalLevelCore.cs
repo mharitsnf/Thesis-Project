@@ -5,9 +5,8 @@ using UnityEngine;
 
 public class NormalLevelCore : LevelCore
 {
-    private void OnEnable()
+    private void Start()
     {
-        InteractionController.Instance.playerInput.Enable();
-        InteractionController.Instance.cameraInput.Enable();
+        InstructionGroupController.Instance.IsShown = true;
     }
 }

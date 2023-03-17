@@ -433,7 +433,7 @@ MonoBehaviour:
   horizontalStateController: {fileID: 2477766031548289275}
   cameraController: {fileID: 2477766031548289278}
   RopePlacementController: {fileID: 1356804294}
-  feetDistanceToGround: 0
+  feetDistanceToGround: 0.06
   toIdleWeight: 0.306
   acceleration: 600
   airAcceleration: 400
@@ -455,7 +455,6 @@ MonoBehaviour:
   virtualCameras:
   - {fileID: 2477766030971549100}
   - {fileID: 2477766029841766301}
-  - {fileID: 0}
   cameraLerpWeight: 0.5
   cameraBrakeWeight: 10
   thirdPersonCameraSpeed: 25
@@ -469,6 +468,7 @@ MonoBehaviour:
   cameraLookDelta: {x: 0, y: 0}
   cinemachineFollowYaw: 0
   cinemachineFollowPitch: 0
+  maxCrouchSpeed: 2.5
   ropeRayCastDistance: 50
   maxDistanceMultiplier: 0.25
   minDistanceMultiplier: 0
@@ -476,7 +476,7 @@ MonoBehaviour:
   springDamper: 35
   springMassScale: 3
   currentInteractionState: 0
-  pushForce: 100
+  pushForce: 20
   selectableSurfaces:
     serializedVersion: 2
     m_Bits: 759
@@ -674,7 +674,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3359490139380914843}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.13, z: 0.04}
+  m_LocalPosition: {x: 0, y: 0.23, z: 0.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -692,7 +692,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 0.75, z: 0.66}
+  m_Size: {x: 0.45, y: 0.59, z: 0.66}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8483006389844740390
 MonoBehaviour:
@@ -731,7 +731,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4122416513651822615}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -749,9 +749,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.36
-  m_Height: 1.75
+  m_Height: 1.78
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &6751879605839655232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -878,6 +878,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Jammo_LowPoly
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 82a2914d8f86c62488456950c8330e38,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: 82a2914d8f86c62488456950c8330e38,
         type: 3}
