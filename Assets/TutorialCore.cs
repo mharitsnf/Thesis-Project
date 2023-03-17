@@ -6,7 +6,15 @@ using UnityEngine;
 public class TutorialCore : LevelCore
 {
     public static TutorialCore Instance { get; private set; }
+
+    public float lerpSmoothing;
+    public Transform firstRoomLedge;
+    private readonly float _ledgeTargetHeight = 46.25019f;
     
+    public Transform thirdRoomDoor;
+    private readonly float _doorTargetHeight = 58.75024f;
+    
+    [Header("Flags")]
     public bool hasMoved;
     private float _moveDistance;
 
@@ -14,7 +22,6 @@ public class TutorialCore : LevelCore
     private float _lookAroundAmount;
 
     public bool hasJumped;
-    public int jumpCount;
 
     public bool hasExitFirstStage;
 
@@ -37,6 +44,7 @@ public class TutorialCore : LevelCore
     public bool hasExitThirdStage;
 
     public bool hasEnteredLastStage;
+    
 
     private void Awake()
     {
@@ -47,6 +55,36 @@ public class TutorialCore : LevelCore
     private void Start()
     {
         StartCoroutine(TutorialSequence());
+    }
+
+    IEnumerator MoveFirstLedge()
+    {
+        Vector3 position = firstRoomLedge.position;
+        
+        while (position.y > _ledgeTargetHeight)
+        {
+            position.y = Mathf.Lerp(position.y, _ledgeTargetHeight - 0.1f, lerpSmoothing * Time.deltaTime);
+            firstRoomLedge.position = position;
+
+            yield return null;
+        }
+
+        print("ok");
+    }
+
+    IEnumerator MoveThirdStageDoor()
+    {
+        Vector3 position = thirdRoomDoor.position;
+        
+        while (position.y > _doorTargetHeight)
+        {
+            position.y = Mathf.Lerp(position.y, _doorTargetHeight - 0.1f, lerpSmoothing * Time.deltaTime);
+            thirdRoomDoor.position = position;
+
+            yield return null;
+        }
+        
+        print("ok");
     }
 
     IEnumerator TutorialSequence()
@@ -69,8 +107,9 @@ public class TutorialCore : LevelCore
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
         yield return new WaitForSecondsRealtime(1f);
-
+        
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Try to get out of the room."));
+        StartCoroutine(MoveFirstLedge());
         yield return new WaitUntil(() => hasExitFirstStage);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
 
@@ -150,30 +189,26 @@ public class TutorialCore : LevelCore
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("You can destroy red or green ropes."));
         yield return new WaitForSecondsRealtime(5f);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
-        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Oldest/red ropes can be destroyed using Left Shift, while green/newest ropes using Q."));
-        yield return new WaitForSecondsRealtime(7f);
-        yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
-        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Try destroying the red ropes using Left Shift."));
+        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Try destroying the oldest/red ropes using Left Shift."));
         TutorialInteractionController.Instance.playerInput.CharacterControls.DetachFirstRopePlacement.Enable();
         yield return new WaitUntil(() => hasDetachedFirst);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
-        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Now try destroying green ropes using Q"));
+        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Now try destroying newest/green ropes using Q"));
         TutorialInteractionController.Instance.playerInput.CharacterControls.DetachLastRopePlacement.Enable();
         yield return new WaitUntil(() => hasDetachedLast);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Try to leave the room!"));
+        StartCoroutine(MoveThirdStageDoor());
         yield return new WaitUntil(() => hasExitThirdStage);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
-
-        yield return new WaitUntil(() => hasEnteredLastStage);
-        
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Hints are now displayed on the bottom of the screen. Good luck!"));
         yield return new WaitForSecondsRealtime(3f);
+        yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
+        
         InstructionGroupController.Instance.IsShown = true;
         InstructionGroupController.Instance.CurrentState = InstructionGroupController.Instance.CurrentState;
-        yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
     }
 }

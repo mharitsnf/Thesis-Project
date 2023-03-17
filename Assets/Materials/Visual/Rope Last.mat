@@ -51,8 +51,8 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Emission_Color: {r: 0.24513526, g: 0.9019608, b: 0.22352943, a: 0}
+    - _Emission_Color: {r: 0.12352941, g: 0.4509804, b: 0.11176471, a: 0}
     - _Emission_Color_High: {r: 0.915, g: 0.8213764, b: 0.44102997, a: 0}
     - _Emission_Color_Low: {r: 0.901, g: 0.8388922, b: 0.581145, a: 0}
-    - _Pulse_Color: {r: 1.9406656, g: 1.9397758, b: 0.98557365, a: 0}
+    - _Pulse_Color: {r: 0.7490196, g: 0.7490196, b: 0.38039216, a: 0}
   m_BuildTextureStacks: []

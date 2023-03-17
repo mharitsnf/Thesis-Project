@@ -54,5 +54,5 @@ Material:
     - _Emission_Color: {r: 0.90099996, g: 0.773849, b: 0.22524999, a: 0}
     - _Emission_Color_High: {r: 0.915, g: 0.8213764, b: 0.44102997, a: 0}
     - _Emission_Color_Low: {r: 0.901, g: 0.8388922, b: 0.581145, a: 0}
-    - _Pulse_Color: {r: 1.9406655, g: 1.7571601, b: 0.9780954, a: 0}
+    - _Pulse_Color: {r: 0.7490196, g: 0.6784314, b: 0.38039216, a: 0}
   m_BuildTextureStacks: []

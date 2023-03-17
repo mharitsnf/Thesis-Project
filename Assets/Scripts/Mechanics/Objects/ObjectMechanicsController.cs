@@ -46,17 +46,20 @@ public class ObjectMechanicsController : MonoBehaviour
 
     private void OnEnable()
     {
-        FullInteractionController.OnToggleAiming.AddListener(ToggleAiming);
+        TutorialInteractionController.OnToggleAiming.AddListener(ToggleAiming);
     }
 
     private void OnDisable()
     {
-        FullInteractionController.OnToggleAiming.RemoveListener(ToggleAiming);
+        TutorialInteractionController.OnToggleAiming.AddListener(ToggleAiming);
     }
 
     private void ToggleAiming(bool isAiming)
     {
-        if (isAiming) SetMaterial(1);
+        if (isAiming)
+        {
+            SetMaterial(Vector3.Distance(PlayerData.Instance.realCamera.position, transform.position) > PlayerData.Instance.ropeRayCastDistance ? 4 : 1);
+        }
         else
         {
             SetMaterial(_rb.freezeRotation ? 3 : 0);
@@ -99,12 +102,26 @@ public class ObjectMechanicsController : MonoBehaviour
         ResetPosition();
     }
 
+    private void ResetMaterial()
+    {
+        if (!_rb.freezeRotation || _parent.GetComponents<SpringJoint>().Length != 0) return;
+        
+        _rb.freezeRotation = false;
+        SetMaterial(0);
+    }
+
+    private void UpdateMaterial()
+    {
+        if (!PlayerData.Instance.isAiming) return;
+        if (PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit))) return;
+        if (PlayerData.Instance.selectedGameObject.collider.gameObject.Equals(_parent)) return;
+        
+        SetMaterial(Vector3.Distance(PlayerData.Instance.realCamera.position, transform.position) > PlayerData.Instance.ropeRayCastDistance ? 4 : 1);
+    }
+
     private void LateUpdate()
     {
-        if (_parent.GetComponents<SpringJoint>().Length == 0 && _rb.freezeRotation)
-        {
-            _rb.freezeRotation = false;
-            SetMaterial(0);
-        }
+        UpdateMaterial();
+        ResetMaterial();
     }
 }

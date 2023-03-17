@@ -2,9 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.Serialization;
+
+public class ToggleEvent : UnityEvent<bool> {}
 
 public class TutorialInteractionController : MonoBehaviour
 {
@@ -154,8 +157,9 @@ public class TutorialInteractionController : MonoBehaviour
         if (!PlayerData.Instance.isAiming) return;
         if (!context.ReadValueAsButton()) return;
         if (!Physics.Raycast(PlayerData.Instance.realCamera.position, PlayerData.Instance.realCamera.forward,
-                out var hit, PlayerData.Instance.ropeRayCastDistance)) return;
+                out var hit, PlayerData.Instance.ropeRayCastDistance, PlayerData.Instance.selectableSurfaces)) return;
         if (hit.collider.CompareTag("Player")) return;
+        if (hit.collider.gameObject.layer == 9) return;
         if (PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit))) return;
 
         PlayerData.Instance.RopePlacementController.SelectSurface(hit);
@@ -170,6 +174,8 @@ public class TutorialInteractionController : MonoBehaviour
         if (PlayerData.Instance.placedRopes.Count == 0) return;
 
         PlayerData.Instance.RopePlacementController.DestroyNewestBatch();
+        
+        InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
     
         if (!TutorialCore.Instance.hasDetachedLast) TutorialCore.Instance.hasDetachedLast = true;
     }
@@ -182,6 +188,8 @@ public class TutorialInteractionController : MonoBehaviour
         if (PlayerData.Instance.placedRopes.Count == 0) return;
             
         PlayerData.Instance.RopePlacementController.DestroyOldestBatch();
+        
+        InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
 
         if (!TutorialCore.Instance.hasDetachedFirst) TutorialCore.Instance.hasDetachedFirst = true;
     }

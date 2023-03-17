@@ -93,8 +93,9 @@ public class PlayerData : MonoBehaviour
 
     [Header("Interaction")]
     public InteractionState currentInteractionState;
-    
+
     [Header("Rope Data")]
+    public LayerMask selectableSurfaces;
     public GameObject ropePrefab;
     public readonly LinkedList<LinkedList<GameObject>> placedRopes = new();
     public readonly LinkedList<GameObject> activeRopes = new();

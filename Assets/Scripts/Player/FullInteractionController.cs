@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Interactions;
 using UnityEngine.SceneManagement;
 
-public class ToggleEvent : UnityEvent<bool> {}
 
 public class FullInteractionController : MonoBehaviour
 {
