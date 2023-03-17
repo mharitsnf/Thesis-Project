@@ -94,6 +94,9 @@ public class PlayerData : MonoBehaviour
     [Header("Interaction")]
     public InteractionState currentInteractionState;
 
+    [Header("Pushing")] 
+    public float pushForce;
+
     [Header("Rope Data")]
     public LayerMask selectableSurfaces;
     public GameObject ropePrefab;

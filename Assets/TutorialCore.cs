@@ -94,14 +94,14 @@ public class TutorialCore : LevelCore
 
         // Teach movement and camera
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Use WASD to move around and Mouse to move the camera."));
-        TutorialInteractionController.Instance.playerInput.CharacterControls.Move.Enable();
-        TutorialInteractionController.Instance.cameraInput.CameraLook.Rotate.Enable();
+        InteractionController.Instance.playerInput.CharacterControls.Move.Enable();
+        InteractionController.Instance.cameraInput.CameraLook.Rotate.Enable();
         yield return new WaitUntil(() => hasMoved && hasLookedAround);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
         yield return new WaitForSecondsRealtime(3f);
 
-        TutorialInteractionController.Instance.playerInput.CharacterControls.Jump.Enable();
+        InteractionController.Instance.playerInput.CharacterControls.Jump.Enable();
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Use Space to jump. Try jumping a few times."));
         yield return new WaitUntil(() => hasJumped);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
@@ -115,9 +115,9 @@ public class TutorialCore : LevelCore
 
         yield return new WaitUntil(() => hasEnteredThirdStage);
         
-        TutorialInteractionController.Instance.playerInput.CharacterControls.Move.Disable();
-        TutorialInteractionController.Instance.cameraInput.CameraLook.Rotate.Disable();
-        TutorialInteractionController.Instance.playerInput.CharacterControls.Jump.Enable();
+        InteractionController.Instance.playerInput.CharacterControls.Move.Disable();
+        InteractionController.Instance.cameraInput.CameraLook.Rotate.Disable();
+        InteractionController.Instance.playerInput.CharacterControls.Jump.Enable();
         PlayerData.Instance.moveDirection = Vector2.zero;
         PlayerData.Instance.cameraLookDelta = Vector2.zero;
         PlayerData.Instance.cameraController.SwitchVirtualCamera(2);
@@ -132,14 +132,14 @@ public class TutorialCore : LevelCore
 
         PlayerData.Instance.cameraController.SwitchVirtualCamera(0);
         yield return new WaitForSecondsRealtime(.5f);
-        TutorialInteractionController.Instance.playerInput.CharacterControls.Move.Enable();
-        TutorialInteractionController.Instance.cameraInput.CameraLook.Rotate.Enable();
-        TutorialInteractionController.Instance.playerInput.CharacterControls.Jump.Enable();
+        InteractionController.Instance.playerInput.CharacterControls.Move.Enable();
+        InteractionController.Instance.cameraInput.CameraLook.Rotate.Enable();
+        InteractionController.Instance.playerInput.CharacterControls.Jump.Enable();
 
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Use Right Click to enter aim mode."));
-        TutorialInteractionController.Instance.playerInput.CharacterControls.EnterAim.Enable();
+        InteractionController.Instance.playerInput.CharacterControls.EnterAim.Enable();
         yield return new WaitUntil(() => hasEnteredAimMode);
-        TutorialInteractionController.Instance.playerInput.CharacterControls.ExitAim.Disable();
+        InteractionController.Instance.playerInput.CharacterControls.ExitAim.Disable();
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
         yield return new WaitForSecondsRealtime(1f);
@@ -149,20 +149,20 @@ public class TutorialCore : LevelCore
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         yield return new WaitForSecondsRealtime(.5f);
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Try to exit aim mode using Right Click or Q."));
-        TutorialInteractionController.Instance.playerInput.CharacterControls.ExitAim.Enable();
+        InteractionController.Instance.playerInput.CharacterControls.ExitAim.Enable();
         yield return new WaitUntil(() => hasExitedAimMode);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
         yield return new WaitForSecondsRealtime(1f);
 
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Let's try selecting objects. Enter aim mode with Right Click, and then Left Click on the object to select it."));
-        TutorialInteractionController.Instance.playerInput.CharacterControls.SelectObject.Enable();
+        InteractionController.Instance.playerInput.CharacterControls.SelectObject.Enable();
         yield return new WaitUntil(() => hasSelectedObject);
-        TutorialInteractionController.Instance.playerInput.CharacterControls.ExitAim.Disable();
+        InteractionController.Instance.playerInput.CharacterControls.ExitAim.Disable();
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Great! Now select anything other than the object."));
-        TutorialInteractionController.Instance.playerInput.CharacterControls.SelectSurface.Enable();
+        InteractionController.Instance.playerInput.CharacterControls.SelectSurface.Enable();
         yield return new WaitUntil(() => hasSelectedSurface);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
@@ -171,7 +171,7 @@ public class TutorialCore : LevelCore
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         yield return new WaitForSecondsRealtime(.5f);
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Try confirming your selection with E."));
-        TutorialInteractionController.Instance.playerInput.CharacterControls.ConfirmRopePlacement.Enable();
+        InteractionController.Instance.playerInput.CharacterControls.ConfirmRopePlacement.Enable();
         yield return new WaitUntil(() => hasConfirmedSelection);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
@@ -191,12 +191,12 @@ public class TutorialCore : LevelCore
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Try destroying the oldest/red ropes using Left Shift."));
-        TutorialInteractionController.Instance.playerInput.CharacterControls.DetachFirstRopePlacement.Enable();
+        InteractionController.Instance.playerInput.CharacterControls.DetachFirstRopePlacement.Enable();
         yield return new WaitUntil(() => hasDetachedFirst);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Now try destroying newest/green ropes using Q"));
-        TutorialInteractionController.Instance.playerInput.CharacterControls.DetachLastRopePlacement.Enable();
+        InteractionController.Instance.playerInput.CharacterControls.DetachLastRopePlacement.Enable();
         yield return new WaitUntil(() => hasDetachedLast);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         

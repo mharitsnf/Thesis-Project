@@ -46,12 +46,12 @@ public class ObjectMechanicsController : MonoBehaviour
 
     private void OnEnable()
     {
-        TutorialInteractionController.OnToggleAiming.AddListener(ToggleAiming);
+        InteractionController.OnToggleAiming.AddListener(ToggleAiming);
     }
 
     private void OnDisable()
     {
-        TutorialInteractionController.OnToggleAiming.AddListener(ToggleAiming);
+        InteractionController.OnToggleAiming.AddListener(ToggleAiming);
     }
 
     private void ToggleAiming(bool isAiming)
