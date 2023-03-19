@@ -36,6 +36,7 @@ public class PlayerData : MonoBehaviour
     public float acceleration = 100;
     public float airAcceleration = 100;
     public float maxJumpForce;
+    public float slopeMoveExponent = 0.3f;
     
     [Header("Horizontal Movement Limitations")] 
     public float movementRotationSpeed = 10; 
@@ -47,7 +48,6 @@ public class PlayerData : MonoBehaviour
     public float maxSlopeAngle;
     [ReadOnly] public bool isGrounded;
     [ReadOnly] public bool isOnSlope;
-    [ReadOnly] public bool isOnExtremeSlope;
     [ReadOnly] public float playerYCenter;
     [ReadOnly] public RaycastHit groundInfo;
     
@@ -127,6 +127,8 @@ public class PlayerData : MonoBehaviour
 
     public float timeElapsed;
     private static readonly int Crouching = Animator.StringToHash("IsCrouching");
+
+    public float test;
 
     private void Awake()
     {

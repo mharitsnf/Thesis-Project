@@ -9,9 +9,9 @@ public class PlayerMoveState : PlayerBaseState
     {
         // Input and movement handling
         Move();
+        LimitXZSpeed();
         
         RotateMesh();
-        LimitSpeed();
             
         PlayerData.Instance.animator.SetFloat(MoveSpeed, PlayerData.Instance.rigidBody.velocity.magnitude);
 
@@ -31,34 +31,36 @@ public class PlayerMoveState : PlayerBaseState
     {
         Vector3 direction = PlayerData.Instance.orientation.forward * PlayerData.Instance.moveDirection.y +
                             PlayerData.Instance.orientation.right * PlayerData.Instance.moveDirection.x;
+        float dot = Vector3.Dot(direction, PlayerData.Instance.groundInfo.normal);
+        
+        if (dot < -.75f) return;
         
         float acceleration = PlayerData.Instance.isGrounded
             ? PlayerData.Instance.acceleration
             : PlayerData.Instance.airAcceleration;
-        
+
+        float percentage = 1 - Mathf.Abs(dot);
+        percentage = (Mathf.Pow(percentage, PlayerData.Instance.slopeMoveExponent) -
+                      Mathf.Pow(0, PlayerData.Instance.slopeMoveExponent)) /
+                     (Mathf.Pow(1, PlayerData.Instance.slopeMoveExponent) -
+                      Mathf.Pow(0, PlayerData.Instance.slopeMoveExponent));
+
+        acceleration = PlayerData.Instance.isOnSlope ? acceleration * percentage : acceleration;
         if (PlayerData.Instance.isOnSlope) direction = Vector3.ProjectOnPlane(direction, PlayerData.Instance.groundInfo.normal).normalized;
-        
+
         PlayerData.Instance.rigidBody.AddForce(direction.normalized * acceleration, ForceMode.Force);
     }
 
-    private void LimitSpeed()
+    private void LimitXZSpeed()
     {
-        if (PlayerData.Instance.isOnSlope && PlayerData.Instance.rigidBody.velocity.magnitude > PlayerData.Instance.maxSpeed)
-        {
-            PlayerData.Instance.rigidBody.velocity = PlayerData.Instance.rigidBody.velocity.normalized *
-                                                       PlayerData.Instance.maxSpeed;
-            return;
-        }
-
-        Vector3 currentVelocity = PlayerData.Instance.rigidBody.velocity;
-        Vector3 xzVelocity = new Vector3(currentVelocity.x, 0, currentVelocity.z);
-
         var vState = PlayerData.Instance.verticalStateController;
-        
         float maxSpeed = !PlayerData.Instance.IsCrouching || vState.currentState != vState.groundedState
             ? PlayerData.Instance.maxSpeed
             : PlayerData.Instance.maxCrouchSpeed;
-    
+        
+        Vector3 currentVelocity = PlayerData.Instance.rigidBody.velocity;
+        Vector3 xzVelocity = new Vector3(currentVelocity.x, 0, currentVelocity.z);
+
         if (xzVelocity.magnitude > maxSpeed)
         {
             currentVelocity = xzVelocity.normalized * maxSpeed;

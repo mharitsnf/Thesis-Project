@@ -30,21 +30,7 @@ public class VerticalStateController : BaseStateController
     {
         PlayerData.Instance.isGrounded = Physics.SphereCast(new Ray(transform.position, Vector3.down), 0.25f, out PlayerData.Instance.groundInfo, PlayerData.Instance.playerYCenter + .05f);
 
-        if (PlayerData.Instance.isGrounded)
-        {
-            if (!PlayerData.Instance.IsCrouching) return;
-            
-            Vector3 velocity = PlayerData.Instance.rigidBody.velocity;
-            
-            float speed = velocity.magnitude;
-            float dot = Vector3.Dot(velocity, PlayerData.Instance.groundInfo.normal);
-            if (dot > 0f)
-            {
-                velocity = (velocity - PlayerData.Instance.groundInfo.normal * dot).normalized * speed;
-                PlayerData.Instance.rigidBody.velocity = velocity;
-            }
-        }
-        else
+        if (!PlayerData.Instance.isGrounded)
         {
             PlayerData.Instance.isOnSlope = false;
             return;
@@ -52,7 +38,6 @@ public class VerticalStateController : BaseStateController
 
         float groundAngle = Vector3.Angle(Vector3.up, PlayerData.Instance.groundInfo.normal);
         PlayerData.Instance.isOnSlope = groundAngle < PlayerData.Instance.maxSlopeAngle && groundAngle != 0;
-        PlayerData.Instance.isOnExtremeSlope = groundAngle >= PlayerData.Instance.maxSlopeAngle && groundAngle != 0;
     }
 
     private void ResetPosition()
@@ -62,7 +47,6 @@ public class VerticalStateController : BaseStateController
 
     public void Jump()
     {
-        if (PlayerData.Instance.isOnExtremeSlope) return;
         SwitchState(jumpState);
     }
 }
