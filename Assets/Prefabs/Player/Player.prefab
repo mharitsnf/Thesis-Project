@@ -448,7 +448,8 @@ MonoBehaviour:
   isOnExtremeSlope: 0
   playerYCenter: 0
   currentJumpPercentage: 1
-  buttonHoldTime: 0.075
+  jumpExponent: 0.5
+  buttonHoldTime: 0.1
   wasJumping: 0
   groundDrag: 2
   airDrag: 1

@@ -29,8 +29,22 @@ public class VerticalStateController : BaseStateController
     private void GroundAndSlopeCheck()
     {
         PlayerData.Instance.isGrounded = Physics.SphereCast(new Ray(transform.position, Vector3.down), 0.25f, out PlayerData.Instance.groundInfo, PlayerData.Instance.playerYCenter + .05f);
-        
-        if (!PlayerData.Instance.isGrounded)
+
+        if (PlayerData.Instance.isGrounded)
+        {
+            if (!PlayerData.Instance.IsCrouching) return;
+            
+            Vector3 velocity = PlayerData.Instance.rigidBody.velocity;
+            
+            float speed = velocity.magnitude;
+            float dot = Vector3.Dot(velocity, PlayerData.Instance.groundInfo.normal);
+            if (dot > 0f)
+            {
+                velocity = (velocity - PlayerData.Instance.groundInfo.normal * dot).normalized * speed;
+                PlayerData.Instance.rigidBody.velocity = velocity;
+            }
+        }
+        else
         {
             PlayerData.Instance.isOnSlope = false;
             return;

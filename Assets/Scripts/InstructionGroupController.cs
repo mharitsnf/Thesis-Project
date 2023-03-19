@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 public class InstructionGroupController : MonoBehaviour
@@ -44,7 +45,7 @@ public class InstructionGroupController : MonoBehaviour
                 case DisplayState.NotAiming:
                     instructions.Add("[Right Click] Aim");
                     if (PlayerData.Instance.placedRopes.Count > 0) instructions.Add("[Q] Detach Newest Rope");
-                    if (PlayerData.Instance.placedRopes.Count > 0) instructions.Add("[LShift] Detach Oldest Rope");
+                    if (PlayerData.Instance.placedRopes.Count > 0) instructions.Add("[E] Detach Oldest Rope");
                     SetInstructions(instructions);
                     break;
                 case DisplayState.ObjectNotSelected:
@@ -55,7 +56,7 @@ public class InstructionGroupController : MonoBehaviour
                 case DisplayState.ObjectSelected:
                     instructions.Add("[Right Click]/[Q] Exit");
                     instructions.Add("[Left Click] Select Point");
-                    instructions.Add("[E] Confirm");
+                    instructions.Add("[R] Confirm");
                     SetInstructions(instructions);
                     break;
             }
