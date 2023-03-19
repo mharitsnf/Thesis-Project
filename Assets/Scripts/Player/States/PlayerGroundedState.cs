@@ -14,7 +14,7 @@ public class PlayerGroundedState : PlayerBaseState
         }
         
         PlayerData.Instance.rigidBody.drag = PlayerData.Instance.groundDrag;
-        
+        InteractionController.Instance.playerInput.CharacterControls.Jump.Enable();
         PlayerData.Instance.animator.SetBool("JustLanded", true);
     }
 
@@ -27,6 +27,7 @@ public class PlayerGroundedState : PlayerBaseState
 
     public override void ExitState()
     {
+        InteractionController.Instance.playerInput.CharacterControls.Jump.Disable();
         PlayerData.Instance.animator.SetBool("JustLanded", false);
     }
 }

@@ -88,15 +88,15 @@ public class InteractionController : MonoBehaviour
     private void HandleJumpInput(InputAction.CallbackContext context)
     {
         // Don't jump conditions
-        if (context.duration > 0.1f) return;
-        if (context is { canceled: false, interaction: not HoldInteraction }) return;
-        if (PlayerData.Instance.verticalStateController.currentState != PlayerData.Instance.verticalStateController.groundedState) return;
+        if (context is { interaction: not HoldInteraction }) return;
+        if (context.canceled && context.duration > PlayerData.Instance.buttonHoldTime) return;
         if (PlayerData.Instance.IsCrouching) return;
 
         float jumpPercentage = Mathf.Min((float)context.duration, PlayerData.Instance.buttonHoldTime) / PlayerData.Instance.buttonHoldTime;
-        PlayerData.Instance.currentJumpPercentage = jumpPercentage;
+        PlayerData.Instance.currentJumpPercentage = (Mathf.Pow(jumpPercentage, PlayerData.Instance.jumpExponent) - Mathf.Pow(0, PlayerData.Instance.jumpExponent) /
+                                                    (Mathf.Pow(1, PlayerData.Instance.jumpExponent) - Mathf.Pow(0, PlayerData.Instance.jumpExponent)));
         PlayerData.Instance.verticalStateController.Jump();
-
+        
         if (!SceneManager.GetActiveScene().name.Equals("Tutorial")) return;
         if (TutorialCore.Instance.hasJumped) return;
         _jumpCount++;
