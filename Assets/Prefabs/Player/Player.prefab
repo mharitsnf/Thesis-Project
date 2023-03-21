@@ -432,20 +432,19 @@ MonoBehaviour:
   verticalStateController: {fileID: 2477766031548289279}
   horizontalStateController: {fileID: 2477766031548289275}
   cameraController: {fileID: 2477766031548289278}
-  RopePlacementController: {fileID: 1356804294}
+  ropePlacementController: {fileID: 1356804294}
   feetDistanceToGround: 0.06
   toIdleWeight: 0.306
   acceleration: 600
   airAcceleration: 400
   maxJumpForce: 200
+  slopeMoveExponent: 0.3
   movementRotationSpeed: 10
   maxSpeed: 10
-  maxSwingSpeed: 20
   mass: 10
   maxSlopeAngle: 50
   isGrounded: 0
   isOnSlope: 0
-  isOnExtremeSlope: 0
   playerYCenter: 0
   currentJumpPercentage: 1
   jumpExponent: 0.5
@@ -470,6 +469,7 @@ MonoBehaviour:
   cinemachineFollowYaw: 0
   cinemachineFollowPitch: 0
   maxCrouchSpeed: 2.5
+  crouchingSmoothness: 2
   ropeRayCastDistance: 50
   maxDistanceMultiplier: 0.25
   minDistanceMultiplier: 0
@@ -478,6 +478,7 @@ MonoBehaviour:
   springMassScale: 3
   currentInteractionState: 0
   pushForce: 20
+  pushingAnimationSmoothness: 0
   selectableSurfaces:
     serializedVersion: 2
     m_Bits: 759
@@ -487,6 +488,7 @@ MonoBehaviour:
   aimingTimeScale: 0.25
   objectiveCollectedAmount: 0
   timeElapsed: 0
+  test: 0
 --- !u!114 &6424277254161373270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -693,7 +695,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.45, y: 0.59, z: 0.66}
+  m_Size: {x: 0.45, y: 0.6, z: 0.6}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &8483006389844740390
 MonoBehaviour:
@@ -782,9 +784,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: bdb2b32abd4e31942864431efc711cb0, type: 2}
     - target: {fileID: -6057140222963153312, guid: 82a2914d8f86c62488456950c8330e38,
         type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 2891c2d7ef6e8b042bb9f59238fdf89c, type: 3}
+    - target: {fileID: -6057140222963153312, guid: 82a2914d8f86c62488456950c8330e38,
+        type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 535d24752e3d6444da644e79e90ec2ca, type: 2}
+      objectReference: {fileID: 9100000, guid: 0ab96644b0865204ca0407e6c4f038d8, type: 2}
     - target: {fileID: -6057140222963153312, guid: 82a2914d8f86c62488456950c8330e38,
         type: 3}
       propertyPath: m_UpdateMode
@@ -973,18 +980,6 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &1585435859542603904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3355907043285903433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a7974e5a1a32e8641a298109415dd8b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!95 &8521876702090753824 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: -6057140222963153312, guid: 82a2914d8f86c62488456950c8330e38,

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,6 +56,11 @@ public class RopePlacementController : MonoBehaviour
         PlayerData.Instance.activeRopes.Clear();
 
         UpdateRopeColor();
+    }
+
+    private void WriteData()
+    {
+        throw new NotImplementedException();
     }
     
     public void DestroyRopeBatch(LinkedList<GameObject> linkedList)

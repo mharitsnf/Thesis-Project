@@ -24,7 +24,7 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public VerticalStateController verticalStateController;
     [ReadOnly] public HorizontalStateController horizontalStateController;
     [ReadOnly] public CameraController cameraController;
-    [ReadOnly] public RopePlacementController RopePlacementController;
+    [ReadOnly] public RopePlacementController ropePlacementController;
 
     [Header("Animation")]
     [Range(0f, 1f)]
@@ -41,7 +41,6 @@ public class PlayerData : MonoBehaviour
     [Header("Horizontal Movement Limitations")] 
     public float movementRotationSpeed = 10; 
     public float maxSpeed = 10;
-    public float maxSwingSpeed = 20;
 
     [Header("Ground Check Data")]
     public float mass = 50;
@@ -84,6 +83,7 @@ public class PlayerData : MonoBehaviour
 
     [Header("Crouching")]
     public float maxCrouchSpeed = 25f;
+    public float crouchingSmoothness;
     private bool _isCrouching;
     public bool IsCrouching
     {
@@ -110,6 +110,7 @@ public class PlayerData : MonoBehaviour
 
     [Header("Pushing")] 
     public float pushForce;
+    public float pushingAnimationSmoothness;
 
     [Header("Rope Data")]
     public LayerMask selectableSurfaces;

@@ -148,7 +148,7 @@ public class InteractionController : MonoBehaviour
         if (!context.ReadValueAsButton()) return;
         if (!PlayerData.Instance.isAiming) return;
 
-        PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
+        PlayerData.Instance.ropePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
         ToggleAiming(false);
         
         InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
@@ -167,7 +167,7 @@ public class InteractionController : MonoBehaviour
         if (hit.collider.CompareTag("Player")) return;
         if (!PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit))) return;
         
-        PlayerData.Instance.RopePlacementController.SelectObject(hit);
+        PlayerData.Instance.ropePlacementController.SelectObject(hit);
         
         InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.ObjectSelected;
         
@@ -186,7 +186,7 @@ public class InteractionController : MonoBehaviour
         if (hit.collider.gameObject.layer == 9) return;
         if (PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit))) return;
 
-        PlayerData.Instance.RopePlacementController.SelectSurface(hit);
+        PlayerData.Instance.ropePlacementController.SelectSurface(hit);
         
         if (!SceneManager.GetActiveScene().name.Equals("Tutorial")) return;
         if (!TutorialCore.Instance.hasSelectedSurface) TutorialCore.Instance.hasSelectedSurface = true;
@@ -199,7 +199,7 @@ public class InteractionController : MonoBehaviour
         if (PlayerData.Instance.isAiming) return;
         if (PlayerData.Instance.placedRopes.Count == 0) return;
 
-        PlayerData.Instance.RopePlacementController.DestroyNewestBatch();
+        PlayerData.Instance.ropePlacementController.DestroyNewestBatch();
         
         InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
     
@@ -214,7 +214,7 @@ public class InteractionController : MonoBehaviour
         if (PlayerData.Instance.isAiming) return;
         if (PlayerData.Instance.placedRopes.Count == 0) return;
             
-        PlayerData.Instance.RopePlacementController.DestroyOldestBatch();
+        PlayerData.Instance.ropePlacementController.DestroyOldestBatch();
         
         InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
 
@@ -228,7 +228,7 @@ public class InteractionController : MonoBehaviour
         if (!context.ReadValueAsButton() || !PlayerData.Instance.isAiming) return;
         if (PlayerData.Instance.activeRopes.Count <= 0) return;
 
-        PlayerData.Instance.RopePlacementController.ConfirmPlacement();
+        PlayerData.Instance.ropePlacementController.ConfirmPlacement();
             
         ToggleAiming(false, true);
         

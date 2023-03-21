@@ -103,7 +103,7 @@ public class FullInteractionController : MonoBehaviour
         
         if (PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit)))
         {
-            PlayerData.Instance.RopePlacementController.SelectObject(hit);
+            PlayerData.Instance.ropePlacementController.SelectObject(hit);
             
             InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.ObjectSelected;
         }
@@ -111,7 +111,7 @@ public class FullInteractionController : MonoBehaviour
         
         // Add material check, which ones can be attached to which ones cannot
         // hit.collider.gameObject.GetComponent<MeshRenderer>().material.Equals();
-        else PlayerData.Instance.RopePlacementController.SelectSurface(hit);
+        else PlayerData.Instance.ropePlacementController.SelectSurface(hit);
     }
 
     private void HandleEnterAimInput(InputAction.CallbackContext context)
@@ -131,7 +131,7 @@ public class FullInteractionController : MonoBehaviour
         if (!context.ReadValueAsButton()) return;
         if (!PlayerData.Instance.isAiming) return;
         
-        PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
+        PlayerData.Instance.ropePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
         ToggleAiming(false);
             
         InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
@@ -144,7 +144,7 @@ public class FullInteractionController : MonoBehaviour
 
         if (PlayerData.Instance.isAiming)
         {
-            PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
+            PlayerData.Instance.ropePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
             ToggleAiming(false);
             
             InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
@@ -152,7 +152,7 @@ public class FullInteractionController : MonoBehaviour
         else
         {
             if (PlayerData.Instance.placedRopes.Count == 0) return;
-            PlayerData.Instance.RopePlacementController.DestroyNewestBatch();
+            PlayerData.Instance.ropePlacementController.DestroyNewestBatch();
             
             InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
         }
@@ -165,7 +165,7 @@ public class FullInteractionController : MonoBehaviour
         if (PlayerData.Instance.isAiming) return;
         if (PlayerData.Instance.placedRopes.Count == 0) return;
             
-        PlayerData.Instance.RopePlacementController.DestroyOldestBatch();
+        PlayerData.Instance.ropePlacementController.DestroyOldestBatch();
         
         InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
     }
@@ -177,7 +177,7 @@ public class FullInteractionController : MonoBehaviour
 
         if (PlayerData.Instance.activeRopes.Count > 0)
         {
-            PlayerData.Instance.RopePlacementController.ConfirmPlacement();
+            PlayerData.Instance.ropePlacementController.ConfirmPlacement();
             
             ToggleAiming(false, true);
             
@@ -185,7 +185,7 @@ public class FullInteractionController : MonoBehaviour
         }
         else
         {
-            PlayerData.Instance.RopePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
+            PlayerData.Instance.ropePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
             ToggleAiming(false);
             
             InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
