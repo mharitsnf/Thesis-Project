@@ -20,19 +20,19 @@ public class HorizontalStateController : BaseStateController
     {
         // State logic
         currentState.FixedUpdateState();
-        AdjustCrouching();
+        CheckCrouchingSurface();
     }
 
-    private void AdjustCrouching()
+    private void CheckCrouchingSurface()
     {
         if (!PlayerData.Instance.IsCrouching) return;
         if (!PlayerData.Instance.isGrounded) return;
         if (!PlayerData.Instance.groundInfo.rigidbody) return;
 
-        Rigidbody mechanicRb = PlayerData.Instance.groundInfo.rigidbody;
-        Vector3 velocity = PlayerData.Instance.rigidBody.velocity;
-
-        velocity = Vector3.Lerp(velocity, mechanicRb.velocity, PlayerData.Instance.crouchingSmoothness * Time.fixedDeltaTime);
-        PlayerData.Instance.rigidBody.velocity = velocity;
+        if (!PlayerData.Instance.fixedJoint)
+        {
+            PlayerData.Instance.fixedJoint = PlayerData.Instance.gameObject.AddComponent<FixedJoint>();
+            PlayerData.Instance.fixedJoint.connectedBody = PlayerData.Instance.groundInfo.rigidbody;
+        }
     }
 }

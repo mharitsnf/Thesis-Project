@@ -19,6 +19,7 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public Vector3 initialPosition;
     [ReadOnly] public GameObject crosshairObject;
     [ReadOnly] public Animator animator;
+    [ReadOnly] public FixedJoint fixedJoint;
     
     [Header(("Controllers"))]
     [ReadOnly] public VerticalStateController verticalStateController;
@@ -92,6 +93,11 @@ public class PlayerData : MonoBehaviour
         {
             _isCrouching = value;
             animator.SetBool(Crouching, value);
+            if (!value && fixedJoint)
+            {
+                Destroy(fixedJoint);
+                fixedJoint = null;
+            }
         }
     }
 
