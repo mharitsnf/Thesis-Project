@@ -87,14 +87,11 @@ public class ObjectMechanicsController : MonoBehaviour
     
     private void ResetPosition()
     {
-        if (transform.position.y < -50f)
-        {
-
-            _rb.velocity = Vector3.zero;
-            _rb.angularVelocity = Vector3.zero;
-            _parent.transform.position = _initialPosition;
-            _parent.transform.rotation = _initialRotation;
-        }
+        if (!(transform.position.y < -50f)) return;
+        _rb.velocity = Vector3.zero;
+        _rb.angularVelocity = Vector3.zero;
+        _parent.transform.position = _initialPosition;
+        _parent.transform.rotation = _initialRotation;
     }
 
     private void FixedUpdate()
@@ -104,6 +101,7 @@ public class ObjectMechanicsController : MonoBehaviour
 
     private void ResetMaterial()
     {
+        if (PlayerData.Instance.isAiming) return;
         if (!_rb.freezeRotation || _parent.GetComponents<SpringJoint>().Length != 0) return;
         
         _rb.freezeRotation = false;
@@ -113,8 +111,7 @@ public class ObjectMechanicsController : MonoBehaviour
     private void UpdateMaterial()
     {
         if (!PlayerData.Instance.isAiming) return;
-        if (PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit))) return;
-        if (PlayerData.Instance.selectedGameObject.collider.gameObject.Equals(_parent)) return;
+        if (!PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit)) && PlayerData.Instance.selectedGameObject.collider.gameObject.Equals(_parent)) return;
         
         SetMaterial(Vector3.Distance(PlayerData.Instance.realCamera.position, transform.position) > PlayerData.Instance.ropeRayCastDistance ? 4 : 1);
     }

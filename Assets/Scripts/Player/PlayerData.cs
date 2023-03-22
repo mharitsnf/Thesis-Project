@@ -83,7 +83,6 @@ public class PlayerData : MonoBehaviour
 
     [Header("Crouching")]
     public float maxCrouchSpeed = 25f;
-    public float crouchingSmoothness;
     public FixedJoint fixedJoint;
     private bool _isCrouching;
     public bool IsCrouching
@@ -93,11 +92,9 @@ public class PlayerData : MonoBehaviour
         {
             _isCrouching = value;
             animator.SetBool(Crouching, value);
-            if (!value && fixedJoint)
-            {
-                Destroy(fixedJoint);
-                fixedJoint = null;
-            }
+            if (value || !fixedJoint) return;
+            Destroy(fixedJoint);
+            fixedJoint = null;
         }
     }
 
