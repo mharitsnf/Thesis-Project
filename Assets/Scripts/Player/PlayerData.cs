@@ -19,7 +19,6 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public Vector3 initialPosition;
     [ReadOnly] public GameObject crosshairObject;
     [ReadOnly] public Animator animator;
-    [ReadOnly] public FixedJoint fixedJoint;
     
     [Header(("Controllers"))]
     [ReadOnly] public VerticalStateController verticalStateController;
@@ -85,6 +84,7 @@ public class PlayerData : MonoBehaviour
     [Header("Crouching")]
     public float maxCrouchSpeed = 25f;
     public float crouchingSmoothness;
+    public FixedJoint fixedJoint;
     private bool _isCrouching;
     public bool IsCrouching
     {

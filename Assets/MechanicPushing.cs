@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MechanicPushing : MonoBehaviour
 {
-    private float _maxDistance = .3f;
+    private readonly float _maxDistance = .3f;
     private float _currentWeight;
     
     private void OnTriggerStay(Collider other)

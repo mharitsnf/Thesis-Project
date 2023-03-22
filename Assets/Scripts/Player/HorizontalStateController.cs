@@ -10,6 +10,8 @@ public class HorizontalStateController : BaseStateController
     public readonly PlayerIdleState idleState = new();
     public readonly PlayerMoveState moveState = new();
 
+    private int _detachedFrameCount;
+
     private void Start()
     {
         currentState = idleState;
@@ -27,12 +29,11 @@ public class HorizontalStateController : BaseStateController
     {
         if (!PlayerData.Instance.IsCrouching) return;
         if (!PlayerData.Instance.isGrounded) return;
-        if (!PlayerData.Instance.groundInfo.rigidbody) return;
-
-        if (!PlayerData.Instance.fixedJoint)
-        {
-            PlayerData.Instance.fixedJoint = PlayerData.Instance.gameObject.AddComponent<FixedJoint>();
-            PlayerData.Instance.fixedJoint.connectedBody = PlayerData.Instance.groundInfo.rigidbody;
-        }
+        if (!PlayerData.Instance.groundInfo.collider.CompareTag("Object")) return;
+        
+        if (PlayerData.Instance.fixedJoint) return;
+        PlayerData.Instance.fixedJoint = PlayerData.Instance.gameObject.AddComponent<FixedJoint>();
+        PlayerData.Instance.fixedJoint.connectedBody = PlayerData.Instance.groundInfo.rigidbody;
+        PlayerData.Instance.fixedJoint.enableCollision = true;
     }
 }

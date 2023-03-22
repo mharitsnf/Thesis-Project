@@ -48,6 +48,7 @@ public class PlayerMoveState : PlayerBaseState
         acceleration = PlayerData.Instance.isOnSlope ? acceleration * percentage : acceleration;
         if (PlayerData.Instance.isOnSlope) direction = Vector3.ProjectOnPlane(direction, PlayerData.Instance.groundInfo.normal).normalized;
 
+
         PlayerData.Instance.rigidBody.AddForce(direction.normalized * acceleration, ForceMode.Force);
     }
 

@@ -28,7 +28,7 @@ public class VerticalStateController : BaseStateController
 
     private void GroundAndSlopeCheck()
     {
-        float multiplier = PlayerData.Instance.IsCrouching ? 10f : 1f;
+        float multiplier = 1f;
         PlayerData.Instance.isGrounded = Physics.SphereCast(new Ray(transform.position, Vector3.down * multiplier), 0.25f, out PlayerData.Instance.groundInfo, PlayerData.Instance.playerYCenter + .05f);
 
         if (!PlayerData.Instance.isGrounded)

@@ -4,14 +4,17 @@ using UnityEngine;
 public class PlayerJumpState : PlayerBaseState
 {
     private int _frameElapsed;
-    
+    private static readonly int JustJumped = Animator.StringToHash("JustJumped");
+
     public override void EnterState()
     {
         PlayerData.Instance.wasJumping = true;
         PlayerData.Instance.rigidBody.drag = PlayerData.Instance.airDrag;
         PlayerData.Instance.rigidBody.AddForce(Vector3.up * (PlayerData.Instance.maxJumpForce * PlayerData.Instance.currentJumpPercentage), ForceMode.Impulse);
+
+        PlayerData.Instance.IsCrouching = false;
         
-        PlayerData.Instance.animator.SetBool("JustJumped", true);
+        PlayerData.Instance.animator.SetBool(JustJumped, true);
     }
     
     public override void FixedUpdateState()
@@ -38,6 +41,6 @@ public class PlayerJumpState : PlayerBaseState
     {
         _frameElapsed = 0;
         PlayerData.Instance.currentJumpPercentage = 1;
-        PlayerData.Instance.animator.SetBool("JustJumped", false);
+        PlayerData.Instance.animator.SetBool(JustJumped, false);
     }
 }
