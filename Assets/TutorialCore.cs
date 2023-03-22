@@ -170,7 +170,7 @@ public class TutorialCore : LevelCore
         yield return new WaitForSecondsRealtime(5f);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         yield return new WaitForSecondsRealtime(.5f);
-        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Try confirming your selection with E."));
+        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Try confirming your selection with R."));
         InteractionController.Instance.playerInput.CharacterControls.ConfirmRopePlacement.Enable();
         yield return new WaitUntil(() => hasConfirmedSelection);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
@@ -190,12 +190,12 @@ public class TutorialCore : LevelCore
         yield return new WaitForSecondsRealtime(5f);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
-        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Try destroying the oldest/red ropes using Left Shift."));
+        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Try destroying the oldest/red ropes using Q."));
         InteractionController.Instance.playerInput.CharacterControls.DetachFirstRopePlacement.Enable();
         yield return new WaitUntil(() => hasDetachedFirst);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
-        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Now try destroying newest/green ropes using Q"));
+        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Now try destroying newest/green ropes using E"));
         InteractionController.Instance.playerInput.CharacterControls.DetachLastRopePlacement.Enable();
         yield return new WaitUntil(() => hasDetachedLast);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
