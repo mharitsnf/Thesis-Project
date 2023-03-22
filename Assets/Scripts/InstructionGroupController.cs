@@ -44,8 +44,8 @@ public class InstructionGroupController : MonoBehaviour
             {
                 case DisplayState.NotAiming:
                     instructions.Add("[Right Click] Aim");
-                    if (PlayerData.Instance.placedRopes.Count > 0) instructions.Add("[Q] Detach Newest Rope");
-                    if (PlayerData.Instance.placedRopes.Count > 0) instructions.Add("[E] Detach Oldest Rope");
+                    if (PlayerData.Instance.placedRopes.Count > 0) instructions.Add("[E] Detach Newest Rope");
+                    if (PlayerData.Instance.placedRopes.Count > 0) instructions.Add("[Q] Detach Oldest Rope");
                     SetInstructions(instructions);
                     break;
                 case DisplayState.ObjectNotSelected:
