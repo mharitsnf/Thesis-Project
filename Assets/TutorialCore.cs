@@ -43,7 +43,7 @@ public class TutorialCore : LevelCore
 
     public bool hasExitThirdStage;
 
-    public bool hasEnteredLastStage;
+    public bool hasEnteredCrouchStage;
     
 
     private void Awake()
@@ -204,6 +204,16 @@ public class TutorialCore : LevelCore
         StartCoroutine(MoveThirdStageDoor());
         yield return new WaitUntil(() => hasExitThirdStage);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
+        
+        yield return new WaitUntil(() => hasEnteredCrouchStage);
+        
+        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("You can crouch using LShift."));
+        yield return new WaitForSecondsRealtime(3f);
+        yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
+        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Crouching allows you to stick to an object"));
+        yield return new WaitForSecondsRealtime(3f);
+        yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
+        
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Hints are now displayed on the bottom of the screen. Good luck!"));
         yield return new WaitForSecondsRealtime(3f);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
