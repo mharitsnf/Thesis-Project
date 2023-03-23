@@ -44,7 +44,7 @@ public class VerticalStateController : BaseStateController
         
         Vector3 velocity = PlayerData.Instance.rigidBody.velocity.normalized;
         Vector3 offset = new Vector3(velocity.x, 0f, velocity.z);
-        PlayerData.Instance.initialPosition = PlayerData.Instance.transform.position - offset * 5f;
+        PlayerData.Instance.initialPosition = PlayerData.Instance.transform.position - offset * 3f;
     }
 
     private void ResetPosition()
