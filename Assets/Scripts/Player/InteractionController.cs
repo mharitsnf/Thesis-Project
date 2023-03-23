@@ -115,6 +115,9 @@ public class InteractionController : MonoBehaviour
     private void HandleCrouchInput(InputAction.CallbackContext context)
     {
         PlayerData.Instance.IsCrouching = context.ReadValueAsButton();
+        
+        if (!SceneManager.GetActiveScene().name.Equals("Tutorial")) return;
+        if (!TutorialCore.Instance.hasCrouched) TutorialCore.Instance.hasCrouched = true;
     }
 
     private void HandleCameraInput(InputAction.CallbackContext context)

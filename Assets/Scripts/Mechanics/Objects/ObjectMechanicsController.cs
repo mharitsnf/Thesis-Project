@@ -87,7 +87,7 @@ public class ObjectMechanicsController : MonoBehaviour
     
     private void ResetPosition()
     {
-        if (!(transform.position.y < -50f)) return;
+        if (!(transform.position.y < -20f)) return;
         _rb.velocity = Vector3.zero;
         _rb.angularVelocity = Vector3.zero;
         _parent.transform.position = _initialPosition;

@@ -34,10 +34,17 @@ public class PlayerMoveState : PlayerBaseState
         float dot = Vector3.Dot(direction, PlayerData.Instance.groundInfo.normal);
         
         if (dot < -.75f) return;
+
+        float acceleration;
+        if (PlayerData.Instance.isGrounded)
+        {
+            acceleration = PlayerData.Instance.IsCrouching ? PlayerData.Instance.crouchingAcceleration : PlayerData.Instance.acceleration;
+        }
+        else
+        {
+            acceleration = PlayerData.Instance.airAcceleration;
+        }
         
-        float acceleration = PlayerData.Instance.isGrounded
-            ? PlayerData.Instance.acceleration
-            : PlayerData.Instance.airAcceleration;
 
         float percentage = 1 - Mathf.Abs(dot);
         percentage = (Mathf.Pow(percentage, PlayerData.Instance.slopeMoveExponent) -

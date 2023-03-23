@@ -19,10 +19,15 @@ public class TutorialCheckpoint : MonoBehaviour
                 TutorialCore.Instance.hasEnteredThirdStage = true;
                 break;
             case "Third Stage Exit":
-                TutorialCore.Instance.hasExitThirdStage = true;
+                TutorialCore.Instance.hasExitedThirdStage = true;
                 break;
-            case  "Last Stage Entrance":
-                TutorialCore.Instance.hasEnteredLastStage = true;
+            case "Crouch Stage Entrance":
+                PlayerData.Instance.initialPosition = PlayerData.Instance.transform.position;
+                TutorialCore.Instance.hasEnteredCrouchStage = true;
+                break;
+            case "Crouch Stage Exit":
+                PlayerData.Instance.initialPosition = PlayerData.Instance.transform.position;
+                TutorialCore.Instance.hasExitedCrouchStage = true;
                 break;
         }
     }

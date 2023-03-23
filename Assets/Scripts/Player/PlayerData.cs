@@ -17,6 +17,7 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public GameObject cinemachineFollow;
     [ReadOnly] public Rigidbody rigidBody;
     [ReadOnly] public Vector3 initialPosition;
+    [ReadOnly] public Quaternion initialRotation;
     [ReadOnly] public GameObject crosshairObject;
     [ReadOnly] public Animator animator;
     
@@ -34,6 +35,7 @@ public class PlayerData : MonoBehaviour
     
     [Header("Movement Forces")]
     public float acceleration = 100;
+    public float crouchingAcceleration = 400;
     public float airAcceleration = 100;
     public float maxJumpForce;
     public float slopeMoveExponent = 0.3f;
@@ -93,6 +95,7 @@ public class PlayerData : MonoBehaviour
             _isCrouching = value;
             animator.SetBool(Crouching, value);
             if (value || !fixedJoint) return;
+            rigidBody.mass = mass;
             Destroy(fixedJoint);
             fixedJoint = null;
         }
@@ -145,6 +148,7 @@ public class PlayerData : MonoBehaviour
     private void Start()
     {
         initialPosition = transform.position;
+        initialRotation = transform.rotation;
         rigidBody.mass = mass;
     }
 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TutorialCore : LevelCore
 {
@@ -41,9 +42,11 @@ public class TutorialCore : LevelCore
     public bool hasDetachedFirst;
     public bool hasDetachedLast;
 
-    public bool hasExitThirdStage;
+    public bool hasExitedThirdStage;
 
     public bool hasEnteredCrouchStage;
+    public bool hasCrouched;
+    public bool hasExitedCrouchStage;
     
 
     private void Awake()
@@ -68,8 +71,6 @@ public class TutorialCore : LevelCore
 
             yield return null;
         }
-
-        print("ok");
     }
 
     IEnumerator MoveThirdStageDoor()
@@ -83,13 +84,12 @@ public class TutorialCore : LevelCore
 
             yield return null;
         }
-        
-        print("ok");
     }
 
     IEnumerator TutorialSequence()
     {
         InstructionGroupController.Instance.IsShown = false;
+        InteractionController.Instance.playerInput.CharacterControls.Jump.Disable();
         yield return new WaitForSecondsRealtime(3f);
 
         // Teach movement and camera
@@ -101,8 +101,8 @@ public class TutorialCore : LevelCore
         
         yield return new WaitForSecondsRealtime(3f);
 
-        InteractionController.Instance.playerInput.CharacterControls.Jump.Enable();
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Use Space to jump. Try jumping a few times."));
+        InteractionController.Instance.playerInput.CharacterControls.Jump.Enable();
         yield return new WaitUntil(() => hasJumped);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
@@ -202,18 +202,25 @@ public class TutorialCore : LevelCore
         
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Try to leave the room!"));
         StartCoroutine(MoveThirdStageDoor());
-        yield return new WaitUntil(() => hasExitThirdStage);
+        yield return new WaitUntil(() => hasExitedThirdStage);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
         
         yield return new WaitUntil(() => hasEnteredCrouchStage);
         
-        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("You can crouch using LShift."));
+        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("You can crouch by holding LShift. Try crouching!"));
+        InteractionController.Instance.playerInput.CharacterControls.Crouch.Enable();
+        yield return new WaitUntil(() => hasCrouched);
+        yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
+        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Crouching allows you to stick to a purple object."));
         yield return new WaitForSecondsRealtime(3f);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
-        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Crouching allows you to stick to an object"));
+        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("When crouching on top of a purple object, your movement is restricted."));
         yield return new WaitForSecondsRealtime(3f);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
-        
+        yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("But jumping or releasing LShift will unstick yourself. Try to leave the room!"));
+        yield return new WaitUntil(() => hasExitedCrouchStage);
+        yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
+        yield return new WaitForSecondsRealtime(3f);
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("Hints are now displayed on the bottom of the screen. Good luck!"));
         yield return new WaitForSecondsRealtime(3f);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());

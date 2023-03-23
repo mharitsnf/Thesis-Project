@@ -43,7 +43,11 @@ public class VerticalStateController : BaseStateController
 
     private void ResetPosition()
     {
-        if (transform.position.y < -50f) transform.position = PlayerData.Instance.initialPosition;
+        if (!(transform.position.y < -20f)) return;
+        PlayerData.Instance.IsCrouching = false;
+        PlayerData.Instance.rigidBody.velocity = Vector3.zero;
+        PlayerData.Instance.rigidBody.angularVelocity = Vector3.zero;
+        PlayerData.Instance.transform.position = PlayerData.Instance.initialPosition;
     }
 
     public void Jump()
