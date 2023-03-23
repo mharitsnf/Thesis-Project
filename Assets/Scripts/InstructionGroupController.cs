@@ -11,14 +11,14 @@ public class InstructionGroupController : MonoBehaviour
     public static InstructionGroupController Instance { get; private set; }
     
     public GameObject instructionPrefab;
-    private bool isShown;
+    private bool _isShown;
 
     public bool IsShown
     {
-        get => isShown;
+        get => _isShown;
         set
         {
-            isShown = value;
+            _isShown = value;
             if (!value) RemoveChildren();
         }
     }
@@ -37,7 +37,7 @@ public class InstructionGroupController : MonoBehaviour
         {
             _currentState = value;
             
-            if (!isShown) return;
+            if (!_isShown) return;
             
             List<String> instructions = new();
             switch (value)

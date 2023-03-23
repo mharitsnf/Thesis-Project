@@ -39,6 +39,12 @@ public class VerticalStateController : BaseStateController
 
         float groundAngle = Vector3.Angle(Vector3.up, PlayerData.Instance.groundInfo.normal);
         PlayerData.Instance.isOnSlope = groundAngle < PlayerData.Instance.maxSlopeAngle && groundAngle != 0;
+
+        if (PlayerData.Instance.groundInfo.collider.CompareTag("Object")) return;
+        
+        Vector3 velocity = PlayerData.Instance.rigidBody.velocity.normalized;
+        Vector3 offset = new Vector3(velocity.x, 0f, velocity.z);
+        PlayerData.Instance.initialPosition = PlayerData.Instance.transform.position - offset * 5f;
     }
 
     private void ResetPosition()

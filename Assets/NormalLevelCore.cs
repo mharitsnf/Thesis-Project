@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class NormalLevelCore : LevelCore
 {
+
     private void Start()
     {
         InstructionGroupController.Instance.IsShown = true;
