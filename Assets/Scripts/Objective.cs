@@ -9,7 +9,8 @@ public class Objective : MonoBehaviour
 
     public int ignoreLayerIndex;
     public GameObject captureParticlesPrefab;
-    
+    public Cutscene relatedCutscene;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == ignoreLayerIndex) return;
@@ -20,6 +21,8 @@ public class Objective : MonoBehaviour
 
         Instantiate(captureParticlesPrefab, transform.position, Quaternion.identity);
         
+        relatedCutscene.StartCutscene();
+
         GetComponent<ParticleSystem>().Stop();
         Destroy(gameObject);
     }

@@ -120,7 +120,7 @@ public class TutorialCore : LevelCore
         InteractionController.Instance.playerInput.CharacterControls.Jump.Enable();
         PlayerData.Instance.moveDirection = Vector2.zero;
         PlayerData.Instance.cameraLookDelta = Vector2.zero;
-        PlayerData.Instance.cameraController.SwitchVirtualCamera(2);
+        PlayerData.Instance.cameraController.SwitchVirtualCamera(PlayerData.Instance.virtualCameras[2]);
         
         yield return StartCoroutine(TutorialPanelController.Instance.ShowPanel("You can create elastic ropes from these purple objects."));
         yield return new WaitForSecondsRealtime(3f);
@@ -130,7 +130,7 @@ public class TutorialCore : LevelCore
         yield return new WaitForSecondsRealtime(3f);
         yield return StartCoroutine(TutorialPanelController.Instance.HidePanel());
 
-        PlayerData.Instance.cameraController.SwitchVirtualCamera(0);
+        PlayerData.Instance.cameraController.SwitchVirtualCamera(PlayerData.Instance.virtualCameras[0]);
         yield return new WaitForSecondsRealtime(.5f);
         InteractionController.Instance.playerInput.CharacterControls.Move.Enable();
         InteractionController.Instance.cameraInput.CameraLook.Rotate.Enable();

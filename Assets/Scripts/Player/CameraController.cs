@@ -4,6 +4,8 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
+    public CinemachineVirtualCameraBase currentCamera;
+
     private void Start()
     {
         InitialSetup();
@@ -21,6 +23,8 @@ public class CameraController : MonoBehaviour
 
     private void InitialSetup()
     {
+        currentCamera = PlayerData.Instance.virtualCameras[0];
+        
         Quaternion cinemachineFollowQuaternion = PlayerData.Instance.cinemachineFollow.transform.rotation;
         PlayerData.Instance.cinemachineFollowYaw = cinemachineFollowQuaternion.eulerAngles.y;
         PlayerData.Instance.cinemachineFollowPitch = cinemachineFollowQuaternion.eulerAngles.x;
@@ -55,15 +59,15 @@ public class CameraController : MonoBehaviour
         return Mathf.Clamp(lfAngle, lfMin, lfMax);
     }
 
-    public void SwitchVirtualCamera(int index)
+    public void SwitchVirtualCamera(CinemachineVirtualCameraBase newVirtualCamera)
     {
-        CinemachineVirtualCameraBase newVirtualCamera = PlayerData.Instance.virtualCameras[index];
-    
         newVirtualCamera.gameObject.SetActive(true);
     
         foreach (CinemachineVirtualCameraBase virtualCamera in PlayerData.Instance.virtualCameras)
         {
             if (virtualCamera != newVirtualCamera) virtualCamera.gameObject.SetActive(false);
         }
+
+        currentCamera = newVirtualCamera;
     }
 }

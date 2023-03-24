@@ -242,6 +242,14 @@ public class InteractionController : MonoBehaviour
         if (!TutorialCore.Instance.hasConfirmedSelection) TutorialCore.Instance.hasConfirmedSelection = true;
     }
 
+    public void ForceQuitAiming()
+    {
+        PlayerData.Instance.ropePlacementController.DestroyRopeBatch(PlayerData.Instance.activeRopes);
+        ToggleAiming(false);
+        
+        InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
+    }
+
     private void ToggleAiming(bool isAiming, bool isJointPlaced = false)
     {
         OnToggleAiming.Invoke(isAiming);
@@ -249,7 +257,7 @@ public class InteractionController : MonoBehaviour
         if (isAiming)
         {
             PlayerData.Instance.isAiming = true;
-            PlayerData.Instance.cameraController.SwitchVirtualCamera(1);
+            PlayerData.Instance.cameraController.SwitchVirtualCamera(PlayerData.Instance.virtualCameras[1]);
             Time.timeScale = PlayerData.Instance.aimingTimeScale;
             
             PlayerData.Instance.crosshairObject.SetActive(true);
@@ -261,7 +269,7 @@ public class InteractionController : MonoBehaviour
         {
             PlayerData.Instance.isAiming = false;
             Time.timeScale = 1;
-            PlayerData.Instance.cameraController.SwitchVirtualCamera(0);
+            PlayerData.Instance.cameraController.SwitchVirtualCamera(PlayerData.Instance.virtualCameras[0]);
             
             PlayerData.Instance.crosshairObject.SetActive(false);
             
