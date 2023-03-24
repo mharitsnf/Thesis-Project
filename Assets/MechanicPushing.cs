@@ -10,6 +10,7 @@ public class MechanicPushing : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (!Physics.Raycast(transform.position, transform.forward, out var hit, _maxDistance)) return;
+        if (hit.collider.isTrigger) return;
         if (_currentWeight < 1f) _currentWeight = Mathf.Lerp(_currentWeight, 1.1f, Time.deltaTime * PlayerData.Instance.pushingAnimationSmoothness);
         PlayerData.Instance.animator.SetLayerWeight(1, _currentWeight);
         
