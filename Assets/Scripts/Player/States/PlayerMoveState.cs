@@ -18,6 +18,13 @@ public class PlayerMoveState : PlayerBaseState
         // State change
         if (PlayerData.Instance.moveDirection == Vector2.zero) PlayerData.Instance.horizontalStateController.SwitchState(PlayerData.Instance.horizontalStateController.idleState);
     }
+    
+    private void CrouchMove()
+    {
+        if (!PlayerData.Instance.fixedJoint && !PlayerData.Instance.IsCrouching) return;
+
+        PlayerData.Instance.rigidBody.mass = 0.1f;
+    }
 
     private void RotateMesh()
     {

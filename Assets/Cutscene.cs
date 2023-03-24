@@ -6,6 +6,7 @@ using UnityEngine;
 public class Cutscene : MonoBehaviour
 {
     public CinemachineVirtualCameraBase virtualCamera;
+    public int playLimit = 1;
     
     public void StartCutscene()
     {
@@ -35,5 +36,7 @@ public class Cutscene : MonoBehaviour
         
         InteractionController.Instance.playerInput.Enable();
         InteractionController.Instance.playerInput.CharacterControls.ExitAim.Disable();
+
+        playLimit--;
     }
 }

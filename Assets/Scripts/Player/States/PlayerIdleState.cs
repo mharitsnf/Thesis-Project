@@ -15,6 +15,13 @@ public class PlayerIdleState : PlayerBaseState
         if (PlayerData.Instance.moveDirection != Vector2.zero) PlayerData.Instance.horizontalStateController.SwitchState(PlayerData.Instance.horizontalStateController.moveState);
     }
 
+    private void CrouchIdle()
+    {
+        if (!PlayerData.Instance.fixedJoint && !PlayerData.Instance.IsCrouching) return;
+
+        PlayerData.Instance.rigidBody.mass = PlayerData.Instance.mass;
+    }
+
     private void RotateMesh()
     {
         if (PlayerData.Instance.isAiming)
