@@ -17,7 +17,5 @@ public class DynamicObject : MonoBehaviour
             
             yield return null;
         }
-        
-        print(gameObject.name + " finished moving");
     }
 }

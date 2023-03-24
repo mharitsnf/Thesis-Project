@@ -87,9 +87,4 @@ public class InstructionGroupController : MonoBehaviour
         if (Instance != null && Instance != this) Destroy(this);
         else Instance = this;
     }
-
-    private void Start()
-    {
-        CurrentState = DisplayState.NotAiming;
-    }
 }

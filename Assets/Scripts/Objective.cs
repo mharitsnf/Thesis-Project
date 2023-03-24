@@ -21,7 +21,7 @@ public class Objective : MonoBehaviour
 
         Instantiate(captureParticlesPrefab, transform.position, Quaternion.identity);
         
-        relatedCutscene.StartCutscene();
+        if (relatedCutscene) relatedCutscene.StartCutscene();
 
         GetComponent<ParticleSystem>().Stop();
         Destroy(gameObject);

@@ -35,6 +35,5 @@ public class HorizontalStateController : BaseStateController
         PlayerData.Instance.rigidBody.mass = 0.1f;
         PlayerData.Instance.fixedJoint = PlayerData.Instance.gameObject.AddComponent<FixedJoint>();
         PlayerData.Instance.fixedJoint.connectedBody = PlayerData.Instance.groundInfo.rigidbody;
-        PlayerData.Instance.fixedJoint.enableCollision = true;
     }
 }

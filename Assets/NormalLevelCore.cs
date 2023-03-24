@@ -9,5 +9,6 @@ public class NormalLevelCore : LevelCore
     private void Start()
     {
         InstructionGroupController.Instance.IsShown = true;
+        InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
     }
 }
