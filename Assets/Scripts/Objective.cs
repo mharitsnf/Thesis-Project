@@ -9,7 +9,6 @@ public class Objective : MonoBehaviour
 
     public int ignoreLayerIndex;
     public GameObject captureParticlesPrefab;
-    public Cutscene relatedCutscene;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,8 +19,6 @@ public class Objective : MonoBehaviour
         ObjectiveHUD.Instance.UpdateHUD();
 
         Instantiate(captureParticlesPrefab, transform.position, Quaternion.identity);
-        
-        if (relatedCutscene && relatedCutscene.playLimit > 0) relatedCutscene.StartCutscene();
 
         GetComponent<ParticleSystem>().Stop();
         Destroy(gameObject);
