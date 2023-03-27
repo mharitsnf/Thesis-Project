@@ -16,51 +16,45 @@ public class CutscenePlayer : MonoBehaviour
         if (!relatedCutscene) return;
         if (other.gameObject.layer == 7) return;
         if (onlyPlayer && !other.gameObject.CompareTag("Player")) return;
-        if (_onTriggerCounter > 0) return;
         
-        if (relatedCutscene.playLimit < 0)
+        _onTriggerCounter++;
+        print( _onTriggerCounter + " " + other.gameObject.name);
+        
+        if (!relatedCutscene.isLastTriggerPlayed)
         {
-            if (isLastTrigger && !relatedCutscene.atTargetPosition) relatedCutscene.StartCutscene();
+            if (isLastTrigger)
+            {
+                if (!relatedCutscene.atTargetPosition) relatedCutscene.StartCutscene();
+                relatedCutscene.isLastTriggerPlayed = true;
+            }
             else
             {
-                relatedCutscene.StartCutscene();
+                if (_onTriggerCounter == 1) relatedCutscene.StartCutscene();
             }
         }
-        else
-        {
-            if (relatedCutscene.playLimit > 0) relatedCutscene.StartCutscene();
-        }
-
-        _onTriggerCounter++;
 
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (!relatedCutscene) return;
+        if (other.gameObject.layer == 7) return;
+        if (onlyPlayer && !other.gameObject.CompareTag("Player")) return;
         
         _onTriggerCounter--;
+        print( _onTriggerCounter + " " + other.gameObject.name);
         
-        if (_onTriggerCounter > 0) return;
-        if (!relatedCutscene) return;
-        if (other.gameObject.layer == 7) return;
-        if (onlyPlayer)
+        if (!relatedCutscene.isLastTriggerPlayed)
         {
-            if (!other.gameObject.CompareTag("Player")) return;
-        }
-
-        if (true)
-        {
-            if (isLastTrigger && !relatedCutscene.atTargetPosition) relatedCutscene.StartCutscene();
+            if (isLastTrigger)
+            {
+                if (!relatedCutscene.atTargetPosition) relatedCutscene.StartCutscene();
+                relatedCutscene.isLastTriggerPlayed = true;
+            }
             else
             {
-                relatedCutscene.StartCutscene();
+                if (_onTriggerCounter == 0) relatedCutscene.StartCutscene();
             }
         }
-        else
-        {
-            if (relatedCutscene.playLimit > 0) relatedCutscene.StartCutscene();
-        }
-        
     }
 }

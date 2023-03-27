@@ -35,6 +35,6 @@ public class DynamicObject : MonoBehaviour
             yield return null;
         }
 
-        if (toTarget) atTargetPosition = true;
+        atTargetPosition = toTarget;
     }
 }
