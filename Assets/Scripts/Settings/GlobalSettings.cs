@@ -6,7 +6,8 @@ using UnityEngine;
 public class GlobalSettings : MonoBehaviour
 {
     public float gravityMultiplier;
-    
+    public Vector3 initialGravity = new Vector3(0, -9.81000042f, 0);
+
     private void Awake()
     {
         SetGravity();
@@ -15,7 +16,7 @@ public class GlobalSettings : MonoBehaviour
 
     private void SetGravity()
     {
-        Physics.gravity *= gravityMultiplier;
+        Physics.gravity = initialGravity * gravityMultiplier;
     }
 
     private void SetCursor()

@@ -249,6 +249,8 @@ public class InteractionController : MonoBehaviour
     private void HandleNextStageInput(InputAction.CallbackContext context)
     {
         LevelLoader.Instance.LoadNextLevel();
+        playerInput.OtherInteraction.NextStage.Disable();
+        print("loading");
     }
 
     public void ForceQuitAiming()
