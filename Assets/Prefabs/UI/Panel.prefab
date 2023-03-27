@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 7004533461948841336}
   - component: {fileID: 1461564247229511861}
   - component: {fileID: 3752357735898046808}
+  - component: {fileID: 3237684001264176428}
   m_Layer: 5
-  m_Name: Tutorial Panel
+  m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -50, y: 50}
-  m_SizeDelta: {x: 500, y: 150}
+  m_AnchoredPosition: {x: -50, y: 125}
+  m_SizeDelta: {x: 500, y: 200}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &1461564247229511861
 CanvasRenderer:
@@ -77,6 +78,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3237684001264176428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085183885276338795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c9611280588ee24684a15a3d0efd1ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxAlpha: 0.7
+  alphaSmoothing: 10
 --- !u!1 &5838728082245133274
 GameObject:
   m_ObjectHideFlags: 0

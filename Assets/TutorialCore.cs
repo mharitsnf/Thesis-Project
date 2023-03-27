@@ -90,8 +90,8 @@ public class TutorialCore : LevelCore
 
     IEnumerator TutorialSequence()
     {
-        InteractionController.Instance.playerInput.OtherInteraction.NextStage.Enable();
 
+        InteractionController.Instance.playerInput.OtherInteraction.NextStage.Enable();
         InstructionGroupController.Instance.IsShown = false;
         InteractionController.Instance.playerInput.CharacterControls.Jump.Disable();
         yield return new WaitForSecondsRealtime(3f);
@@ -209,23 +209,21 @@ public class TutorialCore : LevelCore
         yield return new WaitUntil(() => hasExitedThirdStage);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         
+        
         yield return new WaitUntil(() => hasEnteredCrouchStage);
         
+        yield return StartCoroutine(PanelController.Instance.ShowPanel("You can also push around the purple objects when you move against them, if they are tall enough, like the one in this room."));
+        yield return new WaitForSecondsRealtime(7f);
+        yield return StartCoroutine(PanelController.Instance.HidePanel());
         yield return StartCoroutine(PanelController.Instance.ShowPanel("You can crouch by holding LShift. Try crouching!"));
         InteractionController.Instance.playerInput.CharacterControls.Crouch.Enable();
         yield return new WaitUntil(() => hasCrouched);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
-        yield return StartCoroutine(PanelController.Instance.ShowPanel("Crouching allows you to stick to a purple object."));
+        yield return StartCoroutine(PanelController.Instance.ShowPanel("Crouching allows you to stick to a purple object, while releasing LShift or jumping will unstick yourself."));
         yield return new WaitForSecondsRealtime(5f);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         yield return StartCoroutine(PanelController.Instance.ShowPanel("While crouching on top of a purple object, your movement is restricted. You will sway with the purple object underneath you when you move."));
-        yield return new WaitForSecondsRealtime(5f);
-        yield return StartCoroutine(PanelController.Instance.HidePanel());
-        yield return StartCoroutine(PanelController.Instance.ShowPanel("You can also push around the purple objects when you move against them."));
-        yield return new WaitForSecondsRealtime(5f);
-        yield return StartCoroutine(PanelController.Instance.HidePanel());
-        yield return StartCoroutine(PanelController.Instance.ShowPanel("Jumping or releasing LShift will unstick yourself."));
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(7f);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         yield return StartCoroutine(PanelController.Instance.ShowPanel("Try to leave the room."));
         yield return new WaitUntil(() => hasExitedCrouchStage);

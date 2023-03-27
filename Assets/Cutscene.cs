@@ -10,6 +10,7 @@ public class Cutscene : MonoBehaviour
     public int playLimit = 1;
     public int switchCameraLimit = 1;
     public bool isLastTriggerPlayed;
+    public bool isMovingTogether;
 
     public bool atTargetPosition;
     
@@ -22,7 +23,6 @@ public class Cutscene : MonoBehaviour
     IEnumerator StartCutsceneHelper()
     {
         CinemachineVirtualCameraBase previousCamera = PlayerData.Instance.cameraController.currentCamera;
-        print("switch cam limit " + switchCameraLimit + " play limit " + playLimit);
         
         if (switchCameraLimit > 0 || switchCameraLimit == -1)
         {
@@ -38,7 +38,9 @@ public class Cutscene : MonoBehaviour
             {
                 DynamicObject dynamicObject = child.GetComponent<DynamicObject>();
                 if (!dynamicObject) continue;
-                yield return StartCoroutine(dynamicObject.MovePosition(!dynamicObject.atTargetPosition));
+                
+                if (!isMovingTogether) yield return StartCoroutine(dynamicObject.MovePosition(!atTargetPosition));
+                else StartCoroutine(dynamicObject.MovePosition(!atTargetPosition));
             }
             
             atTargetPosition = !atTargetPosition;

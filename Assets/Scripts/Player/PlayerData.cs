@@ -132,10 +132,7 @@ public class PlayerData : MonoBehaviour
     [Header("Objective Collected")]
     public int objectiveCollectedAmount;
 
-    public float timeElapsed;
     private static readonly int Crouching = Animator.StringToHash("IsCrouching");
-
-    public float test;
 
     private void Awake()
     {

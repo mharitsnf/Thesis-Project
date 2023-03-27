@@ -18,19 +18,16 @@ public class CutscenePlayer : MonoBehaviour
         if (onlyPlayer && !other.gameObject.CompareTag("Player")) return;
         
         _onTriggerCounter++;
-        print( _onTriggerCounter + " " + other.gameObject.name);
-        
-        if (!relatedCutscene.isLastTriggerPlayed)
+
+        if (relatedCutscene.isLastTriggerPlayed) return;
+        if (isLastTrigger)
         {
-            if (isLastTrigger)
-            {
-                if (!relatedCutscene.atTargetPosition) relatedCutscene.StartCutscene();
-                relatedCutscene.isLastTriggerPlayed = true;
-            }
-            else
-            {
-                if (_onTriggerCounter == 1) relatedCutscene.StartCutscene();
-            }
+            if (!relatedCutscene.atTargetPosition) relatedCutscene.StartCutscene();
+            relatedCutscene.isLastTriggerPlayed = true;
+        }
+        else
+        {
+            if (_onTriggerCounter == 1) relatedCutscene.StartCutscene();
         }
 
     }
@@ -42,19 +39,16 @@ public class CutscenePlayer : MonoBehaviour
         if (onlyPlayer && !other.gameObject.CompareTag("Player")) return;
         
         _onTriggerCounter--;
-        print( _onTriggerCounter + " " + other.gameObject.name);
-        
-        if (!relatedCutscene.isLastTriggerPlayed)
+
+        if (relatedCutscene.isLastTriggerPlayed) return;
+        if (isLastTrigger)
         {
-            if (isLastTrigger)
-            {
-                if (!relatedCutscene.atTargetPosition) relatedCutscene.StartCutscene();
-                relatedCutscene.isLastTriggerPlayed = true;
-            }
-            else
-            {
-                if (_onTriggerCounter == 0) relatedCutscene.StartCutscene();
-            }
+            if (!relatedCutscene.atTargetPosition) relatedCutscene.StartCutscene();
+            relatedCutscene.isLastTriggerPlayed = true;
+        }
+        else
+        {
+            if (_onTriggerCounter == 0) relatedCutscene.StartCutscene();
         }
     }
 }
