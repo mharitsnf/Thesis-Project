@@ -333,7 +333,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
             ""id"": ""2c298066-2be8-4843-b951-8c0843e0380e"",
             ""actions"": [
                 {
-                    ""name"": ""SetRespawnPoint"",
+                    ""name"": ""NextStage"",
                     ""type"": ""Button"",
                     ""id"": ""f3f8420b-972b-4219-b91b-afc18c513df1"",
                     ""expectedControlType"": ""Button"",
@@ -346,11 +346,11 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""093e8ab0-9b11-402a-b9ea-0ffd5850d6a2"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""path"": ""<Keyboard>/enter"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""SetRespawnPoint"",
+                    ""action"": ""NextStage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -374,7 +374,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_CharacterControls_Crouch = m_CharacterControls.FindAction("Crouch", throwIfNotFound: true);
         // OtherInteraction
         m_OtherInteraction = asset.FindActionMap("OtherInteraction", throwIfNotFound: true);
-        m_OtherInteraction_SetRespawnPoint = m_OtherInteraction.FindAction("SetRespawnPoint", throwIfNotFound: true);
+        m_OtherInteraction_NextStage = m_OtherInteraction.FindAction("NextStage", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -547,12 +547,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     // OtherInteraction
     private readonly InputActionMap m_OtherInteraction;
     private IOtherInteractionActions m_OtherInteractionActionsCallbackInterface;
-    private readonly InputAction m_OtherInteraction_SetRespawnPoint;
+    private readonly InputAction m_OtherInteraction_NextStage;
     public struct OtherInteractionActions
     {
         private @PlayerInput m_Wrapper;
         public OtherInteractionActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
-        public InputAction @SetRespawnPoint => m_Wrapper.m_OtherInteraction_SetRespawnPoint;
+        public InputAction @NextStage => m_Wrapper.m_OtherInteraction_NextStage;
         public InputActionMap Get() { return m_Wrapper.m_OtherInteraction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -562,16 +562,16 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_OtherInteractionActionsCallbackInterface != null)
             {
-                @SetRespawnPoint.started -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnSetRespawnPoint;
-                @SetRespawnPoint.performed -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnSetRespawnPoint;
-                @SetRespawnPoint.canceled -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnSetRespawnPoint;
+                @NextStage.started -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnNextStage;
+                @NextStage.performed -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnNextStage;
+                @NextStage.canceled -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnNextStage;
             }
             m_Wrapper.m_OtherInteractionActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @SetRespawnPoint.started += instance.OnSetRespawnPoint;
-                @SetRespawnPoint.performed += instance.OnSetRespawnPoint;
-                @SetRespawnPoint.canceled += instance.OnSetRespawnPoint;
+                @NextStage.started += instance.OnNextStage;
+                @NextStage.performed += instance.OnNextStage;
+                @NextStage.canceled += instance.OnNextStage;
             }
         }
     }
@@ -592,6 +592,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     }
     public interface IOtherInteractionActions
     {
-        void OnSetRespawnPoint(InputAction.CallbackContext context);
+        void OnNextStage(InputAction.CallbackContext context);
     }
 }

@@ -9,15 +9,12 @@ public class RopePlacementController : MonoBehaviour
 
     public void SelectObject(RaycastHit hit)
     {
-        if (!hit.collider.gameObject.CompareTag("Object")) return;
         PlayerData.Instance.selectedGameObject = hit;
         hit.collider.gameObject.GetComponentInChildren<ObjectMechanicsController>().SetSelected();
     }
 
     public void SelectSurface(RaycastHit hit)
     {
-        if (PlayerData.Instance.selectedGameObject.collider.gameObject.Equals(hit.collider.gameObject)) return;
-            
         PlayerData.Instance.activeRopes.AddLast(Instantiate(PlayerData.Instance.ropePrefab));
             
         GameObject lastRopeObject = PlayerData.Instance.TryPeekActiveRope();

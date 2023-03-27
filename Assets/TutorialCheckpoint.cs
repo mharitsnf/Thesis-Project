@@ -29,6 +29,10 @@ public class TutorialCheckpoint : MonoBehaviour
                 PlayerData.Instance.initialPosition = PlayerData.Instance.transform.position;
                 TutorialCore.Instance.hasExitedCrouchStage = true;
                 break;
+            case "Final Exit":
+                PlayerData.Instance.initialPosition = PlayerData.Instance.transform.position;
+                TutorialCore.Instance.hasCompleted = true;
+                break;
         }
     }
 }

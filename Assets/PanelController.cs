@@ -5,9 +5,9 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TutorialPanelController : MonoBehaviour
+public class PanelController : MonoBehaviour
 {
-    public static TutorialPanelController Instance { get; private set; }
+    public static PanelController Instance { get; private set; }
     
     public Image tutorialPanel;
     public TextMeshProUGUI textbox;

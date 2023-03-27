@@ -77,6 +77,8 @@ public class InteractionController : MonoBehaviour
         playerInput.CharacterControls.ConfirmRopePlacement.started += HandleConfirmRopePlacementInput;
         playerInput.CharacterControls.DetachLastRopePlacement.started += HandleDetachLastRopePlacementInput;
         playerInput.CharacterControls.DetachFirstRopePlacement.started += HandleDetachFirstRopePlacementInput;
+
+        playerInput.OtherInteraction.NextStage.started += HandleNextStageInput;
     }
 
     private void SetupCameraInput()
@@ -169,7 +171,8 @@ public class InteractionController : MonoBehaviour
                 out var hit, PlayerData.Instance.ropeRayCastDistance)) return;
         if (hit.collider.CompareTag("Player")) return;
         if (!PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit))) return;
-        
+        if (!hit.collider.gameObject.CompareTag("Object")) return;
+
         PlayerData.Instance.ropePlacementController.SelectObject(hit);
         
         InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.ObjectSelected;
@@ -188,6 +191,7 @@ public class InteractionController : MonoBehaviour
         if (hit.collider.CompareTag("Player")) return;
         if (hit.collider.gameObject.layer == 9) return;
         if (PlayerData.Instance.selectedGameObject.Equals(default(RaycastHit))) return;
+        if (PlayerData.Instance.selectedGameObject.collider.gameObject.Equals(hit.collider.gameObject)) return;
 
         PlayerData.Instance.ropePlacementController.SelectSurface(hit);
         
@@ -240,6 +244,11 @@ public class InteractionController : MonoBehaviour
         if (!SceneManager.GetActiveScene().name.Equals("Tutorial")) return;
         TutorialCore.Instance.ropeBatchCount++;
         if (!TutorialCore.Instance.hasConfirmedSelection) TutorialCore.Instance.hasConfirmedSelection = true;
+    }
+
+    private void HandleNextStageInput(InputAction.CallbackContext context)
+    {
+        LevelLoader.Instance.LoadNextLevel();
     }
 
     public void ForceQuitAiming()
