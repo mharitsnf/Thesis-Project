@@ -90,7 +90,8 @@ public class TutorialCore : LevelCore
 
     IEnumerator TutorialSequence()
     {
-        
+        InteractionController.Instance.playerInput.OtherInteraction.NextStage.Enable();
+
         InstructionGroupController.Instance.IsShown = false;
         InteractionController.Instance.playerInput.CharacterControls.Jump.Disable();
         yield return new WaitForSecondsRealtime(3f);
@@ -240,7 +241,6 @@ public class TutorialCore : LevelCore
         yield return new WaitUntil(() => hasCompleted);
         
         yield return StartCoroutine(PanelController.Instance.ShowPanel("You've completed the tutorial! Press Enter to exit the tutorial stage."));
-        InteractionController.Instance.playerInput.OtherInteraction.NextStage.Enable();
 
     }
 }

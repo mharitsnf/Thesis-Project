@@ -42,11 +42,11 @@ public class InteractionController : MonoBehaviour
 
     private void OnEnable()
     {
-        if (SceneManager.GetActiveScene().name.Equals("Tutorial")) return;
-        
-        playerInput.Enable();
-        playerInput.CharacterControls.ExitAim.Disable();
-        cameraInput.Enable();
+        // if (SceneManager.GetActiveScene().name.Equals("Tutorial")) return;
+        //
+        // playerInput.Enable();
+        // playerInput.CharacterControls.ExitAim.Disable();
+        // cameraInput.Enable();
     }
 
     private void OnDisable()
