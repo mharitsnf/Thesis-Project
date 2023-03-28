@@ -22,15 +22,15 @@ public class TutorialCheckpoint : MonoBehaviour
                 TutorialCore.Instance.hasExitedThirdStage = true;
                 break;
             case "Crouch Stage Entrance":
-                PlayerData.Instance.initialPosition = PlayerData.Instance.transform.position;
+                PlayerData.Instance.resetPosition = PlayerData.Instance.transform.position;
                 TutorialCore.Instance.hasEnteredCrouchStage = true;
                 break;
             case "Crouch Stage Exit":
-                PlayerData.Instance.initialPosition = PlayerData.Instance.transform.position;
+                PlayerData.Instance.resetPosition = PlayerData.Instance.transform.position;
                 TutorialCore.Instance.hasExitedCrouchStage = true;
                 break;
             case "Final Exit":
-                PlayerData.Instance.initialPosition = PlayerData.Instance.transform.position;
+                PlayerData.Instance.resetPosition = PlayerData.Instance.transform.position;
                 TutorialCore.Instance.hasCompleted = true;
                 break;
         }

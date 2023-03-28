@@ -16,7 +16,8 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public Transform orientation;
     [ReadOnly] public GameObject cinemachineFollow;
     [ReadOnly] public Rigidbody rigidBody;
-    [ReadOnly] public Vector3 initialPosition;
+    [ReadOnly] public Vector3 resetPosition;
+    [ReadOnly] public Vector3 firstPosition;
     [ReadOnly] public Quaternion initialRotation;
     [ReadOnly] public GameObject crosshairObject;
     [ReadOnly] public Animator animator;
@@ -146,7 +147,10 @@ public class PlayerData : MonoBehaviour
 
     private void Start()
     {
-        initialPosition = transform.position;
+        var position = transform.position;
+        resetPosition = position;
+        firstPosition = position;
+        
         initialRotation = transform.rotation;
         rigidBody.mass = mass;
     }

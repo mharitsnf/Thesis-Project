@@ -11,6 +11,7 @@ public class Cutscene : MonoBehaviour
     public int switchCameraLimit = 1;
     public bool isLastTriggerPlayed;
     public bool isMovingTogether;
+    public bool isCoroutineRunning;
 
     public bool atTargetPosition;
     
@@ -31,19 +32,22 @@ public class Cutscene : MonoBehaviour
             yield return new WaitForSecondsRealtime(1f);
         }
 
-        if (playLimit > 0 || playLimit == -1)
+        if ((playLimit > 0 || playLimit == -1) && !isCoroutineRunning)
         {
+            isCoroutineRunning = true;
             // Move the objects
             foreach (Transform child in transform)
             {
                 DynamicObject dynamicObject = child.GetComponent<DynamicObject>();
                 if (!dynamicObject) continue;
+
                 
                 if (!isMovingTogether) yield return StartCoroutine(dynamicObject.MovePosition(!atTargetPosition));
                 else StartCoroutine(dynamicObject.MovePosition(!atTargetPosition));
             }
-            
+
             atTargetPosition = !atTargetPosition;
+            isCoroutineRunning = false;
         }
         
         if (switchCameraLimit > 0 || switchCameraLimit == -1)

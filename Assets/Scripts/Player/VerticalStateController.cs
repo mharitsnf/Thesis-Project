@@ -41,31 +41,22 @@ public class VerticalStateController : BaseStateController
 
         float groundAngle = Vector3.Angle(Vector3.up, PlayerData.Instance.groundInfo.normal);
         PlayerData.Instance.isOnSlope = groundAngle < PlayerData.Instance.maxSlopeAngle && groundAngle != 0;
-
-        if (PlayerData.Instance.groundInfo.collider.CompareTag("Object")) return;
-        
-        if (_standingTime > PlayerData.Instance.resetPositionTime)
-        {
-            Transform playerTransform = PlayerData.Instance.transform;
-            Vector3 position = playerTransform.position;
-            Vector3 offset = position - PlayerData.Instance.initialPosition;
-            offset = new Vector3(offset.x, 0, offset.z).normalized;
-            PlayerData.Instance.initialPosition = position - offset * 3;
-
-            _standingTime = 0;
-            return;
-        }
-
-        _standingTime += Time.fixedDeltaTime;
     }
 
     private void ResetPosition()
     {
         if (!(transform.position.y < -20f)) return;
+        Vector3 resetPosition = PlayerData.Instance.resetPosition;
+
+        if (!Physics.Raycast(resetPosition, Vector3.down, 5))
+        {
+            resetPosition = PlayerData.Instance.firstPosition;
+        }
+
         PlayerData.Instance.IsCrouching = false;
         PlayerData.Instance.rigidBody.velocity = Vector3.zero;
         PlayerData.Instance.rigidBody.angularVelocity = Vector3.zero;
-        PlayerData.Instance.transform.position = PlayerData.Instance.initialPosition;
+        PlayerData.Instance.transform.position = resetPosition;
     }
 
     public void Jump()
