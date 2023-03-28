@@ -28,7 +28,6 @@ public class PlayerGroundedState : PlayerBaseState
 
     public override void ExitState()
     {
-        InteractionController.Instance.playerInput.CharacterControls.Jump.Disable();
         PlayerData.Instance.animator.SetBool(JustLanded, false);
     }
 }

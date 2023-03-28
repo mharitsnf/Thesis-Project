@@ -2719,6 +2719,7 @@ GameObject:
   - component: {fileID: 2477766031548289279}
   - component: {fileID: 2477766031548289278}
   - component: {fileID: 1356804294}
+  - component: {fileID: 1883668264540169841}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2802,6 +2803,7 @@ MonoBehaviour:
   currentJumpPercentage: 1
   jumpExponent: 0.5
   buttonHoldTime: 0.1
+  coyoteTime: 0.25
   wasJumping: 0
   groundDrag: 2
   airDrag: 1
@@ -2810,8 +2812,8 @@ MonoBehaviour:
   - {fileID: 2477766029841766301}
   cameraLerpWeight: 0.5
   cameraBrakeWeight: 10
-  thirdPersonCameraSpeed: 25
-  aimCameraSpeed: 12.5
+  thirdPersonCameraSpeed: 7.5
+  aimCameraSpeed: 7.5
   minClamp: -70
   maxClamp: 80
   invertY: 1
@@ -2839,9 +2841,8 @@ MonoBehaviour:
     type: 3}
   isAiming: 0
   aimingTimeScale: 0.25
+  resetPositionTime: 1
   objectiveCollectedAmount: 0
-  timeElapsed: 0
-  test: 0
 --- !u!114 &6424277254161373270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2903,6 +2904,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052bd3ea39ddf4bcb8c2b2dfea02478b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1883668264540169841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2477766031548289273}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 561945ea3079c2247a71e9b783fefee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frameInterval: 5
 --- !u!1 &2477766031623442078
 GameObject:
   m_ObjectHideFlags: 0

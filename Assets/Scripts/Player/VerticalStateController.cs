@@ -8,7 +8,7 @@ public class VerticalStateController : BaseStateController
     public readonly PlayerFallState fallState = new();
     public readonly PlayerJumpState jumpState = new();
 
-    private int _standingTime;
+    private float _standingTime;
 
     private void Start()
     {
@@ -43,16 +43,20 @@ public class VerticalStateController : BaseStateController
         PlayerData.Instance.isOnSlope = groundAngle < PlayerData.Instance.maxSlopeAngle && groundAngle != 0;
 
         if (PlayerData.Instance.groundInfo.collider.CompareTag("Object")) return;
-        if (_standingTime < 4)
+        
+        if (_standingTime > PlayerData.Instance.resetPositionTime)
         {
-            _standingTime++;
+            Transform playerTransform = PlayerData.Instance.transform;
+            Vector3 position = playerTransform.position;
+            Vector3 offset = position - PlayerData.Instance.initialPosition;
+            offset = new Vector3(offset.x, 0, offset.z).normalized;
+            PlayerData.Instance.initialPosition = position - offset * 3;
+
+            _standingTime = 0;
             return;
         }
-        
-        Vector3 velocity = PlayerData.Instance.rigidBody.velocity.normalized;
-        Vector3 offset = new Vector3(velocity.x, 0f, velocity.z);
-        PlayerData.Instance.initialPosition = PlayerData.Instance.transform.position;
-        _standingTime = 0;
+
+        _standingTime += Time.fixedDeltaTime;
     }
 
     private void ResetPosition()

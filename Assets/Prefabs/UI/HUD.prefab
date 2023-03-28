@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Objective Collected: 0'
+  m_text: 'Orbs Collected: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -180,7 +180,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6580254864422297522}
-  - {fileID: 6580254863256713010}
+  - {fileID: 528940860356354224}
   - {fileID: 1693859964}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!1001 &3975999207108578513
+--- !u!1001 &7722398139008162643
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -339,12 +339,12 @@ PrefabInstance:
     - target: {fileID: 7817216347296955363, guid: e6d094e9da4e67941bb6bb4565042e85,
         type: 3}
       propertyPath: m_Pivot.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7817216347296955363, guid: e6d094e9da4e67941bb6bb4565042e85,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7817216347296955363, guid: e6d094e9da4e67941bb6bb4565042e85,
         type: 3}
@@ -354,7 +354,7 @@ PrefabInstance:
     - target: {fileID: 7817216347296955363, guid: e6d094e9da4e67941bb6bb4565042e85,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7817216347296955363, guid: e6d094e9da4e67941bb6bb4565042e85,
         type: 3}
@@ -374,12 +374,12 @@ PrefabInstance:
     - target: {fileID: 7817216347296955363, guid: e6d094e9da4e67941bb6bb4565042e85,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -160
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 7817216347296955363, guid: e6d094e9da4e67941bb6bb4565042e85,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 7817216347296955363, guid: e6d094e9da4e67941bb6bb4565042e85,
         type: 3}
@@ -419,12 +419,12 @@ PrefabInstance:
     - target: {fileID: 7817216347296955363, guid: e6d094e9da4e67941bb6bb4565042e85,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7817216347296955363, guid: e6d094e9da4e67941bb6bb4565042e85,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 25
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7817216347296955363, guid: e6d094e9da4e67941bb6bb4565042e85,
         type: 3}
@@ -443,9 +443,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6d094e9da4e67941bb6bb4565042e85, type: 3}
---- !u!224 &6580254863256713010 stripped
+--- !u!224 &528940860356354224 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7817216347296955363, guid: e6d094e9da4e67941bb6bb4565042e85,
     type: 3}
-  m_PrefabInstance: {fileID: 3975999207108578513}
+  m_PrefabInstance: {fileID: 7722398139008162643}
   m_PrefabAsset: {fileID: 0}

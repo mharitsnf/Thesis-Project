@@ -8,12 +8,12 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void EnterState()
     {
+        InteractionController.Instance.playerInput.CharacterControls.Jump.Disable();
         PlayerData.Instance.IsCrouching = false;
         PlayerData.Instance.wasJumping = true;
         PlayerData.Instance.rigidBody.drag = PlayerData.Instance.airDrag;
         PlayerData.Instance.rigidBody.AddForce(Vector3.up * (PlayerData.Instance.maxJumpForce * PlayerData.Instance.currentJumpPercentage), ForceMode.Impulse);
 
-        
         PlayerData.Instance.animator.SetBool(JustJumped, true);
     }
     

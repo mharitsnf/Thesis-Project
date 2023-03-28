@@ -53,9 +53,10 @@ public class PlayerData : MonoBehaviour
     [ReadOnly] public RaycastHit groundInfo;
     
     [Header("Jumping")]
-    [HideInInspector] public float currentJumpPercentage = 1;
+    public float currentJumpPercentage = 1;
     public float jumpExponent;
     public float buttonHoldTime;
+    public float coyoteTime;
     public bool wasJumping;
 
     [Header("Drag")]
@@ -128,6 +129,7 @@ public class PlayerData : MonoBehaviour
 
     [Header("Time")]
     public float aimingTimeScale = 0.25f;
+    public float resetPositionTime;
 
     [Header("Objective Collected")]
     public int objectiveCollectedAmount;

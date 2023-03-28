@@ -3,15 +3,14 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
-public class PlayerDataLogger : MonoBehaviour
+public class RopeDataLogger : MonoBehaviour
 {
-    public static PlayerDataLogger Instance { get; private set; }
+    public static RopeDataLogger Instance { get; private set; }
     
     private readonly List<String> _data = new();
     private String _fileName;
-    private String _folderName = "PlayerData";
+    private String _folderName = "RopeData";
 
     public int frameInterval = 4;
     private int _frameCounter;
@@ -22,7 +21,8 @@ public class PlayerDataLogger : MonoBehaviour
     {
         if (Instance != null && Instance != this) Destroy(this);
         else Instance = this;
-        
+
+        _folderName += "/" + SceneManager.GetActiveScene().name;
         String pathToFolder = Application.dataPath + "/" + _folderName;
 
         if (!Directory.Exists(pathToFolder))
@@ -84,9 +84,4 @@ public class PlayerDataLogger : MonoBehaviour
     {
         WriteFile();
     }
-
-    // private void OnApplicationQuit()
-    // {
-    //     WriteFile();
-    // }
 }

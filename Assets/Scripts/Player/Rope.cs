@@ -32,10 +32,11 @@ public class Rope : MonoBehaviour
     public GameObject attachmentPoint;
     public Material[] materials;
     
-    private EndData _firstEnd;
-    private EndData _secondEnd;
+    public EndData firstEnd;
+    public EndData secondEnd;
     private LineRenderer _lineRenderer;
     private bool _canDraw;
+
 
     private void Start()
     {
@@ -54,38 +55,38 @@ public class Rope : MonoBehaviour
 
     private void UpdateDynamicIndexes()
     {
-        if (_firstEnd != null && _firstEnd.rigidbody) _firstEnd.worldPosition = _firstEnd.rigidbody.transform.TransformPoint(_firstEnd.localPosition);
-        if (_secondEnd != null && _secondEnd.rigidbody) _secondEnd.worldPosition = _secondEnd.rigidbody.transform.TransformPoint(_secondEnd.localPosition);
+        if (firstEnd != null && firstEnd.rigidbody) firstEnd.worldPosition = firstEnd.rigidbody.transform.TransformPoint(firstEnd.localPosition);
+        if (secondEnd != null && secondEnd.rigidbody) secondEnd.worldPosition = secondEnd.rigidbody.transform.TransformPoint(secondEnd.localPosition);
     }
 
     private void DrawLine()
     {
         if (!_canDraw) return;
         
-        if (_firstEnd != null)
+        if (firstEnd != null)
         {
             _lineRenderer.positionCount = 1;
-            _lineRenderer.SetPosition(0, _firstEnd.rigidbody ? _firstEnd.rigidbody.transform.position : _firstEnd.worldPosition);
+            _lineRenderer.SetPosition(0, firstEnd.rigidbody ? firstEnd.rigidbody.transform.position : firstEnd.worldPosition);
         }
 
-        if (_secondEnd != null)
+        if (secondEnd != null)
         {
             _lineRenderer.positionCount = 2;
-            _lineRenderer.SetPosition(1, _secondEnd.rigidbody ? _secondEnd.rigidbody.transform.position : _secondEnd.worldPosition);
+            _lineRenderer.SetPosition(1, secondEnd.rigidbody ? secondEnd.rigidbody.transform.position : secondEnd.worldPosition);
         }
     }
     
     public bool PlaceEnd(RaycastHit hit)
     {
-        if (_firstEnd != null && !_firstEnd.rigidbody && !hit.rigidbody) return false;
-        if (_firstEnd != null && _firstEnd.rigidbody == hit.rigidbody) return false;
+        if (firstEnd != null && !firstEnd.rigidbody && !hit.rigidbody) return false;
+        if (firstEnd != null && firstEnd.rigidbody == hit.rigidbody) return false;
         
         EndData end = (hit.rigidbody && !hit.rigidbody.isKinematic) ? new EndData(hit.rigidbody, hit.rigidbody.transform.InverseTransformPoint(hit.point), hit.point) :  new EndData(hit.point);
 
-        if (_firstEnd == null) _firstEnd = end;
+        if (firstEnd == null) firstEnd = end;
         else
         {
-            _secondEnd = end;
+            secondEnd = end;
             attachmentPoint = Instantiate(attachmentPointPrefab, end.worldPosition, quaternion.identity);
         }
         
@@ -94,23 +95,23 @@ public class Rope : MonoBehaviour
 
     public void CreateJoint()
     {
-        if (_firstEnd.rigidbody && _secondEnd.rigidbody)
+        if (firstEnd.rigidbody && secondEnd.rigidbody)
         {
-            _firstEnd.rigidbody.freezeRotation = true;
-            _secondEnd.rigidbody.freezeRotation = true;
-            joint = SetupJoint(_firstEnd.rigidbody, (_firstEnd.worldPosition - _secondEnd.worldPosition).magnitude);
+            firstEnd.rigidbody.freezeRotation = true;
+            secondEnd.rigidbody.freezeRotation = true;
+            joint = SetupJoint(firstEnd.rigidbody, (firstEnd.worldPosition - secondEnd.worldPosition).magnitude);
 
-            joint.connectedBody = _secondEnd.rigidbody;
-            joint.anchor = _firstEnd.localPosition;
-            joint.connectedAnchor = _secondEnd.localPosition;
+            joint.connectedBody = secondEnd.rigidbody;
+            joint.anchor = firstEnd.localPosition;
+            joint.connectedAnchor = secondEnd.localPosition;
             Debug.Log("Here");
         }
-        else if (_firstEnd.rigidbody && !_secondEnd.rigidbody)
+        else if (firstEnd.rigidbody && !secondEnd.rigidbody)
         {
-            _firstEnd.rigidbody.freezeRotation = true;
-            joint = SetupJoint(_firstEnd.rigidbody, (_firstEnd.worldPosition - _secondEnd.worldPosition).magnitude);
+            firstEnd.rigidbody.freezeRotation = true;
+            joint = SetupJoint(firstEnd.rigidbody, (firstEnd.worldPosition - secondEnd.worldPosition).magnitude);
         
-            joint.connectedAnchor = _secondEnd.worldPosition;
+            joint.connectedAnchor = secondEnd.worldPosition;
         }
 
         Destroy(attachmentPoint);

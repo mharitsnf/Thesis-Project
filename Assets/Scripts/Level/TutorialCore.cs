@@ -92,6 +92,8 @@ public class TutorialCore : LevelCore
     {
 
         InteractionController.Instance.playerInput.OtherInteraction.NextStage.Enable();
+        InteractionController.Instance.playerInput.OtherInteraction.ReloadStage.Enable();
+        
         InstructionGroupController.Instance.IsShown = false;
         InteractionController.Instance.playerInput.CharacterControls.Jump.Disable();
         yield return new WaitForSecondsRealtime(3f);
@@ -169,9 +171,13 @@ public class TutorialCore : LevelCore
         InteractionController.Instance.playerInput.CharacterControls.SelectSurface.Enable();
         yield return new WaitUntil(() => hasSelectedSurface);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
-        
+        yield return new WaitForSecondsRealtime(.5f);
         yield return StartCoroutine(PanelController.Instance.ShowPanel("You can have as many points as you like. The ropes will be connected from the object to these points."));
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(7f);
+        yield return StartCoroutine(PanelController.Instance.HidePanel());
+        yield return new WaitForSecondsRealtime(.5f);
+        yield return StartCoroutine(PanelController.Instance.ShowPanel("You can create points on any surface, including other purple objects, but not the white walls."));
+        yield return new WaitForSecondsRealtime(7f);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         yield return new WaitForSecondsRealtime(.5f);
         yield return StartCoroutine(PanelController.Instance.ShowPanel("Try confirming your selection with R."));
@@ -183,7 +189,7 @@ public class TutorialCore : LevelCore
         yield return new WaitForSecondsRealtime(5f);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         yield return new WaitForSecondsRealtime(.5f);
-        yield return StartCoroutine(PanelController.Instance.ShowPanel("Try repeating the process two more times."));
+        yield return StartCoroutine(PanelController.Instance.ShowPanel("Try repeating the process two more times. Remember to aim at the object first and to confirm with R."));
         yield return new WaitUntil(() => ropeBatchCount > 2);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         
@@ -213,17 +219,17 @@ public class TutorialCore : LevelCore
         yield return new WaitUntil(() => hasEnteredCrouchStage);
         
         yield return StartCoroutine(PanelController.Instance.ShowPanel("You can also push around the purple objects when you move against them, if they are tall enough, like the one in this room."));
-        yield return new WaitForSecondsRealtime(7f);
+        yield return new WaitForSecondsRealtime(10f);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         yield return StartCoroutine(PanelController.Instance.ShowPanel("You can crouch by holding LShift. Try crouching!"));
         InteractionController.Instance.playerInput.CharacterControls.Crouch.Enable();
         yield return new WaitUntil(() => hasCrouched);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         yield return StartCoroutine(PanelController.Instance.ShowPanel("Crouching allows you to stick to a purple object, while releasing LShift or jumping will unstick yourself."));
-        yield return new WaitForSecondsRealtime(5f);
+        yield return new WaitForSecondsRealtime(10f);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         yield return StartCoroutine(PanelController.Instance.ShowPanel("While crouching on top of a purple object, your movement is restricted. You will sway with the purple object underneath you when you move."));
-        yield return new WaitForSecondsRealtime(7f);
+        yield return new WaitForSecondsRealtime(10f);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         yield return StartCoroutine(PanelController.Instance.ShowPanel("Try to leave the room."));
         yield return new WaitUntil(() => hasExitedCrouchStage);

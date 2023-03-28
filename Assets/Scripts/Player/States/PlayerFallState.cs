@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class PlayerFallState : PlayerBaseState
 {
+    private float _timeSinceEntered;
+    
     public override void EnterState()
     {
         if (PlayerData.Instance.isGrounded)
@@ -18,6 +20,12 @@ public class PlayerFallState : PlayerBaseState
     
     public override void FixedUpdateState()
     {
+        if (_timeSinceEntered > PlayerData.Instance.coyoteTime && InteractionController.Instance.playerInput.CharacterControls.Jump.enabled)
+        {
+            InteractionController.Instance.playerInput.CharacterControls.Jump.Disable();
+        }
+
+        _timeSinceEntered += Time.fixedDeltaTime;
         
         if (PlayerData.Instance.isGrounded)
             PlayerData.Instance.verticalStateController.SwitchState(PlayerData.Instance.verticalStateController.groundedState);
@@ -28,5 +36,7 @@ public class PlayerFallState : PlayerBaseState
         PlayerData.Instance.wasJumping = false;
         
         PlayerData.Instance.animator.SetBool("JustFell", false);
+
+        _timeSinceEntered = 0;
     }
 }

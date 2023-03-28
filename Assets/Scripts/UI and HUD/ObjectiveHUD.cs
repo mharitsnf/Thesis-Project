@@ -19,6 +19,6 @@ public class ObjectiveHUD : MonoBehaviour
 
     public void UpdateHUD()
     {
-        _textMeshProUGUI.text = "Objective collected: " + PlayerData.Instance.objectiveCollectedAmount;
+        _textMeshProUGUI.text = "Orbs collected: " + PlayerData.Instance.objectiveCollectedAmount;
     }
 }

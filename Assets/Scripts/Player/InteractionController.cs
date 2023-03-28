@@ -79,6 +79,7 @@ public class InteractionController : MonoBehaviour
         playerInput.CharacterControls.DetachFirstRopePlacement.started += HandleDetachFirstRopePlacementInput;
 
         playerInput.OtherInteraction.NextStage.started += HandleNextStageInput;
+        playerInput.OtherInteraction.ReloadStage.started += HandleReloadStageInput;
     }
 
     private void SetupCameraInput()
@@ -93,9 +94,11 @@ public class InteractionController : MonoBehaviour
         if (context is { interaction: not HoldInteraction }) return;
         if (context.canceled && context.duration > PlayerData.Instance.buttonHoldTime) return;
 
-        float jumpPercentage = Mathf.Min((float)context.duration, PlayerData.Instance.buttonHoldTime) / PlayerData.Instance.buttonHoldTime;
-        PlayerData.Instance.currentJumpPercentage = (Mathf.Pow(jumpPercentage, PlayerData.Instance.jumpExponent) - Mathf.Pow(0, PlayerData.Instance.jumpExponent) /
-                                                    (Mathf.Pow(1, PlayerData.Instance.jumpExponent) - Mathf.Pow(0, PlayerData.Instance.jumpExponent)));
+        // float jumpPercentage = Mathf.Min((float)context.duration, PlayerData.Instance.buttonHoldTime) / PlayerData.Instance.buttonHoldTime;
+        // PlayerData.Instance.currentJumpPercentage = (Mathf.Pow(jumpPercentage, PlayerData.Instance.jumpExponent) - Mathf.Pow(0, PlayerData.Instance.jumpExponent) /
+        //                                             (Mathf.Pow(1, PlayerData.Instance.jumpExponent) - Mathf.Pow(0, PlayerData.Instance.jumpExponent)));
+
+        PlayerData.Instance.currentJumpPercentage = 1;
         PlayerData.Instance.verticalStateController.Jump();
         
         if (!SceneManager.GetActiveScene().name.Equals("Tutorial")) return;
@@ -248,8 +251,17 @@ public class InteractionController : MonoBehaviour
 
     private void HandleNextStageInput(InputAction.CallbackContext context)
     {
-        LevelLoader.Instance.LoadNextLevel();
+        playerInput.OtherInteraction.ReloadStage.Disable();
         playerInput.OtherInteraction.NextStage.Disable();
+        LevelLoader.Instance.LoadNextLevel();
+        print("loading");
+    }
+    
+    private void HandleReloadStageInput(InputAction.CallbackContext context)
+    {
+        playerInput.OtherInteraction.ReloadStage.Disable();
+        playerInput.OtherInteraction.NextStage.Disable();
+        LevelLoader.Instance.ReloadCurrentLevel();
         print("loading");
     }
 

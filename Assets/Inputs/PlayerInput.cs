@@ -340,6 +340,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ReloadStage"",
+                    ""type"": ""Button"",
+                    ""id"": ""59827411-f022-4aae-8b6c-30baf1f949e6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -351,6 +360,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""NextStage"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b8daf07f-21b2-4ea4-880d-38982e5015da"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ReloadStage"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -375,6 +395,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         // OtherInteraction
         m_OtherInteraction = asset.FindActionMap("OtherInteraction", throwIfNotFound: true);
         m_OtherInteraction_NextStage = m_OtherInteraction.FindAction("NextStage", throwIfNotFound: true);
+        m_OtherInteraction_ReloadStage = m_OtherInteraction.FindAction("ReloadStage", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -548,11 +569,13 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_OtherInteraction;
     private IOtherInteractionActions m_OtherInteractionActionsCallbackInterface;
     private readonly InputAction m_OtherInteraction_NextStage;
+    private readonly InputAction m_OtherInteraction_ReloadStage;
     public struct OtherInteractionActions
     {
         private @PlayerInput m_Wrapper;
         public OtherInteractionActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @NextStage => m_Wrapper.m_OtherInteraction_NextStage;
+        public InputAction @ReloadStage => m_Wrapper.m_OtherInteraction_ReloadStage;
         public InputActionMap Get() { return m_Wrapper.m_OtherInteraction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -565,6 +588,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @NextStage.started -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnNextStage;
                 @NextStage.performed -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnNextStage;
                 @NextStage.canceled -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnNextStage;
+                @ReloadStage.started -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnReloadStage;
+                @ReloadStage.performed -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnReloadStage;
+                @ReloadStage.canceled -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnReloadStage;
             }
             m_Wrapper.m_OtherInteractionActionsCallbackInterface = instance;
             if (instance != null)
@@ -572,6 +598,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @NextStage.started += instance.OnNextStage;
                 @NextStage.performed += instance.OnNextStage;
                 @NextStage.canceled += instance.OnNextStage;
+                @ReloadStage.started += instance.OnReloadStage;
+                @ReloadStage.performed += instance.OnReloadStage;
+                @ReloadStage.canceled += instance.OnReloadStage;
             }
         }
     }
@@ -593,5 +622,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     public interface IOtherInteractionActions
     {
         void OnNextStage(InputAction.CallbackContext context);
+        void OnReloadStage(InputAction.CallbackContext context);
     }
 }

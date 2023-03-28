@@ -13,12 +13,8 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        UpdateOrientation();
-    }
-
-    private void FixedUpdate()
-    {
         RotateCinemachineFollow();
+        UpdateOrientation();
     }
 
     private void InitialSetup()
