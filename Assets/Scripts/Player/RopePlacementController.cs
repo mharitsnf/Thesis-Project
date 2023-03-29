@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class RopePlacementController : MonoBehaviour
 {
-
     public void SelectObject(RaycastHit hit)
     {
         PlayerData.Instance.selectedGameObject = hit;
@@ -15,7 +14,9 @@ public class RopePlacementController : MonoBehaviour
 
     public void SelectSurface(RaycastHit hit)
     {
-        PlayerData.Instance.activeRopes.AddLast(Instantiate(PlayerData.Instance.ropePrefab));
+        GameObject newRope = Instantiate(PlayerData.Instance.ropePrefab);
+        newRope.name = $"Rope-{Time.unscaledTime}";
+        PlayerData.Instance.activeRopes.AddLast(newRope);
             
         GameObject lastRopeObject = PlayerData.Instance.TryPeekActiveRope();
         Rope lastRope = lastRopeObject.GetComponent<Rope>();
@@ -53,11 +54,6 @@ public class RopePlacementController : MonoBehaviour
         PlayerData.Instance.activeRopes.Clear();
 
         UpdateRopeColor();
-    }
-
-    private void WriteData()
-    {
-        throw new NotImplementedException();
     }
     
     public void DestroyRopeBatch(LinkedList<GameObject> linkedList)

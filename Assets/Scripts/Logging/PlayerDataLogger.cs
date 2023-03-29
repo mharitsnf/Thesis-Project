@@ -1,20 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 public class PlayerDataLogger : MonoBehaviour
 {
     public static PlayerDataLogger Instance { get; private set; }
     
-    private readonly List<String> _data = new();
-    private String _fileName;
-    private String _folderName = "PlayerData";
-
-    public int frameInterval = 4;
-    private int _frameCounter;
+    private readonly List<string> _data = new();
 
     private Transform _playerTransform;
 
@@ -22,31 +14,30 @@ public class PlayerDataLogger : MonoBehaviour
     {
         if (Instance != null && Instance != this) Destroy(this);
         else Instance = this;
-        
-        String pathToFolder = Application.dataPath + "/" + _folderName;
+    }
 
-        if (!Directory.Exists(pathToFolder))
-        {
-            Directory.CreateDirectory(pathToFolder);
-        }
+    private void OnEnable()
+    {
+        LoggerController.OnWriteRow += AddPlayerData;
+    }
 
-        _fileName = SceneManager.GetActiveScene().name;
-        _fileName = pathToFolder + "/" + _fileName + ".csv";
-        Debug.Log(_fileName);
-        
-        _data.Add("frame;timestamp;x;y;z;speed;hState;vState;isOnSlope;crouchingOn");
+    private void OnDisable()
+    {
+        LoggerController.OnWriteRow -= AddPlayerData;
     }
 
     private void AddPlayerData()
     {
-        String row = "";
-        row += _frameCounter + ";";
+        if (_data.Count == 0) _data.Add("frame;timestamp;x;y;z;speed;hState;vState;isOnSlope;crouchingOn");
+
+        string row = "";
+        row += LoggerController.Instance.frameCount + ";";
         row += Time.unscaledTime + ";";
         Vector3 position = PlayerData.Instance.transform.position;
-        row += position.x + ";";
-        row += position.y + ";";
-        row += position.z + ";";
-        row += Mathf.Round(PlayerData.Instance.rigidBody.velocity.magnitude * 10f) * .1f + ";";
+        row += Mathf.Round(position.x * 100f) * .01f + ";";
+        row += Mathf.Round(position.y * 100f) * .01f + ";";
+        row += Mathf.Round(position.z * 100f) * .01f + ";";
+        row += Mathf.Round(PlayerData.Instance.rigidBody.velocity.magnitude * 100f) * .01f + ";";
         row += PlayerData.Instance.horizontalStateController.currentState + ";";
         row += PlayerData.Instance.verticalStateController.currentState + ";";
         row += PlayerData.Instance.isOnSlope + ";";
@@ -55,20 +46,10 @@ public class PlayerDataLogger : MonoBehaviour
         _data.Add(row);
     }
 
-    private void Update()
-    {
-        if (_frameCounter % frameInterval == 0)
-        {
-            AddPlayerData();
-        }
-
-        _frameCounter++;
-    }
-
     private void WriteFile()
     {
-        
-        TextWriter tw = new StreamWriter(_fileName, false);
+        string fullPath = $"{LoggerController.Instance.playerFolderName}/data.csv";
+        TextWriter tw = new StreamWriter(fullPath, false);
 
         foreach (var row in _data)
         {
@@ -77,16 +58,11 @@ public class PlayerDataLogger : MonoBehaviour
         
         tw.Close();
 
-        print("File written!");
+        print($"{fullPath} written!");
     }
 
     private void OnDestroy()
     {
         WriteFile();
     }
-
-    // private void OnApplicationQuit()
-    // {
-    //     WriteFile();
-    // }
 }

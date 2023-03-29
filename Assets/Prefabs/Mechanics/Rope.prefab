@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7035304684048593639}
   - component: {fileID: 7035304684048593624}
   - component: {fileID: 7035304684048593625}
+  - component: {fileID: 3564504748604787619}
   m_Layer: 0
   m_Name: Rope
   m_TagString: Untagged
@@ -53,6 +54,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 282f55f0111276d41a5283c7a2aed8ce, type: 2}
   - {fileID: 2100000, guid: 7c58f1c20e89fa14db83c0fe67a69990, type: 2}
   - {fileID: 2100000, guid: 141c26d9c3989a04d87ca2d283fcbe59, type: 2}
+  canDraw: 0
 --- !u!120 &7035304684048593625
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -150,3 +152,15 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &3564504748604787619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7035304684048593626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c60efb00dba8e640b5729c71f953268, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

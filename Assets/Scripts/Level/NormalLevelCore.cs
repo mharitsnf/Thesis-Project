@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class NormalLevelCore : LevelCore
 {
-
     private void Start()
     {
         StartCoroutine(LevelSequence());
@@ -17,6 +16,9 @@ public class NormalLevelCore : LevelCore
         InstructionGroupController.Instance.IsShown = true;
         InstructionGroupController.Instance.CurrentState = InstructionGroupController.DisplayState.NotAiming;
         
+        InteractionController.Instance.playerInput.Disable();
+        InteractionController.Instance.cameraInput.Disable();
+        
         yield return StartCoroutine(PanelController.Instance.ShowPanel("Collect all 6 orbs spread across the map!"));
         yield return new WaitForSecondsRealtime(3f);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
@@ -27,7 +29,5 @@ public class NormalLevelCore : LevelCore
         InteractionController.Instance.playerInput.Enable();
         InteractionController.Instance.playerInput.CharacterControls.ExitAim.Disable();
         InteractionController.Instance.cameraInput.Enable();
-
-        PlayerDataLogger.Instance.enabled = true;
     }
 }

@@ -2,73 +2,52 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class RopeDataLogger : MonoBehaviour
 {
-    public static RopeDataLogger Instance { get; private set; }
-    
-    private readonly List<String> _data = new();
-    private String _fileName;
-    private String _folderName = "RopeData";
+    private readonly List<string> _data = new();
 
-    public int frameInterval = 4;
-    private int _frameCounter;
-
-    private Transform _playerTransform;
+    private Rope _rope;
 
     private void Awake()
     {
-        if (Instance != null && Instance != this) Destroy(this);
-        else Instance = this;
-
-        _folderName += "/" + SceneManager.GetActiveScene().name;
-        String pathToFolder = Application.dataPath + "/" + _folderName;
-
-        if (!Directory.Exists(pathToFolder))
-        {
-            Directory.CreateDirectory(pathToFolder);
-        }
-
-        _fileName = SceneManager.GetActiveScene().name;
-        _fileName = pathToFolder + "/" + _fileName + ".csv";
-        Debug.Log(_fileName);
-        
-        _data.Add("frame;timestamp;x;y;z;speed;hState;vState;isOnSlope;crouchingOn");
+        _rope = GetComponent<Rope>();
+    }
+    
+    private void OnEnable()
+    {
+        LoggerController.OnWriteRow += AddRopeData;
     }
 
-    private void AddPlayerData()
+    private void OnDisable()
     {
-        String row = "";
-        row += _frameCounter + ";";
+        LoggerController.OnWriteRow -= AddRopeData;
+    }
+
+    private void AddRopeData()
+    {
+        if (_data.Count == 0) _data.Add("frame;timestamp;firstRB;x1;y1;z1;secondRB;x2;y2;z2");
+        
+        string row = "";
+        row += LoggerController.Instance.frameCount + ";";
         row += Time.unscaledTime + ";";
-        Vector3 position = PlayerData.Instance.transform.position;
-        row += position.x + ";";
-        row += position.y + ";";
-        row += position.z + ";";
-        row += Mathf.Round(PlayerData.Instance.rigidBody.velocity.magnitude * 10f) * .1f + ";";
-        row += PlayerData.Instance.horizontalStateController.currentState + ";";
-        row += PlayerData.Instance.verticalStateController.currentState + ";";
-        row += PlayerData.Instance.isOnSlope + ";";
-        row += !PlayerData.Instance.fixedJoint ? "none" : PlayerData.Instance.fixedJoint.connectedBody.gameObject.name;
+        row += (_rope.firstEnd.rigidbody ? _rope.firstEnd.rigidbody.name : "none") + ";";
+        row += Mathf.Round(_rope.firstEnd.worldPosition.x * 100f) * .01f + ";";
+        row += Mathf.Round(_rope.firstEnd.worldPosition.y * 100f) * .01f + ";";
+        row += Mathf.Round(_rope.firstEnd.worldPosition.z * 100f) * .01f + ";";
+        row += (_rope.secondEnd.rigidbody ? _rope.secondEnd.rigidbody.name : "none") + ";";
+        row += Mathf.Round(_rope.secondEnd.worldPosition.x * 100f) * .01f + ";";
+        row += Mathf.Round(_rope.secondEnd.worldPosition.y * 100f) * .01f + ";";
+        row += Mathf.Round(_rope.secondEnd.worldPosition.z * 100f) * .01f;
         
         _data.Add(row);
     }
 
-    private void Update()
-    {
-        if (_frameCounter % frameInterval == 0)
-        {
-            AddPlayerData();
-        }
-
-        _frameCounter++;
-    }
-
     private void WriteFile()
     {
+        string fullPath = $"{LoggerController.Instance.ropeFolderName}/{gameObject.name}.csv";
         
-        TextWriter tw = new StreamWriter(_fileName, false);
+        TextWriter tw = new StreamWriter(fullPath, false);
 
         foreach (var row in _data)
         {
@@ -77,7 +56,7 @@ public class RopeDataLogger : MonoBehaviour
         
         tw.Close();
 
-        print("File written!");
+        print($"{fullPath} written!");
     }
 
     private void OnDestroy()

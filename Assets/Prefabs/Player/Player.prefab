@@ -2778,7 +2778,8 @@ MonoBehaviour:
   orientation: {fileID: 2477766031392224697}
   cinemachineFollow: {fileID: 2477766030358730370}
   rigidBody: {fileID: 2477766031548289276}
-  initialPosition: {x: 0, y: 0, z: 0}
+  resetPosition: {x: 0, y: 0, z: 0}
+  firstPosition: {x: 0, y: 0, z: 0}
   initialRotation: {x: 0, y: 0, z: 0, w: 0}
   crosshairObject: {fileID: 0}
   animator: {fileID: 8521876702090753824}
@@ -2911,12 +2912,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2477766031548289273}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 561945ea3079c2247a71e9b783fefee8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  frameInterval: 5
 --- !u!1 &2477766031623442078
 GameObject:
   m_ObjectHideFlags: 0

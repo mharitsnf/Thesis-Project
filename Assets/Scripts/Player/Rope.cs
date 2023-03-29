@@ -32,10 +32,11 @@ public class Rope : MonoBehaviour
     public GameObject attachmentPoint;
     public Material[] materials;
     
+    
     public EndData firstEnd;
     public EndData secondEnd;
     private LineRenderer _lineRenderer;
-    private bool _canDraw;
+    public bool canDraw;
 
 
     private void Start()
@@ -61,7 +62,7 @@ public class Rope : MonoBehaviour
 
     private void DrawLine()
     {
-        if (!_canDraw) return;
+        if (!canDraw) return;
         
         if (firstEnd != null)
         {
@@ -75,7 +76,7 @@ public class Rope : MonoBehaviour
             _lineRenderer.SetPosition(1, secondEnd.rigidbody ? secondEnd.rigidbody.transform.position : secondEnd.worldPosition);
         }
     }
-    
+
     public bool PlaceEnd(RaycastHit hit)
     {
         if (firstEnd != null && !firstEnd.rigidbody && !hit.rigidbody) return false;
@@ -104,7 +105,6 @@ public class Rope : MonoBehaviour
             joint.connectedBody = secondEnd.rigidbody;
             joint.anchor = firstEnd.localPosition;
             joint.connectedAnchor = secondEnd.localPosition;
-            Debug.Log("Here");
         }
         else if (firstEnd.rigidbody && !secondEnd.rigidbody)
         {
@@ -115,7 +115,7 @@ public class Rope : MonoBehaviour
         }
 
         Destroy(attachmentPoint);
-        _canDraw = true;
+        canDraw = true;
     }
 
     public void SetColor(int index)
