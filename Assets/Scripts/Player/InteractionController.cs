@@ -15,6 +15,9 @@ public class InteractionController : MonoBehaviour
     public static InteractionController Instance { get; private set; }
     public static readonly ToggleEvent OnToggleAiming = new();
     
+    public delegate void NextPanel();
+    public static event  NextPanel OnNextPanel;
+    
     public PlayerInput playerInput;
     public CameraInput cameraInput;
 
@@ -80,6 +83,8 @@ public class InteractionController : MonoBehaviour
 
         playerInput.OtherInteraction.NextStage.started += HandleNextStageInput;
         playerInput.OtherInteraction.ReloadStage.started += HandleReloadStageInput;
+
+        playerInput.OtherInteraction.NextPanel.started += HandleNextPanelInput;
     }
 
     private void SetupCameraInput()
@@ -254,7 +259,6 @@ public class InteractionController : MonoBehaviour
         playerInput.OtherInteraction.ReloadStage.Disable();
         playerInput.OtherInteraction.NextStage.Disable();
         LevelLoader.Instance.LoadNextLevel();
-        print("loading");
     }
     
     private void HandleReloadStageInput(InputAction.CallbackContext context)
@@ -262,7 +266,11 @@ public class InteractionController : MonoBehaviour
         playerInput.OtherInteraction.ReloadStage.Disable();
         playerInput.OtherInteraction.NextStage.Disable();
         LevelLoader.Instance.ReloadCurrentLevel();
-        print("loading");
+    }
+
+    private void HandleNextPanelInput(InputAction.CallbackContext context)
+    {
+        OnNextPanel();
     }
 
     public void ForceQuitAiming()
