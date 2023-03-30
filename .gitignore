@@ -64,6 +64,9 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Gameplay Data
+/[Aa]ssets/GameplayData/
+
 # Packed Addressables
 /[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
 

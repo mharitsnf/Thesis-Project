@@ -15,7 +15,7 @@ public class TutorialCore : LevelCore
     public Transform thirdRoomDoor;
     private readonly float _doorTargetHeight = 58.75024f;
     
-    [Header("Flags")]
+    [Header("Tutorial Flags")]
     public bool hasMoved;
     private float _moveDistance;
 

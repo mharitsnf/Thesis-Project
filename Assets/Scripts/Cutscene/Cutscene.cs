@@ -40,10 +40,10 @@ public class Cutscene : MonoBehaviour
             {
                 DynamicObject dynamicObject = child.GetComponent<DynamicObject>();
                 if (!dynamicObject) continue;
-
                 
-                if (!isMovingTogether) yield return StartCoroutine(dynamicObject.MovePosition(!atTargetPosition));
-                else StartCoroutine(dynamicObject.MovePosition(!atTargetPosition));
+                dynamicObject.StartAnimate(!atTargetPosition ? "ToTarget" : "ToInitial");
+                // if (!isMovingTogether) yield return StartCoroutine(dynamicObject.MovePosition(!atTargetPosition));
+                // else StartCoroutine(dynamicObject.MovePosition(!atTargetPosition));
             }
 
             atTargetPosition = !atTargetPosition;

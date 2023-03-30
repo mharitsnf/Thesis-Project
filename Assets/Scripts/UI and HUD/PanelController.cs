@@ -11,6 +11,7 @@ public class PanelController : MonoBehaviour
     
     private Image _tutorialPanel;
     private TextMeshProUGUI _textbox;
+    public CanvasGroup canvasGroup;
 
     public float maxAlpha;
     public float alphaSmoothing;
@@ -28,17 +29,12 @@ public class PanelController : MonoBehaviour
     {
         _textbox.text = newText;
 
-        Color panelColor = _tutorialPanel.color;
-        Color textColor = _textbox.color;
-        
-        while (panelColor.a < maxAlpha)
+        while (canvasGroup.alpha < 1)
         {
-            panelColor.a = Mathf.Lerp(panelColor.a, maxAlpha + 0.1f, alphaSmoothing * Time.unscaledDeltaTime);
-            textColor.a = Mathf.Lerp(panelColor.a, 1.1f, alphaSmoothing * Time.unscaledDeltaTime);
-            
-            _tutorialPanel.color = panelColor;
-            _textbox.color = textColor;
+            canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 1, alphaSmoothing * Time.unscaledDeltaTime);
 
+            if (canvasGroup.alpha > .95f) canvasGroup.alpha = 1;
+            
             yield return null;
         }
     }
@@ -50,17 +46,13 @@ public class PanelController : MonoBehaviour
 
     public IEnumerator HidePanel()
     {
-        Color panelColor = _tutorialPanel.color;
-        Color textColor = _textbox.color;
         
-        while (panelColor.a > 0)
+        while (canvasGroup.alpha > 0)
         {
-            panelColor.a = Mathf.Lerp(panelColor.a, -.1f, alphaSmoothing * Time.unscaledDeltaTime);
-            textColor.a = Mathf.Lerp(panelColor.a, -.1f, alphaSmoothing * Time.unscaledDeltaTime);
-            
-            _tutorialPanel.color = panelColor;
-            _textbox.color = textColor;
+            canvasGroup.alpha = Mathf.Lerp(canvasGroup.alpha, 0, alphaSmoothing * Time.unscaledDeltaTime);
 
+            if (canvasGroup.alpha < .05f) canvasGroup.alpha = 0;
+            
             yield return null;
         }
         
