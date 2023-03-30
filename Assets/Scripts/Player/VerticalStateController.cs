@@ -45,7 +45,7 @@ public class VerticalStateController : BaseStateController
 
     private void ResetPosition()
     {
-        if (!(transform.position.y < -20f)) return;
+        if (!(transform.position.y < 1f)) return;
         Vector3 resetPosition = PlayerData.Instance.resetPosition;
 
         if (!Physics.Raycast(resetPosition, Vector3.down, 5))
