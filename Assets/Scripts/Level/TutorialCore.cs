@@ -175,12 +175,12 @@ public class TutorialCore : LevelCore
         yield return new WaitUntil(() => hasSelectedSurface);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         yield return new WaitForSecondsRealtime(.5f);
-        yield return StartCoroutine(PanelController.Instance.ShowPanel("You can have as many points as you like. The ropes will be connected from the object to these points.", true));
+        yield return StartCoroutine(PanelController.Instance.ShowPanel("You can create points on any surface, including other purple objects, but not the white walls.", true));
         yield return new WaitUntil(() => _panelDone);
         _panelDone = false;
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         yield return new WaitForSecondsRealtime(.5f);
-        yield return StartCoroutine(PanelController.Instance.ShowPanel("You can create points on any surface, including other purple objects, but not the white walls.", true));
+        yield return StartCoroutine(PanelController.Instance.ShowPanel("You can have as many points as you'd like too.", true));
         yield return new WaitUntil(() => _panelDone);
         _panelDone = false;
         yield return StartCoroutine(PanelController.Instance.HidePanel());
@@ -219,7 +219,7 @@ public class TutorialCore : LevelCore
         yield return new WaitUntil(() => hasDetachedLast);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         
-        yield return StartCoroutine(PanelController.Instance.ShowPanel("Try to leave the room! Don't forget to use Q or E to remove red/oldest or green/newset ropes, and R to confirm your point selection."));
+        yield return StartCoroutine(PanelController.Instance.ShowPanel("Try to leave the room! Don't forget to use Q to remove red/oldest ropes, E to remove green/newset ropes, and R to confirm your point selection."));
         StartCoroutine(MoveThirdStageDoor());
         yield return new WaitUntil(() => hasExitedThirdStage);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
@@ -231,24 +231,28 @@ public class TutorialCore : LevelCore
         yield return new WaitUntil(() => _panelDone);
         _panelDone = false;
         yield return StartCoroutine(PanelController.Instance.HidePanel());
+        yield return new WaitForSecondsRealtime(.5f);
         yield return StartCoroutine(PanelController.Instance.ShowPanel("You can crouch by holding LShift. Try crouching!"));
         InteractionController.Instance.playerInput.CharacterControls.Crouch.Enable();
         yield return new WaitUntil(() => hasCrouched);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
+        yield return new WaitForSecondsRealtime(.5f);
         yield return StartCoroutine(PanelController.Instance.ShowPanel("Crouching allows you to stick to a purple object, while releasing LShift or jumping will unstick yourself.", true));
         yield return new WaitUntil(() => _panelDone);
         _panelDone = false;
         yield return StartCoroutine(PanelController.Instance.HidePanel());
-        yield return StartCoroutine(PanelController.Instance.ShowPanel("While crouching on top of a purple object, your movement is restricted. You will sway with the purple object underneath you when you move.", true));
+        yield return new WaitForSecondsRealtime(.5f);
+        yield return StartCoroutine(PanelController.Instance.ShowPanel("While crouching on top of a purple object, your movement is restricted, but you will influence the purple object's movement.", true));
         yield return new WaitUntil(() => _panelDone);
         _panelDone = false;
         yield return StartCoroutine(PanelController.Instance.HidePanel());
+        yield return new WaitForSecondsRealtime(.5f);
         yield return StartCoroutine(PanelController.Instance.ShowPanel("Try to leave the room."));
         yield return new WaitUntil(() => hasExitedCrouchStage);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         
         yield return new WaitForSecondsRealtime(3f);
-        yield return StartCoroutine(PanelController.Instance.ShowPanel("Hints are now displayed on the bottom of the screen. Good luck!"));
+        yield return StartCoroutine(PanelController.Instance.ShowPanel("Hints are now displayed. Try to reach the exit!"));
         yield return new WaitForSecondsRealtime(3f);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         
