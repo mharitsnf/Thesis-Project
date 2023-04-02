@@ -18,7 +18,7 @@ public class NormalLevelCore : LevelCore
         
         InteractionController.Instance.playerInput.Disable();
         InteractionController.Instance.cameraInput.Disable();
-        
+
         yield return StartCoroutine(PanelController.Instance.ShowPanel("Collect all 6 orbs spread across the map!", true));
         yield return new WaitUntil(() => _panelDone);
         _panelDone = false;
@@ -32,6 +32,8 @@ public class NormalLevelCore : LevelCore
         InteractionController.Instance.playerInput.Enable();
         InteractionController.Instance.playerInput.CharacterControls.ExitAim.Disable();
         InteractionController.Instance.cameraInput.Enable();
+        
+        InteractionController.Instance.playerInput.OtherInteraction.Disable();
 
         yield return new WaitUntil(() => PlayerData.Instance.objectiveCollectedAmount == 6);
         
@@ -39,7 +41,9 @@ public class NormalLevelCore : LevelCore
         InteractionController.Instance.playerInput.CharacterControls.Disable();
         InteractionController.Instance.cameraInput.Enable();
         
-        yield return StartCoroutine(PanelController.Instance.ShowPanel("Congratulations! You've completed the game! You can exit the game or press Enter to try again."));
+        yield return StartCoroutine(PanelController.Instance.ShowPanel("Congratulations! You've completed the game! You can exit the game."));
+        
+        
         
     }
 }
