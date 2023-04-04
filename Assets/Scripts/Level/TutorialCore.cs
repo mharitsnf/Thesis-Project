@@ -94,11 +94,11 @@ public class TutorialCore : LevelCore
         InteractionController.Instance.playerInput.OtherInteraction.NextStage.Enable();
         InteractionController.Instance.playerInput.OtherInteraction.ReloadStage.Enable();
 
-        InteractionController.Instance.playerInput.CharacterControls.Disable();
-        InteractionController.Instance.cameraInput.Disable();
-
         InstructionGroupController.Instance.IsShown = false;
         yield return new WaitForSecondsRealtime(3f);
+
+        InteractionController.Instance.playerInput.CharacterControls.Disable();
+        InteractionController.Instance.cameraInput.Disable();
 
         // Teach movement and camera
         yield return StartCoroutine(PanelController.Instance.ShowPanel("Use WASD to move around and Mouse to move the camera."));

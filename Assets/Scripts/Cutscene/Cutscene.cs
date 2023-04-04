@@ -27,7 +27,7 @@ public class Cutscene : MonoBehaviour
         
         if (switchCameraLimit > 0 || switchCameraLimit == -1)
         {
-            InteractionController.Instance.playerInput.Disable();
+            InteractionController.Instance.playerInput.CharacterControls.Disable();
             PlayerData.Instance.cameraController.SwitchVirtualCamera(virtualCamera);
             yield return new WaitForSecondsRealtime(1f);
         }
@@ -54,7 +54,7 @@ public class Cutscene : MonoBehaviour
         {
             yield return new WaitForSecondsRealtime(1f);
             PlayerData.Instance.cameraController.SwitchVirtualCamera(previousCamera);
-            InteractionController.Instance.playerInput.Enable();
+            InteractionController.Instance.playerInput.CharacterControls.Enable();
             InteractionController.Instance.playerInput.CharacterControls.ExitAim.Disable();
         }
 

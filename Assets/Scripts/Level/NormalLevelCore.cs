@@ -31,6 +31,7 @@ public class NormalLevelCore : LevelCore
         
         InteractionController.Instance.playerInput.Enable();
         InteractionController.Instance.cameraInput.Enable();
+        
         InteractionController.Instance.playerInput.OtherInteraction.Disable();
         InteractionController.Instance.playerInput.CharacterControls.ExitAim.Disable();
 
