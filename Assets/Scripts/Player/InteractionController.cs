@@ -83,6 +83,7 @@ public class InteractionController : MonoBehaviour
 
         playerInput.OtherInteraction.NextStage.started += HandleNextStageInput;
         playerInput.OtherInteraction.ReloadStage.started += HandleReloadStageInput;
+        playerInput.OtherInteraction.QuitGame.started += HandleQuitGameInput;
 
         playerInput.OtherInteraction.NextPanel.started += HandleNextPanelInput;
     }
@@ -98,10 +99,6 @@ public class InteractionController : MonoBehaviour
         // Don't jump conditions
         if (context is { interaction: not HoldInteraction }) return;
         if (context.canceled && context.duration > PlayerData.Instance.buttonHoldTime) return;
-
-        // float jumpPercentage = Mathf.Min((float)context.duration, PlayerData.Instance.buttonHoldTime) / PlayerData.Instance.buttonHoldTime;
-        // PlayerData.Instance.currentJumpPercentage = (Mathf.Pow(jumpPercentage, PlayerData.Instance.jumpExponent) - Mathf.Pow(0, PlayerData.Instance.jumpExponent) /
-        //                                             (Mathf.Pow(1, PlayerData.Instance.jumpExponent) - Mathf.Pow(0, PlayerData.Instance.jumpExponent)));
 
         PlayerData.Instance.currentJumpPercentage = 1;
         PlayerData.Instance.verticalStateController.Jump();
@@ -258,14 +255,7 @@ public class InteractionController : MonoBehaviour
     {
         playerInput.OtherInteraction.ReloadStage.Disable();
         playerInput.OtherInteraction.NextStage.Disable();
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            LevelLoader.Instance.LoadNextLevel();
-        }
-        else
-        {
-            Application.Quit();
-        }
+        LevelLoader.Instance.LoadNextLevel();
     }
     
     private void HandleReloadStageInput(InputAction.CallbackContext context)
@@ -278,6 +268,11 @@ public class InteractionController : MonoBehaviour
     private void HandleNextPanelInput(InputAction.CallbackContext context)
     {
         OnNextPanel();
+    }
+
+    private void HandleQuitGameInput(InputAction.CallbackContext context)
+    {
+        Application.Quit();
     }
 
     public void ForceQuitAiming()

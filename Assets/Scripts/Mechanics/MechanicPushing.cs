@@ -17,7 +17,7 @@ public class MechanicPushing : MonoBehaviour
         if (!other.GetComponent<Rigidbody>()) return;
         
         GameObject otherGameObject = other.gameObject;
-        otherGameObject.GetComponent<Rigidbody>().AddForceAtPosition(transform.forward * PlayerData.Instance.pushForce, hit.point, ForceMode.Acceleration);
+        otherGameObject.GetComponent<Rigidbody>().AddForce(- hit.normal * PlayerData.Instance.pushForce, ForceMode.Acceleration);
     }
 
     private void OnTriggerExit(Collider other)

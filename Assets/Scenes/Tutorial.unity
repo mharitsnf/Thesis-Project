@@ -8415,7 +8415,7 @@ PrefabInstance:
     - target: {fileID: 8013012887431234955, guid: 29110de4a35d6a24495e0bd685bca00f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 61.4
+      value: 61.24762
       objectReference: {fileID: 0}
     - target: {fileID: 8013012887431234955, guid: 29110de4a35d6a24495e0bd685bca00f,
         type: 3}
@@ -20336,7 +20336,7 @@ MonoBehaviour:
     meshQuery:
       layers: 16777223
       maskAndChannels: 234881031
-    surfaceParameter: 37222
+    surfaceParameter: 37416
     meshQueryIndex: 0
     subMeshQueryIndex: 0
     geometryHashValue: 3166547656215263195
@@ -23180,7 +23180,7 @@ MonoBehaviour:
     meshQuery:
       layers: 33554440
       maskAndChannels: 8
-    surfaceParameter: 37254
+    surfaceParameter: 37468
     meshQueryIndex: 1
     subMeshQueryIndex: 0
     geometryHashValue: 3166547656215263195
@@ -27945,7 +27945,7 @@ PrefabInstance:
     - target: {fileID: 2477766031548289274, guid: d57494ef04024a6448a754d52924eb5c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 60.25
+      value: 60.09762
       objectReference: {fileID: 0}
     - target: {fileID: 2477766031548289274, guid: d57494ef04024a6448a754d52924eb5c,
         type: 3}

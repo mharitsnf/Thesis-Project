@@ -30,9 +30,9 @@ public class NormalLevelCore : LevelCore
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         
         InteractionController.Instance.playerInput.Enable();
+        InteractionController.Instance.cameraInput.Enable();
         InteractionController.Instance.playerInput.OtherInteraction.Disable();
         InteractionController.Instance.playerInput.CharacterControls.ExitAim.Disable();
-        InteractionController.Instance.cameraInput.Enable();
 
         yield return new WaitUntil(() => PlayerData.Instance.objectiveCollectedAmount == 6);
         
@@ -40,8 +40,8 @@ public class NormalLevelCore : LevelCore
         InteractionController.Instance.playerInput.CharacterControls.Disable();
         InteractionController.Instance.cameraInput.Enable();
         
-        yield return StartCoroutine(PanelController.Instance.ShowPanel("Congratulations! You've completed the game! You can exit the game."));
+        yield return StartCoroutine(PanelController.Instance.ShowPanel("Congratulations! You've completed the game! You can exit the game by pressing ESC."));
         
-        InteractionController.Instance.playerInput.OtherInteraction.Disable();
+        InteractionController.Instance.playerInput.OtherInteraction.QuitGame.Enable();
     }
 }

@@ -93,7 +93,9 @@ public class TutorialCore : LevelCore
 
         InteractionController.Instance.playerInput.OtherInteraction.NextStage.Enable();
         InteractionController.Instance.playerInput.OtherInteraction.ReloadStage.Enable();
-        InteractionController.Instance.playerInput.CharacterControls.Jump.Disable();
+
+        InteractionController.Instance.playerInput.CharacterControls.Disable();
+        InteractionController.Instance.cameraInput.Disable();
 
         InstructionGroupController.Instance.IsShown = false;
         yield return new WaitForSecondsRealtime(3f);
@@ -101,11 +103,11 @@ public class TutorialCore : LevelCore
         // Teach movement and camera
         yield return StartCoroutine(PanelController.Instance.ShowPanel("Use WASD to move around and Mouse to move the camera."));
         InteractionController.Instance.playerInput.CharacterControls.Move.Enable();
-        InteractionController.Instance.cameraInput.CameraLook.Rotate.Enable();
+        InteractionController.Instance.cameraInput.Enable();
         yield return new WaitUntil(() => hasMoved && hasLookedAround);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(1.5f);
 
         yield return StartCoroutine(PanelController.Instance.ShowPanel("Use Space to jump. Try jumping a few times."));
         InteractionController.Instance.playerInput.CharacterControls.Jump.Enable();
@@ -123,7 +125,7 @@ public class TutorialCore : LevelCore
         
         InteractionController.Instance.playerInput.CharacterControls.Move.Disable();
         InteractionController.Instance.cameraInput.CameraLook.Rotate.Disable();
-        InteractionController.Instance.playerInput.CharacterControls.Jump.Enable();
+        InteractionController.Instance.playerInput.CharacterControls.Jump.Disable();
         PlayerData.Instance.moveDirection = Vector2.zero;
         PlayerData.Instance.cameraLookDelta = Vector2.zero;
         PlayerData.Instance.cameraController.SwitchVirtualCamera(PlayerData.Instance.virtualCameras[2]);
@@ -212,18 +214,19 @@ public class TutorialCore : LevelCore
         yield return StartCoroutine(PanelController.Instance.ShowPanel("Try destroying the oldest/red ropes using Q."));
         InteractionController.Instance.playerInput.CharacterControls.DetachFirstRopePlacement.Enable();
         yield return new WaitUntil(() => hasDetachedFirst);
+        InteractionController.Instance.playerInput.CharacterControls.DetachFirstRopePlacement.Disable();
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         
         yield return StartCoroutine(PanelController.Instance.ShowPanel("Now try destroying newest/green ropes using E"));
         InteractionController.Instance.playerInput.CharacterControls.DetachLastRopePlacement.Enable();
         yield return new WaitUntil(() => hasDetachedLast);
+        InteractionController.Instance.playerInput.CharacterControls.DetachFirstRopePlacement.Enable();
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         
         yield return StartCoroutine(PanelController.Instance.ShowPanel("Try to leave the room! Don't forget to use Q to remove red/oldest ropes, E to remove green/newset ropes, and R to confirm your point selection."));
         StartCoroutine(MoveThirdStageDoor());
         yield return new WaitUntil(() => hasExitedThirdStage);
         yield return StartCoroutine(PanelController.Instance.HidePanel());
-        
         
         yield return new WaitUntil(() => hasEnteredCrouchStage);
         
@@ -242,7 +245,7 @@ public class TutorialCore : LevelCore
         _panelDone = false;
         yield return StartCoroutine(PanelController.Instance.HidePanel());
         yield return new WaitForSecondsRealtime(.5f);
-        yield return StartCoroutine(PanelController.Instance.ShowPanel("While crouching on top of a purple object, your movement is restricted, but you will influence the purple object's movement.", true));
+        yield return StartCoroutine(PanelController.Instance.ShowPanel("You can sway around with the object you are crouching on when the object is hanging on ropes.", true));
         yield return new WaitUntil(() => _panelDone);
         _panelDone = false;
         yield return StartCoroutine(PanelController.Instance.HidePanel());

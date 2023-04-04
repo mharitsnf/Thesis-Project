@@ -358,6 +358,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""QuitGame"",
+                    ""type"": ""Button"",
+                    ""id"": ""3263f13d-98b4-4ae6-a5ac-dcbfd7f8eaa6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -393,6 +402,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""NextPanel"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e5823309-2d5f-4efa-98fd-c3461f0deeb5"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""QuitGame"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -417,6 +437,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_OtherInteraction_NextStage = m_OtherInteraction.FindAction("NextStage", throwIfNotFound: true);
         m_OtherInteraction_ReloadStage = m_OtherInteraction.FindAction("ReloadStage", throwIfNotFound: true);
         m_OtherInteraction_NextPanel = m_OtherInteraction.FindAction("NextPanel", throwIfNotFound: true);
+        m_OtherInteraction_QuitGame = m_OtherInteraction.FindAction("QuitGame", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -592,6 +613,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_OtherInteraction_NextStage;
     private readonly InputAction m_OtherInteraction_ReloadStage;
     private readonly InputAction m_OtherInteraction_NextPanel;
+    private readonly InputAction m_OtherInteraction_QuitGame;
     public struct OtherInteractionActions
     {
         private @PlayerInput m_Wrapper;
@@ -599,6 +621,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @NextStage => m_Wrapper.m_OtherInteraction_NextStage;
         public InputAction @ReloadStage => m_Wrapper.m_OtherInteraction_ReloadStage;
         public InputAction @NextPanel => m_Wrapper.m_OtherInteraction_NextPanel;
+        public InputAction @QuitGame => m_Wrapper.m_OtherInteraction_QuitGame;
         public InputActionMap Get() { return m_Wrapper.m_OtherInteraction; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -617,6 +640,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @NextPanel.started -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnNextPanel;
                 @NextPanel.performed -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnNextPanel;
                 @NextPanel.canceled -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnNextPanel;
+                @QuitGame.started -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnQuitGame;
+                @QuitGame.performed -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnQuitGame;
+                @QuitGame.canceled -= m_Wrapper.m_OtherInteractionActionsCallbackInterface.OnQuitGame;
             }
             m_Wrapper.m_OtherInteractionActionsCallbackInterface = instance;
             if (instance != null)
@@ -630,6 +656,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @NextPanel.started += instance.OnNextPanel;
                 @NextPanel.performed += instance.OnNextPanel;
                 @NextPanel.canceled += instance.OnNextPanel;
+                @QuitGame.started += instance.OnQuitGame;
+                @QuitGame.performed += instance.OnQuitGame;
+                @QuitGame.canceled += instance.OnQuitGame;
             }
         }
     }
@@ -653,5 +682,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnNextStage(InputAction.CallbackContext context);
         void OnReloadStage(InputAction.CallbackContext context);
         void OnNextPanel(InputAction.CallbackContext context);
+        void OnQuitGame(InputAction.CallbackContext context);
     }
 }
