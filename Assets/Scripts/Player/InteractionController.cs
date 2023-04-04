@@ -258,7 +258,14 @@ public class InteractionController : MonoBehaviour
     {
         playerInput.OtherInteraction.ReloadStage.Disable();
         playerInput.OtherInteraction.NextStage.Disable();
-        LevelLoader.Instance.LoadNextLevel();
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            LevelLoader.Instance.LoadNextLevel();
+        }
+        else
+        {
+            Application.Quit();
+        }
     }
     
     private void HandleReloadStageInput(InputAction.CallbackContext context)
