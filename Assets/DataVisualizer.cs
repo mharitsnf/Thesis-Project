@@ -24,6 +24,9 @@ public class DataVisualizer : MonoBehaviour
     
     [HideInInspector] public int lowerLimitFrame;
     [HideInInspector] public int upperLimitFrame;
+    
+    [HideInInspector] public int lowerLimitTimestamp;
+    [HideInInspector] public int upperLimitTimestamp;
 
     public bool useBoundingBox;
     [HideInInspector] public Vector3 minBoundingBox;

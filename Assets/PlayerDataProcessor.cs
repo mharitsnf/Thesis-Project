@@ -95,18 +95,26 @@ public class PlayerDataProcessor : MonoBehaviour
                 if (DataVisualizer.Instance.useBoundingBox) spatialPoints = UpdateLinesByBoundingBox();
                 _drawnPoints = timePoints.Union(spatialPoints).ToList();
                 break;
+            
+            case 2:
+                timePoints = UpdateLinesByTimestamp();
+                if (DataVisualizer.Instance.useBoundingBox) spatialPoints = UpdateLinesByBoundingBox();
+                _drawnPoints = timePoints.Union(spatialPoints).ToList();
+                break;
         }
         
         
         DrawLines();
     }
 
+    private List<Point> UpdateLinesByTimestamp()
+    {
+        return _fullPoints.Where(point => point.timestamp > DataVisualizer.Instance.lowerLimitTimestamp && point.timestamp < DataVisualizer.Instance.upperLimitTimestamp).ToList();
+    }
+
     private List<Point> UpdateLinesByFrame()
     {
-        int firstIndex = Mathf.Clamp(Mathf.FloorToInt(DataVisualizer.Instance.lowerLimitFrame / 5) - 1, 0, _fullPoints.Count - 1);
-        int lastIndex = Mathf.Clamp(Mathf.FloorToInt(DataVisualizer.Instance.upperLimitFrame / 5) - 1, 0, _fullPoints.Count - 1);
-
-        return _fullPoints.GetRange(firstIndex, lastIndex - firstIndex);
+        return _fullPoints.Where(point => point.frameNumber >= DataVisualizer.Instance.lowerLimitFrame && point.frameNumber <= DataVisualizer.Instance.upperLimitFrame).ToList();
     }
     
     private List<Point> UpdateLinesByPercentage()
