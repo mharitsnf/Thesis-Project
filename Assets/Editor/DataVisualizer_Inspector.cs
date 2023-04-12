@@ -12,26 +12,6 @@ public class DataVisualizer_Inspector : Editor
         
         DataVisualizer visualizer = (DataVisualizer) target;
 
-        visualizer.visualizationMode = EditorGUILayout.Popup("Time constraint", visualizer.visualizationMode,
-            new[] { "By Percentage", "By Frames", "By Timeframe" });
-
-        switch (visualizer.visualizationMode)
-        {
-            case 0:
-                visualizer.lowerLimitPercentage = (int)EditorGUILayout.Slider("Lower Limit",
-                    visualizer.lowerLimitPercentage, 0, visualizer.upperLimitPercentage);
-                visualizer.upperLimitPercentage = (int) EditorGUILayout.Slider("Upper Limit",
-                    visualizer.upperLimitPercentage, visualizer.lowerLimitPercentage, 100);
-                break;
-            case 1:
-                visualizer.lowerLimitFrame = EditorGUILayout.IntField("Lower Limit", visualizer.lowerLimitFrame);
-                visualizer.upperLimitFrame = EditorGUILayout.IntField("Upper Limit", visualizer.upperLimitFrame);
-                break;
-            case 2:
-                visualizer.lowerLimitTimestamp = EditorGUILayout.IntField("Lower Limit", visualizer.lowerLimitTimestamp);
-                visualizer.upperLimitTimestamp = EditorGUILayout.IntField("Upper Limit", visualizer.upperLimitTimestamp);
-                break;
-        }
 
         if (visualizer.useBoundingBox)
         {

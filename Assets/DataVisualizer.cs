@@ -9,24 +9,13 @@ public class DataVisualizer : MonoBehaviour
 {
     public static DataVisualizer Instance { get; private set; }
     
-    public delegate void DrawLines();
-    public static event DrawLines OnDrawLines;
+    public delegate void DataUpdated();
+    public static event DataUpdated OnDataUpdated;
 
     public string folderRelativePath;
-    public GameObject rendererPrefab;
+    public GameObject playerRenderer;
 
     private string[] _directories;
-
-    [HideInInspector] public int visualizationMode;
-    
-    [HideInInspector] public int lowerLimitPercentage;
-    [HideInInspector] public int upperLimitPercentage;
-    
-    [HideInInspector] public int lowerLimitFrame;
-    [HideInInspector] public int upperLimitFrame;
-    
-    [HideInInspector] public int lowerLimitTimestamp;
-    [HideInInspector] public int upperLimitTimestamp;
 
     public bool useBoundingBox;
     [HideInInspector] public Vector3 minBoundingBox;
@@ -45,14 +34,13 @@ public class DataVisualizer : MonoBehaviour
 
         foreach (var participant in _directories)
         {
-            string playerFile = $"{participant}/CSGScene Original 2/Player/data.csv";
-            // string[] ropeFiles = Directory.GetFiles($"{participant}/CSGScene Original 2/Ropes");
+            string playerPath = $"{participant}/CSGScene Original 2/Player/data.csv";
+            string[] ropeFiles = Directory.GetFiles($"{participant}/CSGScene Original 2/Ropes");
 
-            GameObject dataRendererObject = Instantiate(rendererPrefab, transform);
-            dataRendererObject.name = participant.Split("\\")[1];
+            GameObject playerRendererObject = Instantiate(playerRenderer, transform);
+            playerRendererObject.name = participant.Split("\\")[1];
 
-            dataRendererObject.GetComponent<PlayerDataProcessor>().LoadData(playerFile);
-            
+            playerRendererObject.GetComponent<PlayerDataProcessor>().LoadData(playerPath, ropeFiles);
         }
         
         InvokeDrawLines();
@@ -60,7 +48,7 @@ public class DataVisualizer : MonoBehaviour
 
     public void InvokeDrawLines()
     {
-        OnDrawLines?.Invoke();
+        OnDataUpdated?.Invoke();
     }
 
     private void OnDrawGizmos()

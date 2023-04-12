@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net.Mime;
+using System.Text.RegularExpressions;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class PlayerDataProcessor : MonoBehaviour
 {
-    struct Point
+    public struct Point
     {
         public int frameNumber;
         public float timestamp;
@@ -33,75 +35,63 @@ public class PlayerDataProcessor : MonoBehaviour
         }
     }
     
-    private List<Point> _fullPoints = new();
-    private List<Point> _drawnPoints = new();
-    public Color color;
+    private readonly List<Point> _fullPoints = new();
+    public List<Point> drawnPoints = new();
 
+    public GameObject ropeRendererPrefab;
     public LineRenderer lineRenderer;
     public bool showLines = true;
+    
+    [HideInInspector] public int visualizationMode;
+
+    [HideInInspector] public int lowerLimitFrame;
+    [HideInInspector] public int upperLimitFrame;
+    
+    [HideInInspector] public int lowerLimitTimestamp;
+    [HideInInspector] public int upperLimitTimestamp;
 
     private void OnValidate()
     {
         lineRenderer.enabled = showLines;
     }
 
-    void Start()
-    {
-        // Color setup
-        Color firstColor = Random.ColorHSV();
-        color = firstColor;
-        float h, s, v;
-        Color.RGBToHSV(firstColor, out h, out s, out v);
-        firstColor = Color.HSVToRGB(h, 0, v);
-        Color secondColor = Color.HSVToRGB(h, 1, v);
-        
-        Gradient gradient = new Gradient();
-        gradient.SetKeys(
-            new[] {new GradientColorKey(firstColor, 0f), new GradientColorKey(secondColor, 1f)},
-            new[] { new GradientAlphaKey(1f, 0f), new GradientAlphaKey(1f, 0f) }
-            );
-        
-        lineRenderer.colorGradient = gradient;
-    }
-
     private void OnEnable()
     {
-        DataVisualizer.OnDrawLines += OnDrawLines;
+        DataVisualizer.OnDataUpdated += OnDataUpdated;
     }
 
     private void OnDisable()
     {
-        DataVisualizer.OnDrawLines -= OnDrawLines;
+        DataVisualizer.OnDataUpdated -= OnDataUpdated;
     }
     
-    private void OnDrawLines()
+    private void OnDataUpdated()
     {
         if (_fullPoints.Count == 0) return;
-        lineRenderer.positionCount = 0;
-        _drawnPoints.Clear();
 
-        List<Point> timePoints;
+        lineRenderer.positionCount = 0;
+        drawnPoints.Clear();
+
+        List<Point> timePoints = new List<Point>();
         List<Point> spatialPoints = new List<Point>();
-        switch (DataVisualizer.Instance.visualizationMode)
+        
+        switch (visualizationMode)
         {
             case 0:
-                timePoints = UpdateLinesByPercentage();
-                if (DataVisualizer.Instance.useBoundingBox) spatialPoints = UpdateLinesByBoundingBox();
-                _drawnPoints = timePoints.Union(spatialPoints).ToList();
-                break;
-                
-            case 1:
                 timePoints = UpdateLinesByFrame();
-                if (DataVisualizer.Instance.useBoundingBox) spatialPoints = UpdateLinesByBoundingBox();
-                _drawnPoints = timePoints.Union(spatialPoints).ToList();
                 break;
             
-            case 2:
+            case 1:
                 timePoints = UpdateLinesByTimestamp();
-                if (DataVisualizer.Instance.useBoundingBox) spatialPoints = UpdateLinesByBoundingBox();
-                _drawnPoints = timePoints.Union(spatialPoints).ToList();
                 break;
         }
+        
+        if (DataVisualizer.Instance.useBoundingBox)
+        {
+            spatialPoints = UpdateLinesByBoundingBox();
+            drawnPoints = timePoints.Intersect(spatialPoints).ToList();
+        }
+        else drawnPoints = new List<Point>(timePoints);
         
         
         DrawLines();
@@ -109,22 +99,12 @@ public class PlayerDataProcessor : MonoBehaviour
 
     private List<Point> UpdateLinesByTimestamp()
     {
-        return _fullPoints.Where(point => point.timestamp > DataVisualizer.Instance.lowerLimitTimestamp && point.timestamp < DataVisualizer.Instance.upperLimitTimestamp).ToList();
+        return _fullPoints.Where(point => point.timestamp > lowerLimitTimestamp && point.timestamp < upperLimitTimestamp).ToList();
     }
 
     private List<Point> UpdateLinesByFrame()
     {
-        return _fullPoints.Where(point => point.frameNumber >= DataVisualizer.Instance.lowerLimitFrame && point.frameNumber <= DataVisualizer.Instance.upperLimitFrame).ToList();
-    }
-    
-    private List<Point> UpdateLinesByPercentage()
-    {
-        int rowsCount = _fullPoints.Count;
-        int startRow = (int) Mathf.Floor(rowsCount * (DataVisualizer.Instance.lowerLimitPercentage / 100f));
-        int endRow = (int) Mathf.Floor(rowsCount * (DataVisualizer.Instance.upperLimitPercentage / 100f));
-
-
-        return _fullPoints.GetRange(startRow, endRow - startRow).ToList();
+        return _fullPoints.Where(point => point.frameNumber >= lowerLimitFrame && point.frameNumber <= upperLimitFrame).ToList();
     }
 
     private List<Point> UpdateLinesByBoundingBox()
@@ -132,29 +112,28 @@ public class PlayerDataProcessor : MonoBehaviour
         Vector3 minBB = DataVisualizer.Instance.minBoundingBox;
         Vector3 maxBB = DataVisualizer.Instance.maxBoundingBox;
 
-        IEnumerable<Point> insideBB = _drawnPoints.Where(point => point.worldPosition.x > minBB.x &&
-                                                                  point.worldPosition.y > minBB.y &&
-                                                                  point.worldPosition.z > minBB.z &&
-                                                                  point.worldPosition.x < maxBB.x &&
-                                                                  point.worldPosition.y < maxBB.y &&
-                                                                  point.worldPosition.z < maxBB.z);
-
-        return insideBB.ToList();
+        return _fullPoints.Where(point => point.worldPosition.x > minBB.x &&
+                                          point.worldPosition.y > minBB.y &&
+                                          point.worldPosition.z > minBB.z &&
+                                          point.worldPosition.x < maxBB.x &&
+                                          point.worldPosition.y < maxBB.y &&
+                                          point.worldPosition.z < maxBB.z
+                                          ).ToList();
     }
 
     private void DrawLines()
     {
-        lineRenderer.positionCount = _drawnPoints.Count;
+        lineRenderer.positionCount = drawnPoints.Count;
         
         int index = 0;
-        foreach (var point in _drawnPoints)
+        foreach (var point in drawnPoints)
         {
             lineRenderer.SetPosition(index, point.worldPosition);
             index++;
         }
     }
 
-    public void LoadData(string path)
+    public void LoadData(string path, string[] ropePaths)
     {
         _fullPoints.Clear();
 
@@ -182,6 +161,6 @@ public class PlayerDataProcessor : MonoBehaviour
             _fullPoints.Add(point);
         }
 
-        _drawnPoints = new List<Point>(_fullPoints);
+        drawnPoints = new List<Point>(_fullPoints);
     }
 }
