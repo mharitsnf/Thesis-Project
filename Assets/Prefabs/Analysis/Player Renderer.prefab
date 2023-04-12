@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1007089446970899112}
   - component: {fileID: 927527202158801658}
   - component: {fileID: 5056721291027575846}
+  - component: {fileID: 2850717709057048009}
   - component: {fileID: 7674384955456136802}
   m_Layer: 0
   m_Name: Player Renderer
@@ -66,6 +67,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ropeRendererPrefab: {fileID: 2456046338643185290, guid: 3696b1b7860d8b44cb55f78b7697d5c1,
+    type: 3}
+--- !u!114 &2850717709057048009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493850383743510176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14e3285041f313749963f5a4bbc37b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mechanicsAPrefab: {fileID: 8223598453932703329, guid: 4fd90531036aff348bc8b9a505ba40c1,
+    type: 3}
+  mechanicsBPrefab: {fileID: 8423880117466444341, guid: c8f2d74360536c5468940278443017ed,
+    type: 3}
+  mechanicsCPrefab: {fileID: 7327447743782470632, guid: 53bb3acb1af8f694faf913b0729baf30,
+    type: 3}
+  mechanicsDPrefab: {fileID: 4358697865303656672, guid: 1825b40bbd83f824fa59682030a2699c,
+    type: 3}
+  mechanicsEPrefab: {fileID: 6562218265988548066, guid: 7fd1bc75a0af18a4faa46315d2bc359b,
+    type: 3}
+  mechanicsFPrefab: {fileID: 2451463248319811892, guid: f9041d5b34ae84e45abf4100093b3db8,
     type: 3}
 --- !u!120 &7674384955456136802
 LineRenderer:

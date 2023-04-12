@@ -9,6 +9,10 @@ public class RopeVisualizer : MonoBehaviour
 
     public void LoadData(string[] paths)
     {
+        GameObject ropeParent = new GameObject();
+        ropeParent.name = "Ropes";
+        ropeParent.transform.parent = transform;
+        
         for (int i = 0; i < paths.Length - 1; i++)
         {
             string path = paths[i];
@@ -22,7 +26,7 @@ public class RopeVisualizer : MonoBehaviour
             Match match = regex.Match(filename);
             if (match.Success)
             {
-                GameObject ropeRenderer = Instantiate(ropeRendererPrefab, transform);
+                GameObject ropeRenderer = Instantiate(ropeRendererPrefab, ropeParent.transform);
                 ropeRenderer.name = $"Rope-{match.Value}";
                 
                 ropeRenderer.GetComponent<RopeDataProcessor>().LoadData(path);

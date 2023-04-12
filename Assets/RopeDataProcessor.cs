@@ -38,7 +38,7 @@ public class RopeDataProcessor : MonoBehaviour
 
     private void Start()
     {
-        _pdp = transform.parent.GetComponent<PlayerDataProcessor>();
+        _pdp = transform.parent.parent.GetComponent<PlayerDataProcessor>();
     }
 
     private void OnEnable()

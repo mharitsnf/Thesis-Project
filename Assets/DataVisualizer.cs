@@ -36,12 +36,14 @@ public class DataVisualizer : MonoBehaviour
         {
             string playerPath = $"{participant}/CSGScene Original 2/Player/data.csv";
             string[] ropeFiles = Directory.GetFiles($"{participant}/CSGScene Original 2/Ropes");
+            string[] mechanicFiles = Directory.GetFiles($"{participant}/CSGScene Original 2/Mechanics");
 
             GameObject playerRendererObject = Instantiate(playerRenderer, transform);
             playerRendererObject.name = participant.Split("\\")[1];
 
             playerRendererObject.GetComponent<PlayerDataProcessor>().LoadData(playerPath);
             playerRendererObject.GetComponent<RopeVisualizer>().LoadData(ropeFiles);
+            playerRendererObject.GetComponent<MechanicsVisualizer>().LoadData(mechanicFiles);
         }
         
         InvokeDrawLines();
