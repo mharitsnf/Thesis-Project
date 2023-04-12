@@ -40,7 +40,8 @@ public class DataVisualizer : MonoBehaviour
             GameObject playerRendererObject = Instantiate(playerRenderer, transform);
             playerRendererObject.name = participant.Split("\\")[1];
 
-            playerRendererObject.GetComponent<PlayerDataProcessor>().LoadData(playerPath, ropeFiles);
+            playerRendererObject.GetComponent<PlayerDataProcessor>().LoadData(playerPath);
+            playerRendererObject.GetComponent<RopeVisualizer>().LoadData(ropeFiles);
         }
         
         InvokeDrawLines();

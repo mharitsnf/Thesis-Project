@@ -38,7 +38,6 @@ public class PlayerDataProcessor : MonoBehaviour
     private readonly List<Point> _fullPoints = new();
     public List<Point> drawnPoints = new();
 
-    public GameObject ropeRendererPrefab;
     public LineRenderer lineRenderer;
     public bool showLines = true;
     
@@ -133,7 +132,7 @@ public class PlayerDataProcessor : MonoBehaviour
         }
     }
 
-    public void LoadData(string path, string[] ropePaths)
+    public void LoadData(string path)
     {
         _fullPoints.Clear();
 

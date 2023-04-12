@@ -29,12 +29,18 @@ public class RopeDataProcessor : MonoBehaviour
         }
     }
 
-    private List<RopeData> _fullPoints = new();
+    private readonly List<RopeData> _fullPoints = new();
+    private List<RopeData> _drawnPoints = new();
+    private PlayerDataProcessor _pdp;
 
     public LineRenderer lineRenderer;
     public Color color;
-    
-    
+
+    private void Start()
+    {
+        _pdp = transform.parent.GetComponent<PlayerDataProcessor>();
+    }
+
     private void OnEnable()
     {
         DataVisualizer.OnDataUpdated += OnDataUpdated;
@@ -47,7 +53,29 @@ public class RopeDataProcessor : MonoBehaviour
 
     private void OnDataUpdated()
     {
+        UpdateDrawnPoints();
+        DrawLines();
+    }
+
+    private void UpdateDrawnPoints()
+    {
+        lineRenderer.positionCount = 0;
+        _drawnPoints.Clear();
         
+        if (_pdp.drawnPoints.Count == 0) return;
+        
+        PlayerDataProcessor.Point lastPoint = _pdp.drawnPoints[^1];
+
+        _drawnPoints = _fullPoints.Where(data => data.frameNumber == lastPoint.frameNumber).ToList();
+    }
+
+    private void DrawLines()
+    {
+        if (_drawnPoints.Count == 0) return;
+        
+        lineRenderer.positionCount = 2;
+        lineRenderer.SetPosition(0, _drawnPoints[0].firstEnd);
+        lineRenderer.SetPosition(1, _drawnPoints[0].secondEnd);
     }
 
     public void LoadData(string path)
@@ -74,6 +102,7 @@ public class RopeDataProcessor : MonoBehaviour
                 content[6],
                 new Vector3(x2, y2, z2)
             );
+            
             _fullPoints.Add(ropeData);
         }
     }

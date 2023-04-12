@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1007089446970899112}
   - component: {fileID: 927527202158801658}
+  - component: {fileID: 5056721291027575846}
   - component: {fileID: 7674384955456136802}
   m_Layer: 0
   m_Name: Player Renderer
@@ -45,11 +46,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0a5a28d3a3c43049b7240f90ae477a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0, b: 0, a: 0}
-  ropeRendererPrefab: {fileID: 2456046338643185290, guid: 3696b1b7860d8b44cb55f78b7697d5c1,
-    type: 3}
   lineRenderer: {fileID: 7674384955456136802}
   showLines: 1
+  visualizationMode: 0
+  lowerLimitFrame: 0
+  upperLimitFrame: 0
+  lowerLimitTimestamp: 0
+  upperLimitTimestamp: 0
+--- !u!114 &5056721291027575846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1493850383743510176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e79e1ff805408741bd6a7df423f33a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ropeRendererPrefab: {fileID: 2456046338643185290, guid: 3696b1b7860d8b44cb55f78b7697d5c1,
+    type: 3}
 --- !u!120 &7674384955456136802
 LineRenderer:
   m_ObjectHideFlags: 0
